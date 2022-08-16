@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Reusing Code &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="04-Pandas_Intro.html" />
+    <link rel="prev" title="On the way to programming with Python" href="2-Flow_Control.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1-Introduction.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2-Flow_Control.html">
+   On the way to programming with Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Reusing Code
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Working with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-Pandas_Intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/pythonbook/main?urlpath=tree/Py4Analytics/lessons/3-Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/pythonbook&urlpath=tree/pythonbook/Py4Analytics/lessons/3-Functions.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/pythonbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/pythonbook/issues/new?title=Issue%20on%20page%20%2FPy4Analytics/lessons/3-Functions.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Py4Analytics/lessons/3-Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Reusing Code
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-functions">
+     Defining Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configurable-functions">
+     Configurable functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-something-back">
+     Getting something back
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-write-functions">
+     Why write functions?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn">
+     Your turn
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-practices">
+     Best Practices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Reusing Code</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Reusing Code
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-functions">
+     Defining Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configurable-functions">
+     Configurable functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-something-back">
+     Getting something back
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-write-functions">
+     Why write functions?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn">
+     Your turn
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-practices">
+     Best Practices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="reusing-code">
+<h1>Reusing Code<a class="headerlink" href="#reusing-code" title="Permalink to this headline">#</a></h1>
+<p>One of the fundamental skills that every programmer must have is the ability to make their code reusable.  Not just cut/paste reusable, but being able to be reused with in a variety of conditions without having to rework the code.</p>
+<p>When you think about a simple task, like making a peanut butter and jelly sandwich, you can tell your friend how to make that sandwich with just a few words.  For instance,</p>
+<ul class="simple">
+<li><p>Grab the peanut butter</p></li>
+<li><p>Choose the jelly</p></li>
+<li><p>Open the bread</p></li>
+<li><p>Spread the PB on one slice and the jelly on another piece of bread</p></li>
+<li><p>Put the bread slices together with the PB and jelly touching</p></li>
+</ul>
+<p>We’ve really shortcutted a bunch of steps here right?  I mean, “grabbing the peanut butter” means going to the pantry, openning the door, finding the jar, selecting the jar, walking back…</p>
+<p>This would get very frustating if we had to explain this over and over for each kind of sandwich we want to make or with different kinds of jelly right?  So we have learned that, using words, we can communicate whole steps without having to break down the details each time.  We might have to provide a bit of context - say, if you’re at my house, the PB is in the cabinet, but at your place it’s in the pantry.  But in general humans can fill in the blanks.</p>
+<p>Computers can’t fill in the blanks, we have to be very precise.  But we also don’t want to have to be extremely precise everytime we want to do a simple task, so we use abstractions in programming to help us with the mundane.  One example, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement we saw earlier.  There is a lot of stuff happening to make a couple of letters appear on the screen.  Fortunately for us, someone else figured this out already and we can rely on their work.</p>
+<p><br><br>
+Functions (in other languages called subroutines) are self-contained lines of code which accomplish a specific task.  Functions can “take in” data, process it, and then “return” a result.
+<br></p>
+<section id="defining-functions">
+<h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">#</a></h2>
+<p>In Python we define functions with the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword followed by the name of the function, a set of parenthesis, and a <code class="docutils literal notranslate"><span class="pre">:</span></code>.  To use the function, we just type it’s name and the parenthesis. (There are a few more options, but this is the simplest form.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function will output the phrase, Hello World!</span>
+<span class="k">def</span> <span class="nf">say_hello_world</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
+
+<span class="n">say_hello_world</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have defined the function, we can call it over and over again without having to define it again.  Even better, if we decide to change it - we don’t need to update the code that is calling the function to change it.</p>
+<p>You can try it here.  Create a new code cell and type <code class="docutils literal notranslate"><span class="pre">say_hello_world</span></code> into the new cell and see it prints out the same message.</p>
+<p>Functions can replace several lines of code into a single statement when used, because they “encapsulate” the details.  In this example, we just repeated the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function but what about something more complex like getting input from a user and then responding to the message.  Could we shortcut all this into one function?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to a particular user</span>
+<span class="k">def</span> <span class="nf">say_hello_user</span><span class="p">():</span>
+    <span class="n">users_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="p">,</span><span class="n">users_name</span><span class="p">,</span><span class="s2">&quot; it&#39;s nice to meet you!&quot;</span><span class="p">)</span>
+
+<span class="n">say_hello_user</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Functions can be very simple or much more complex.  The best practice though is to make functions just big enough to complete a task and no more.  This could mean calling other functions and doing some other processing, but let’s not worry about complexity just yet.</p>
+</section>
+<section id="configurable-functions">
+<h2>Configurable functions<a class="headerlink" href="#configurable-functions" title="Permalink to this headline">#</a></h2>
+<p>While our previous examples were simple, they weren’t very useful because they only do one thing.  Most often what we want to complete a task with some specific parameters or configurable steps.  For instance, the <code class="docutils literal notranslate"><span class="pre">print</span></code> function wouldn’t be very helpful if we had to write a new function everytime we wanted to change the output! Instead, we can send in the characters we want outputted to the screen using <em>arguments</em>.  Functions define temporary variables to hold the value of these arguments, called parameters.</p>
+<p>Starting with a simple example.  Let’s rewrite our <code class="docutils literal notranslate"><span class="pre">say_hello_user()</span></code> function, but this time, let’s supply the greeting and the users name outside of the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to a particular user</span>
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">users_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
+
+<span class="c1"># We can pass parameters with a &quot;fixed&quot; value or as a variable</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span><span class="p">,</span> <span class="n">users_name</span><span class="p">)</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Hi &quot;</span><span class="p">,</span> <span class="n">users_name</span><span class="p">)</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Ciao &quot;</span><span class="p">,</span> <span class="n">users_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-something-back">
+<h2>Getting something back<a class="headerlink" href="#getting-something-back" title="Permalink to this headline">#</a></h2>
+<p>Many functions are helpful just as they are, they do some work and then go away.  Sometimes we want feedback from a function or the result of doing some work in a function.  In these cases, we use another Python keyword <code class="docutils literal notranslate"><span class="pre">return</span></code>.  The <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword says the function is complete and this bit of information is the result of the effort.  As a caller of the function we can use the returned value just like we use variables, we can assign it to variable for safe-keeping pass it along to another function or ignore it all together.</p>
+<p>Let’s consider a simple example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>Here we have a function named <code class="docutils literal notranslate"><span class="pre">add</span></code>, we know it is a Python function because it has the word <code class="docutils literal notranslate"><span class="pre">def</span></code> in front of the name.  Our <code class="docutils literal notranslate"><span class="pre">add</span></code> function “takes in” two values (paramters) named <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, these two values become variables that exist only while the function is called we call these <em>function parameters</em>.  Finally, our function does something useful and sends back the result <code class="docutils literal notranslate"><span class="pre">c</span></code>.  So now, when we want to use this function, we just need to specify the name of the function, the value for the two parameters and collect the result into another variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add the numbers represented by the parameters a and b</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="n">return_value</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now what we have is a function that will perform a set of actions, but we don’t have to know ahead of time what the values for <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> will be.  We just know that they should be two numbers.</p>
+<p>This is a very simple example of course and the number of lines in a function can be very long.  As a matter of fact we can even call other functions inside of our functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y</span><span class="p">):</span> 
+        <span class="n">z</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># Calling our add function</span>
+    <span class="k">return</span> <span class="n">z</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">multiply</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-write-functions">
+<h2>Why write functions?<a class="headerlink" href="#why-write-functions" title="Permalink to this headline">#</a></h2>
+<ol>
+<li><b>Functions allow us to conceive the program as a series of steps where each substep is captured in its own block.</b><br/> When a program seems too difficult, break down the substeps functions.  And if necessary, break that sub-step down into another function, keep going until each substep is understandable and does exactly one task, then combine the steps together into bigger subtasks.</li>
+<li><b>Functions allow us to reuse code.</b><br/> This is essential, because it saves us from typos, ensures that we are doing calculations and tasks consistently whereever it is used and even allows others to use our code without understanding how the subtask is executed.</li>
+<li><b>Functions encapsulate the variables keeping our "namespace" clean.</b><br/>  Since a, b, and c only contains values when the function is called, we can use the variable names a, b and c as parameters in other functions or in our main code without confusion.</li>
+<li><b>Functions allow us to test our program in small pieces.</b><br/>  If we can execute a part of our program correctly by calling just one function, then we can continue to build our program knowing that the building blocks are solid.</li></ol></section>
+<section id="your-turn">
+<h2>Your turn<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h2>
+<p>Okay, let’s write a couple of functions.  In the next cell, write the <code class="docutils literal notranslate"><span class="pre">subtract</span></code> and <code class="docutils literal notranslate"><span class="pre">divide</span></code> functions.  After you have written your function, run the cell and see if you get the value you expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start by defining the subtract function.  </span>
+<span class="c1"># Don&#39;t forget to indent the code block the function name</span>
+
+<span class="c1"># call the subtract function to test it</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">#</a></h2>
+<p>There are a few things that should be considered when creating functions in any language and a few things that are specfic to Python.</p>
+<ul><li><b>Functions should perform exactly one task.</b><br/> Functions should have a very specific and limited intention.</li>
+<li><b>Documenting your function is a must.</b><br/>  You may not believe this now, but even the best programmers forget how their function is supposed to work or what it was supposed to do when the come back to use it a few days, months or years later.  The convention in Python is to write documentation comments immediately after the function definition.</li>
+<br/>
+<div style="indent:20px">There are several different common formats <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings">Google has their own</a>, another is based on <a href="https://en.wikipedia.org/wiki/ReStructuredText">reStructuredText - ReST</a>, and also <a href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc</a>. Which format you choose is mostly up to you, although sometimes a project will already have defined the standard when you get to work on it.<div>
+<br/>
+<li><b>Function names, and their parameters should be as descriptive as possible.</b><br/> While these examples above use parameter names like a and b (there is no reason to name them differently) the function names themselves immediately tell you the purpose and do exactly what you expect (add numbers, subtract numbers).</li>
+<li><b>Function names ought to use all lowercase letters and use '_' to separate words.</b><br/> If your function name is more than a single word, it is common practice (in Python, other languages differ) to separate the names with an `_` character.  For instance</li>
+<li><b>Function parameters should be descriptive</b><br/>Functions can be self-documenting if the coder uses good names for the function name and also for the parameters.<br/>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">this_is_a_long_function_name</span><span class="p">(</span><span class="n">with_well_defined_parameters</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">    Raises x to the power of y and returns the result</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    x: int - the base number</span>
+<span class="sd">    y: int - the exponent</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    int : result of performing the operation</span>
+<span class="sd">    </span>
+<span class="sd">    Example:</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; power(2,3)</span>
+<span class="sd">    8</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">add_subtract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function will either add or subtract the two values provided</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : int</span>
+<span class="sd">        the first value in the equation</span>
+<span class="sd">    y : int </span>
+<span class="sd">        the second value in equation</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    int : result of performing the operation</span>
+<span class="sd">    </span>
+<span class="sd">    Example:</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; add_subtract(4,4)</span>
+<span class="sd">    8</span>
+<span class="sd">    &gt;&gt;&gt; add_subtract(3,8, True)</span>
+<span class="sd">    11</span>
+<span class="sd">    &gt;&gt;&gt; add_subtract(4,4, add=False)</span>
+<span class="sd">    0</span>
+<span class="sd">    &gt;&gt;&gt; add_subtract(3,8, False)</span>
+<span class="sd">    -5</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
+<p>You’ve learned quite a bit in this set of exercises and probably already knew some it.  Next, try out the <span class="xref myst">Coding Challenges</span> to put your skills to the test.</p>
+<p><a class="reference internal" href="2-Flow_Control.html"><span class="doc std std-doc">prev (Flow Control)</span></a>   |   <span class="xref myst">next (Your Turn)</span>   |   <span class="xref myst">index</span></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Py4Analytics/lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2-Flow_Control.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">On the way to programming with Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04-Pandas_Intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
