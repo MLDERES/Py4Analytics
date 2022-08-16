@@ -2,12 +2,12 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: Py4Analytics/intro
+root: intro
 parts:
   - caption: Getting Started
     chapters:
-      - file: Py4Analytics/notebooks
       - file: Py4Analytics/markdown-notebooks
+      - file: Py4Analytics/notebooks
   - caption: Working with data
     chapters:
     - file: Py4Analytics/markdown
