@@ -8,7 +8,6 @@ parts:
     chapters:
       - file: notebooks
       - file: markdown-notebooks
-      - file: page1
-  - caption: Moving on
+      - caption: Moving on
     chapters:
     - file: markdown

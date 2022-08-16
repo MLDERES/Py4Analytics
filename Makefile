@@ -3,7 +3,7 @@ help:
 	@grep -F ":" Makefile | awk '!/awk/' | awk '!/Description/' | sed -e 's/://'
 
 build:
-	jupyter-book build /workspaces/PythonBook/Py4Analytics/
+	jupyter-book build /workspaces/PythonBook
 
 publish: build
-	ghp-import -n -p -f /workspaces/PythonBook/Py4Analytics/_build/html
+	ghp-import -n -p -f /workspaces/PythonBook/_build/html
