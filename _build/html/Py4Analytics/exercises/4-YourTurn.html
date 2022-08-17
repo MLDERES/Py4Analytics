@@ -1,0 +1,1011 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Your Turn &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Coding Challenges" href="Coding_Challenges.html" />
+    <link rel="prev" title="Reusing Code" href="../lessons/3-Functions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/1-Introduction.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/2-Flow_Control.html">
+   On the way to programming with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/3-Functions.html">
+   Reusing Code
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Your Turn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Namespace, Object-Orientation, Packages
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/4-Object-Orientation.html">
+   Namespace, Objective Orientation and Packaging
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Working with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/04-Pandas_Intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/05-DataFormats.html">
+   Getting Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/06-WebData.html">
+   Gather data from the web
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Predictive Analytics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/VisualizationSamples.html">
+   Visualization Samples
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/pythonbook/main?urlpath=tree/Py4Analytics/exercises/4-YourTurn.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/pythonbook&urlpath=tree/pythonbook/Py4Analytics/exercises/4-YourTurn.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/pythonbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/pythonbook/issues/new?title=Issue%20on%20page%20%2FPy4Analytics/exercises/4-YourTurn.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Py4Analytics/exercises/4-YourTurn.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Your Turn
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hello-world">
+     Hello World
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hello-user">
+       Hello, user
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dealing-with-time">
+       Dealing with time
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#creating-a-function">
+       Creating a function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-day-of-the-year-is-it">
+     What day of the year is it?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
+     Count the number of occurrences of a word
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Your Turn</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Your Turn
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hello-world">
+     Hello World
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hello-user">
+       Hello, user
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dealing-with-time">
+       Dealing with time
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#creating-a-function">
+       Creating a function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-day-of-the-year-is-it">
+     What day of the year is it?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
+     Count the number of occurrences of a word
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="your-turn">
+<h1>Your Turn<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h1>
+<p>Now it’s your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.</p>
+<section id="hello-world">
+<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">#</a></h2>
+<p>One of the first things all programmers learn to do is to write Hello World!  It’s a time honored tradition, so let’s start there.  In the next cell, set the value of the name variable and run the cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the value of the my_name variable to your name</span>
+<span class="n">my_name</span> <span class="o">=</span> <span class="o">...</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello World!  My name is </span><span class="si">{</span><span class="n">my_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="hello-user">
+<h3>Hello, user<a class="headerlink" href="#hello-user" title="Permalink to this headline">#</a></h3>
+<p>Hello world is a great start, but what if we want this to work for everyone without changing our code.  Well we can use a built-in Python function called <code class="docutils literal notranslate"><span class="pre">input()</span></code> which will ask the user for some text.  The result of this function is a string.  Run the next cell to see how this works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask user for their name, store the value in the user_name variable</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your name?&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print the value of the user_name variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;You said: </span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Did you see the computer output the user’s name?  Let’s incorporate this into our Hello World, example from above.</p>
+<p>Ask for the user’s name.  Instead of Hello World, print a message that says hello to the user.  Make sure that you also introduce yourself.  Assuming the user’s name is Mel, and my name is Ned - the output should look like</p>
+<p><code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">Mel!</span>&#160; <span class="pre">My</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">Ned</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign the variable to my_name</span>
+<span class="n">my_name</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Ask for the user&#39;s name</span>
+
+<span class="c1"># Print the greeting including the user&#39;s name and your name</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dealing-with-time">
+<h3>Dealing with time<a class="headerlink" href="#dealing-with-time" title="Permalink to this headline">#</a></h3>
+<p>Our greeting is plesant, but we can do better.  We should have a greeting that takes into account the time of day.  The first few lines determine the hour of the day (where 0 is midnight and 23 is 11pm).  Using an <code class="docutils literal notranslate"><span class="pre">if/else</span></code> construct, greet the user appropriately for the time of day (morning, afternoon, evening).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the current time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">dt</span>
+<span class="kn">import</span> <span class="nn">pytz</span>
+<span class="n">current_hour</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s2">&quot;US/Central&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hour</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The current hour is: </span><span class="si">{</span><span class="n">current_hour</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Assign the variable to my_name</span>
+<span class="n">my_name</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Ask for the user&#39;s name</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your name?&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set the greeting to default to nothing</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1"># If the the current hour is less than 12, change the greeting to &#39;Morning&#39;</span>
+<span class="c1"># Otherwise, if the current hour is between 12 and 17 (5pm) set the greeting to &#39;Afternoon&#39;</span>
+<span class="c1"># Otherwise, set the greeting to &#39;Evening&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Good </span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s1">!  My name is </span><span class="si">{</span><span class="n">my_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-function">
+<h3>Creating a function<a class="headerlink" href="#creating-a-function" title="Permalink to this headline">#</a></h3>
+<p>That was fun, right?  But every time we want to use this code, we have to type it over and over again.  Or if we want to share it with someone else we have to tell them to change <code class="docutils literal notranslate"><span class="pre">my_name</span></code> to their own name.  Let’s take this one step further and create a reusable function.</p>
+<p>As you will remember, a function is a set of instructions that are combined together and can be referred to with a single name.  We assign variables to the function when we “call” the function.  So for instance, if we have a function called <code class="docutils literal notranslate"><span class="pre">sum</span></code> it takes two variables.  The value of these variables are defined outside the function, and when we call the function the values of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are replaced with the values we provide.  This allows us to something complex with these values and they can change each time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a function called &#39;add&#39; which takes two variables x and y</span>
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of x is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of y is </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># Assign the variable result to be the sum of x and y</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;When we call the sum function the result is </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">first_number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">second_number</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># Using two variables to call the sum function and assigning the result to a third variable</span>
+<span class="n">sum_of_first_second</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">first_number</span><span class="p">,</span><span class="n">second_number</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Let&#39;s use two variables to call the sum function: </span><span class="si">{</span><span class="n">sum_of_first_second</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see from the example above that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are placeholders that are defined when the function is called.  When we called the <code class="docutils literal notranslate"><span class="pre">sum</span></code> functions <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> changed each time, the first time because we specified the numbers 4 and 5 the second time we used variables to set the values to be used for  <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>How can we use this to improve our greeting?  Let’s create a function called <code class="docutils literal notranslate"><span class="pre">greeting</span></code> which takes as it’s inputs the name of the author and the name of the person we are greeting.  This way, we can decide how we want to get these values (create them as variables, ask for input, read from a file, etc).</p>
+<p>In the next cell, we have defined the function for you.  You just need to put your code in the body of the function.  Remember, the body of the function is everything that is indented at least one level.  Also, it is handy to know that words between <code class="docutils literal notranslate"><span class="pre">'''</span></code> (three single quotes) are comments that span multiple lines.  So these two blocks are both valid comments (that is they are ignored by Python).  By convention (it’s not required, just good practice), when we define a function we put a multi-line comment which starts with the purpose of the function and also defines the parameters and any result the function returns.  This helps others wanting to use the function to know what to expect and how to use it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function purpose</span>
+<span class="c1">#</span>
+<span class="c1"># Parameters:</span>
+<span class="c1">#</span>
+
+<span class="sd">&#39;&#39;&#39; Function Purpose</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining the greeting function</span>
+<span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">author_name</span><span class="p">,</span> <span class="n">user_name</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Greet a user </span>
+
+<span class="sd">        Parameters: </span>
+<span class="sd">            author_name (str) - the name of the program&#39;s author</span>
+<span class="sd">            user_name (str) - the name of the user to greet</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A greeting (str)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># author_name is supplied in the function call, and so is the user name</span>
+    
+    <span class="c1"># Get the current time</span>
+    <span class="n">current_hour</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s2">&quot;US/Central&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hour</span>
+
+    <span class="c1"># Set the greeting to default to nothing</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="c1"># If the the current hour is less than 12, change the greeting to &#39;Morning&#39;</span>
+    <span class="c1"># Otherwise, if the current hour is between 12 and 17 (5pm) set the greeting to &#39;Afternoon&#39;</span>
+    <span class="c1"># Otherwise, set the greeting to &#39;Evening&#39;</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Good </span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s1">!  My name is </span><span class="si">{</span><span class="n">my_name</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Assign the variable to my_name</span>
+<span class="n">my_name</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Ask for the user&#39;s name</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your name?&#39;</span><span class="p">)</span>
+
+<span class="c1"># Call the function assigning the proper variables to the associated parameters</span>
+<span class="n">computer_greeting</span> <span class="o">=</span> <span class="n">greeting</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Print the result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have defined the function, we can use it again here.  Let’s not ask the user for their name this time, let’s just define it for them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Call the `greeting` function, but instead of asking for a user_name just assign the variable here.</span>
+<span class="n">my_name</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">user_name</span> <span class="o">=</span> <span class="s1">&#39;Mercedes&#39;</span>
+
+<span class="c1"># Call the function again</span>
+<span class="n">computer_greeting</span> <span class="o">=</span> <span class="n">greeting</span><span class="p">(</span><span class="o">...</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Print the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">computer_greeting</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="what-day-of-the-year-is-it">
+<h2>What day of the year is it?<a class="headerlink" href="#what-day-of-the-year-is-it" title="Permalink to this headline">#</a></h2>
+<p>In this challenge you are to write a function called <em>day_of_year</em> which accepts three integer parameters <em>day</em>, <em>month</em>, <em>year</em> the result of the function should be an integer representing the number of days that have elapsed since January 1st of the year provided until the date.  For instance, if the function were asked for the day of the year on Feb 2, 2015 the answer returned should be 33 (31 days in Jan + 2 days in February).</p>
+<p>Remember to take into account leap year! There are three criteria for leap year:</p>
+<li>The year can be evenly divided by 4</li>
+<li>If the year can be evenly divided by 100 it is NOT a leap year, unless:</li>
+<li>The year is also divisble by 400, in which case it is a leap year</li><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">day_of_year</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A function to determine what day of the year it is</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    day : int</span>
+<span class="sd">        The day of the month</span>
+<span class="sd">    month : int</span>
+<span class="sd">        The month of the year</span>
+<span class="sd">    year : int</span>
+<span class="sd">        The year which the day is being calculated</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The day of the year is </span>
+<span class="sd">        days that have passed in the current month + days in the prior months</span>
+
+<span class="sd">    So that April 3, 2015 (non-leap year)</span>
+<span class="sd">        3 (3rd day of month 4) + 31 (days in March) + 28 (days in Feb) + 31 (days in Jan)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Start with total_days set the day of the month requested</span>
+    <span class="c1"># for each month prior to the month asked for</span>
+    <span class="c1">#   add the number of days in that month</span>
+    <span class="c1"># if it&#39;s leap year and after Feb,  then add 1.</span>
+    
+    <span class="c1"># **** Your code goes here ****</span>
+    <span class="k">pass</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># These are some samples to test your code</span>
+<span class="c1"># Remember to run the previous cell after you change it before running this cell!</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2001</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;January 20th, 2001 is the 20th day of the year.  Your function said it is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2010</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;September 13th, 2010 is the 256th day of the year.  Your function said it is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2020</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;November 17th, 2020 is the 322nd day of the year.  Your function said it is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="count-the-number-of-occurrences-of-a-word">
+<h2>Count the number of occurrences of a word<a class="headerlink" href="#count-the-number-of-occurrences-of-a-word" title="Permalink to this headline">#</a></h2>
+<p>Now well try something a little tricker.  This one requires the use of a couple of built in functions. And also the understanding classes and objects.</p>
+<p>A class is a template or definition of a datatype.  We have already dealt with a couple of datatypes - strings, integers and lists.  string, int and list are all classes.  Classes have properties and functions as member items that we can get to using the <code class="docutils literal notranslate"><span class="pre">.</span></code> syntax.  In other words, if I want to change the case of a string, I can call any string’s <code class="docutils literal notranslate"><span class="pre">lower()</span></code> member function.  Like.  Feel free to copy this code into a new cell and try it!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="s1">&#39;Some String&#39;</span> <span class="c1"># my_variable is a variable of the type/class string</span>
+<span class="n">my_variable</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># this says return me the same string but in lowercase.</span>
+</pre></div>
+</div>
+<p>Strings have <a class="reference external" href="https://docs.python.org/3/library/string.html">a whole bunch of built-in functions</a> we can call.  A few helpful ones include:</p>
+<p><code class="docutils literal notranslate"><span class="pre">str.capitalize()</span></code> - Return a copy of the string with its first character capitalized and the rest lowercased.
+<code class="docutils literal notranslate"><span class="pre">str.lower()</span></code> - Return a copy of the string with all the cased characters converted to lowercase.
+<code class="docutils literal notranslate"><span class="pre">str.lstrip()</span></code> - Return a copy of the string with leading characters removed. The chars argument is a string specifying the set of characters to be removed. If omitted or None, the chars argument defaults to removing whitespace.
+<code class="docutils literal notranslate"><span class="pre">str.rstrip()</span></code> - Same as lstrip, but starting from the right</p>
+<p>With this sytax in mind, let’s see if we can write a function that will count up the number of times a word shows up in a given string.</p>
+<p>So we start with our plain english recipe</p>
+<p>Split the supplied string into separate words
+For every word in the supplied string
+If we have seen this word before, add 1 to the count for that word
+Otherwise, keep track that we have seen this word before and set the count to 1</p>
+<p>A dictionary list will come in really handy here.  Remember that a dictionary is just a list that has strings as the index and the value is whatever we want it to be.  So, let’s create a dictionary that will have every word we encounter, and we’ll set the value of each item in the list to the number of occurances of that word.  Run the next cell as an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here&#39;s an example of what a dictionary would look like from this sample sentence</span>
+<span class="c1">#  See Jane run.  Is that Jane</span>
+
+<span class="n">word_dictionary</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;See&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># See shows up 1 time in the word, so we set the value of the &#39;See&#39; item to 1</span>
+                    <span class="s1">&#39;Jane&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="c1"># Jane is in the sentence 2 times, so we set the value of &#39;Jane&#39; to 2</span>
+                    <span class="s1">&#39;run&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;Is&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;that&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                 <span class="p">}</span>
+
+<span class="c1"># Now let&#39;s see how to get the number of times a few items are found in the sentence</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_dictionary</span><span class="p">[</span><span class="s1">&#39;Jane&#39;</span><span class="p">])</span>
+
+<span class="c1"># And here we can see all the items in the dictionary at once</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we know what the outcome should look like for a sample sentence, let’s see if we can build a counter for any number of sentences</p>
+<p>Let’s build the steps first using a known sentence where we can test the outcomes, then we’ll put it into a function and try it with a slightly more complex string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the sentence we&#39;ll use to test our close</span>
+<span class="n">sample_string</span> <span class="o">=</span> <span class="s1">&#39;See Jane run.  Is that Jane&#39;</span>
+
+
+
+<span class="c1"># Let&#39;s start by making all the characters in the sentence lowercase,</span>
+<span class="c1">#  This will help when we are comparing strings, because `See` isn&#39;t the same as `see`</span>
+<span class="c1">#  and for our purposes we don&#39;t want to make a distiction</span>
+
+<span class="n">sample_string</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#  Replace ... with a function that will convert the characters to lowercase</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># That was pretty straightforward, next we need to break the sentences up into the different words</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># replace the ... a function that will &quot;split&quot; the sentences into words</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Did you get output that looks like <code class="docutils literal notranslate"><span class="pre">['see',</span> <span class="pre">'jane',</span> <span class="pre">'run.',</span> <span class="pre">'is',</span> <span class="pre">'that',</span> <span class="pre">'jane']</span></code>?</p>
+<p>Next we need to process each word
+Remove any punctuation from the end of the word
+If the word already in the dictionary
+Increment the count by 1
+Else
+Set the count to 1 (this is the first time we’ve seen the word)</p>
+<p>The code below needs you to write the code for</p>
+<ul class="simple">
+<li><p>removing punctuation</p></li>
+<li><p>what to do in the case where the word isn’t already in our dictionary</p></li>
+</ul>
+<p><strong>HINT</strong>: Remember the <code class="docutils literal notranslate"><span class="pre">rstrip</span></code> string function?  This function can take a list of characters to remove (by default it only strips off spaces)
+maybe it would be helpful to use this function to take off periods, commas and question marks?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the empty dictionary</span>
+<span class="n">word_dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># For every word, </span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="c1"># Remove any punctuation from the end of the word</span>
+    <span class="c1">## YOUR CODE HERE ##</span>
+    
+    <span class="c1"># If the word already in the dictionary</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="c1"># Increment the count by 1</span>
+        <span class="n">word_dictionary</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">word_dictionary</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Otherwise, set the count to 1</span>
+    <span class="c1">## YOUR CODE HERE ##</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">word_dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see output like</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;see&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;jane&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;run&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If you don’t see this, try this</p>
+<ul class="simple">
+<li><p>Insert a print statement in your for loop to see if you can figure out where things are going wrong</p></li>
+<li><p>Did you make sure to remove punctuation from the end of the words?</p></li>
+<li><p>Did you write the “else” case for when the word doesn’t already exist?</p></li>
+</ul>
+<p>If you got it work, that is fantastic!  Next, we’ll bring all the pieces together and create a function where we can test our logic</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now bring it all together in a function</span>
+
+<span class="k">def</span> <span class="nf">word_counter</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="n">target_word</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Count the nuber of times a particular word occurs in a given sentence, phrase or excerpt</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ----------</span>
+<span class="sd">        sentence (str) - the string to parse</span>
+
+<span class="sd">        target_word (str) - the word to count in the supplied sentence</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        int </span>
+<span class="sd">            number of times the word is found in the sentence (-1, if not found)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Initialize the empty word dictionary</span>
+    <span class="n">word_dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Initialize the return value to -1</span>
+    <span class="n">count_of_target</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="c1"># Split the supplied phrase `sentence` into a collection of words</span>
+    <span class="c1"># For every word, </span>
+    <span class="c1">#   Remove any punctuation from the end of the word</span>
+    <span class="c1">#   If the word already in the dictionary</span>
+    <span class="c1">#       Increment the count by 1</span>
+    <span class="c1">#   Otherwise, set the count to 1</span>
+
+    <span class="c1"># Find the count associated with the `target_word` and assign it to count_of_target</span>
+    <span class="c1"># Return the resulting count</span>
+    <span class="k">return</span> <span class="n">count_of_target</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;As a test, this result should be 2.  Your function returned: </span><span class="si">{</span><span class="n">word_counter</span><span class="p">(</span><span class="n">sample_string</span><span class="p">,</span><span class="s2">&quot;jane&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to make sure your function works as expected</span>
+<span class="n">sample_string_2</span> <span class="o">=</span> <span class="s2">&quot;A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely&quot;</span>
+<span class="n">sample_string_3</span> <span class="o">=</span> <span class="s2">&quot;A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image&quot;</span>
+<span class="n">sample_string_4</span> <span class="o">=</span> <span class="s2">&quot;A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing, Oh, would I could describe these conceptions, could impress upon paper all that is living so full and warm within me, that it might be the mirror of my soul, as my soul is the mirror of the infinite God! O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sample 2.  Expected: 4.  Your result: </span><span class="si">{</span><span class="n">word_counter</span><span class="p">(</span><span class="n">sample_string_2</span><span class="p">,</span><span class="s2">&quot;my&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sample 3.  Expected: 19.  Your result: </span><span class="si">{</span><span class="n">word_counter</span><span class="p">(</span><span class="n">sample_string_3</span><span class="p">,</span><span class="s2">&quot;the&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sample 3.  Expected: 42.  Your result: </span><span class="si">{</span><span class="n">word_counter</span><span class="p">(</span><span class="n">sample_string_4</span><span class="p">,</span><span class="s2">&quot;the&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sample 3 (searching for feel).  Expected: 5.  Your result: </span><span class="si">{</span><span class="n">word_counter</span><span class="p">(</span><span class="n">sample_string_4</span><span class="p">,</span><span class="s2">&quot;feel&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
+<p>Now that you’ve had some practice you can head back to the index and try to find some other resources.  Or you can move on to the <a class="reference internal" href="Coding_Challenges.html"><span class="doc std std-doc">Coding Challenges</span></a> to put your skills to the test.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Py4Analytics/exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lessons/3-Functions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Reusing Code</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Coding_Challenges.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Coding Challenges</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
