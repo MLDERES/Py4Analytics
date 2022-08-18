@@ -11,7 +11,7 @@ parts:
       - file: book/lessons/1-Introduction
       - file: book/lessons/2-Flow_Control
       - file: book/lessons/3-Functions
-      - file: book/exercises/4-YourTurn
+      - file: book/exercises/01-YourTurn.ipynb
       - file: book/exercises/Coding_Challenges
   - caption: Part 2 - Namespace, Object-Orientation, Packages
     chapters:

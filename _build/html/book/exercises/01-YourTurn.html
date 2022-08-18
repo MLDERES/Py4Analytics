@@ -113,13 +113,86 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/1-Introduction.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/2-Flow_Control.html">
+   On the way to programming with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/3-Functions.html">
+   Reusing Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Namespace, Object-Orientation, Packages
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/4-Object-Orientation.html">
+   Namespace, Objective Orientation and Packaging
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Working with data
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
+  <a class="reference internal" href="../lessons/04-Pandas_Intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/05-DataFormats.html">
+   Getting Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/06-WebData.html">
+   Gather data from the web
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Predictive Analytics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/VisualizationSamples.html">
+   Visualization Samples
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/DataDictionary.html">
+   Selected data dictionary
   </a>
  </li>
 </ul>
@@ -181,7 +254,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/pythonbook/main?urlpath=tree/Py4Analytics/lessons/4-YourTurn.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/pythonbook/main?urlpath=tree/book/exercises/01-YourTurn.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -199,7 +272,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/pythonbook&urlpath=tree/pythonbook/Py4Analytics/lessons/4-YourTurn.ipynb&branch=main"
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/pythonbook&urlpath=tree/pythonbook/book/exercises/01-YourTurn.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -259,7 +332,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/pythonbook/issues/new?title=Issue%20on%20page%20%2FPy4Analytics/lessons/4-YourTurn.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/pythonbook/issues/new?title=Issue%20on%20page%20%2Fbook/exercises/01-YourTurn.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -287,7 +360,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/Py4Analytics/lessons/4-YourTurn.ipynb"
+        <a href="../../_sources/book/exercises/01-YourTurn.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -374,11 +447,6 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-day-of-the-year-is-it">
-     What day of the year is it?
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
      Count the number of occurrences of a word
     </a>
@@ -437,11 +505,6 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-day-of-the-year-is-it">
-     What day of the year is it?
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
      Count the number of occurrences of a word
     </a>
@@ -465,7 +528,15 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="your-turn">
 <h1>Your Turn<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h1>
-<p>Now it’s your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.</p>
+<p>Now it’s your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.
+In this notebook, we’ll look at:</p>
+<ul class="simple">
+<li><p>output (using the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function)</p></li>
+<li><p>input (using the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function)</p></li>
+<li><p>conditional statements</p></li>
+<li><p>building resuable code (functions)</p></li>
+<li><p>dealing with strings</p></li>
+</ul>
 <section id="hello-world">
 <h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">#</a></h2>
 <p>One of the first things all programmers learn to do is to write Hello World!  It’s a time honored tradition, so let’s start there.  In the next cell, set the value of the name variable and run the cell.</p>
@@ -637,61 +708,6 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-</section>
-<section id="what-day-of-the-year-is-it">
-<h2>What day of the year is it?<a class="headerlink" href="#what-day-of-the-year-is-it" title="Permalink to this headline">#</a></h2>
-<p>In this challenge you are to write a function called <em>day_of_year</em> which accepts three integer parameters <em>day</em>, <em>month</em>, <em>year</em> the result of the function should be an integer representing the number of days that have elapsed since January 1st of the year provided until the date.  For instance, if the function were asked for the day of the year on Feb 2, 2015 the answer returned should be 33 (31 days in Jan + 2 days in February).</p>
-<p>Remember to take into account leap year! There are three criteria for leap year:</p>
-<li>The year can be evenly divided by 4</li>
-<li>If the year can be evenly divided by 100 it is NOT a leap year, unless:</li>
-<li>The year is also divisble by 400, in which case it is a leap year</li><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">day_of_year</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; A function to determine what day of the year it is</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    day : int</span>
-<span class="sd">        The day of the month</span>
-<span class="sd">    month : int</span>
-<span class="sd">        The month of the year</span>
-<span class="sd">    year : int</span>
-<span class="sd">        The year which the day is being calculated</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The day of the year is </span>
-<span class="sd">        days that have passed in the current month + days in the prior months</span>
-
-<span class="sd">    So that April 3, 2015 (non-leap year)</span>
-<span class="sd">        3 (3rd day of month 4) + 31 (days in March) + 28 (days in Feb) + 31 (days in Jan)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Start with total_days set the day of the month requested</span>
-    <span class="c1"># for each month prior to the month asked for</span>
-    <span class="c1">#   add the number of days in that month</span>
-    <span class="c1"># if it&#39;s leap year and after Feb,  then add 1.</span>
-    
-    <span class="c1"># **** Your code goes here ****</span>
-    <span class="k">pass</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># These are some samples to test your code</span>
-<span class="c1"># Remember to run the previous cell after you change it before running this cell!</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2001</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;January 20th, 2001 is the 20th day of the year.  Your function said it is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2010</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;September 13th, 2010 is the 266th day of the year.  Your function said it is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2020</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;November 17th, 2020 is the 322nd day of the year.  Your function said it is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="count-the-number-of-occurrences-of-a-word">
 <h2>Count the number of occurrences of a word<a class="headerlink" href="#count-the-number-of-occurrences-of-a-word" title="Permalink to this headline">#</a></h2>
@@ -871,8 +887,7 @@ maybe it would be helpful to use this function to take off periods, commas and q
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
-<p>Now that you’ve had some practice you can head back to the index and try to find some other resources.  Or you can move on to the <span class="xref myst">Coding Challenges</span> to put your skills to the test.</p>
-<p><a class="reference internal" href="3-Functions.html"><span class="doc std std-doc">prev (Functions)</span></a>   |   <span class="xref myst">next (Coding Challenges)</span>   |   <span class="xref myst">index</span></p>
+<p>Now that you’ve had some practice you can head back to the index and try to find some other resources.  Or you can move on to the <a class="reference internal" href="Coding_Challenges.html"><span class="doc std std-doc">Coding Challenges</span></a> to put your skills to the test.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -888,7 +903,7 @@ maybe it would be helpful to use this function to take off periods, commas and q
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Py4Analytics/lessons"
+            path: "./book/exercises"
         },
         predefinedOutput: true
     }

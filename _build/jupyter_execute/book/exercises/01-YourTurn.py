@@ -4,6 +4,12 @@
 # # Your Turn
 # 
 # Now it's your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.
+# In this notebook, we'll look at:
+# - output (using the `print()` function)
+# - input (using the `input()` function)
+# - conditional statements
+# - building resuable code (functions)
+# - dealing with strings
 # 
 
 # ## Hello World
@@ -178,60 +184,6 @@ computer_greeting = greeting(...,...)
 
 # Print the result
 print(f'{computer_greeting}')
-
-
-# ## What day of the year is it?
-# In this challenge you are to write a function called _day_of_year_ which accepts three integer parameters _day_, _month_, _year_ the result of the function should be an integer representing the number of days that have elapsed since January 1st of the year provided until the date.  For instance, if the function were asked for the day of the year on Feb 2, 2015 the answer returned should be 33 (31 days in Jan + 2 days in February).
-# 
-# Remember to take into account leap year! There are three criteria for leap year:
-# <li>The year can be evenly divided by 4</li>
-# <li>If the year can be evenly divided by 100 it is NOT a leap year, unless:</li>
-# <li>The year is also divisble by 400, in which case it is a leap year</li>
-
-# In[ ]:
-
-
-def day_of_year(day, month, year):
-    """ A function to determine what day of the year it is
-    Parameters
-    ----------
-    day : int
-        The day of the month
-    month : int
-        The month of the year
-    year : int
-        The year which the day is being calculated
-    """
-    """
-    The day of the year is 
-        days that have passed in the current month + days in the prior months
-
-    So that April 3, 2015 (non-leap year)
-        3 (3rd day of month 4) + 31 (days in March) + 28 (days in Feb) + 31 (days in Jan)
-    """
-    # Start with total_days set the day of the month requested
-    # for each month prior to the month asked for
-    #   add the number of days in that month
-    # if it's leap year and after Feb,  then add 1.
-    
-    # **** Your code goes here ****
-    pass 
-
-
-# In[ ]:
-
-
-# These are some samples to test your code
-# Remember to run the previous cell after you change it before running this cell!
-
-result = day_of_year(20,1,2001)
-print(f'January 20th, 2001 is the 20th day of the year.  Your function said it is: {result}')
-
-result = day_of_year(13,9,2010)
-print(f'September 13th, 2010 is the 266th day of the year.  Your function said it is: {result}')
-
-result = day_of_year(17,11,2020)
-print(f'November 17th, 2020 is the 322nd day of the year.  Your function said it is: {result}')
 
 
 # ## Count the number of occurrences of a word
@@ -421,8 +373,5 @@ print(f'Sample 3 (searching for feel).  Expected: 5.  Your result: {word_counter
 
 # # Conclusion
 # 
-# Now that you've had some practice you can head back to the index and try to find some other resources.  Or you can move on to the [Coding Challenges](coding_challenges.ipynb) to put your skills to the test.
-# 
-# 
-# [prev (Functions)](3-Functions.ipynb)   |   [next (Coding Challenges)](Coding_Challenges.ipynb)   |   [index](toc.ipynb)
+# Now that you've had some practice you can head back to the index and try to find some other resources.  Or you can move on to the [Coding Challenges](../exercises/Coding_Challenges.ipynb) to put your skills to the test.
 # 

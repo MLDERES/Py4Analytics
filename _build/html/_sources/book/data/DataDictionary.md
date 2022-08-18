@@ -3,28 +3,22 @@ Following are the data dictionaries for select datasets provided.  Many of these
 
 ## Boston Housing
 This dataset contains information collected by the US Census Service concerning housing in the area of Boston Massachusetts. It was obtained from the StatLib archive (http://lib.stat.cmu.edu/datasets/boston). The dataset has 506 cases.
-
 __Source__: The data was originally published by Harrison, D. and Rubinfeld, D.L. `Hedonic prices and the demand for clean air', J. Environ. Economics & Management, vol.5, 81-102, 1978.
 
 There are 14 attributes in each case of the dataset. They are:
-
-| Variable name | Description |
-|:--------------- | :------------------------------------------ |
-| CRIM | 	per capita crime rate by town|
-| ZN |     	proportion of residential land zoned for lots over 25,000 sq.ft.|
-| INDUS |	proportion of non-retail business acres per town.|
-| CHAS | 	Charles River dummy variable (1 if tract bounds river; 0 otherwise)|
-| NOX |   	nitric oxides concentration (parts per 10 million)|
-| RM |    	average number of rooms per dwelling|
-| AGE |   	proportion of owner-occupied units built prior to 1940|
-| DIS |   	weighted distances to five Boston employment centres|
-| RAD |  	index of accessibility to radial highways|
-| TAX |  	full-value property-tax rate per $10,000|
-| PTRATIO | 	pupil-teacher ratio by town|
-| LSTAT |   	% lower status of the population|
-| MEDV |	Median value of owner-occupied homes in $1000|
-
-
+    CRIM 	per capita crime rate by town
+    ZN     	proportion of residential land zoned for lots over 25,000 sq.ft.
+    INDUS	proportion of non-retail business acres per town.
+    CHAS 	Charles River dummy variable (1 if tract bounds river; 0 otherwise)
+    NOX   	nitric oxides concentration (parts per 10 million)
+    RM    	average number of rooms per dwelling
+    AGE   	proportion of owner-occupied units built prior to 1940
+    DIS   	weighted distances to five Boston employment centres
+    RAD  	index of accessibility to radial highways
+    TAX  	full-value property-tax rate per $10,000
+    PTRATIO 	pupil-teacher ratio by town
+    LSTAT   	% lower status of the population
+    MEDV	Median value of owner-occupied homes in $1000
 
 ## Cereal
 BREAKFAST CEREAL DATA (REVISED)- a multivariate dataset describing seventy-seven commonly available breakfast cereals, based on the information now available on the newly-mandated F&DA food label. What are you getting when you eat a bowl of cereal? Can you get a lot of fiber without a lot of calories? Can you describe what cereals are displayed on high, low, and middle shelves?  [Read more here](http://lib.stat.cmu.edu/datasets/1993.expo/)
