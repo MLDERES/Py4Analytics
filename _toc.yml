@@ -6,30 +6,34 @@ root: intro
 defaults:
   titlesonly: True
 parts:
-  - caption: Getting Started
+  - caption: Part 1
     chapters:
-      - file: book/lessons/1-Introduction
-      - file: book/lessons/2-Flow_Control
-      - file: book/lessons/3-Functions
-      - file: book/exercises/01-YourTurn.ipynb
-      - file: book/exercises/Coding_Challenges
-  - caption: Part 2 - Namespace, Object-Orientation, Packages
+      - file: book/lessons/05-PartOne.md
+      - file: book/lessons/10-Introduction
+      - file: book/exercises/10-Introduction-ex
+      - file: book/lessons/20-Flow_Control
+      - file: book/exercises/20-Flow_Control-ex
+      - file: book/lessons/30-Functions
+      - file: book/exercises/30-Functions-ex
+  - caption: Part 2
     chapters:
-    - file: book/lessons/4-Object-Orientation
-  - caption: Working with data
+    - file: book/lessons/35-PartTwo.md
+    - file: book/lessons/40-Object_Orientation
+    - file: book/exercises/40-Object_Orientation-ex
+    - file: book/lessons/50-Data_Manipulation
+    - file: book/exercises/50-Data_Manipulation-ex
+    - file: book/lessons/60-Web_Data
+    - file: book/exercises/60-Web_Data-ex
+    - file: book/lessons/70-Getting_Web_Data
+    - file: book/exercises/70-Getting_Web_Data-ex
+    - file: book/lessons/80-Database_Connections
+    - file: book/exercises/80-Database_Connections-ex
+  - caption: Part 3
     chapters:
-    - file: book/lessons/04-Pandas_Intro
-      sections:
-      - file: book/exercises/04-Pandas_Assignment
-    - file: book/lessons/05-DataFormats
-    - file: book/lessons/06-WebData
-      sections: 
-      - file: book/exercises/06-Assignment.ipynb
-  - caption: Predictive Analytics
-    chapters:
-    - file: book/extras/VisualizationSamples
+    - file: book/lessons/85-PartThree
+    - file: book/lessons/90-Data_Visualization
+    - file: book/exercises/90-Data_Visualization-ex
   - caption: Appendix
-    chapters: 
-    - file: book/data/DataDictionary.md
-      title: Selected data dictionary
-
+    chapters:
+    - file: book/exercises/Coding_Challenges
+    
