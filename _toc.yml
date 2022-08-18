@@ -3,6 +3,8 @@
 
 format: jb-book
 root: intro
+defaults:
+  titlesonly: True
 parts:
   - caption: Getting Started
     chapters:
@@ -26,3 +28,8 @@ parts:
   - caption: Predictive Analytics
     chapters:
     - file: book/extras/VisualizationSamples
+  - caption: Appendix
+    chapters: 
+    - file: book/data/DataDictionary.md
+      title: Selected data dictionary
+
