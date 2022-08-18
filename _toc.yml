@@ -6,15 +6,18 @@ root: intro
 defaults:
   titlesonly: True
 parts:
-  - caption: Part 1
+  - caption: Part 1 - Python Basics
     chapters:
       - file: book/lessons/05-PartOne.md
-      - file: book/lessons/10-Introduction
-      - file: book/exercises/10-Introduction-ex
-      - file: book/lessons/20-Flow_Control
-      - file: book/exercises/20-Flow_Control-ex
-      - file: book/lessons/30-Functions
-      - file: book/exercises/30-Functions-ex
+        sections:
+        - file: book/lessons/10-Introduction
+        - file: book/lessons/20-Flow_Control
+        - file: book/lessons/30-Functions
+      - file: book/lessons/TryIt_13
+        sections:
+        - file: book/exercises/10-Introduction-ex
+        - file: book/exercises/20-Flow_Control-ex
+        - file: book/exercises/30-Functions-ex
   - caption: Part 2
     chapters:
     - file: book/lessons/35-PartTwo.md

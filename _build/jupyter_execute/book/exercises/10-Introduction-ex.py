@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Try it: Getting Started with Python
+# ## Try it: Getting Started with Python
 # 
 # Now it's your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.
 # In this notebook, we'll look at:
@@ -12,7 +12,7 @@
 # - dealing with strings
 # 
 
-# ## Hello World
+# ### Hello World
 # 
 # One of the first things all programmers learn to do is to write Hello World!  It's a time honored tradition, so let's start there.  In the next cell, set the value of the name variable and run the cell.
 
@@ -24,7 +24,7 @@ my_name = ...
 print(f'Hello World!  My name is {my_name}')
 
 
-# ### Hello, user
+# #### Hello, user
 # Hello world is a great start, but what if we want this to work for everyone without changing our code.  Well we can use a built-in Python function called ```input()``` which will ask the user for some text.  The result of this function is a string.  Run the next cell to see how this works.
 
 # In[ ]:
@@ -54,7 +54,7 @@ my_name = ...
 # Print the greeting including the user's name and your name
 
 
-# ### Dealing with time
+# #### Dealing with time
 # 
 # Our greeting is plesant, but we can do better.  We should have a greeting that takes into account the time of day.  The first few lines determine the hour of the day (where 0 is midnight and 23 is 11pm).  Using an ```if/else``` construct, greet the user appropriately for the time of day (morning, afternoon, evening).
 # 
