@@ -71,9 +71,13 @@ Introduction - (bootcamp content)
 - Chapter 7 - Exercises
   - Modify query to scrap data from boxofficemojo.com
   - Combine multiple dataframes
+- Chapter 8 - Connecting to a database
+- Chapter 8 - Exercises
+  - Connect to the Hallux database
 ---
 5843 Content
-- Chapter 8 - 
+- Chapter 9 - Data Visualization libraries
+- 
 ---
 Appendix
   - Coding Challenges
