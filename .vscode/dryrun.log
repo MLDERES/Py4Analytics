@@ -1,5 +1,4 @@
-make build --dry-run --keep-going --print-directory
-make: Entering directory '/workspaces/PythonBook'
-jupyter-book build /workspaces/PythonBook/Py4Analytics/
-make: Leaving directory '/workspaces/PythonBook'
- 
+make.exe --dry-run --always-make --keep-going --print-directory
+'make.exe' is not recognized as an internal or external command,
+operable program or batch file.
+

@@ -6,23 +6,23 @@ root: intro
 parts:
   - caption: Getting Started
     chapters:
-      - file: Py4Analytics/lessons/1-Introduction
-      - file: Py4Analytics/lessons/2-Flow_Control
-      - file: Py4Analytics/lessons/3-Functions
-      - file: Py4Analytics/exercises/4-YourTurn
-      - file: Py4Analytics/exercises/Coding_Challenges
+      - file: book/lessons/1-Introduction
+      - file: book/lessons/2-Flow_Control
+      - file: book/lessons/3-Functions
+      - file: book/exercises/4-YourTurn
+      - file: book/exercises/Coding_Challenges
   - caption: Part 2 - Namespace, Object-Orientation, Packages
     chapters:
-    - file: Py4Analytics/lessons/4-Object-Orientation
+    - file: book/lessons/4-Object-Orientation
   - caption: Working with data
     chapters:
-    - file: Py4Analytics/lessons/04-Pandas_Intro
+    - file: book/lessons/04-Pandas_Intro
       sections:
-      - file: Py4Analytics/exercises/04-Pandas_Assignment
-    - file: Py4Analytics/lessons/05-DataFormats
-    - file: Py4Analytics/lessons/06-WebData
+      - file: book/exercises/04-Pandas_Assignment
+    - file: book/lessons/05-DataFormats
+    - file: book/lessons/06-WebData
       sections: 
-      - file: Py4Analytics/exercises/06-Assignment.ipynb
+      - file: book/exercises/06-Assignment.ipynb
   - caption: Predictive Analytics
     chapters:
-    - file: Py4Analytics/extras/VisualizationSamples
+    - file: book/extras/VisualizationSamples
