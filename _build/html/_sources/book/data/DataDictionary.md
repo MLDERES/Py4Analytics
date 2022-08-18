@@ -1,26 +1,34 @@
+# Selected Data Dictionary
 Following are the data dictionaries for select datasets provided.  Many of these datasets were currated into a collection from [Data Mining for Business Analytics: Concepts, Techniques, and Applications in Python](https://github.com/gedeck/dmba).  There are several from other sources as well.  The ones that are explicitly used in the attached notebook are described here and attributed as best as possible.
 
 ## Boston Housing
 This dataset contains information collected by the US Census Service concerning housing in the area of Boston Massachusetts. It was obtained from the StatLib archive (http://lib.stat.cmu.edu/datasets/boston). The dataset has 506 cases.
+
 __Source__: The data was originally published by Harrison, D. and Rubinfeld, D.L. `Hedonic prices and the demand for clean air', J. Environ. Economics & Management, vol.5, 81-102, 1978.
 
 There are 14 attributes in each case of the dataset. They are:
-    CRIM 	per capita crime rate by town
-    ZN     	proportion of residential land zoned for lots over 25,000 sq.ft.
-    INDUS	proportion of non-retail business acres per town.
-    CHAS 	Charles River dummy variable (1 if tract bounds river; 0 otherwise)
-    NOX   	nitric oxides concentration (parts per 10 million)
-    RM    	average number of rooms per dwelling
-    AGE   	proportion of owner-occupied units built prior to 1940
-    DIS   	weighted distances to five Boston employment centres
-    RAD  	index of accessibility to radial highways
-    TAX  	full-value property-tax rate per $10,000
-    PTRATIO 	pupil-teacher ratio by town
-    LSTAT   	% lower status of the population
-    MEDV	Median value of owner-occupied homes in $1000
+
+| Variable name | Description |
+|:--------------- | :------------------------------------------ |
+| CRIM | 	per capita crime rate by town|
+| ZN |     	proportion of residential land zoned for lots over 25,000 sq.ft.|
+| INDUS |	proportion of non-retail business acres per town.|
+| CHAS | 	Charles River dummy variable (1 if tract bounds river; 0 otherwise)|
+| NOX |   	nitric oxides concentration (parts per 10 million)|
+| RM |    	average number of rooms per dwelling|
+| AGE |   	proportion of owner-occupied units built prior to 1940|
+| DIS |   	weighted distances to five Boston employment centres|
+| RAD |  	index of accessibility to radial highways|
+| TAX |  	full-value property-tax rate per $10,000|
+| PTRATIO | 	pupil-teacher ratio by town|
+| LSTAT |   	% lower status of the population|
+| MEDV |	Median value of owner-occupied homes in $1000|
+
+
 
 ## Cereal
-__Source__: DATA ANALYSIS FOR STUDENT LEARNING (DASL)
+BREAKFAST CEREAL DATA (REVISED)- a multivariate dataset describing seventy-seven commonly available breakfast cereals, based on the information now available on the newly-mandated F&DA food label. What are you getting when you eat a bowl of cereal? Can you get a lot of fiber without a lot of calories? Can you describe what cereals are displayed on high, low, and middle shelves?  [Read more here](http://lib.stat.cmu.edu/datasets/1993.expo/)
+__Source__: http://lib.stat.cmu.edu/datasets/1993.expo/
 
 1. Name: Name of cereal
 2. mfr: Manufacturer of cereal where A = American Home Food Products; G = General Mills; K = 
@@ -42,6 +50,8 @@ __Source__: DATA ANALYSIS FOR STUDENT LEARNING (DASL)
 16. rating: a rating of the cereals calculated by Consumer Reports
 
 ## GermanCredit
+This dataset [GermanCredit.csv](./GermanCredit.csv) classifies people described by a set of attributes as good or bad credit risks.
+
 __Source__: https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29
 
 | Variable Name    | Description                                 | Variable Type | Code Description                                                 |
@@ -101,7 +111,7 @@ FOREIGN |  	   Foreign worker   		     |    Binary     | 0: No, 1: Yes
 RESPONSE|         Credit rating is good|   	         Binary  |    0: No, 1: Yes   	
 
 ## CancerMortality
-__Source__:These data were aggregated from a number of sources including the American Community Survey ([census.gov](http://census.gov/)), [clinicaltrials.gov](http://clinicaltrials.gov/), and [cancer.gov](http://cancer.gov/). Most of the data preparation process can be veiwed [here](https://data.world/nrippner/cancer-trials).
+__Source__:These data [cancer_reg.csv](./cancer_reg.csv) were aggregated from a number of sources including the American Community Survey ([census.gov](http://census.gov/)), [clinicaltrials.gov](http://clinicaltrials.gov/), and [cancer.gov](http://cancer.gov/). Most of the data preparation process can be veiwed [here](https://data.world/nrippner/cancer-trials).
 [source](https://data.world/nrippner/ols-regression-challenge)
 
 * __TARGET_deathRate:__ Dependent variable. Mean per capita (100,000) cancer mortalities(a)
@@ -142,6 +152,7 @@ __Source__:These data were aggregated from a number of sources including the Ame
 (b): 2013 Census Estimates
 
 ## Insurance
+Provides insurance premium rates for a set of patients [Insurance.csv](./insurance.csv)
 __Source__: 
 * __age__: age of primary beneficiary
 * __sex__: insurance contractor gender, female, male
