@@ -22,7 +22,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/mlderes/pythonbook  # Online location of your book
+  url: https://github.com/mlderes/py4analytics  # Online location of your book
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
@@ -37,4 +37,8 @@ launch_buttons:
   binderhub_url: https://mybinder.org
   jupyterhub_url: https://waltonhub.com
 
-exclude_patterns: [Py4Analytics/data/*, Py4Analytics/src/*, Py4Analytics/markdown*, P4Analytics/notebooks.ipynb]
+exclude_patterns: [book/data/*, book/src/*]
+
+parse:
+  myst_enable_extensions:
+  - html_image
