@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Assignment 6 - Getting data from the web" href="../exercises/06-Assignment.html" />
-    <link rel="prev" title="Getting Data" href="05-DataFormats.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,79 +113,13 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting Started
+  Part 1
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="1-Introduction.html">
-   Welcome to Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2-Flow_Control.html">
-   On the way to programming with Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3-Functions.html">
-   Reusing Code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../exercises/4-YourTurn.html">
-   Your Turn
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../exercises/Coding_Challenges.html">
-   Coding Challenges
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Part 2 - Namespace, Object-Orientation, Packages
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4-Object-Orientation.html">
-   Namespace, Objective Orientation and Packaging
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Working with data
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="04-Pandas_Intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-DataFormats.html">
-   Getting Data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Gather data from the web
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Predictive Analytics
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../extras/VisualizationSamples.html">
-   Visualization Samples
+  <a class="reference internal" href="10-Introduction.html">
+   In case something goes wrong
   </a>
  </li>
 </ul>
@@ -249,7 +181,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/pythonbook/main?urlpath=tree/book/lessons/06-WebData.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/py4analytics/main?urlpath=tree/book/lessons/06-WebData.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -267,7 +199,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/pythonbook&urlpath=tree/pythonbook/book/lessons/06-WebData.ipynb&branch=main"
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/py4analytics&urlpath=tree/py4analytics/book/lessons/06-WebData.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -310,7 +242,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/mlderes/pythonbook"
+        <a href="https://github.com/mlderes/py4analytics"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -327,7 +259,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/pythonbook/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/06-WebData.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/py4analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/06-WebData.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -612,10 +544,10 @@ title="Print to PDF"
 </section>
 <section id="query-parameters">
 <h2>Query parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline">#</a></h2>
-<p>A bit of background, (a very little bit), web page links usually only “resolve” to a particular page on a particular server.  The webserver looks up the page and returns whatever is stored there.  This isn’t very handy if you have alot of data to display - for instance in the case of <a class="reference external" href="http://boxofficemojo.com">boxofficemojo.com</a>, they don’t want to have to create 5 different web pages for each set of 200 movies.  So instead they built one web page and used parameters (yes!  just like function parameters in Python) which define the exact contents to display.  Fortunately for us, this makes it very transparent how to manipulate the page.  We can see exactly what details the server needs to give the data we want.</p>
-<p>The URL format is, <code class="docutils literal notranslate"><span class="pre">&lt;protocol&gt;</span></code> (like https://) followed by the endpoint (<a class="reference external" href="http://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross">www.boxofficemojo.com/chart/mpaa_title_lifetime_gross</a>) then a <code class="docutils literal notranslate"><span class="pre">?</span></code> followed by 0 or more query parameters.  Query parameters are name/value pairs and delimited by an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.  So let’s look at that url from before again.</p>
+<p>A bit of background, (a very little bit), web page links usually only “resolve” to a particular page on a particular server.  The webserver looks up the page and returns whatever is stored there.  This isn’t very handy if you have alot of data to display - for instance in the case of boxofficemojo.com, they don’t want to have to create 5 different web pages for each set of 200 movies.  So instead they built one web page and used parameters (yes!  just like function parameters in Python) which define the exact contents to display.  Fortunately for us, this makes it very transparent how to manipulate the page.  We can see exactly what details the server needs to give the data we want.</p>
+<p>The URL format is, <code class="docutils literal notranslate"><span class="pre">&lt;protocol&gt;</span></code> (like https://) followed by the endpoint (www.boxofficemojo.com/chart/mpaa_title_lifetime_gross) then a <code class="docutils literal notranslate"><span class="pre">?</span></code> followed by 0 or more query parameters.  Query parameters are name/value pairs and delimited by an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.  So let’s look at that url from before again.</p>
 <blockquote>
-<div><p><a class="reference external" href="https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200">https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200</a></p>
+<div><p>https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200</p>
 </div></blockquote>
 <p>Here the query parameters are <code class="docutils literal notranslate"><span class="pre">by_mpaa</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code>.  So that’s interesting, now that we notice this, it’s possible that we could change the <code class="docutils literal notranslate"><span class="pre">by_mpaa</span></code> parameter as well and get R rated movies as well?  Let’s try it by hand first.  Paste the link into the website and change the PG-13 to R and see what happens.</p>
 <p>That’s great, so with a simple change we could also R rated movies in a dataframe as well.  (You can copy the code above and try it out for yourself below).</p>
@@ -712,8 +644,6 @@ title="Print to PDF"
 <section id="simple-webscraping-with-beautifulsoup">
 <h2>Simple Webscraping with BeautifulSoup<a class="headerlink" href="#simple-webscraping-with-beautifulsoup" title="Permalink to this headline">#</a></h2>
 </section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -743,20 +673,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="05-DataFormats.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Getting Data</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../exercises/06-Assignment.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Assignment 6 - Getting data from the web</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

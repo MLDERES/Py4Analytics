@@ -1,0 +1,1216 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Data &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Try it: Working with common data formats" href="../exercises/60-Web_Data-ex.html" />
+    <link rel="prev" title="Try it: Manipulating Data With pandas" href="../exercises/50-Data_Manipulation-ex.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-PartOne.html">
+   Part 1 - Basic Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-Introduction.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/10-Introduction-ex.html">
+   Try it: Getting Started with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="20-Flow_Control.html">
+   On the way to programming with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/20-Flow_Control-ex.html">
+   Try it: Flow Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="30-Functions.html">
+   Reusing Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/30-Functions-ex.html">
+   Try it: Functions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="35-PartTwo.html">
+   Part 2 - Intermediate Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="40-Object_Orientation.html">
+   Namespace, Objective Orientation and Packaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/40-Object_Orientation-ex.html">
+   Try it: Objects, Namespaces and Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="50-Data_Manipulation.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/50-Data_Manipulation-ex.html">
+   Try it: Manipulating Data With pandas
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Getting Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/60-Web_Data-ex.html">
+   Try it: Working with common data formats
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="70-Getting_Web_Data.html">
+   Gather data from the web
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/70-Getting_Web_Data-ex.html">
+   Try it: Getting data from the web
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="80-Database_Connections.html">
+   Connecting to SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/80-Database_Connections-ex.html">
+   Try-it: Connecting to a Database
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="85-PartThree.html">
+   Part 3 - Data Analytics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="90-Data_Visualization.html">
+   Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/90-Data_Visualization-ex.html">
+   Try it: Data Visualization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/py4analytics/main?urlpath=tree/book/lessons/60-Web_Data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/py4analytics&urlpath=tree/py4analytics/book/lessons/60-Web_Data.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/py4analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/py4analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/60-Web_Data.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/lessons/60-Web_Data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deliminited-formats">
+   Deliminited formats
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-writting-delimited-files">
+     Reading/Writting Delimited Files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optional-parameters">
+       Optional Parameters
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outputing-using-pandas">
+     Outputing using pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structured-text-formats">
+   Structured text formats
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extensible-mark-up-language-xml">
+     Extensible Mark-up Language (XML)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-data">
+     Hierarchical data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#going-further-with-xpath-support">
+     Going further with XPath support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#javascript-notation">
+     Javascript Notation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deliminited-formats">
+   Deliminited formats
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-writting-delimited-files">
+     Reading/Writting Delimited Files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optional-parameters">
+       Optional Parameters
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outputing-using-pandas">
+     Outputing using pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structured-text-formats">
+   Structured text formats
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extensible-mark-up-language-xml">
+     Extensible Mark-up Language (XML)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hierarchical-data">
+     Hierarchical data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#going-further-with-xpath-support">
+     Going further with XPath support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#javascript-notation">
+     Javascript Notation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-data">
+<h1>Getting Data<a class="headerlink" href="#getting-data" title="Permalink to this headline">#</a></h1>
+<p>In this notebook, we’ll look at a few different data formats that are common in analytics.  This includes, delimited formats (.csv), extensible markup language (.xml) and javascript notation (.json) formats.  There are several other types of data files that you may come across, but these are common for a couple reasons.</p>
+<ul class="simple">
+<li><p>Portability.  This means that the files can be shared across different kinds of computer operating systems without too much trouble</p></li>
+<li><p>Readibility.  There is no special encoding for these files.  They can be created or opened with a standard text editor.</p></li>
+<li><p>Compatibility.  Because they are easy to pass around and simple to understand they are supported by lots and lots of platforms.</p></li>
+</ul>
+<section id="deliminited-formats">
+<h2>Deliminited formats<a class="headerlink" href="#deliminited-formats" title="Permalink to this headline">#</a></h2>
+<p>Probably the most common format for portable files is the delimited format (often comma-delimited).  In these files, each line represents a single record and the fields of each record are denoted by some kind of special separator character (usually a comma and sometimes a tab or space).  There are no rules for these kinds of files, just conventions.  For instance, the first line of the file is typically a “header” record.  This record serves to describe the contents in the rows that follow.  This makes is straightforward for someone reading the file to understanding what is expected in the data rows.  Take for instance</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Id</span><span class="p">,</span><span class="n">Name</span><span class="p">,</span><span class="n">Phone</span> <span class="n">Number</span>
+<span class="mi">1</span><span class="p">,</span><span class="n">Alice</span><span class="p">,</span><span class="mi">555</span><span class="o">-</span><span class="mi">1234</span>
+<span class="mi">2</span><span class="p">,</span><span class="n">Bob</span><span class="p">,</span><span class="mi">555</span><span class="o">-</span><span class="mi">0898</span>
+<span class="mi">3</span><span class="p">,</span><span class="n">Charlie</span><span class="p">,</span><span class="mi">555</span><span class="o">-</span><span class="mi">9099</span>
+<span class="mi">4</span><span class="p">,</span><span class="n">Doug</span><span class="p">,</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In this example, we can see clearly that there are 4 records with the id values from 1 to 4.  The first record, that is with id 1, has a name of Alice and a Phone Number of 555-1234.  While we can easily see each of the other records- we can tell in this simple example that line 4 is missing a phone number.</p>
+<p>While easy to read for simple/small files - it becomes increasingly complex to read this file in a text editor if we are to try and find errors and missing values.  Fortunately, we can use the tools we have to import the file rather easily and find missing values, misaligned fields and generally interpret the data.</p>
+<section id="reading-writting-delimited-files">
+<h3>Reading/Writting Delimited Files<a class="headerlink" href="#reading-writting-delimited-files" title="Permalink to this headline">#</a></h3>
+<p>We can certainly read data files line by line and processing them this way, but most often, for our purposes we are looking to do something specific like evaluate the data, use it for analysis or convert it to another format.  If you are interested in the nuts and bolts of reading files line by line then I would refer you to <a class="reference external" href="https://docs.python.org/3/library/csv.html">this documentation</a> or simply google ‘reading csv file in Python’.  In order to use the data effectively, we’ll depend instead on our ever useful and super-handy <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library actually can help us to read lots of different file formats from CSV files and Excel files, XML, JSON and even web pages (and suprisingly the clipboard!).  Mostly they work a lot alike, so we’ll focus on the format and the nuances of the most common cases you’ll run across.</p>
+<section id="optional-parameters">
+<h4>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function takes a number of optional parameters, so it’s best to be explicit about what you mean rather than calling the function and counting on the order of the parameters.  Recall that in a function definition if the parameter is defined with an <code class="docutils literal notranslate"><span class="pre">=</span></code> after it, this means the parameter is optional and if not specified will use the default value as specified in the parameter definition.  For instance,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">a</span></code> is required, but <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> are optional.  This means you can specify values for these parameters and if you don’t the defaults will be <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code>.</p>
+<p>You can try this in the next cell.  Try a few of your own combinations until you get the hang of it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Only specifying `a`&quot;</span><span class="p">)</span>
+<span class="n">my_func</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Providing `a` and `b` only&quot;</span><span class="p">)</span>
+<span class="n">my_func</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Providing `a` and `b` explicitly&quot;</span><span class="p">)</span>
+<span class="n">my_func</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Providing `a` (by position) and `c` explicitly.&quot;</span><span class="p">)</span>
+<span class="n">my_func</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;everyone&#39;</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now back to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html?highlight=read_csv#pandas.read_csv"><code class="docutils literal notranslate"><span class="pre">read_csv()</span></code></a> function.  The function definition can be intimidating because it has lots of options, but this is also helpful to ensure that the operation works exactly as we expect it to.  For instance, there are parameters which define what the delimiter is (especially if we choose not to use commas), an option to specify the field names, several parameters which help specify the date format (day first) and whether the file has an index defined in it.</p>
+<p>In each case, we are interested in reading the file into a dataframe and then working on it with the tools we know about dataframes.  Let’s look at a couple of simple examples.  All the data files can be found in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory so you can take a look in any text editor to read the file.
+<span class="xref myst">ApplicianceShipments.csv</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Read a file from the data directory</span>
+<span class="n">shipments_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ApplianceShipments.csv&#39;</span><span class="p">)</span>
+<span class="n">shipments_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes the files have an identifier that we want to keep.  For instance the bankruptcy file has an account number which we want to use as our index.  We can tell pandas to keep this as the index rather than specifying a new one</p>
+<p><span class="xref myst">Bankruptcy.csv</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bankruptcy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Bankruptcy.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span>
+<span class="n">bankruptcy_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Also, we can limit the columns we can read so instead of all 26 columns - let&#39;s say I&#39;m only interested in the D, YR, and R1-R3 (notice, since I want NO as the index, it needs to be in the column list)</span>
+<span class="n">bankruptcy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/Bankruptcy.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;YR&#39;</span><span class="p">,</span><span class="s1">&#39;R1&#39;</span><span class="p">,</span><span class="s1">&#39;R2&#39;</span><span class="p">,</span><span class="s1">&#39;R3&#39;</span><span class="p">])</span>
+<span class="n">bankruptcy_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="outputing-using-pandas">
+<h3>Outputing using pandas<a class="headerlink" href="#outputing-using-pandas" title="Permalink to this headline">#</a></h3>
+<p>It is also helpful to gather data in one format a write to another.  There are many, many ways to go about this, but one simple way to handle this is to use the <code class="docutils literal notranslate"><span class="pre">to_*</span></code> functions.  We’ll look a few others, but for now, let’s say we have cleaned up our bankruptcy file and need to import into Excel.  We can easily write it to a csv file with a simple command.  Run the next cell and then check out the result.</p>
+<p><span class="xref myst">my_new_file.csv</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the output to a CSV file</span>
+<span class="n">bankruptcy_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../output/my_new_file.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="structured-text-formats">
+<h2>Structured text formats<a class="headerlink" href="#structured-text-formats" title="Permalink to this headline">#</a></h2>
+<p>XML (and JSON) provide similar portability as you can find with CSV files, but they tend to be more descriptive.  These formats allow for sub-records and descriptive field names.  They handle missing data a bit more effectively and obviously especially if they are being read by a human.  The second most common way to get data from the internet is through web-scraping or an API (application programming interface). Often, APIs will return a more structured format because of the level of detail they offer.  In this case, XML and JSON are used often.  In the case of web-scraping, that is getting data from a web page that doesn’t offer a programmable end-point, parsing HTML becomes an important skill. Best of all, HTML is very similar to XML (it could be called a subset), so learning to deal with XML will go along way to learning how to deal with HTML.</p>
+<section id="extensible-mark-up-language-xml">
+<h3>Extensible Mark-up Language (XML)<a class="headerlink" href="#extensible-mark-up-language-xml" title="Permalink to this headline">#</a></h3>
+<p>While the formatting of XML files and how they work is left to the lecture (it’s better described in PowerPoint rather than code), we’ll look at an example here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We could just as easily read this from a file, but it helps to see the actual XML, so we&#39;ll read it directly from a string instead</span>
+
+<span class="n">xml_data</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
+<span class="s1">&lt;data xmlns=&quot;http://example.com&quot;&gt;</span>
+<span class="s1"> &lt;row&gt;</span>
+<span class="s1">   &lt;shape&gt;square&lt;/shape&gt;</span>
+<span class="s1">   &lt;degrees&gt;360&lt;/degrees&gt;</span>
+<span class="s1">   &lt;sides&gt;4.0&lt;/sides&gt;</span>
+<span class="s1"> &lt;/row&gt;</span>
+<span class="s1"> &lt;row&gt;</span>
+<span class="s1">   &lt;shape&gt;circle&lt;/shape&gt;</span>
+<span class="s1">   &lt;degrees&gt;360&lt;/degrees&gt;</span>
+<span class="s1">   &lt;sides/&gt;</span>
+<span class="s1"> &lt;/row&gt;</span>
+<span class="s1"> &lt;row&gt;</span>
+<span class="s1">   &lt;shape&gt;triangle&lt;/shape&gt;</span>
+<span class="s1">   &lt;degrees&gt;180&lt;/degrees&gt;</span>
+<span class="s1">   &lt;sides&gt;3.0&lt;/sides&gt;</span>
+<span class="s1"> &lt;/row&gt;</span>
+<span class="s1">&lt;/data&gt;&#39;&#39;&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_xml</span><span class="p">(</span><span class="n">xml_data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hierarchical-data">
+<h3>Hierarchical data<a class="headerlink" href="#hierarchical-data" title="Permalink to this headline">#</a></h3>
+<p>While this works fine with data that is just one level deep (for instance, we just have <code class="docutils literal notranslate"><span class="pre">rows</span></code> in the prior data.)  Things get a bit more complex and unwieldy to use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> for complex data types.  Say for instance we want details about a cd collection</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;music&gt;</span>
+  <span class="nt">&lt;artist</span> <span class="na">name=</span><span class="s">&quot;Radiohead&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;album</span> <span class="na">title=</span><span class="s">&quot;The King of Limbs&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Bloom&quot;</span> <span class="na">length=</span><span class="s">&quot;5:15&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Morning Mr Magpie&quot;</span> <span class="na">length=</span><span class="s">&quot;4:41&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Little by Little&quot;</span> <span class="na">length=</span><span class="s">&quot;4:27&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Feral&quot;</span> <span class="na">length=</span><span class="s">&quot;3:13&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Lotus Flower&quot;</span> <span class="na">length=</span><span class="s">&quot;5:01&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Codex&quot;</span> <span class="na">length=</span><span class="s">&quot;4:47&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Give Up the Ghost&quot;</span> <span class="na">length=</span><span class="s">&quot;4:50&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Separator&quot;</span> <span class="na">length=</span><span class="s">&quot;5:20&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;description</span> <span class="na">link=</span><span class="s">&quot;http://en.wikipedia.org/wiki/The_King_of_Limbs&quot;</span><span class="nt">&gt;</span>
+	The King of Limbs is the eighth studio album by English rock band Radiohead, produced by Nigel Godrich. It was self-released on 18 February 2011 as a download in MP3 and WAV formats, followed by physical CD and 12&quot; vinyl releases on 28 March, a wider digital release via AWAL, and a special &quot;newspaper&quot; edition on 9 May 2011. The physical editions were released through the band&#39;s Ticker Tape imprint on XL in the United Kingdom, TBD in the United States, and Hostess Entertainment in Japan.
+      <span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;/album&gt;</span>
+    <span class="nt">&lt;album</span> <span class="na">title=</span><span class="s">&quot;OK Computer&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Airbag&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:44&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Paranoid Android&quot;</span>  <span class="na">length=</span><span class="s">&quot;6:23&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Subterranean Homesick Alien&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:27&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Exit Music (For a Film)&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:24&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Let Down&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:59&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Karma Police&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:21&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Fitter Happier&quot;</span>  <span class="na">length=</span><span class="s">&quot;1:57&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Electioneering&quot;</span>  <span class="na">length=</span><span class="s">&quot;3:50&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Climbing Up the Walls&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:45&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;No Surprises&quot;</span>  <span class="na">length=</span><span class="s">&quot;3:48&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Lucky&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:19&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;The Tourist&quot;</span>  <span class="na">length=</span><span class="s">&quot;5:24&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;description</span> <span class="na">link=</span><span class="s">&quot;http://en.wikipedia.org/wiki/OK_Computer&quot;</span><span class="nt">&gt;</span>
+	OK Computer is the third studio album by the English alternative rock band Radiohead, released on 16 June 1997 on Parlophone in the United Kingdom and 1 July 1997 by Capitol Records in the United States. It marks a deliberate attempt by the band to move away from the introspective guitar-oriented sound of their previous album The Bends. Its layered sound and wide range of influences set it apart from many of the Britpop and alternative rock bands popular at the time and laid the groundwork for Radiohead&#39;s later, more experimental work.
+      <span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;/album&gt;</span>
+  <span class="nt">&lt;/artist&gt;</span>
+  <span class="nt">&lt;artist</span> <span class="na">name=</span><span class="s">&quot;Portishead&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;album</span> <span class="na">title=</span><span class="s">&quot;Dummy&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Mysterons&quot;</span>  <span class="na">length=</span><span class="s">&quot;5:02&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Sour Times&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:11&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Strangers&quot;</span>  <span class="na">length=</span><span class="s">&quot;3:55&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;It Could Be Sweet&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:16&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Wandering Star&quot;</span>  <span class="na">length=</span><span class="s">&quot;4:51&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;It&#39;s a Fire&quot;</span>  <span class="na">length=</span><span class="s">&quot;3:49&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Numb&quot;</span>  <span class="na">length=</span><span class="s">&quot;3:54&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Roads&quot;</span>  <span class="na">length=</span><span class="s">&quot;5:02&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Pedestal&quot;</span>  <span class="na">length=</span><span class="s">&quot;3:39&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Biscuit&quot;</span>  <span class="na">length=</span><span class="s">&quot;5:01&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;song</span> <span class="na">title=</span><span class="s">&quot;Glory Box&quot;</span>  <span class="na">length=</span><span class="s">&quot;5:06&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;description</span> <span class="na">link=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Dummy_%28album%29&quot;</span><span class="nt">&gt;</span>
+	Dummy is the debut album of the Bristol-based group Portishead. Released in August 22, 1994 on Go! Discs, the album earned critical acclaim, winning the 1995 Mercury Music Prize. It is often credited with popularizing the trip-hop genre and is frequently cited in lists of the best albums of the 1990s. Although it achieved modest chart success overseas, it peaked at #2 on the UK Album Chart and saw two of its three singles reach #13. The album was certified gold in 1997 and has sold two million copies in Europe. As of September 2011, the album was certified double-platinum in the United Kingdom and has sold as of September 2011 825,000 copies.
+      <span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;/album&gt;</span>
+  <span class="nt">&lt;/artist&gt;</span>
+<span class="nt">&lt;/music&gt;</span>
+</pre></div>
+</div>
+<p>This doesn’t look like the tabular data we are use to, each item in the list is an album, but each album can also include some songs.  In this case, we need to depend on other libraries to help us out.</p>
+<p>We first need to read in the tree, then we can deal with each of the records individually.  Keep in mind we have attributes and tags here so there’s a need to be a bit more specific.  And we’ll need to use a bit of XPath to get there</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+
+<span class="n">xml_data</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&lt;music&gt;</span>
+<span class="s1">  &lt;artist name=&quot;Radiohead&quot;&gt;</span>
+<span class="s1">    &lt;album title=&quot;The King of Limbs&quot;&gt;</span>
+<span class="s1">      &lt;song title=&quot;Bloom&quot; length=&quot;5:15&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Morning Mr Magpie&quot; length=&quot;4:41&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Little by Little&quot; length=&quot;4:27&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Feral&quot; length=&quot;3:13&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Lotus Flower&quot; length=&quot;5:01&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Codex&quot; length=&quot;4:47&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Give Up the Ghost&quot; length=&quot;4:50&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Separator&quot; length=&quot;5:20&quot;/&gt;</span>
+<span class="s1">      &lt;description link=&quot;http://en.wikipedia.org/wiki/The_King_of_Limbs&quot;&gt;</span>
+<span class="s1">	The King of Limbs is the eighth studio album by English rock band Radiohead, produced by Nigel Godrich. It was self-released on 18 February 2011 as a download in MP3 and WAV formats, followed by physical CD and 12&quot; vinyl releases on 28 March, a wider digital release via AWAL, and a special &quot;newspaper&quot; edition on 9 May 2011. The physical editions were released through the band&#39;s Ticker Tape imprint on XL in the United Kingdom, TBD in the United States, and Hostess Entertainment in Japan.</span>
+<span class="s1">      &lt;/description&gt;</span>
+<span class="s1">    &lt;/album&gt;</span>
+<span class="s1">    &lt;album title=&quot;OK Computer&quot;&gt;</span>
+<span class="s1">      &lt;song title=&quot;Airbag&quot;  length=&quot;4:44&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Paranoid Android&quot;  length=&quot;6:23&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Subterranean Homesick Alien&quot;  length=&quot;4:27&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Exit Music (For a Film)&quot;  length=&quot;4:24&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Let Down&quot;  length=&quot;4:59&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Karma Police&quot;  length=&quot;4:21&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Fitter Happier&quot;  length=&quot;1:57&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Electioneering&quot;  length=&quot;3:50&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Climbing Up the Walls&quot;  length=&quot;4:45&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;No Surprises&quot;  length=&quot;3:48&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Lucky&quot;  length=&quot;4:19&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;The Tourist&quot;  length=&quot;5:24&quot;/&gt;</span>
+<span class="s1">      &lt;description link=&quot;http://en.wikipedia.org/wiki/OK_Computer&quot;&gt;</span>
+<span class="s1">	OK Computer is the third studio album by the English alternative rock band Radiohead, released on 16 June 1997 on Parlophone in the United Kingdom and 1 July 1997 by Capitol Records in the United States. It marks a deliberate attempt by the band to move away from the introspective guitar-oriented sound of their previous album The Bends. Its layered sound and wide range of influences set it apart from many of the Britpop and alternative rock bands popular at the time and laid the groundwork for Radiohead&#39;s later, more experimental work.</span>
+<span class="s1">      &lt;/description&gt;</span>
+<span class="s1">    &lt;/album&gt;</span>
+<span class="s1">  &lt;/artist&gt;</span>
+<span class="s1">  &lt;artist name=&quot;Portishead&quot;&gt;</span>
+<span class="s1">    &lt;album title=&quot;Dummy&quot;&gt;</span>
+<span class="s1">      &lt;song title=&quot;Mysterons&quot;  length=&quot;5:02&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Sour Times&quot;  length=&quot;4:11&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Strangers&quot;  length=&quot;3:55&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;It Could Be Sweet&quot;  length=&quot;4:16&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Wandering Star&quot;  length=&quot;4:51&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;It&#39;s a Fire&quot;  length=&quot;3:49&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Numb&quot;  length=&quot;3:54&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Roads&quot;  length=&quot;5:02&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Pedestal&quot;  length=&quot;3:39&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Biscuit&quot;  length=&quot;5:01&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Glory Box&quot;  length=&quot;5:06&quot;/&gt;</span>
+<span class="s1">      &lt;description link=&quot;http://en.wikipedia.org/wiki/Dummy_</span><span class="si">%28a</span><span class="s1">lbum%29&quot;&gt;</span>
+<span class="s1">	Dummy is the debut album of the Bristol-based group Portishead. Released in August 22, 1994 on Go! Discs, the album earned critical acclaim, winning the 1995 Mercury Music Prize. It is often credited with popularizing the trip-hop genre and is frequently cited in lists of the best albums of the 1990s. Although it achieved modest chart success overseas, it peaked at #2 on the UK Album Chart and saw two of its three singles reach #13. The album was certified gold in 1997 and has sold two million copies in Europe. As of September 2011, the album was certified double-platinum in the United Kingdom and has sold as of September 2011 825,000 copies.</span>
+<span class="s1">      &lt;/description&gt;</span>
+<span class="s1">    &lt;/album&gt;</span>
+<span class="s1">    &lt;album title=&quot;Third&quot;&gt;</span>
+<span class="s1">      &lt;song title=&quot;Silence&quot;  length=&quot;4:58&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Hunter&quot;  length=&quot;3:57&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Nylon Smile&quot;  length=&quot;3:16&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;The Rip&quot;  length=&quot;4:29&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Plastic&quot;  length=&quot;3:27&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;We Carry On&quot;  length=&quot;6:27&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Deep Water&quot;  length=&quot;1:31&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Machine Gun&quot;  length=&quot;4:43&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Small&quot;  length=&quot;6:45&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Magic Doors&quot;  length=&quot;3:32&quot;/&gt;</span>
+<span class="s1">      &lt;song title=&quot;Threads&quot;  length=&quot;5:45&quot;/&gt;</span>
+<span class="s1">      &lt;description link=&quot;http://en.wikipedia.org/wiki/Third_%28Portishead_album%29&quot;&gt;</span>
+<span class="s1">	Third is the third studio album by English musical group Portishead, released on 27 April 2008, on Island Records in the United Kingdom, two days after on Mercury Records in the United States, and on 30 April 2008 on Universal Music Japan in Japan. It is their first release in 10 years, and their first studio album in eleven years. Third entered the UK Album Chart at #2, and became the band&#39;s first-ever American Top 10 album on the Billboard 200, reaching #7 in its entry week.</span>
+<span class="s1">      &lt;/description&gt;</span>
+<span class="s1">    &lt;/album&gt;</span>
+<span class="s1">  &lt;/artist&gt;</span>
+<span class="s1">&lt;/music&gt;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">xml_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All Artists&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;artist&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">artist</span><span class="o">.</span><span class="n">attrib</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interesting, but what about albums, can we find all the albums for each artist?</span>
+<span class="c1"># Notice we can also read the data from a file rather than a string</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;../data/music.xml&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All Artists/Albums&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;artist&#39;</span><span class="p">):</span>
+    <span class="c1"># This time, just get the value of the &#39;name&#39; attribute</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Artist:&#39;</span><span class="p">,</span> <span class="n">artist</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+    <span class="c1"># Notice we are searching starting with the current artist to find all their albums</span>
+    <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">artist</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">):</span>
+        <span class="c1"># Again, since we know the attribute we are after we&#39;ll just index it directly</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">album</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s find all the songs on each album</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;../data/music.xml&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All Artists/Albums&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;artist&#39;</span><span class="p">):</span>
+    <span class="c1"># Notice, we can use the index or directly use `get`</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Artist:&#39;</span><span class="p">,</span> <span class="n">artist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">))</span>
+    <span class="c1"># Notice we are searching starting with the current artist to find all their albums</span>
+    <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">artist</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">):</span>
+        <span class="c1"># Again, since we know the attribute we are after we&#39;ll just index it directly</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Album: </span><span class="si">{</span><span class="n">album</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">album</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;song&#39;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t\t</span><span class="si">{</span><span class="n">song</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="going-further-with-xpath-support">
+<h3>Going further with XPath support<a class="headerlink" href="#going-further-with-xpath-support" title="Permalink to this headline">#</a></h3>
+<p>This is the simplest situation, where we are just wanting to iterate through every element in the XML tree.  We can get much more creative with a specific query syntax for XML called <a class="reference external" href="https://docs.python.org/3/library/xml.etree.elementtree.html#elementtree-xpath">XPath</a>.  XPath allows for alot more complex situations, such as if we want to find only songs on albums by Radiohead or gathering the album description links only.  See these examples below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only songs off of Radiohead albums</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">xml_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Radiohead only&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;./artist/[@name=&quot;Radiohead&quot;]&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Artist:&#39;</span><span class="p">,</span> <span class="n">artist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">))</span>
+    <span class="c1"># Notice we are searching starting with the current artist to find all their albums</span>
+    <span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">artist</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;.//album/song&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t\t</span><span class="si">{</span><span class="n">song</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only album names and descriptions</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">xml_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Only album name and description links&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;.//album&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Album:&#39;</span><span class="p">,</span> <span class="n">album</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Link:&#39;</span><span class="p">,</span><span class="n">album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="javascript-notation">
+<h3>Javascript Notation<a class="headerlink" href="#javascript-notation" title="Permalink to this headline">#</a></h3>
+<p>JSON is similar, a little less decoration (no <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;/&gt;</span></code>) but still very readable.  In the case of Python, JSON data is parsed into a dictionary with one key for every top-level element and the corresponding structure as it’s value.  For instance, if we have an object like such, then we have one key in the dictionary and the value is a list.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&quot;shapes&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;square&quot;</span><span class="p">,</span><span class="nt">&quot;degrees&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span><span class="nt">&quot;sides&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;circle&quot;</span><span class="p">,</span><span class="nt">&quot;degrees&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;triangle&quot;</span><span class="p">,</span><span class="nt">&quot;degrees&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="nt">&quot;sides&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="c1"># Same data as above, described in JSON format</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;{&quot;shapes&quot;:</span>
+<span class="s1">    [</span>
+<span class="s1">        {&quot;shape&quot;: &quot;square&quot;,&quot;degrees&quot;: 360,&quot;sides&quot;: 4.0},</span>
+<span class="s1">        {&quot;shape&quot;: &quot;circle&quot;,&quot;degrees&quot;: 360},</span>
+<span class="s1">        {&quot;shape&quot;: &quot;triangle&quot;,&quot;degrees&quot;: 180,&quot;sides&quot;: 3.0}</span>
+<span class="s1">    ]</span>
+<span class="s1">}</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="c1"># Notice the use of `loads` this is to load json from a string</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;shapes&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;shapes&#39;</span><span class="p">]:</span>
+    <span class="c1"># Notice that the items in the list are themselves key/value pairs or as we know them dictionaries</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since the values are dictionaries, we can access the values with string indexes</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;shapes&#39;</span><span class="p">]:</span>
+    <span class="c1"># Notice that the items in the list are themselves key/value pairs or as we know them dictionaries</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Degrees: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;degrees&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># But keep in mind, that we aren&#39;t guaranteed to have all the same name/value pairs</span>
+    <span class="c1"># So using the &#39;get&#39; method is a better option when dealing with unreliable data</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sides: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sides&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can also load the data directly from a file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/shapes.json&#39;</span><span class="p">)</span>
+<span class="n">json_data_file</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_data_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just remember that with JSON we are dealing with dictionaries and lists, so accessing the items is the same thing we know how to do with them.  The complexity comes in keeping track of when we have a dictionary and when we have a list - and then working with the items appropriately.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;articles&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JSON:API paints my bikeshed!&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The shortest article. Ever.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-05-22T14:56:29.000Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-05-22T14:56:28.000Z&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;people&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;included&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;people&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;gender&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;male&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this example, we have a dictionary with two “keys” - <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">included</span></code>.  These keys have associated values which are lists (see the <code class="docutils literal notranslate"><span class="pre">[]</span></code>) even though their is only one item in each of these value lists.  So in order to processing the “sub-dictionaries” it becomes necessary first to get the first item in the list, then use the resulting dictionary to parse the next set of name/value pairs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
+<span class="s2">  &quot;data&quot;: [{</span>
+<span class="s2">    &quot;type&quot;: &quot;articles&quot;,</span>
+<span class="s2">    &quot;id&quot;: &quot;1&quot;,</span>
+<span class="s2">    &quot;attributes&quot;: {</span>
+<span class="s2">      &quot;title&quot;: &quot;JSON:API paints my bikeshed!&quot;,</span>
+<span class="s2">      &quot;body&quot;: &quot;The shortest article. Ever.&quot;,</span>
+<span class="s2">      &quot;created&quot;: &quot;2015-05-22T14:56:29.000Z&quot;,</span>
+<span class="s2">      &quot;updated&quot;: &quot;2015-05-22T14:56:28.000Z&quot;</span>
+<span class="s2">    },</span>
+<span class="s2">    &quot;relationships&quot;: {</span>
+<span class="s2">      &quot;author&quot;: {</span>
+<span class="s2">        &quot;data&quot;: {&quot;id&quot;: &quot;42&quot;, &quot;type&quot;: &quot;people&quot;}</span>
+<span class="s2">      }</span>
+<span class="s2">    }</span>
+<span class="s2">  }],</span>
+<span class="s2">  &quot;included&quot;: [</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;type&quot;: &quot;people&quot;,</span>
+<span class="s2">      &quot;id&quot;: &quot;42&quot;,</span>
+<span class="s2">      &quot;attributes&quot;: {</span>
+<span class="s2">        &quot;name&quot;: &quot;John&quot;,</span>
+<span class="s2">        &quot;age&quot;: 80,</span>
+<span class="s2">        &quot;gender&quot;: &quot;male&quot;</span>
+<span class="s2">      }</span>
+<span class="s2">    }</span>
+<span class="s2">  ]</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">api_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+<span class="c1"># Notice only two keys in the json data</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">api_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a list with one item, a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># So now we get the first item in the list, and it&#39;s a dictionary</span>
+<span class="n">data_dictionary</span> <span class="o">=</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With the `data_dictionary` in hand, we can access the items</span>
+<span class="k">for</span> <span class="n">dd_key</span><span class="p">,</span> <span class="n">dd_value</span> <span class="ow">in</span> <span class="n">data_dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dd_key</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">dd_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We notice that again we have two more &#39;sub-dictionaries&#39;, attributes and relationships.  </span>
+<span class="n">attributes_dict</span> <span class="o">=</span> <span class="n">data_dictionary</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attributes_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">a_key</span><span class="p">,</span> <span class="n">a_value</span> <span class="ow">in</span> <span class="n">attributes_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a_key</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">a_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Relationships is even more complex with extra sub-dictionaries, so take it one step at a time</span>
+<span class="n">relationships_dict</span> <span class="o">=</span> <span class="n">data_dictionary</span><span class="p">[</span><span class="s1">&#39;relationships&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">relationships_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">author_dict</span><span class="o">=</span><span class="n">relationships_dict</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">author_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">data_dict</span> <span class="o">=</span> <span class="n">author_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../exercises/50-Data_Manipulation-ex.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Try it: Manipulating Data With pandas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../exercises/60-Web_Data-ex.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Try it: Working with common data formats</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Advanced Techniques &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/10-Introduction.html">
+   In case something goes wrong
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/py4analytics/main?urlpath=tree/book/extras/41-AdvancedTechniques.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/py4analytics&urlpath=tree/py4analytics/book/extras/41-AdvancedTechniques.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/py4analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/py4analytics/issues/new?title=Issue%20on%20page%20%2Fbook/extras/41-AdvancedTechniques.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/extras/41-AdvancedTechniques.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Advanced Techniques
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-reduction">
+     Feature Reduction
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#principal-components">
+       Principal Components
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#steps-to-computing-pca">
+         Steps to computing PCA
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-patsy-library">
+   Using the patsy library
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleveland-clinic-heart-disease">
+     Cleveland Clinic Heart Disease
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cross-validation">
+   Cross-Validation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-fold-cross-validation">
+     k-Fold Cross Validation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stratified-k-fold-cross-validation">
+     Stratified k-Fold Cross Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-best-combination-of-parameters-gridsearch-a-id-grid-search-a">
+   Find the best combination of parameters - GridSearch
+   <a id="grid-search">
+   </a>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gridsearch-alternatives">
+     GridSearch Alternatives
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Advanced Techniques</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Advanced Techniques
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-reduction">
+     Feature Reduction
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#principal-components">
+       Principal Components
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#steps-to-computing-pca">
+         Steps to computing PCA
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-patsy-library">
+   Using the patsy library
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleveland-clinic-heart-disease">
+     Cleveland Clinic Heart Disease
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cross-validation">
+   Cross-Validation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-fold-cross-validation">
+     k-Fold Cross Validation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stratified-k-fold-cross-validation">
+     Stratified k-Fold Cross Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-best-combination-of-parameters-gridsearch-a-id-grid-search-a">
+   Find the best combination of parameters - GridSearch
+   <a id="grid-search">
+   </a>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gridsearch-alternatives">
+     GridSearch Alternatives
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">f_classif</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">cross_val_score</span><span class="p">,</span> 
+    <span class="n">GridSearchCV</span><span class="p">,</span>
+    <span class="n">StratifiedKFold</span><span class="p">,</span>
+    <span class="n">train_test_split</span><span class="p">,</span> 
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">import</span> <span class="nn">pprint</span> <span class="k">as</span> <span class="nn">pp</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">src.data</span> <span class="kn">import</span> <span class="n">load_excel</span><span class="p">,</span> <span class="n">TRUE_VALUES</span><span class="p">,</span> <span class="n">FALSE_VALUES</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="advanced-techniques">
+<h1>Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">#</a></h1>
+<p>Python’s power derives from it’s collection of libraries and utilities which give complete control over the entire process of data mining.  In this notebook we’ll explore a few.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#feature-selection-techniques">Feature Selection</a></p>
+<ul>
+<li><p>reducing the number of features we consider in a dataset</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#using-the-patsy-library">pasty library</a></p>
+<ul>
+<li><p>patsy is used to create data mining matricies (especially linear models) which is especially helpful when there are variable interactions</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#cross-validation">Cross Validation</a></p>
+<ul>
+<li><p>a technique which trains the model on cross-sections of the training data to help cut down on overfitting</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#pipelines">Pipelines</a></p>
+<ul>
+<li><p>sklearn provides a pipeline feature which allows for putting multiple steps for which the output feeds to the input of the next step</p></li>
+<li><p><a class="reference external" href="#find-the-best-combination-of-parameters---gridsearch-a-idgrid-searcha">Hyper-parameter tuning</a> finding the best model with a number of different combinations of learning parameters</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#ensembling">Ensembling</a></p>
+<ul>
+<li><p>a method for combining models to get a better fitting approach</p></li>
+</ul>
+</li>
+</ul>
+<section id="feature-reduction">
+<h2>Feature Reduction<a class="headerlink" href="#feature-reduction" title="Permalink to this headline">#</a></h2>
+<section id="principal-components">
+<h3>Principal Components<a class="headerlink" href="#principal-components" title="Permalink to this headline">#</a></h3>
+<p>PCA is used to decompose a multivariate dataset in a set of successive orthogonal components that explain a maximum amount of the variance. In scikit-learn, PCA is implemented as a transformer object that learns components in its fit method, and can be used on new data to project it on these components.</p>
+<p>Below is an example of the iris dataset, which is comprised of 4 features, projected on the 2 dimensions that explain most variance:</p>
+<p><img alt="iris" src="../../_images/pca-iris.png" /></p>
+<p>What this means is that we can find a way to represent most of the variability described by some subset of the factors combined in a way as to keep the relative impact of each of the original factors but reduce the overall number of factors.  (Notice the chart doesn’t have units because the eigenvectors that are used to establish the principal components aren’t expressed in units, they are a combination of a group of factors.)</p>
+<section id="steps-to-computing-pca">
+<h4>Steps to computing PCA<a class="headerlink" href="#steps-to-computing-pca" title="Permalink to this headline">#</a></h4>
+<p>At the highest level the following are the steps involved in PCA:</p>
+<ol class="simple">
+<li><p>Standardization of the dataset is a must before applying PCA because PCA is quite sensitive to the dataset that has a high variance in its values.</p></li>
+<li><p>Compute the covariance matrix</p></li>
+<li><p>Calculate Eigenvalues and Eigenvectors using the covariance matrix of the previous step to identify principal components.</p></li>
+<li><p>Sort the Eigenvalues and its Eigenvectors in descending order. Here the eigenvector with the highest value has the highest significance and forms the first principal component, and so on. So if we choose to take components n = 2, the top two eigenvectors will be selected.</p></li>
+<li><p>Transform the original matrix of data by multiplying it top n eigenvectors selected above.</p></li>
+</ol>
+<p>Fortunately the sklearn library manages all this for us, asking us only for the number of Principal Components we want (usually 2-3 is plenty).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code source: Gaël Varoquaux</span>
+<span class="c1"># Modified for documentation by Jaques Grobler</span>
+<span class="c1"># Borrowed from the scikit learn documentation</span>
+<span class="c1"># License: BSD 3 clause</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># import some data to play with</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># we only take the first two features.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.5</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+
+<span class="c1"># Plot the training points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sepal length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sepal width&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+
+<span class="c1"># To getter a better understanding of interaction of the dimensions</span>
+<span class="c1"># plot the first three PCA dimensions</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">elev</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">azim</span><span class="o">=</span><span class="mi">110</span><span class="p">)</span>
+<span class="n">X_reduced</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">X_reduced</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">X_reduced</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">X_reduced</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;First three PCA directions&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;1st eigenvector&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">w_xaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;2nd eigenvector&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">w_yaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;3rd eigenvector&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">w_zaxis</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="using-the-patsy-library">
+<h1>Using the patsy library<a class="headerlink" href="#using-the-patsy-library" title="Permalink to this headline">#</a></h1>
+<p>Developing interaction factors is a pretty common feature of many data science platforms and this can of course be done with Python as well.  The issue is that this requires a lot of <code class="docutils literal notranslate"><span class="pre">for</span></code> loops or recursive functions to develop all the interactions with the various variables.</p>
+<p>(from the <a class="reference external" href="https://patsy.readthedocs.io/en/latest/overview.html">patsy documentation</a>)</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">patsy</span></code> is a Python package for describing statistical models (especially linear models, or models that have a linear component) and building design matrices. It is closely inspired by and compatible with the formula mini-language used in R and S.</p>
+<p>For instance, if we have some variable y, and we want to regress it against some other variables x, a, b, and the interaction of a and b, then we simply write:</p>
+<p><code class="docutils literal notranslate"><span class="pre">patsy.dmatrices(&quot;y</span> <span class="pre">~</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">a:b&quot;,</span> <span class="pre">data)</span></code></p>
+<p>and Patsy takes care of building appropriate matrices. Furthermore, it:</p>
+<ul class="simple">
+<li><p>Allows data transformations to be specified using arbitrary Python code: instead of <code class="docutils literal notranslate"><span class="pre">x</span></code>, we could have written <code class="docutils literal notranslate"><span class="pre">log(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code>, or even <code class="docutils literal notranslate"><span class="pre">log(x)</span> <span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">1e-5</span> <span class="pre">else</span> <span class="pre">log(1e-5)</span></code>,</p></li>
+<li><p>Provides a range of convenient options for coding categorical variables, including automatic detection and removal &gt; of redundancies,</p></li>
+<li><p>Knows how to apply ‘the same’ transformation used on original data to new data, even for tricky transformations like &gt; centering or standardization (critical if you want to use your model to make predictions),</p></li>
+<li><p>Has an incremental mode to handle data sets which are too large to fit into memory at one time,</p></li>
+<li><p>Provides a language for symbolic, human-readable specification of linear constraint matrices,</p></li>
+<li><p>Has a thorough test suite (&gt;97% statement coverage) and solid underlying theory, allowing it to correctly handle &gt; corner cases that even R gets wrong, and</p></li>
+<li><p>Features a simple API for integration into statistical packages.</p></li>
+</ul>
+<p>What Patsy won’t do is, well, statistics — it just lets you describe models in general terms. It doesn’t know or
+care whether you ultimately want to do linear regression, time-series analysis, or fit a forest of decision trees,
+and it certainly won’t do any of those things for you — it just gives a high-level language for describing which
+factors you want your underlying model to take into account. It’s not suitable for implementing arbitrary non-linear
+models from scratch; for that, you’ll be better off with something like Theano, SymPy, or just plain Python.
+But if you’re using a statistical package that requires you to provide a raw model matrix, then you can use Patsy to painlessly construct that model matrix;</p>
+</div></blockquote>
+<section id="cleveland-clinic-heart-disease">
+<h2>Cleveland Clinic Heart Disease<a class="headerlink" href="#cleveland-clinic-heart-disease" title="Permalink to this headline">#</a></h2>
+<p>A very commonly used dataset for explanation purposes, the Cleveland Clinic Heart Disease dataset (<a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Heart+Disease">source</a>) provides data about the likelihood of a patient to have heart disease.</p>
+<p>Attribute Information:</p>
+<ul class="simple">
+<li><p>age: age in years</p></li>
+<li><p>sex: sex (1 = male; 0 = female)</p></li>
+<li><p>cp: chest pain type</p>
+<ul>
+<li><p>Value 1: typical angina</p></li>
+<li><p>Value 2: atypical angina</p></li>
+<li><p>Value 3: non-anginal pain</p></li>
+<li><p>Value 4: asymptomatic</p></li>
+</ul>
+</li>
+<li><p>trestbps: resting blood pressure (in mm Hg on admission to the hospital)</p></li>
+<li><p>chol: serum cholestoral in mg/dl</p></li>
+<li><p>fbs: fasting blood sugar &gt; 120 mg/dl (1 = true; 0 = false)</p></li>
+<li><p>restecg: resting electrocardiographic results</p>
+<ul>
+<li><p>Value 0: normal</p></li>
+<li><p>Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of &gt; 0.05 mV)</p></li>
+<li><p>Value 2: showing probable or definite left ventricular hypertrophy by Estes’ criteria</p></li>
+</ul>
+</li>
+<li><p>thalach: maximum heart rate achieved</p></li>
+<li><p>exang: exercise induced angina (1 = yes; 0 = no)</p></li>
+<li><p>oldpeak: ST depression induced by exercise relative to rest</p></li>
+<li><p>slope: the slope of the peak exercise ST segment</p>
+<ul>
+<li><p>Value 1: upsloping</p></li>
+<li><p>Value 2: flat</p></li>
+<li><p>Value 3: downsloping</p></li>
+</ul>
+</li>
+<li><p>ca: number of major vessels (0-3) colored by flourosopy (for calcification of vessels)</p></li>
+<li><p>thal: results of nuclear stress test (3 = normal; 6 = fixed defect; 7 = reversable defect)</p></li>
+<li><p>num: target variable representing diagnosis of heart disease (angiographic disease status) in any major vessel</p>
+<ul>
+<li><p>Value 0: &lt; 50% diameter narrowing</p></li>
+<li><p>Value 1: &gt; 50% diameter narrowing</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">patsy</span>
+<span class="kn">from</span> <span class="nn">patsy.highlevel</span> <span class="kn">import</span> <span class="n">dmatrices</span>
+<span class="c1"># Import and clean-up the heart disease dataset</span>
+<span class="n">heart_df</span> <span class="o">=</span> <span class="n">load_excel</span><span class="p">(</span><span class="s1">&#39;HeartDisease_Cleveland&#39;</span><span class="p">,</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FBS&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="s1">&#39;EXANG&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">},</span> <span class="n">true_values</span><span class="o">=</span><span class="n">TRUE_VALUES</span><span class="p">,</span>
+                    <span class="n">false_values</span><span class="o">=</span><span class="n">FALSE_VALUES</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;?&#39;</span><span class="p">])</span>
+<span class="n">heart_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># If the &#39;DIAG&#39; value is &gt; 0 then we will diagnose as HeartDisease</span>
+<span class="n">heart_df</span><span class="p">[</span><span class="s1">&#39;DIAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">NUM</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">heart_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NUM&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Set the MAX_NEIGHBORS</span>
+<span class="n">MAX_NEIGHBORS</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">heart_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of these columns, there are a few that are categorical even though they show up as numeric values.  We want to ensure to encode these columns.  We can use a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html">ColumnTransformer</a>, or we can use the patsy library which gives us a different approach maybe more readable?  You decide.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function will build the matrices (that is the predictors with interactions)</span>
+<span class="k">def</span> <span class="nf">setup_matricies</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+
+    <span class="c1"># We&#39;ll look for DIAG as the target and </span>
+    <span class="c1"># Define SEX, CP, FBS, RESTECG, EXANG, SLOPE and THAL as categorical variables</span>
+    <span class="c1"># The other predictors are already seen as numeric, but we can apply scaling (standardization), normalization, or any other transform</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">patsy</span><span class="o">.</span><span class="n">scale</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;DIAG ~ center(AGE) + SEX + C(CP) + C(FBS) + scale(TRESTBPS) + s(CHOL) + &#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;C(RESTECG) + center(THALACH) + C(EXANG) + OLDPEAK + C(SLOPE) +&#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;CA + C(THAL) - 1&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+
+    <span class="c1"># The y (target) matrix uses dummy encoding for both True and False values, </span>
+    <span class="c1">#  since we only need to know if TRUE or not we can drop it</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DIAG[False]&#39;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;DIAG[True&#39;</span><span class="p">:</span><span class="s1">&#39;DIAG&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># For convenience we&#39;ll rename all the other columns so that we can read them</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C(CP)[1]&#39;</span><span class="p">:</span><span class="s1">&#39;CP_Typical&#39;</span><span class="p">,</span><span class="s1">&#39;C(CP)[2]&#39;</span><span class="p">:</span><span class="s1">&#39;CP_ATypical_Angina&#39;</span><span class="p">,</span> <span class="s1">&#39;C(CP)[3]&#39;</span><span class="p">:</span><span class="s1">&#39;CP_NonAngina&#39;</span><span class="p">,</span> <span class="s1">&#39;C(CP)[4]&#39;</span><span class="p">:</span><span class="s1">&#39;CP_Asymptomatic&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;C(FBS)[T.True]&#39;</span><span class="p">:</span><span class="s1">&#39;FBS_True&#39;</span><span class="p">,</span> 
+                     <span class="s1">&#39;C(RESTECG)[T.1]&#39;</span><span class="p">:</span><span class="s1">&#39;RESTECG_1&#39;</span><span class="p">,</span><span class="s1">&#39;C(RESTECG)[T.2]&#39;</span><span class="p">:</span><span class="s1">&#39;RESTECG_2&#39;</span><span class="p">,</span> 
+                     <span class="s1">&#39;C(EXANG)[T.True]&#39;</span><span class="p">:</span><span class="s1">&#39;EXANG_True&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;C(SLOPE)[T.2]&#39;</span><span class="p">:</span><span class="s1">&#39;SLOPE_Flat&#39;</span><span class="p">,</span> <span class="s1">&#39;C(SLOPE)[T.3]&#39;</span><span class="p">:</span><span class="s1">&#39;SLOPE_Down&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;C(THAL)[T.6.0]&#39;</span><span class="p">:</span><span class="s1">&#39;THAL_FIXED&#39;</span><span class="p">,</span> <span class="s1">&#39;C(THAL)[T.7.0]&#39;</span><span class="p">:</span><span class="s1">&#39;THAL_REV&#39;</span><span class="p">},</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;X_shape:</span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">, y_shape:</span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="c1"># It&#39;s convenient to have the preceding in a function so that we can call it again later if needed</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">setup_matricies</span><span class="p">(</span><span class="n">heart_df</span><span class="p">)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># by setting the random_state variable, we can ensure that each time we run the method </span>
+<span class="c1"># we get the same splits</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.40</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s see if we can find a good model just by varying the values of K</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">K</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">MAX_NEIGHBORS</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="c1"># We are only going to change the number of neighbors on each pass to see if it helps</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="n">best_score</span><span class="p">:</span>
+        <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
+        <span class="n">best_k</span> <span class="o">=</span> <span class="n">K</span>
+        <span class="n">best_y_pred</span> <span class="o">=</span> <span class="n">y_pred</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best for K (simple) = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1"> Score: </span><span class="si">{</span><span class="n">best_score</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cross-validation">
+<h1>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h1>
+<p>Another technique that helps us to ensure that we are not overfitting our model (that is we haven’t learned so well on known data that it doesn’t perform as well on unseen data.)  Typically we would split our dataset into training and validation (or test) sets.  This method uses a portion of our data to train the model and another hold-out portion to see how well the model fits some unseen data.  This can be helpful, but it still can lead to overfitting as we try to get a good model that performs well on the hold-out data.  One way to combat this approach is to use cross-validation.  While there are a number of approaches to cross-validation, the idea is the same:</p>
+<ol class="simple">
+<li><p>Partition the data into a number of subsets</p></li>
+<li><p>Hold out 1 set at a time as our test set</p></li>
+<li><p>Train the model on the other sets</p></li>
+<li><p>Repeat the process for each subset</p></li>
+</ol>
+<p>We can cross-validate in a number of ways:</p>
+<ul class="simple">
+<li><p>Leave one out cross validation</p></li>
+<li><p>k-fold cross validation</p></li>
+<li><p>Stratified k-fold cross validation</p></li>
+<li><p>Time Series cross validation</p></li>
+</ul>
+<section id="k-fold-cross-validation">
+<h2>k-Fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">#</a></h2>
+<style>
+.center
+{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+</style>
+<p>Let’s start with k-Fold Cross Validation</p>
+<p>The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into. As such, the procedure is often called k-fold cross-validation. When a specific value for k is chosen, it may be used in place of k in the reference to the model, such as k=10 becoming 10-fold cross-validation.
+If k=5 the dataset will be divided into 5 equal parts and the below process will run 5 times, each time with a different holdout set.</p>
+<ol class="simple">
+<li><p>Take the group as a holdout or test data set</p></li>
+<li><p>Take the remaining groups as a training data set</p></li>
+<li><p>Fit a model on the training set and evaluate it on the test set</p></li>
+<li><p>Retain the evaluation score and discard the model</p></li>
+</ol>
+<a class="center reference internal image-reference" href="../../_images/k-fold-cv.png"><img alt="../../_images/k-fold-cv.png" class="center" src="../../_images/k-fold-cv.png" style="width: 400px; height: 400px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here well do a simple k-Fold cross validation</span>
+<span class="n">NUMBER_OF_SPLITS</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">best_c_val</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">MAX_NEIGHBORS</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">c_val</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">NUMBER_OF_SPLITS</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">c_val</span> <span class="o">&gt;</span> <span class="n">best_c_val</span><span class="p">:</span>
+        <span class="n">best_c_val</span> <span class="o">=</span> <span class="n">c_val</span>
+        <span class="n">best_k</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">clf</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best for K (cross_val) = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1"> Score: </span><span class="si">{</span><span class="n">best_c_val</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stratified-k-fold-cross-validation">
+<h2>Stratified k-Fold Cross Validation<a class="headerlink" href="#stratified-k-fold-cross-validation" title="Permalink to this headline">#</a></h2>
+<p>This is the same concept as <a class="reference external" href="#k-fold-cross-validation">k-Fold</a> but slightly different.  In this approach, rather than using a fixed size of for each set, the sets are broken up based on either a categorical predictor or categorical target (most often).  The idea is to ensure that each set has exactly the same proportion of the selected field in each set.</p>
+<style>
+.center
+{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<a class="center reference internal image-reference" href="../../_images/k-fold-strat.png"><img alt="../../_images/k-fold-strat.png" class="center" src="../../_images/k-fold-strat.png" style="width: 600px; height: 400px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start by looking at the breakdown of our classes</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;False&#39;</span><span class="p">,</span><span class="s1">&#39;True&#39;</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">DIAG</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()),)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">heart_df</span><span class="o">.</span><span class="n">DIAG</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">heart_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we&#39;ll do a stratified k-Fold cross validation</span>
+<span class="c1"># Keep in mind this procedure works best when their are unbalanced classes in the target</span>
+<span class="n">NUMBER_OF_SPLITS</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">best_c_val</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="c1"># The </span>
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">NUMBER_OF_SPLITS</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">MAX_NEIGHBORS</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">c_val</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">skf</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">c_val</span> <span class="o">&gt;</span> <span class="n">best_c_val</span><span class="p">:</span>
+            <span class="n">best_c_val</span> <span class="o">=</span> <span class="n">c_val</span>
+            <span class="n">best_k</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="n">best_model</span> <span class="o">=</span> <span class="n">clf</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best for K (stratified cross_val) = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1"> Score: </span><span class="si">{</span><span class="n">best_c_val</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="find-the-best-combination-of-parameters-gridsearch-a-id-grid-search-a">
+<h1>Find the best combination of parameters - GridSearch <a id='grid-search'></a><a class="headerlink" href="#find-the-best-combination-of-parameters-gridsearch-a-id-grid-search-a" title="Permalink to this headline">#</a></h1>
+<p>So far we have only dealt with a few parameters in our classifier and we used loops to try different values of <code class="docutils literal notranslate"><span class="pre">k</span></code> to determine the best number of neighbors for our model.  When we start to build up pipelines of estimators/classifiers/pre-processing which each have multiple parameters to tweak, if can be very difficult to keep track of combination of paramters that have been tried and which is the best.  The <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> library has us covered.  In these cases we can use a <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search">grid-search</a>.</p>
+<p>A grid-search is used to tune the ‘hyper-parameters’ (that is parameters that are not learnt with estimators).  In other words they are the parameters to the constructor for each classification/estimator function.  A grid search is a cross-validation method whereby different combinations of all the parameters are attempted.  <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV">GridSearchCV</a> will try all the combinations exhaustively, while <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV">RandomizedSearchCV</a> can sample the set of parameter combinations.  Both of these tools have successive halving counterparts which can be a bit quicker at finding the right combination.</p>
+<p>(Before blindly attempting to brute force try all the combinations of different parameters it is best to consult each estimator/transformer to see which parameters have the greatest impact.  sklearn provies a good <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search-tips">best practice</a>) guide which can help <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#alternative-cv">avoid brute force parameter searches</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># These are the parameters that will be used to try and come up with the best model</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="c1"># Try a range of options to figure out the optimal number of features</span>
+        <span class="c1"># Accessing parameters of the pipeline by name takes the following form:</span>
+        <span class="c1">#  pipeline_step_name + &#39;__&#39; + parameter name</span>
+        <span class="s1">&#39;classifier__n_neighbors&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">MAX_NEIGHBORS</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;classifier__weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;feature_selection&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">)],</span>
+        <span class="s1">&#39;PCA__whiten&#39;</span><span class="p">:[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s1">&#39;PCA__svd_solver&#39;</span><span class="p">:[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="s1">&#39;arpack&#39;</span><span class="p">,</span> <span class="s1">&#39;randomized&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="n">clf_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;feature_selection&#39;</span><span class="p">,</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">)),</span>
+                        <span class="p">(</span><span class="s1">&#39;PCA&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">()),</span>
+                    <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">))])</span>
+
+<span class="c1"># Go through an exhaustive search by combining all the variables specified in the</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf_pipe</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Again no need to have holdout data because the algorithm will hold out data for each k-fold pass</span>
+<span class="o">%</span><span class="k">timeit</span> clf.fit(X, y)
+<span class="c1"># Now that we have fit the model, we&#39;ll take the best_estimator according to the GridSearch</span>
+<span class="n">best_estimator</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;classifier&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best Estimator: </span><span class="si">{</span><span class="n">best_estimator</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best parameters for Grid Search: &#39;</span><span class="p">)</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best score for Grid Search = </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="gridsearch-alternatives">
+<h2>GridSearch Alternatives<a class="headerlink" href="#gridsearch-alternatives" title="Permalink to this headline">#</a></h2>
+<p>While <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV">GridSearchCV</a> is the most exhaustive method of finding the best hyperparameters, it is clear that this method can be very resource intensive especially as the number of parameters and options for these parameters increase.  The time to execute become exponential.</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV">RandomizedSearchCV</a> implements a randomized search of the supplied parameters. This allows for a specific budget of parameters to be chosen independent of the range of parameters provided and also adding additional parameters doesn’t add to the performance or impact efficiency (because the budget is already set).</p>
+<p>Scikit-learn also provides the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.HalvingGridSearchCV.html#sklearn.model_selection.HalvingGridSearchCV">HalvingGridSearchCV</a> and <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.HalvingRandomSearchCV.html#sklearn.model_selection.HalvingRandomSearchCV">HalvingRandomSearchCV</a> estimators that can be used to search a parameter space using successive halving <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#id3">[1]</a> <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#id4">[2]</a></p>
+<p>From sklearn docs:</p>
+<blockquote>
+<div><p>Successive halving (SH) is like a tournament among candidate parameter combinations. SH is an iterative selection process where all candidates (the parameter combinations) are evaluated with a small amount of resources at the first iteration. Only some of these candidates are selected for the next iteration, which will be allocated more resources. For parameter tuning, the resource is typically the number of training samples, but it can also be an arbitrary numeric parameter such as n_estimators in a random forest.</p>
+</div></blockquote>
+<p>NOTE: Currently the Halving* versions are in an experimental version of the library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+<span class="c1"># Same analysis as above but with RandomizedSearchCV</span>
+<span class="c1"># These are the parameters that will be used to try and come up with the best model</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="c1"># Try a range of options to figure out the optimal number of features</span>
+        <span class="c1"># Accessing parameters of the pipeline by name takes the following form:</span>
+        <span class="c1">#  pipeline_step_name + &#39;__&#39; + parameter name</span>
+        <span class="s1">&#39;classifier__n_neighbors&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">MAX_NEIGHBORS</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;classifier__weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;feature_selection&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">)],</span>
+        <span class="s1">&#39;PCA__whiten&#39;</span><span class="p">:[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s1">&#39;PCA__svd_solver&#39;</span><span class="p">:[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="s1">&#39;arpack&#39;</span><span class="p">,</span> <span class="s1">&#39;randomized&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="n">clf_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;feature_selection&#39;</span><span class="p">,</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">)),</span>
+                        <span class="p">(</span><span class="s1">&#39;PCA&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">()),</span>
+                    <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">))])</span>
+
+<span class="c1"># Go through an exhaustive search by combining all the variables specified in the</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">clf_pipe</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">param_distributions</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Again no need to have holdout data because the algorithm will hold out data for each k-fold pass</span>
+<span class="o">%</span><span class="k">timeit</span> clf.fit(X, y)
+<span class="c1"># Now that we have fit the model, we&#39;ll take the best_estimator according to the GridSearch</span>
+<span class="n">best_estimator</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;classifier&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best Estimator: </span><span class="si">{</span><span class="n">best_estimator</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best parameters for RandomizedGrid Search: &#39;</span><span class="p">)</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best score for RandomizedGrid Search = </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align='center'/>
+<p><a class="reference internal" href="00-Introduction.html"><span class="doc std std-doc">Back to TOC</span></a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/extras"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
