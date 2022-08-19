@@ -16,7 +16,9 @@ print('Welcome to Jupyter.  You have successfully run a code cell.')
 
 
 # If you have done this correctly, you will see the results of running the cell immediately below the cell like such.
-# ![image.png](../img/jupyter_welcome.png)
+# ````{image} ../img/jupyter_welcome.png
+# 
+# ````
 
 # The number on the left side of the cell just tells us the order in which the cell was run, so yours maybe different than the picture.
 # 
@@ -625,7 +627,3 @@ print('The number of days in Jan and Feburary together is:'...)
 # This is a good start and a very basic introduction to types in Python, there are many, many more things that can be done with built-in functions to manipulate strings, numbers, dates and lists.  In order to do anything interesting (more complex algorithms) our code needs to be able to make decisions and execute different actions based on conditions - often many times over.  In the next notebook we'll look at how to get Python to make decisions and act on the results. 
 # 
 # Feel free to play around here by adding cells and experimenting with different language elements.  When you are ready to move on, head over to the next section.
-# 
-# 
-# 
-# 
