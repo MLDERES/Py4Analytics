@@ -14,31 +14,36 @@ parts:
         - file: book/lessons/10-Introduction
         - file: book/lessons/20-Flow_Control
         - file: book/lessons/30-Functions
-      - file: book/lessons/TryIt_13
+      - file: book/lessons/TryIt_Part1
         sections:
         - file: book/exercises/10-Introduction-ex
-        - file: book/exercises/20-Flow_Control-ex
         - file: book/exercises/30-Functions-ex
   - caption: Part 2
     maxdepth: 2
     chapters:
-    - file: book/lessons/35-PartTwo.md
-    - file: book/lessons/40-Object_Orientation
-    - file: book/exercises/40-Object_Orientation-ex
-    - file: book/lessons/50-Data_Manipulation
-    - file: book/exercises/50-Data_Manipulation-ex
-    - file: book/lessons/60-Web_Data
-    - file: book/exercises/60-Web_Data-ex
-    - file: book/lessons/70-Getting_Web_Data
-    - file: book/exercises/70-Getting_Web_Data-ex
-    - file: book/lessons/80-Database_Connections
-    - file: book/exercises/80-Database_Connections-ex
+    - file: book/lessons/35-PartTwo
+      sections:
+      - file: book/lessons/40-Object_Orientation
+      - file: book/lessons/50-Data_Manipulation
+      - file: book/lessons/60-Web_Data
+      - file: book/lessons/70-Getting_Web_Data
+      - file: book/lessons/80-Database_Connections
+    - file: book/lessons/TryIt_Part2
+      sections:
+      - file: book/exercises/40-Object_Orientation-ex
+      - file: book/exercises/50-Data_Manipulation-ex
+      - file: book/exercises/60-Web_Data-ex
+      - file: book/exercises/70-Getting_Web_Data-ex
+      - file: book/exercises/80-Database_Connections-ex
   - caption: Part 3
     maxdepth: 2
     chapters:
     - file: book/lessons/85-PartThree
-    - file: book/lessons/90-Data_Visualization
-    - file: book/exercises/90-Data_Visualization-ex
+      sections:
+      - file: book/lessons/90-Data_Visualization
+    - file: book/lessons/TryIt_Part3
+      sections:
+      - file: book/exercises/90-Data_Visualization-ex
   - caption: Appendix
     maxdepth: 2
     chapters:

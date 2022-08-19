@@ -203,7 +203,5 @@ def add_subtract(x, y, add=True):
     '''
 
 
-# # Conclusion
-# You've learned quite a bit in this set of exercises and probably already knew some it.  Next, try out the [Coding Challenges](coding_challenges.ipynb) to put your skills to the test.
-# 
-# [prev (Flow Control)](2-Flow_Control.ipynb)   |   [next (Your Turn)](4-YourTurn.ipynb)   |   [index](toc.ipynb)
+# ## Conclusion
+# You've learned quite a bit in this set of exercises and probably already knew some it.  Next, put your skills to the test in the [Exercises](TryIt_Part1.md).
