@@ -7,3 +7,8 @@ build:
 
 publish: build
 	ghp-import -n -p -f /workspaces/py4analytics/_build/html
+
+clean:
+	rm -rf /workspaces/py4analytics/_build
+
+rebuild: clean build

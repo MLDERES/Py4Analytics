@@ -42,3 +42,5 @@ exclude_patterns: [book/data/*, book/src/*, book/extras/*, README.md]
 parse:
   myst_enable_extensions:
   - html_image
+
+only_build_toc_files: true

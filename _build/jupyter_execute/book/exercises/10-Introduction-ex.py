@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## Try it: Getting Started with Python
+# # Try it: Getting Started with Python
 # 
 # Now it's your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.
 # In this notebook, we'll look at:
@@ -12,7 +12,7 @@
 # - dealing with strings
 # 
 
-# ### Hello World
+# ## Hello World
 # 
 # One of the first things all programmers learn to do is to write Hello World!  It's a time honored tradition, so let's start there.  In the next cell, set the value of the name variable and run the cell.
 
@@ -24,7 +24,7 @@ my_name = ...
 print(f'Hello World!  My name is {my_name}')
 
 
-# #### Hello, user
+# ### Hello, user
 # Hello world is a great start, but what if we want this to work for everyone without changing our code.  Well we can use a built-in Python function called ```input()``` which will ask the user for some text.  The result of this function is a string.  Run the next cell to see how this works.
 
 # In[ ]:
@@ -281,8 +281,10 @@ print(words)
 # - removing punctuation 
 # - what to do in the case where the word isn't already in our dictionary
 # 
-# **HINT**: Remember the ```rstrip``` string function?  This function can take a list of characters to remove (by default it only strips off spaces)
+# ```{admonition} HINT
+# Remember the ```rstrip``` string function?  This function can take a list of characters to remove (by default it only strips off spaces)
 # maybe it would be helpful to use this function to take off periods, commas and question marks?
+# ````
 
 # In[ ]:
 

@@ -7,6 +7,7 @@ defaults:
   titlesonly: True
 parts:
   - caption: Part 1 - Python Basics
+    maxdepth: 2
     chapters:
       - file: book/lessons/05-PartOne.md
         sections:
@@ -19,6 +20,7 @@ parts:
         - file: book/exercises/20-Flow_Control-ex
         - file: book/exercises/30-Functions-ex
   - caption: Part 2
+    maxdepth: 2
     chapters:
     - file: book/lessons/35-PartTwo.md
     - file: book/lessons/40-Object_Orientation
@@ -32,11 +34,13 @@ parts:
     - file: book/lessons/80-Database_Connections
     - file: book/exercises/80-Database_Connections-ex
   - caption: Part 3
+    maxdepth: 2
     chapters:
     - file: book/lessons/85-PartThree
     - file: book/lessons/90-Data_Visualization
     - file: book/exercises/90-Data_Visualization-ex
   - caption: Appendix
+    maxdepth: 2
     chapters:
     - file: book/exercises/Coding_Challenges
     
