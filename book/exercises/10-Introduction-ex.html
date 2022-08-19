@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Flow Control" href="../lessons/20-Flow_Control.html" />
-    <link rel="prev" title="Welcome to Jupyter Notebooks" href="../lessons/10-Introduction.html" />
+    <link rel="next" title="Try it: Flow Control" href="20-Flow_Control-ex.html" />
+    <link rel="prev" title="Exercises" href="../lessons/TryIt_13.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,35 +119,59 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/05-PartOne.html">
    Part 1 - Basic Python
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/10-Introduction.html">
+     Welcome to Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/20-Flow_Control.html">
+     Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/30-Functions.html">
+     Reusing Code
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../lessons/10-Introduction.html">
-   Welcome to Jupyter Notebooks
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lessons/TryIt_13.html">
+   Exercises
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../lessons/20-Flow_Control.html">
-   Flow Control
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-Flow_Control-ex.html">
-   Try it: Flow Control
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../lessons/30-Functions.html">
-   Reusing Code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="30-Functions-ex.html">
-   Try it: Functions
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Try it: Getting Started with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="20-Flow_Control-ex.html">
+     Try it: Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="30-Functions-ex.html">
+     Try it: Functions
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -483,25 +507,27 @@ title="Print to PDF"
       <a class="reference internal nav-link" href="#hello-user">
        Hello, user
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#dealing-with-time">
+         Dealing with time
+        </a>
+       </li>
+      </ul>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dealing-with-time">
-       Dealing with time
+      <a class="reference internal nav-link" href="#creating-a-function">
+       Creating a function
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-function">
-     Creating a function
+    <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
+     Count the number of occurrences of a word
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
-   Count the number of occurrences of a word
-  </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
@@ -541,25 +567,27 @@ title="Print to PDF"
       <a class="reference internal nav-link" href="#hello-user">
        Hello, user
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#dealing-with-time">
+         Dealing with time
+        </a>
+       </li>
+      </ul>
      </li>
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dealing-with-time">
-       Dealing with time
+      <a class="reference internal nav-link" href="#creating-a-function">
+       Creating a function
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-function">
-     Creating a function
+    <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
+     Count the number of occurrences of a word
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
-   Count the number of occurrences of a word
-  </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
@@ -576,7 +604,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="try-it-getting-started-with-python">
+  <section class="tex2jax_ignore mathjax_ignore" id="try-it-getting-started-with-python">
 <h1>Try it: Getting Started with Python<a class="headerlink" href="#try-it-getting-started-with-python" title="Permalink to this headline">#</a></h1>
 <p>Now it’s your turn to try out some of the techiques identified in the first few notebooks.  For each example, take a look first at the question.  Try to work out the logic in plain language first, then work out the coding logic afterward.  The outcome is described after each of the steps.
 In this notebook, we’ll look at:</p>
@@ -628,9 +656,8 @@ In this notebook, we’ll look at:</p>
 </div>
 </div>
 </div>
-</section>
 <section id="dealing-with-time">
-<h3>Dealing with time<a class="headerlink" href="#dealing-with-time" title="Permalink to this headline">#</a></h3>
+<h4>Dealing with time<a class="headerlink" href="#dealing-with-time" title="Permalink to this headline">#</a></h4>
 <p>Our greeting is plesant, but we can do better.  We should have a greeting that takes into account the time of day.  The first few lines determine the hour of the day (where 0 is midnight and 23 is 11pm).  Using an <code class="docutils literal notranslate"><span class="pre">if/else</span></code> construct, greet the user appropriately for the time of day (morning, afternoon, evening).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -660,7 +687,7 @@ In this notebook, we’ll look at:</p>
 </section>
 </section>
 <section id="creating-a-function">
-<h2>Creating a function<a class="headerlink" href="#creating-a-function" title="Permalink to this headline">#</a></h2>
+<h3>Creating a function<a class="headerlink" href="#creating-a-function" title="Permalink to this headline">#</a></h3>
 <p>That was fun, right?  But every time we want to use this code, we have to type it over and over again.  Or if we want to share it with someone else we have to tell them to change <code class="docutils literal notranslate"><span class="pre">my_name</span></code> to their own name.  Let’s take this one step further and create a reusable function.</p>
 <p>As you will remember, a function is a set of instructions that are combined together and can be referred to with a single name.  We assign variables to the function when we “call” the function.  So for instance, if we have a function called <code class="docutils literal notranslate"><span class="pre">sum</span></code> it takes two variables.  The value of these variables are defined outside the function, and when we call the function the values of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are replaced with the values we provide.  This allows us to something complex with these values and they can change each time.</p>
 <div class="cell docutils container">
@@ -761,7 +788,7 @@ In this notebook, we’ll look at:</p>
 </section>
 </section>
 <section id="count-the-number-of-occurrences-of-a-word">
-<h1>Count the number of occurrences of a word<a class="headerlink" href="#count-the-number-of-occurrences-of-a-word" title="Permalink to this headline">#</a></h1>
+<h2>Count the number of occurrences of a word<a class="headerlink" href="#count-the-number-of-occurrences-of-a-word" title="Permalink to this headline">#</a></h2>
 <p>Now well try something a little tricker.  This one requires the use of a couple of built in functions. And also the understanding classes and objects.</p>
 <p>A class is a template or definition of a datatype.  We have already dealt with a couple of datatypes - strings, integers and lists.  string, int and list are all classes.  Classes have properties and functions as member items that we can get to using the <code class="docutils literal notranslate"><span class="pre">.</span></code> syntax.  In other words, if I want to change the case of a string, I can call any string’s <code class="docutils literal notranslate"><span class="pre">lower()</span></code> member function.  Like.  Feel free to copy this code into a new cell and try it!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="s1">&#39;Some String&#39;</span> <span class="c1"># my_variable is a variable of the type/class string</span>
@@ -844,8 +871,11 @@ Set the count to 1 (this is the first time we’ve seen the word)</p>
 <li><p>removing punctuation</p></li>
 <li><p>what to do in the case where the word isn’t already in our dictionary</p></li>
 </ul>
-<p><strong>HINT</strong>: Remember the <code class="docutils literal notranslate"><span class="pre">rstrip</span></code> string function?  This function can take a list of characters to remove (by default it only strips off spaces)
+<div class="admonition-hint admonition">
+<p class="admonition-title">HINT</p>
+<p>Remember the <code class="docutils literal notranslate"><span class="pre">rstrip</span></code> string function?  This function can take a list of characters to remove (by default it only strips off spaces)
 maybe it would be helpful to use this function to take off periods, commas and question marks?</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the empty dictionary</span>
@@ -935,6 +965,7 @@ maybe it would be helpful to use this function to take off periods, commas and q
 </div>
 </div>
 </section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
 <p>Now that you’ve had some practice you can head back to the index and try to find some other resources.  Or you can move on to the <a class="reference internal" href="Coding_Challenges.html"><span class="doc std std-doc">Coding Challenges</span></a> to put your skills to the test.</p>
@@ -967,17 +998,17 @@ maybe it would be helpful to use this function to take off periods, commas and q
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../lessons/10-Introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../lessons/TryIt_13.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to Jupyter Notebooks</p>
+            <p class="prev-next-title">Exercises</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../lessons/20-Flow_Control.html" title="next page">
+    <a class='right-next' id="next-link" href="20-Flow_Control-ex.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Flow Control</p>
+        <p class="prev-next-title">Try it: Flow Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
