@@ -372,8 +372,3 @@ print(f'Sample 3.  Expected: 19.  Your result: {word_counter(sample_string_3,"th
 print(f'Sample 3.  Expected: 42.  Your result: {word_counter(sample_string_4,"the")}')
 print(f'Sample 3 (searching for feel).  Expected: 5.  Your result: {word_counter(sample_string_4,"feel")}')
 
-
-# # Conclusion
-# 
-# Now that you've had some practice you can head back to the index and try to find some other resources.  Or you can move on to the [Coding Challenges](../exercises/Coding_Challenges.ipynb) to put your skills to the test.
-# 
