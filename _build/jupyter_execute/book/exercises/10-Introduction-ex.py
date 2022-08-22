@@ -192,7 +192,7 @@ print(f'{computer_greeting}')
 # 
 # A class is a template or definition of a datatype.  We have already dealt with a couple of datatypes - strings, integers and lists.  string, int and list are all classes.  Classes have properties and functions as member items that we can get to using the ```.``` syntax.  In other words, if I want to change the case of a string, I can call any string's ```lower()``` member function.  Like.  Feel free to copy this code into a new cell and try it!
 # 
-# ```
+# ```python
 # my_variable = 'Some String' # my_variable is a variable of the type/class string
 # my_variable.lower() # this says return me the same string but in lowercase.
 # ```
@@ -281,10 +281,10 @@ print(words)
 # - removing punctuation 
 # - what to do in the case where the word isn't already in our dictionary
 # 
-# ```{admonition} HINT
+# ```{hint}
 # Remember the ```rstrip``` string function?  This function can take a list of characters to remove (by default it only strips off spaces)
 # maybe it would be helpful to use this function to take off periods, commas and question marks?
-# ````
+# ```
 
 # In[ ]:
 

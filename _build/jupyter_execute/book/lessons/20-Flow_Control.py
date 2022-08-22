@@ -266,7 +266,7 @@ print(f"My number was: {our_random}")
 
 # ### Conditions in other languages
 # `if` statements are incredibly valuable and are seen nearly everywhere in all different kinds of applications.  Every language uses `if` statements, it is just the syntax that changes.  For instance, you have likely seen in Excel something like 
-# ```vba
+# ```
 # =IF(A1 < B1, "Yes", "No")
 # ```
 # In this simple example, we are testing if the value in cell A1 is less than the value in B1 and if so, place _Yes_ in the current cell, otherwise fill the cell with _No_.
