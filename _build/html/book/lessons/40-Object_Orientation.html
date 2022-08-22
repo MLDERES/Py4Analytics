@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    Python For Analytics
                 </a>
             </li>
         </ul>
@@ -379,7 +379,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/py4analytics&urlpath=tree/py4analytics/book/lessons/40-Object_Orientation.ipynb&branch=main"
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/py4analytics&urlpath=tree/py4analytics/book/lessons/40-Object_Orientation.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -393,6 +393,24 @@ title="Launch on JupyterHub"
   </span>
 <span class="headerbtn__text-container">JupyterHub</span>
 </a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
 
       </li>
       
@@ -537,8 +555,8 @@ title="Print to PDF"
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "mlderes/py4analytics",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
