@@ -36,8 +36,8 @@ launch_buttons:
   thebe: true
   binderhub_url: https://mybinder.org
   notebook_interface: classic
-  jupyterhub_url: https://waltonhub.com
-  #jupyterhub_url: https://isys5103-uark.msappproxy.net/
+  #jupyterhub_url: https://waltonhub.com
+  jupyterhub_url: https://isys5103-uark.msappproxy.net/
 
 exclude_patterns: [book/data/*, book/src/*, book/extras/*, README.md]
 
