@@ -29,7 +29,8 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-				"ExecutableBookProject.myst-highlight"
+				"ExecutableBookProject.myst-highlight",
+				"github.vscode-pull-request-github"
 			]
 		}
 	},
