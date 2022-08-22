@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Part 2 - Intermediate Concepts &#8212; Python 4 Analytics</title>
+    <title>Welcome to Jupyter Notebooks &#8212; Python 4 Analytics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Namespace, Objective Orientation and Packaging" href="40-Object_Orientation.html" />
-    <link rel="prev" title="Try it: Functions" href="../exercises/30-Functions-ex.html" />
+    <link rel="next" title="Part 1 - Basic Python" href="05-PartOne.html" />
+    <link rel="prev" title="Python For Analytics" href="../../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,9 +118,9 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Started
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-JupyterNotebooks.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Welcome to Jupyter Notebooks
   </a>
  </li>
@@ -186,12 +186,12 @@ const thebe_selector_output = ".output, .cell_output"
   Part 2 - Working with Data
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="35-PartTwo.html">
    Part 2 - Intermediate Concepts
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
@@ -365,6 +365,71 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/py4analytics/main?urlpath=tree/book/lessons/01-JupyterNotebooks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://waltonhub.com/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/py4analytics&urlpath=tree/py4analytics/book/lessons/01-JupyterNotebooks.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -404,7 +469,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/py4analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/35-PartTwo.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/py4analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/01-JupyterNotebooks.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -432,7 +497,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/lessons/35-PartTwo.md"
+        <a href="../../_sources/book/lessons/01-JupyterNotebooks.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -443,7 +508,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -469,23 +534,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-case-something-goes-wrong">
+   In case something goes wrong
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Part 2 - Intermediate Concepts</h1>
+                <h1>Welcome to Jupyter Notebooks</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-case-something-goes-wrong">
+   In case something goes wrong
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -493,10 +595,38 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="part-2-intermediate-concepts">
-<h1>Part 2 - Intermediate Concepts<a class="headerlink" href="#part-2-intermediate-concepts" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-jupyter-notebooks">
+<h1>Welcome to Jupyter Notebooks<a class="headerlink" href="#welcome-to-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
+<p>Notebooks are a handy way to combine code with text/explanations.  What’s more, we can use notebooks to break up a program or analysis into several parts, running just one piece of code at a time.  For our purposes what this will do is allow us to look at a topic, execute some sample code to see how it works and then try writing something similar all in the same environment.</p>
+<p>So for a quick background.  Notebooks are broken up into ‘cells’.  Each cell can be interpretted by the browser in many different ways, but for our purposes each cell is either a documentation (Markdown) cell or a code (Python) cell.  Each cell is ‘run’ or ‘executed’ by either pressing a key combination or selecting one of the buttons at the top of the page.  For instance to run a cell, select the cell by clicking you mouse on in the box, then press CTRL+Enter.<br />
+<br>
+Try that with the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Welcome to Jupyter.  You have successfully run a code cell.&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+</div>
+<p>If you have done this correctly, you will see the results of running the cell immediately below the cell like such.</p>
+<img alt="../../_images/jupyter_welcome.png" src="../../_images/jupyter_welcome.png" />
+<p>The number on the left side of the cell just tells us the order in which the cell was run, so yours maybe different than the picture.</p>
+<p>You can also run the cell by using the ‘Cell’ menu item at the top of screen.  This is useful if you want to run a series of cells, such as the entire notebook at once or all the cells up to a certain point.  For instance, say you are working your way through this notebook at get pulled away and decide to come back later.  You can scroll the browser down to the cell where you left off and simply select Cell-&gt; Run All Above and this will ensure that all the prior cells are run before picking up where you left off.</p>
+<p><img alt="image.png" src="../../_images/jupyter_run.png" /></p>
+<section id="in-case-something-goes-wrong">
+<h2>In case something goes wrong<a class="headerlink" href="#in-case-something-goes-wrong" title="Permalink to this headline">#</a></h2>
+<p>Occassionally, this page will lose connection to the server or show an error message. You can simply refresh your webpage and most times the page will ask you if you want to restart the server.  Press yes.</p>
+<p>In case things don’t seem to be moving/running in your code, you can interrupt and restart your kernel.</p>
+<p>Now, run the next cell.  This cell just makes sure that you see all the results of running the cells that follow in the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -526,17 +656,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../exercises/30-Functions-ex.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Try it: Functions</p>
+            <p class="prev-next-title">Python For Analytics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="40-Object_Orientation.html" title="next page">
+    <a class='right-next' id="next-link" href="05-PartOne.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Namespace, Objective Orientation and Packaging</p>
+        <p class="prev-next-title">Part 1 - Basic Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
