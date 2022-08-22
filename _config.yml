@@ -34,7 +34,7 @@ html:
 
 launch_buttons:
   notebook_interface: classic
-  jupyterhub_url: https://waltonhub.com
+  jupyterhub_url: https://isys5103-uark.msappproxy.net/
 
 exclude_patterns: [book/data/*, book/src/*, book/extras/*, README.md]
 
