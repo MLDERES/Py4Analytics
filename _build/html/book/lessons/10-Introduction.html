@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to Jupyter Notebooks &#8212; Python 4 Analytics</title>
+    <title>Learning to program &#8212; Python 4 Analytics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -115,6 +115,18 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-JupyterNotebooks.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Part 1 - Python Basics
  </span>
 </p>
@@ -131,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Welcome to Jupyter Notebooks
+     Learning to program
     </a>
    </li>
    <li class="toctree-l2">
@@ -171,7 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 2
+  Part 2 - Working with Data
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -546,30 +558,18 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Welcome to Jupyter Notebooks
+   Learning to program
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-case-something-goes-wrong">
-     In case something goes wrong
+    <a class="reference internal nav-link" href="#algorithms">
+     Algorithms
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#before-we-begin">
-     Before we begin
+    <a class="reference internal nav-link" href="#syntax">
+     Syntax
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#algorithms">
-       Algorithms
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#syntax">
-       Syntax
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -693,7 +693,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to Jupyter Notebooks</h1>
+                <h1>Learning to program</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -705,30 +705,18 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Welcome to Jupyter Notebooks
+   Learning to program
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-case-something-goes-wrong">
-     In case something goes wrong
+    <a class="reference internal nav-link" href="#algorithms">
+     Algorithms
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#before-we-begin">
-     Before we begin
+    <a class="reference internal nav-link" href="#syntax">
+     Syntax
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#algorithms">
-       Algorithms
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#syntax">
-       Syntax
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -853,54 +841,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-jupyter-notebooks">
-<h1>Welcome to Jupyter Notebooks<a class="headerlink" href="#welcome-to-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
-<p>Notebooks are a handy way to combine code with text/explanations.  What’s more, we can use notebooks to break up a program or analysis into several parts, running just one piece of code at a time.  For our purposes what this will do is allow us to look at a topic, execute some sample code to see how it works and then try writing something similar all in the same environment.</p>
-<p>So for a quick background.  Notebooks are broken up into ‘cells’.  Each cell can be interpretted by the browser in many different ways, but for our purposes each cell is either a documentation (Markdown) cell or a code (Python) cell.  Each cell is ‘run’ or ‘executed’ by either pressing a key combination or selecting one of the buttons at the top of the page.  For instance to run a cell, select the cell by clicking you mouse on in the box, then press CTRL+Enter.<br />
-<br>
-Try that with the cell below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Welcome to Jupyter.  You have successfully run a code cell.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you have done this correctly, you will see the results of running the cell immediately below the cell like such.</p>
-<img alt="../../_images/jupyter_welcome.png" src="../../_images/jupyter_welcome.png" />
-<p>The number on the left side of the cell just tells us the order in which the cell was run, so yours maybe different than the picture.</p>
-<p>You can also run the cell by using the ‘Cell’ menu item at the top of screen.  This is useful if you want to run a series of cells, such as the entire notebook at once or all the cells up to a certain point.  For instance, say you are working your way through this notebook at get pulled away and decide to come back later.  You can scroll the browser down to the cell where you left off and simply select Cell-&gt; Run All Above and this will ensure that all the prior cells are run before picking up where you left off.</p>
-<p><img alt="image.png" src="../../_images/jupyter_run.png" /></p>
-<section id="in-case-something-goes-wrong">
-<h2>In case something goes wrong<a class="headerlink" href="#in-case-something-goes-wrong" title="Permalink to this headline">#</a></h2>
-<p>Occassionally, this page will lose connection to the server or show an error message. You can simply refresh your webpage and most times the page will ask you if you want to restart the server.  Press yes.</p>
-<p>In case things don’t seem to be moving/running in your code, you can interrupt and restart your kernel.</p>
-<p>Now, run the next cell.  This cell just makes sure that you see all the results of running the cells that follow in the notebook.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
-<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="before-we-begin">
-<h2>Before we begin<a class="headerlink" href="#before-we-begin" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="learning-to-program">
+<h1>Learning to program<a class="headerlink" href="#learning-to-program" title="Permalink to this headline">#</a></h1>
 <p>There are two primary challenges for people to learn to code:</p>
 <ol class="simple">
 <li><p>Thinking like a computer (we call this the algorithms)</p></li>
 <li><p>Understanding the words and symbols to use to tell the computer how to run the steps of the algorithm (syntax)</p></li>
 </ol>
 <section id="algorithms">
-<h3>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">#</a></h3>
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">#</a></h2>
 <p>Algorithms are simply a set of steps required to complete a task.  We use algorithms all the time - for instance, the steps used to make a peanut butter and jelly sandwich or something very complex such as framing a house.  Algorithms have a few different kinds of steps - for instance, we have steps for PREPARING, TASK EXECUTION, DECISION MAKING and REPEATING instructions.  Each of the steps can be general steps - like grabbing peanut butter from the cabinet or taking an action on a particular item such as OPEN the peanut butter jar.  Learning to think in this way is one of the first challenges for people learning to code.</p>
 </section>
 <section id="syntax">
-<h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h3>
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h2>
 <p>In order to make a computer complete the tasks that we desire, we need to talk in a language that can be understood by the computer.  This is called language syntax.  There are many different languages/syntaxes that humans can use to tell the computer what to do.  Python is the language we’ll use because it reads alot like english and can become more intuitive with a few less symbols than other languages.</p>
 <p>Often times, new learners, once they have successfully identified the algorithm that completes the task at hand, converting this algorithm to words, phrases and symbols that the computer understands is the second challenge.  These notebooks are focused on Python syntax, but students should constantly be on the lookout for the algorithms as well.  The algorithms used here are small/simple tasks - but they are often building blocks for more complex algorithms.</p>
-</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="let-s-talk-python">
@@ -914,6 +869,11 @@ Try that with the cell below.</p>
 </pre></div>
 </div>
 <p>You will see comments sprinkled in among the examples, these don’t need to be typed to make your code work, but it’s a good idea to get in the habit early on so that you have good practice</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can always open these interactive notebooks in JupyterHub to run them, make changes and generally experiment.  For help with this see the <a class="reference internal" href="01-JupyterNotebooks.html"><span class="doc std std-doc">Welcome To Jupyter</span></a> page</p>
+<p>jjjj</p>
+</div>
 <section id="strings-numbers-and-lists">
 <h2>Strings, numbers, and lists<a class="headerlink" href="#strings-numbers-and-lists" title="Permalink to this headline">#</a></h2>
 <p>All programming languages can deal with many different kinds of datatypes.  The most common ones are boolean (<code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>), numbers, strings, and collections of items.  Numbers are represented just by typing them out with no special characters.  Strings are characters that are surrounded by either <code class="docutils literal notranslate"><span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> as we will see a bit later.  Boolean values can only either be <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> and are incredibly valuable as we’ll see in a bit.</p>

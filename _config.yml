@@ -44,5 +44,10 @@ exclude_patterns: [book/data/*, book/src/*, book/extras/*, README.md]
 parse:
   myst_enable_extensions:
   - html_image
+  - colon_fence
+  myst_ref_domains:
+  - std
+  - py
+  - ipynb
 
 only_build_toc_files: true
