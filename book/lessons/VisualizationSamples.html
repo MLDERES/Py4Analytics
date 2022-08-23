@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Part 3 - Data Analytics</title>
+    <title>Visualization Samples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exploratory Data Analysis" href="90-Data_Visualization.html" />
-    <link rel="prev" title="Try-it: Connecting to a Database" href="../exercises/80-Database_Connections-ex.html" />
+    <link rel="next" title="Exercises" href="TryIt_Part3.html" />
+    <link rel="prev" title="Neural Networks" href="360-NeuralNetworks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -220,6 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
      Connecting to SQL
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="90-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -257,6 +262,11 @@ const thebe_selector_output = ".output, .cell_output"
      Try-it: Connecting to a Database
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/90-Data_Visualization-ex.html">
+     Try it: Data Visualization
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -267,18 +277,85 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Part 3 - Data Analytics
+  <a class="reference internal" href="300-PartThree.html">
+   Part 3 - Using Python for Machine Learning
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="90-Data_Visualization.html">
+    <a class="reference internal" href="310-ExploratoryDataAnalysis.html">
      Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="311-OtherToolsForEDA.html">
+     Other tools for Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="312-VisualizationSamples.html">
+     Visualization Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="320-DataPreparation.html">
+     Data Preparation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="330-Classification.html">
+     Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="335-ClassificationSolutions.html">
+     Automobile Accidents
+     <a id="auto-accidents">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="340-EstimationPrediction.html">
+     Prediction and Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="341-AdvancedTechniques.html">
+     Advanced Techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="342-Pipelines.html">
+     Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="343-Ensembling.html">
+     Ensembling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="345-EstimationPredictionExample.html">
+     Predicting the price of used cars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="350-Unsupervised.html">
+     Unsupervised Data Mining
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="360-NeuralNetworks.html">
+     Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Visualization Samples
     </a>
    </li>
   </ul>
@@ -294,8 +371,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/90-Data_Visualization-ex.html">
-     Try it: Data Visualization
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+     Try It: Exploratory Data Analysis
     </a>
    </li>
   </ul>
@@ -363,6 +440,71 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=tree/book/lessons/VisualizationSamples.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=tree/Py4Analytics/book/lessons/VisualizationSamples.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -402,7 +544,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/85-PartThree.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/VisualizationSamples.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -430,7 +572,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/lessons/85-PartThree.md"
+        <a href="../../_sources/book/lessons/VisualizationSamples.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -441,7 +583,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -479,7 +621,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Part 3 - Data Analytics</h1>
+                <h1>Visualization Samples</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -491,10 +633,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="part-3-data-analytics">
-<h1>Part 3 - Data Analytics<a class="headerlink" href="#part-3-data-analytics" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualization-samples">
+<h1>Visualization Samples<a class="headerlink" href="#visualization-samples" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -524,17 +664,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../exercises/80-Database_Connections-ex.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="360-NeuralNetworks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Try-it: Connecting to a Database</p>
+            <p class="prev-next-title">Neural Networks</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="90-Data_Visualization.html" title="next page">
+    <a class='right-next' id="next-link" href="TryIt_Part3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exploratory Data Analysis</p>
+        <p class="prev-next-title">Exercises</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

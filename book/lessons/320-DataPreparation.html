@@ -1,0 +1,1467 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Preparation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Classification" href="330-Classification.html" />
+    <link rel="prev" title="Visualization Examples" href="312-VisualizationSamples.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Python For Analytics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-JupyterNotebooks.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 - Python Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05-PartOne.html">
+   Part 1 - Basic Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10-Introduction.html">
+     Learning to program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="20-Flow_Control.html">
+     Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="30-Functions.html">
+     Reusing Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="TryIt_Part1.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/10-Introduction-ex.html">
+     Try it: Getting Started with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/30-Functions-ex.html">
+     Try it: Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Working with Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="35-PartTwo.html">
+   Part 2 - Intermediate Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="40-Object_Orientation.html">
+     Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="50-Data_Manipulation.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="60-Web_Data.html">
+     Getting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="70-Getting_Web_Data.html">
+     Gather data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="80-Database_Connections.html">
+     Connecting to SQL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="90-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="TryIt_Part2.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/40-Object_Orientation-ex.html">
+     Try it: Objects, Namespaces and Packages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/50-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/60-Web_Data-ex.html">
+     Try it: Working with common data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/70-Getting_Web_Data-ex.html">
+     Try it: Getting data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/80-Database_Connections-ex.html">
+     Try-it: Connecting to a Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/90-Data_Visualization-ex.html">
+     Try it: Data Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="300-PartThree.html">
+   Part 3 - Using Python for Machine Learning
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="310-ExploratoryDataAnalysis.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="311-OtherToolsForEDA.html">
+     Other tools for Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="312-VisualizationSamples.html">
+     Visualization Examples
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Preparation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="330-Classification.html">
+     Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="335-ClassificationSolutions.html">
+     Automobile Accidents
+     <a id="auto-accidents">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="340-EstimationPrediction.html">
+     Prediction and Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="341-AdvancedTechniques.html">
+     Advanced Techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="342-Pipelines.html">
+     Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="343-Ensembling.html">
+     Ensembling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="345-EstimationPredictionExample.html">
+     Predicting the price of used cars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="350-Unsupervised.html">
+     Unsupervised Data Mining
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="360-NeuralNetworks.html">
+     Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="VisualizationSamples.html">
+     Visualization Samples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="TryIt_Part3.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+     Try It: Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=tree/book/lessons/320-DataPreparation.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=tree/Py4Analytics/book/lessons/320-DataPreparation.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/320-DataPreparation.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/lessons/320-DataPreparation.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   Data Cleaning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-data">
+     Missing data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fixing-inappropriate-values">
+     Fixing inappropriate values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fixing-inappropriate-values-your-turn">
+     Fixing inappropriate values - Your turn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature Engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalization-standardization">
+     Normalization &amp; Standardization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discretizing-binning">
+     Discretizing / Binning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dealing-with-categorical-variables">
+   Dealing with categorical variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-data-preparation">
+   Advanced data preparation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-feature-engineering-approaches">
+     Other Feature Engineering Approaches
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection">
+   Feature Selection
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Preparation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   Data Cleaning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-data">
+     Missing data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fixing-inappropriate-values">
+     Fixing inappropriate values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fixing-inappropriate-values-your-turn">
+     Fixing inappropriate values - Your turn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature Engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalization-standardization">
+     Normalization &amp; Standardization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discretizing-binning">
+     Discretizing / Binning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dealing-with-categorical-variables">
+   Dealing with categorical variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-data-preparation">
+   Advanced data preparation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-feature-engineering-approaches">
+     Other Feature Engineering Approaches
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection">
+   Feature Selection
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="data-preparation">
+<h1>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">#</a></h1>
+<p>After we have seen how our data looks, next we need to spend some time preparing our data for use.  This means we need to ensure that the data types are correct, that we have dealt with “dirty” data (missing fields, outliers, unary values), and possibly creating new factors which can enhance predictive models or better explain the data we have.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import relevant libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">src.data</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="c1"># If you prefer a different style, pick from this list</span>
+<span class="c1"># plt.style.available</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we jump in, we’ll use the <a class="reference external" href="DataDictionary.ipynb#cereal">cereal</a> dataset for some of this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dirty_cereal_df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;Cereals_dirty&#39;</span><span class="p">)</span>
+<span class="n">dirty_cereal_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/workspaces/py4analytics/book/data/Cereals_dirty.csv
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>mfr</th>
+      <th>type</th>
+      <th>calories</th>
+      <th>protein</th>
+      <th>fat</th>
+      <th>sodium</th>
+      <th>fiber</th>
+      <th>carbo</th>
+      <th>sugars</th>
+      <th>potass</th>
+      <th>vitamins</th>
+      <th>shelf</th>
+      <th>weight</th>
+      <th>cups</th>
+      <th>rating</th>
+      <th>foodtype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>100%_Bran</td>
+      <td>N</td>
+      <td>C</td>
+      <td>70</td>
+      <td>4</td>
+      <td>1</td>
+      <td>130</td>
+      <td>10.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>280.0</td>
+      <td>25</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>68.4030</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>100%_Natural_Bran</td>
+      <td>Q</td>
+      <td>C</td>
+      <td>120</td>
+      <td>3</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>135.0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>33.9837</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>All-Bran</td>
+      <td>K</td>
+      <td>C</td>
+      <td>70</td>
+      <td>4</td>
+      <td>1</td>
+      <td>260</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>320.0</td>
+      <td>25</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td>0.33</td>
+      <td>59.4255</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>All-Bran_with_Extra_Fiber</td>
+      <td>K</td>
+      <td>C</td>
+      <td>50</td>
+      <td>4</td>
+      <td>0</td>
+      <td>140</td>
+      <td>14.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>330.0</td>
+      <td>25</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td>0.50</td>
+      <td>93.7049</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Almond_Delight</td>
+      <td>R</td>
+      <td>C</td>
+      <td>110</td>
+      <td>2</td>
+      <td>2</td>
+      <td>200</td>
+      <td>1.0</td>
+      <td>14.0</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td>0.75</td>
+      <td>34.3848</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Triples</td>
+      <td>G</td>
+      <td>C</td>
+      <td>110</td>
+      <td>2</td>
+      <td>1</td>
+      <td>250</td>
+      <td>0.0</td>
+      <td>21.0</td>
+      <td>3.0</td>
+      <td>60.0</td>
+      <td>25</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td>0.75</td>
+      <td>39.1062</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>Trix</td>
+      <td>G</td>
+      <td>C</td>
+      <td>110</td>
+      <td>1</td>
+      <td>1</td>
+      <td>140</td>
+      <td>0.0</td>
+      <td>13.0</td>
+      <td>12.0</td>
+      <td>25.0</td>
+      <td>25</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>27.7533</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Wheat_Chex</td>
+      <td>R</td>
+      <td>C</td>
+      <td>100</td>
+      <td>3</td>
+      <td>1</td>
+      <td>230</td>
+      <td>3.0</td>
+      <td>17.0</td>
+      <td>3.0</td>
+      <td>115.0</td>
+      <td>25</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.67</td>
+      <td>49.7874</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>Wheaties</td>
+      <td>G</td>
+      <td>C</td>
+      <td>100</td>
+      <td>3</td>
+      <td>1</td>
+      <td>200</td>
+      <td>3.0</td>
+      <td>17.0</td>
+      <td>3.0</td>
+      <td>110.0</td>
+      <td>25</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.00</td>
+      <td>51.5922</td>
+      <td>breakfast</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>Wheaties_Honey_Gold</td>
+      <td>G</td>
+      <td>C</td>
+      <td>110</td>
+      <td>2</td>
+      <td>1</td>
+      <td>200</td>
+      <td>1.0</td>
+      <td>16.0</td>
+      <td>8.0</td>
+      <td>60.0</td>
+      <td>25</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.75</td>
+      <td>36.1876</td>
+      <td>breakfast</td>
+    </tr>
+  </tbody>
+</table>
+<p>77 rows × 17 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will give us some information, but a more exhaustive rendention maybe in order</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1"># TODO: Explore the dirty cereal data, dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">#</a></h2>
+<p>One of the steps in preparing our data is to fix the data we have (as opposed to creating new data from the existing data) and also deal with data we don’t have but expect to have (missing data).  We’ll start by looking at how to handle data that we expect to have but isn’t available.  We’ll then take care to ensure that our data has the types we expect and values that are in the format and range (in the case of numbers) that we are expecting.  We’ll call these steps <em>data cleaning</em>.</p>
+<section id="missing-data">
+<h3>Missing data<a class="headerlink" href="#missing-data" title="Permalink to this headline">#</a></h3>
+<p>Missing data can be fields that are represented as NULL, Na, NaN (not a number), blanks or it could even just plain wrong (like a number where you expect a string or a string where you expect a number).  All of these situations can be handled similarly.  Fortunately, the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library gives us some tools to deal with them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Right away we can see in the first line that there is a missing value.  Let’s see if we find any more</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This statement counts up the number of null/na values in every column</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And since we know a bit about visualization, </span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># So it seems we have some null or NaN fields, how should we proceed</span>
+<span class="c1"># We could replace the values</span>
+<span class="c1"># new_cereal_df = dirty_cereal_df.copy(deep=True)</span>
+<span class="c1"># Find all the fields with an na or null and replace with 0</span>
+<span class="c1"># Notice .loc allows us to access a set of rows/columns by label or boolean</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">carbo</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="s1">&#39;carbo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># We could also replace with the mean/median</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">carbo</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="s1">&#39;carbo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;carbo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fixing-inappropriate-values">
+<h3>Fixing inappropriate values<a class="headerlink" href="#fixing-inappropriate-values" title="Permalink to this headline">#</a></h3>
+<p>Let’s check out our data and see if we can find any outliers or maybe inappropriate values.  We’ll start by checking the datatype of each column</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s get a box plot for a numerical column</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;calories&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;calories&#39;</span><span class="p">])</span>
+<span class="c1">#plt.boxplot(dirty_cereal_df[[&#39;calories&#39;,&#39;sugars&#39;]], labels=&#39;calories&#39;])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;calories&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Seaborn allows us to do a similar chart</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Also we can do this with seaborn</span>
+<span class="c1"># Notice the [[]] indexing method, this says return the result as a dataframe rather than a series</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">[[</span><span class="s1">&#39;sugars&#39;</span><span class="p">,</span><span class="s1">&#39;mfr&#39;</span><span class="p">]],</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mfr&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;sugars&#39;</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;sugars by manufacturer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the first box plot, we can see that that have an issue with calories (there is a negative value).  You might want to check the other columns or maybe just do a visual scan of the columns to see what else might be a problem.</p>
+<p>Also we can see that we have Post and Kellogg as manufacturers.  I’m guessing this is a mistake since all the others only have a single letter representing the brand.  We may want to address this as well</p>
+<p>The next step is to figure out what to do with this data.  Usually we don’t want to eliminate it from the source data and it might be helpful in our actual dataset - so we can simply filter out the bad rows or we can replace them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Replace the calories that are negative with the positive value</span>
+<span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;calories&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;calories&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s check to see if any of the other numeric fields are suspect</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s take a look at the non-numeric columns</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">dirty_cereal_df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And maybe most interesting is to look at these in a bar chart</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mfr&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;foodtype&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since we realize that `foodtype` is just the same value we can drop the column from our dataset</span>
+<span class="n">dirty_cereal_df</span> <span class="o">=</span> <span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foodtype&#39;</span><span class="p">])</span>
+<span class="n">dirty_cereal_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fixing-inappropriate-values-your-turn">
+<h3>Fixing inappropriate values - Your turn<a class="headerlink" href="#fixing-inappropriate-values-your-turn" title="Permalink to this headline">#</a></h3>
+<p>There are several other issues in this dataset like</p>
+<ul class="simple">
+<li><p>Sugars and potass also have 0/null values</p></li>
+<li><p>there is a calorie number &lt; 0</p></li>
+<li><p>the manufacturer codes include K, G, P etc, but also Post and Kellogg how to deal?</p></li>
+<li><p>some rows have weight = 0 or na, should we drop them? or replace them with mean values?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: What about sugars and potass these have 0/null values</span>
+<span class="c1"># TODO: Decide what to do about calorie number &lt;= 0</span>
+<span class="c1"># TODO: Deal with Post, Kellogg</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Post&#39;</span><span class="p">,</span><span class="s1">&#39;mfr&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;P&#39;</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Kellogg&#39;</span><span class="p">,</span><span class="s1">&#39;mfr&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;K&#39;</span>
+<span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">mfr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="c1"># TODO: Deal with missing weight</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="feature-engineering">
+<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">#</a></h2>
+<p>Occassionally we find it helpful to adjust our data to make it easier to work with or make it more suitable for different machine learning models.  While we will look at a few more methods as we deal with specific algorithms, here are some of the most common steps we may want to take as we continue our EDA.  We use the term - <em>feature engineering</em> as a catch-all for creating new features from the data we have.  Feature engineering can be done by applying a transformation (e.g. standardization or normalization), combining factors to make new factors (e.g. adding two factors together), decomposing factors (e.g. separating month, day and year from a date field), or applying some other formula (e.g. determining if a date is a weekday or weekend).  The number of types of transformations and feature creation techniques are infinite and will depend on your imagination and domain appropriateness.</p>
+<section id="normalization-standardization">
+<h3>Normalization &amp; Standardization<a class="headerlink" href="#normalization-standardization" title="Permalink to this headline">#</a></h3>
+<p>Often when we are dealing with data, the units are not on the same scale.  For instance in this case, <code class="docutils literal notranslate"><span class="pre">calories</span></code> is a range from 50 to 160 whereas <code class="docutils literal notranslate"><span class="pre">weight</span></code> ranges from 0.5 to 1.5.  Most of our mathematical algorithms used in machine learning would give <code class="docutils literal notranslate"><span class="pre">calories</span></code> an inappropriately large influence on the outcome.  So we need to adjust for both of these to be on a similar scale.  This is where standardization and normalization comes in.  We can use a min/max normalization which will make each category on a scale from 0-1</p>
+<p>We do this with the following formula
+$$x_{scaled} = \frac{x-min(x)}{max(x)-min(x)}$$</p>
+<p><em>The terms normalization and standardization are sometimes used interchangeably, but they usually refer to different things. Normalization usually means to scale a variable to have a values between a desired range (like [-1,1] or [0,1]) while standardization transforms data to have a mean of zero and a standard deviation of 1. Advantage of Normalization over Standardization is that we are not bound to any specific distribution. In addition to that Normalization also suppresses the effect of outliers to some extent.</em></p>
+<p>Normalization is a good technique to use when you do not know the distribution of your data or when you know the distribution is not Gaussian (a bell curve). Normalization is useful when your data has varying scales and the algorithm you are using does not make assumptions about the distribution of your data, such as k-nearest neighbors and artificial neural networks</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dirty_cereal_df</span><span class="p">[[</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="n">new_column_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">_NORM&#39;</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">new_column_name</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">-</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="c1"># Apply a normalization to our dataset</span>
+<span class="n">normalize</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="p">,</span><span class="s1">&#39;calories&#39;</span><span class="p">)</span>
+<span class="n">normalize</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scaled&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;calories_NORM&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight_NORM&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In statistics, standardization is the process of putting different variables on the same scale. This process allows you to compare scores between different types of variables. Typically, to standardize variables, you calculate the mean and standard deviation for a variable. Then, for each observed value of the variable, you subtract the mean and divide by the standard deviation.</p>
+<p>This process produces standard scores that represent the number of standard deviations above or below the mean that a specific observation falls. For instance, a standardized value of 2 indicates that the observation falls 2 standard deviations above the mean. This interpretation is true regardless of the type of variable that you standardize.
+We use the following formula to Standardize a Variable value</p>
+<p>$$z=\frac{(X-\mu)}{\sigma}$$</p>
+<p>Standardization works best when the variable follows a Normal distribution due to the fact that in a Normal Distribution 68% of data lies within 1 standard deviation from the mean, 95% within 2 standard deviation and 99.7% within 3 standard devations from the mean. So it is highly unlikely that a variable value is greater than ±3</p>
+<p>Standardization assumes that your data has a Gaussian (bell curve) distribution. This does not strictly have to be true, but the technique is more effective if your attribute distribution is Gaussian. Standardization is useful when your data has varying scales and the algorithm you are using does make assumptions about your data having a Gaussian distribution, such as linear regression, logistic regression, and linear discriminant analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="k">def</span> <span class="nf">standardize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="n">new_column_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">_STD&#39;</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">new_column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">zscore</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+    <span class="c1"># data[new_column_name]=(data[column]-data[column].mean())/data[column].std()</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="c1"># Apply a standardization to our dataset</span>
+<span class="n">standardize</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="p">,</span><span class="s1">&#39;calories&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Normalized&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;calories_STD&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="discretizing-binning">
+<h3>Discretizing / Binning<a class="headerlink" href="#discretizing-binning" title="Permalink to this headline">#</a></h3>
+<p>Sometimes, it might be helpful to have categories for the ranges of values rather than just the value themselves.  For instance, if we are looking at the cereal example, it might be helpful to determine that cereal with a low calorie count vs a high calorie count</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How about we create a category for these fields instead</span>
+<span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;calorie_groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">calories</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">duplicates</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;low cal&#39;</span><span class="p">,</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span><span class="s1">&#39;high cal&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">calorie_groups</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;calorie_groups&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dirty_cereal_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dealing-with-categorical-variables">
+<h2>Dealing with categorical variables<a class="headerlink" href="#dealing-with-categorical-variables" title="Permalink to this headline">#</a></h2>
+<p>Machine learning models deal in numeric data and don’t handle string data or categorical data very well, so often times we are left to deal with categorical data and turning it into numerical.</p>
+<p>In the cereal dataset we have <code class="docutils literal notranslate"><span class="pre">mfr</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, and <code class="docutils literal notranslate"><span class="pre">calorie_groups</span></code> which are not numeric, but we also have <code class="docutils literal notranslate"><span class="pre">shelf</span></code> which is numeric, but really is a categorical field.  So we need to be careful about this as well.</p>
+<p>We have a couple of options depending on which kind of data we are encoding.  If we are dealing with data and the order matters, for instance using a Likert scale (<code class="docutils literal notranslate"><span class="pre">disagree</span></code>,<code class="docutils literal notranslate"><span class="pre">somewhat</span> <span class="pre">agree</span></code>, <code class="docutils literal notranslate"><span class="pre">agree</span></code> etc), then we have ordinal dta and the data should be encoded with values 0 to n-1 (where n is the number of categories).  Otherwise, we should put our features in a OneHotEncoding whereby their is a feature created for each category and a 1 is placed in the proper column that matches the feature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start with ensuring pandas knows what we are dealing with</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">mfr</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">])</span>
+<span class="n">dirty_cereal_df</span><span class="o">.</span><span class="n">mfr</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We could use this to just get the dummy columns and join ourselves</span>
+<span class="c1">#   dirty_cereal_df = pd.concat([dirty_cereal_df, pd.get_dummies(dirty_cereal_df[&#39;mfr&#39;],prefix=&quot;mfr&quot;,prefix_sep=&quot;_&quot;)], axis=1)</span>
+<span class="c1">#   dirty_cereal_df.drop(columns=&#39;mfr&#39;)</span>
+
+<span class="c1"># Or we can let pandas handle this all for us</span>
+<span class="n">dirty_cereal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">dirty_cereal_df</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mfr&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+<span class="n">dirty_cereal_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="advanced-data-preparation">
+<h2>Advanced data preparation<a class="headerlink" href="#advanced-data-preparation" title="Permalink to this headline">#</a></h2>
+<p>While preparing the data for machine learning, we often find that we either don’t have enough features or we have way too many features to be valuable.  In both cases, we need to consider which features help us to describe the outcomes we are searching for.  We can often times do both tasks, creating new features <a class="reference external" href="#feature-engineering">Feature Engineering</a> or reducing features through <a class="reference external" href="#feature-selection">Feature Selection</a>.  A brief overview is here, though we’ll see more examples as we work through a few examples.</p>
+<section id="other-feature-engineering-approaches">
+<h3>Other Feature Engineering Approaches<a class="headerlink" href="#other-feature-engineering-approaches" title="Permalink to this headline">#</a></h3>
+<p>Sometimes a set of predictors just doesn’t provide enough variability on it’s own and we would find value in breaking apart or finding new features in exisiting features.  One of the most obvious is time/date fields, these types of fields are filled with amazing data all locked up in what look like a single value.  Consider a date field for instance, with a date we can tell a whole lot of interesting things:</p>
+<ul class="simple">
+<li><p>What day of the week is it?  (Mon, Tue, Wed..)</p></li>
+<li><p>Which day of the month?  (1st, 10th, 21st …)</p></li>
+<li><p>Which month of the year?</p></li>
+<li><p>Which season? (Spring, Summer …)</p></li>
+<li><p>What’s the closest holiday, payday, birthday, significant event?</p></li>
+<li><p>Is it a leap year?</p></li>
+<li><p>Which week of the fiscal year?</p></li>
+</ul>
+<p>By exploring the dates on these dimensions we may find a better set of predictors or develop new insights into the quality/variability of our data.  The same thing works with time (hour of the day, night/day, morning/afternoon/evening).  These are easy and very common ways to create new insights into the data from a seemingly small set of predictors.  Check your data to see if there are hidden aspects as well!There are many, many different transformations and to add features to a dataset which has just a few features.  For instance, it may be necessary to consider the interaction between variables.  Consider, 2 categorical variables like movie genres.  While it would be helpful to look at each genre separately, it’s possible that considering a movie of multiple genres is of interest.  Sci-Fi/Action movies or Romance/Comedy movies for instance.  We can see this combination by looking at dummy variables of course, but it might also be helpful to have a column for common 2 genre combinations or 3 genre combos.</p>
+<p>Other methods to consider:
+= combining continuous variables with simple math (addition, subtraction, multiplication, division),</p>
+<ul class="simple">
+<li><p>polynomial fits : instead of $y=\beta_0x_0 + \epsilon$ a more appropriate fit might be $y=\beta_0x_0^2 +\beta_1x_0  + \epsilon$</p></li>
+<li><p>Ensembling: first clustering records and then using this outcome as predictor in a different model.</p></li>
+</ul>
+<p>Aside from using the pandas library to add new series, the patsy library has also been built to provide a consise language syntax for generating statisical matricies.  This is covered in the <a class="reference internal" href="341-AdvancedTechniques.html"><span class="doc std std-doc">AdvancedTechniques</span></a> notebook.</p>
+</section>
+</section>
+<section id="feature-selection">
+<h2>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h2>
+<p>We can also face what we call the “curse of dimensionality” where our data has way too much data.  For instance, if we are to create an image classifier, each pixel carries with it at least 3 pieces of information (red, green and blue values) or even more!  We can be overwhelmed with the number of dummy variables or simply the shear amount of data that is provided.  In these cases, we need to decide which are the most relevant pieces of data and which we can safely ignore.  Take for instance, the image classifier, the first row of pixels may be a black border on all the pictures - this doesn’t help us there is no variability if all the images have the same black border.  We should therefore leave them out of the equation.  Or in the case of our movie generes, what if there is only 1 movie that is a Sci-Fi/Romance/Horror film?  This doesn’t help us to find others like it.  In these cases, we need to reduce our set of features.</p>
+<p>A few algorithms handle this pretty well, Decision Trees in particular are good at ignoring variables have limited ‘split’ value and regression models <a class="reference external" href="https://towardsdatascience.com/feature-selection-techniques-in-regression-model-26878fe0e24e">use a more brute force approach</a> (forward selection, backward elimination, stepwise selection).  For the ones that don’t we can drop unary columns (those that don’t change at all in all of our records), or use something like PCA (<a class="reference external" href="./341-AdvancedTechniques.ipynb#principal-components">principal components analysis</a>) which is meant to capture as much of the variability as possible in just a few orthagonal vectors.</p>
+<p>Finally, knowing your data is one of the most important aspects of getting the right set of features.  Analysts that spend hours letting the computer chug away on too many features (or too far) are far less efficient than those that take time to understand the data and capture the essense prior to trying to tune any models on an inefficient dataset.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "mlderes/Py4Analytics",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="312-VisualizationSamples.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Visualization Examples</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="330-Classification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Classification</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
