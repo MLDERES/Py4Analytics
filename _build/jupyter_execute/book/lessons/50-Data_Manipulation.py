@@ -125,7 +125,7 @@ sns.histplot(data=housing_df,x='INDUS',color='yellow').set_title('proportion of 
 # 
 # From here we can see that, as previously, there are many more homes not on the Charles River and also that the age of the homes is skewed heavily toward the older home ages.
 # 
-# (Check out the extra notebook [Visualization Samples](../extras/visualizationSamples.ipynb) to see another library and possible visualizations.) 
+# (Check out the extra notebook [Visualization Samples](./visualizationSamples.ipynb) to see another library and possible visualizations.) 
 
 # In[ ]:
 

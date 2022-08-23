@@ -58,25 +58,25 @@ parts:
   - caption: Part 3
     maxdepth: 2
     chapters:
-    - file: book/lessons/Part3/00-PartThree
+    - file: book/lessons/300-PartThree
       sections:
-      - file: book/lessons/Part3/10-ExploratoryDataAnalysis
-      - file: book/lessons/Part3/11-OtherToolsForEDA
-      - file: book/lessons/Part3/12-VisualizationSamples
-      - file: book/lessons/Part3/20-DataPreparation
-      - file: book/lessons/Part3/30-Classification
-      - file: book/lessons/Part3/35-ClassificationSolutions
-      - file: book/lessons/Part3/40-EstimationPrediction
-      - file: book/lessons/Part3/41-AdvancedTechniques
-      - file: book/lessons/Part3/42-Pipelines
-      - file: book/lessons/Part3/43-Ensembling
-      - file: book/lessons/Part3/45-EstimationPredictionExample
-      - file: book/lessons/Part3/50-Unsupervised
-      - file: book/lessons/Part3/60-NeuralNetworks
-      - file: book/lessons/Part3/VisualizationSamples
+      - file: book/lessons/310-ExploratoryDataAnalysis
+      - file: book/lessons/311-OtherToolsForEDA
+      - file: book/lessons/312-VisualizationSamples
+      - file: book/lessons/320-DataPreparation
+      - file: book/lessons/330-Classification
+      - file: book/lessons/335-ClassificationSolutions
+      - file: book/lessons/340-EstimationPrediction
+      - file: book/lessons/341-AdvancedTechniques
+      - file: book/lessons/342-Pipelines
+      - file: book/lessons/343-Ensembling
+      - file: book/lessons/345-EstimationPredictionExample
+      - file: book/lessons/350-Unsupervised
+      - file: book/lessons/360-NeuralNetworks
+      - file: book/lessons/VisualizationSamples
     - file: book/lessons/TryIt_Part3
       sections:
-      - file: book/lessons/Part3/10-ExploratoryDataAnalysis-ex
+      - file: book/exercises/310-ExploratoryDataAnalysis-ex
   - caption: Appendix
     maxdepth: 2
     chapters:
