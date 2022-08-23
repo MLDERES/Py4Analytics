@@ -8,7 +8,7 @@ defaults:
 parts:
   - caption: Getting Started
     chapters:
-    - file: book/lessons/01-JupyterNotebooks.ipynb
+    - file: book/lessons/01-JupyterNotebooks
   # Introduction - (bootcamp content)
   # - Chapter 1
   #   - How to use Jupyter
@@ -46,6 +46,7 @@ parts:
       - file: book/lessons/60-Web_Data
       - file: book/lessons/70-Getting_Web_Data
       - file: book/lessons/80-Database_Connections
+      - file: book/lessons/90-Data_Visualization
     - file: book/lessons/TryIt_Part2
       sections:
       - file: book/exercises/40-Object_Orientation-ex
@@ -53,15 +54,29 @@ parts:
       - file: book/exercises/60-Web_Data-ex
       - file: book/exercises/70-Getting_Web_Data-ex
       - file: book/exercises/80-Database_Connections-ex
+      - file: book/exercises/90-Data_Visualization-ex
   - caption: Part 3
     maxdepth: 2
     chapters:
-    - file: book/lessons/85-PartThree
+    - file: book/lessons/Part3/00-PartThree
       sections:
-      - file: book/lessons/90-Data_Visualization
+      - file: book/lessons/Part3/10-ExploratoryDataAnalysis
+      - file: book/lessons/Part3/11-OtherToolsForEDA
+      - file: book/lessons/Part3/12-VisualizationSamples
+      - file: book/lessons/Part3/20-DataPreparation
+      - file: book/lessons/Part3/30-Classification
+      - file: book/lessons/Part3/35-ClassificationSolutions
+      - file: book/lessons/Part3/40-EstimationPrediction
+      - file: book/lessons/Part3/41-AdvancedTechniques
+      - file: book/lessons/Part3/42-Pipelines
+      - file: book/lessons/Part3/43-Ensembling
+      - file: book/lessons/Part3/45-EstimationPredictionExample
+      - file: book/lessons/Part3/50-Unsupervised
+      - file: book/lessons/Part3/60-NeuralNetworks
+      - file: book/lessons/Part3/VisualizationSamples
     - file: book/lessons/TryIt_Part3
       sections:
-      - file: book/exercises/90-Data_Visualization-ex
+      - file: book/lessons/Part3/10-ExploratoryDataAnalysis-ex
   - caption: Appendix
     maxdepth: 2
     chapters:
