@@ -1,0 +1,17 @@
+# Create a function called 'add' which takes two variables x and y
+def sum(x,y):
+    print(f'The value of x is {x}')
+    print(f'The value of y is {y}')
+    # Assign the variable result to be the sum of x and y
+    result = x+y
+    return result
+
+print(f'When we call the sum function the result is {sum(5,4)}')
+
+first_number = 10
+second_number = 12
+
+# Using two variables to call the sum function and assigning the result to a third variable
+sum_of_first_second = sum(first_number,second_number)
+
+print(f"Let's use two variables to call the sum function: {sum_of_first_second}")

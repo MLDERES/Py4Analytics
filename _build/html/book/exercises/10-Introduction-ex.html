@@ -565,20 +565,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#hello-user">
      Hello, user
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dealing-with-time">
-       Dealing with time
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-function">
-     Creating a function
-    </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-we-ll-take-it-one-step-further">
+   Now we’ll take it one step further
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
@@ -613,20 +606,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#hello-user">
      Hello, user
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dealing-with-time">
-       Dealing with time
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-function">
-     Creating a function
-    </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-we-ll-take-it-one-step-further">
+   Now we’ll take it one step further
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#count-the-number-of-occurrences-of-a-word">
@@ -695,40 +681,26 @@ In this notebook, we’ll look at:</p>
 </div>
 </div>
 </div>
-<section id="dealing-with-time">
-<h4>Dealing with time<a class="headerlink" href="#dealing-with-time" title="Permalink to this headline">#</a></h4>
-<p>Our greeting is plesant, but we can do better.  We should have a greeting that takes into account the time of day.  The first few lines determine the hour of the day (where 0 is midnight and 23 is 11pm).  Using an <code class="docutils literal notranslate"><span class="pre">if/else</span></code> construct, greet the user appropriately for the time of day (morning, afternoon, evening).</p>
+</section>
+</section>
+<section id="now-we-ll-take-it-one-step-further">
+<h2>Now we’ll take it one step further<a class="headerlink" href="#now-we-ll-take-it-one-step-further" title="Permalink to this headline">#</a></h2>
+<p>For this exercise, continue to write the classic Hello World! with a twist.  Your output should be a string that contains an introduction to yourself, by stating your name and your age (not your real age if you don’t wish).  You can use string concatenation or <code class="docutils literal notranslate"><span class="pre">f'strings</span></code>, it’s up to you.  Two caveats, we want to make this easy for someone else to try and your age never stays they same, therefore the name must be stored in a variable <code class="docutils literal notranslate"><span class="pre">my_name</span></code> and the age should be calculated based on the current year something like</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">2020</span> <span class="o">-</span> <span class="mi">1985</span>
+</pre></div>
+</div>
+<p>The output should look like<br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello World!  My name is Michael and I am currently 40 years old
+</pre></div>
+</div>
+<p><strong>BONUS</strong>: <em>Can you calcuate your age in months instead of years?  How about days? (built in date functions is cheating)</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the current time</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">dt</span>
-<span class="kn">import</span> <span class="nn">pytz</span>
-<span class="n">current_hour</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s2">&quot;US/Central&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hour</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The current hour is: </span><span class="si">{</span><span class="n">current_hour</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="c1"># Assign the variable to my_name</span>
-<span class="n">my_name</span> <span class="o">=</span> <span class="o">...</span>
-
-<span class="c1"># Ask for the user&#39;s name</span>
-<span class="n">user_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is your name?&#39;</span><span class="p">)</span>
-
-<span class="c1"># Set the greeting to default to nothing</span>
-<span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="c1"># If the the current hour is less than 12, change the greeting to &#39;Morning&#39;</span>
-<span class="c1"># Otherwise, if the current hour is between 12 and 17 (5pm) set the greeting to &#39;Afternoon&#39;</span>
-<span class="c1"># Otherwise, set the greeting to &#39;Evening&#39;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Good </span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s1">!  My name is </span><span class="si">{</span><span class="n">my_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display a string introducing yourself to the world with your name and your age</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="creating-a-function">
-<h3>Creating a function<a class="headerlink" href="#creating-a-function" title="Permalink to this headline">#</a></h3>
-<p>That was fun, right?  But every time we want to use this code, we have to type it over and over again.  Or if we want to share it with someone else we have to tell them to change <code class="docutils literal notranslate"><span class="pre">my_name</span></code> to their own name.  Let’s take this one step further and create a reusable function.</p>
-<p>As you will remember, a function is a set of instructions that are combined together and can be referred to with a single name.  We assign variables to the function when we “call” the function.  So for instance, if we have a function called <code class="docutils literal notranslate"><span class="pre">sum</span></code> it takes two variables.  The value of these variables are defined outside the function, and when we call the function the values of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are replaced with the values we provide.  This allows us to something complex with these values and they can change each time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a function called &#39;add&#39; which takes two variables x and y</span>
@@ -824,7 +796,6 @@ In this notebook, we’ll look at:</p>
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="count-the-number-of-occurrences-of-a-word">
 <h2>Count the number of occurrences of a word<a class="headerlink" href="#count-the-number-of-occurrences-of-a-word" title="Permalink to this headline">#</a></h2>

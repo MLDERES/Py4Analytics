@@ -38,7 +38,7 @@
 # 
 # All programming languages can deal with many different kinds of datatypes.  The most common ones are boolean (`True` or `False`), numbers, strings, and collections of items.  Numbers are represented just by typing them out with no special characters.  Strings are characters that are surrounded by either `'` or `"` as we will see a bit later.  Boolean values can only either be `True` or `False` and are incredibly valuable as we'll see in a bit.
 
-# In[ ]:
+# In[17]:
 
 
 # Output a number
@@ -54,7 +54,7 @@ True
 # ## Output
 # Typically in a Python program if we want to show the user some response we need to use a print function to see the result.  Here's a few examples:
 
-# In[ ]:
+# In[18]:
 
 
 print("This is a string")
@@ -64,7 +64,7 @@ print("This is a boolean:", True)
 
 # One of the reasons we use Jupyter notebooks is so that we can see the result immediately without having to run the entire code base everytime, we can just run one piece of code at a time.  Also, Jupyter doesn't require us to `print` our output (it's just a handy way to try something without worrying about extra syntax).
 
-# In[ ]:
+# In[19]:
 
 
 # We can add numbers
@@ -81,7 +81,7 @@ print("This is a boolean:", True)
 # 
 # 
 
-# In[ ]:
+# In[20]:
 
 
 53*285
@@ -89,19 +89,19 @@ print("This is a boolean:", True)
 
 # With Python, math works exactly as you expect.  Equations are evaluated left to right, and the order of precidence can be changed using parentheses.
 
-# In[ ]:
+# In[21]:
 
 
 5+5*5 # This equals 30 because 5*5 happens first (order of precidence)
 
 
-# In[ ]:
+# In[22]:
 
 
 (5+5)*5 # This evaluates to 50 because we have told Python to add first due to parenthesis
 
 
-# In[ ]:
+# In[23]:
 
 
 5*(5+5) # Same thing, this will be 50 because of parens
@@ -111,16 +111,17 @@ print("This is a boolean:", True)
 # 
 # 
 
-# #### About = and ==
+# ````{caution}
 # Python uses a single `=` sign to specify assignment, whereas a double `=` like `==` is a check for equality.  So,
 # ```python
 # a = 5 # Set the value of a variable named 'a' to be the value 5
 # a == 5 # Returns True if the value of the variable a is 5 or False otherwise
 # ```
+# ````
 # 
-# So in the example below, after assigning x to the value 10, the second statement tells us if the value of x is indeed 10
+# Therefore in the example below, after assigning x to the value 10, the second statement tells us if the value of x is indeed 10
 
-# In[ ]:
+# In[24]:
 
 
 x = 10  # Doesn't display anything, we are just assigning the value 10 to the variable x
@@ -151,7 +152,7 @@ x == 10 # Displays True
 
 # So therefore the operators `>` greater than, `<` less than and `==` equal to (and their counterparts `>=`, `<=`, and ~ (not)) are extremely important.  Run the next cell for examples
 
-# In[ ]:
+# In[25]:
 
 
 print('Is 10 equal to 10? ')
@@ -163,7 +164,7 @@ print ('Is 10 less than 5?',10 < 5) # This will of course be false
 # This one is a little trickier, before you run the cell what do you think the result will be?
 # 
 
-# In[ ]:
+# In[26]:
 
 
 (15 < 5) == False
@@ -195,7 +196,7 @@ print ('Is 10 less than 5?',10 < 5) # This will of course be false
 #     
 # Try removing the n on the last line and replace that line with the variable 'area'
 
-# In[ ]:
+# In[27]:
 
 
 width = 5
@@ -334,7 +335,9 @@ print("Your name is: " + user_name)
 
 # One thing that is important to note is that the result of the `input()` function is always a string, even if the user types in numbers.  This means if we want to assume that the result is a number that we will have to convert it from a string to a number.  Try the next example:
 # 
-# (NOTE: if you don't enter a number as input, you will get an error message.  We'll talk about how to deal with this a bit more gracefully later, but for now it would be best to just input numbers at the prompt.)
+# ````{note}
+#  if you don't enter a number as input, you will get an error message.  We'll talk about how to deal with this a bit more gracefully later, but for now it would be best to just input numbers at the prompt.)
+# ````
 
 # In[ ]:
 
@@ -344,30 +347,15 @@ user_age = input(f"Hello, {user_name}.  What is your age?")
 print(int(user_age))
 
 
-# ### Your turn- Hello, World!
-# For this exercise, write the classic Hello World! with a twist.  Your output should be a string that contains an introduction to yourself, by stating your name and your age (not your real age if you don't wish).  You can use string concatenation or f'strings, it's up to you.  Two caveats, we want to make this easy for someone else to try and your age never stays they same, therefore the name must be stored in a variable `my_name` and the age should be calculated based on the current year something like `age = 2020 - 1985`.
-# 
-# The output should look like<br>
-# ```
-# Hello World!  My name is Michael and I am currently 40 years old
-# ```
-# 
-# **BONUS**: _Can you calcuate your age in months instead of years?  How about days? (built in date functions is cheating)_
-
 # In[ ]:
 
 
-# Display a string introducing yourself to the world with your name and your age
-
-
-# In[ ]:
-
-
-# Can you now combine what you've learned and ask the user for their name and then their age, 
+# Can you now combine what you've learned and ask the user for their name 
+# and then their age (you'll need to separate prompts (e.g. input statements))
 #  then respond with a statement similar to the output above?
 
 
-# ### Lists
+# ## Lists
 # Python knows about a number of different _compound_ data types that is ways to store many values together.  Two of the most common are _list_ and _dictionary_.  We'll start first with a list and then give you a chance to work with a list in a simple challenge.
 # 
 # Lists are written as a set of values between square brackets that are separated by commas.  While lists, can have different types of 'elements' most often they are the same type.
@@ -394,10 +382,11 @@ print('The item in index 4 of the list (the fifth item) is: ',squares[4])
 # In[ ]:
 
 
-# What happens if you try to get the item at index 5?
+# What happens if you try to get the item at index 6?
+# Do you expect to get the 6th item in the list? (36) or something else?
 
 
-# #### Slicing
+# ### Slicing
 # Sometimes we want more than one item in the list, in that case we can ask Python to get sequential items by telling it the first item we want and the last item. (It can be a little confusing, but Python doesn't include the right side of the slice, so that a slice of 0:2 only includes items 0 and 1).
 
 # In[ ]:
@@ -500,41 +489,44 @@ print(f'Same value using the double subscript approach:')
 print(x[0][1])
 
 
-# ## Your Turn - Hello Worl?
-# For this challenge, use what you have learned about strings, integers and indexing to fix the message stored in `message`.  It seems that when I typed up this example I left out a letter and also used a question mark instead of a `!`.  Can you fix this by using indexing and replacement and then print the parts into a single line?
+# ### Example: Hello Worl?
+# This next bit of code is kind of messed up. Use what you have learned about strings, integers and indexing to fix the message stored in `message`.  It seems that when I typed up this example I left out a letter and also used a question mark instead of a `!`.  Can you fix this by using indexing and replacement and then print the parts into a single line?  You should be able to 
 # 
 
 # In[ ]:
 
 
+print("Before the fix.")
 message = ['Hello', 'Worl','?']
+print(f'{message[0]} {message[1]}{message[2]}')
 
-print(message[0]+' ' + message[1]+message[2])
-
-
-# In[ ]:
-
-
-# Don't change this declaration directly, instead just manipulate the output by putting the correct
-# in place of the ellipsis `...`
-
-message = ['Hello', 'Worl','?']
-
+# Replace the `...` in these next two lines with the proper words
 message[1] = ...
 message[2] = ...
 
+
+print("After the fix.")
 print(f'{message[0]} {message[1]}{message[2]}')
 
+
+# ### Example: Indexing days of the month# One more challenge.  
+# The list here is the number of days in the months of the year.
+# Complete the code below so that it tells the days of the month requested
 
 # In[ ]:
 
 
-# One more challenge.  The list here is the number of days in the months of the year.
-# Complete the code below so that it tells the days of the month requested
+# A list with the days of the month
 days_in_month = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+# Since June is the 6th month of the year, we want the 6th item in the list
 print('The number of days in June is: ', days_in_month[5])
 print('The number of days in December is: ', ...)
-print('The number of days in Jan and Feburary together is:'...)
+
+# Get the number of days in Jan
+# Get the number of days in Feb
+# Add these two previous values together and use this to print the answer in the string below
+print('The number of days in Jan and Feburary added together is:',...)
 
 
 # ## Dictionaries
@@ -576,16 +568,21 @@ print("Alice's phone number is " + phone_numbers['Alice'])
 print(f"Bob's phone number is: {phone_numbers['Bob']}")
 
 
-# ### Your Turn - Dictionaries
+# ### Example Dictionaries
 # In the next code block, again we'll see the days of the month, but instead of knowing which month it is in the year, we're going to store the dates using the month's name.
 
 # In[ ]:
 
 
 days_in_month_dict = {'Jan':31,'Feb':28,'Mar':31, 'Apr':30, 'May':31, 'Jun':30, 'Jul':31, 'Aug':31, 'Sep':30, 'Nov':30, 'Oct':31, 'Dec':31}
+
 print('The number of days in June is: ', days_in_month_dict['Jun'])
 print('The number of days in December is: ', ...)
-print('The number of days in Jan and Feburary together is:'...)
+
+# Get the number of days in Jan
+# Get the number of days in Feb
+# Add these two previous values together and use this to print the answer in the string below
+print('The number of days in Jan and Feburary together is:',...)
 
 
 # ## Conclusion

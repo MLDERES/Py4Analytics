@@ -54,40 +54,26 @@ my_name = ...
 # Print the greeting including the user's name and your name
 
 
-# #### Dealing with time
+# ## Now we'll take it one step further
+# For this exercise, continue to write the classic Hello World! with a twist.  Your output should be a string that contains an introduction to yourself, by stating your name and your age (not your real age if you don't wish).  You can use string concatenation or `f'strings`, it's up to you.  Two caveats, we want to make this easy for someone else to try and your age never stays they same, therefore the name must be stored in a variable `my_name` and the age should be calculated based on the current year something like 
+# ```python 
+# age = 2020 - 1985
+# ```
 # 
-# Our greeting is plesant, but we can do better.  We should have a greeting that takes into account the time of day.  The first few lines determine the hour of the day (where 0 is midnight and 23 is 11pm).  Using an ```if/else``` construct, greet the user appropriately for the time of day (morning, afternoon, evening).
+# The output should look like<br>
+# ```
+# Hello World!  My name is Michael and I am currently 40 years old
+# ```
 # 
+# **BONUS**: _Can you calcuate your age in months instead of years?  How about days? (built in date functions is cheating)_
 
 # In[ ]:
 
 
-# Getting the current time
-from datetime import datetime as dt
-import pytz
-current_hour = dt.now(pytz.timezone("US/Central")).hour
-print(f'The current hour is: {current_hour}')
-
-# Assign the variable to my_name
-my_name = ...
-
-# Ask for the user's name
-user_name = input('What is your name?')
-
-# Set the greeting to default to nothing
-greeting = ''
-# If the the current hour is less than 12, change the greeting to 'Morning'
-# Otherwise, if the current hour is between 12 and 17 (5pm) set the greeting to 'Afternoon'
-# Otherwise, set the greeting to 'Evening'
-
-print(f'Good {greeting}, {user_name}!  My name is {my_name}')
+# Display a string introducing yourself to the world with your name and your age
 
 
-# ### Creating a function
 # 
-# That was fun, right?  But every time we want to use this code, we have to type it over and over again.  Or if we want to share it with someone else we have to tell them to change ```my_name``` to their own name.  Let's take this one step further and create a reusable function.
-# 
-# As you will remember, a function is a set of instructions that are combined together and can be referred to with a single name.  We assign variables to the function when we "call" the function.  So for instance, if we have a function called ```sum``` it takes two variables.  The value of these variables are defined outside the function, and when we call the function the values of ```x``` and ```y``` are replaced with the values we provide.  This allows us to something complex with these values and they can change each time.
 
 # In[ ]:
 
