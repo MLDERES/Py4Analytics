@@ -25,7 +25,7 @@ plt.rcParams["figure.figsize"] = (20, 10)
 
 # # Automobile Accidents <a id='auto-accidents'></a>
 # 
-# The file, [accidentsFull.csv](../data/accidentsFull.csv), contains information on 42k actual accidents in the US in 2001.  There are three levels of injury provided NO INJURY, INJURY, FATALITY.  Your job, if you choose to accept it, is to use the predictors available to develop a model that can determine whether there was an injury at an accident (INJURY or FATALITY).
+# The file, {download}`accidentsFull.csv <../data/accidentsFull.csv>`, contains information on 42k actual accidents in the US in 2001.  There are three levels of injury provided NO INJURY, INJURY, FATALITY.  Your job, if you choose to accept it, is to use the predictors available to develop a model that can determine whether there was an injury at an accident (INJURY or FATALITY).
 
 # In[ ]:
 

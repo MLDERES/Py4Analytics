@@ -29,7 +29,7 @@ pd.set_option('display.precision',4)
 # ***Boston Housing Dataset***
 # Let's take a look at some basic data manipulation with pandas and understand how to get some data to work with.  In all of our examples, we'll use a pretty standard text format called (CSV) or comma-separated-values files.  This format is readable by nearly every statistical software package and by humans.  The first row is typically the name of the columns and each line of the file is a row of data with the values separated by commas.  The pandas library supports many different ways to load up a dataframe, which we will use as the primary mechanism for manipulating data in these notebooks.
 # 
-# This particular file is available in the data directory [BostonHousing](../data/BostonHousing.csv).
+# This particular file is available in the data directory {download}`BostonHousing <../data/BostonHousing.csv>`.
 # 
 # ***Business Context***
 # Each record in the database describes a Boston suburb or town. The data was drawn from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. The attributes are deﬁned as follows (taken from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/)):

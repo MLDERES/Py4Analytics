@@ -58,7 +58,7 @@ InteractiveShell.ast_node_interactivity = "all"
 # ## Medical Insurance Forecast
 # Insurance companies need to set the insurance premiums following the population trends despite having limited information about the insured population if they have to put themselves in a position to make profits. This makes it necessary to estimate the average medical care expenses based on trends in the population segments, such as smokers, drivers, etc
 # 
-# [data dictionary](../data/insurance.csv#insurance)
+# [data dictionary] <../data/DataDictionary.md#insurance)
 
 # In[ ]:
 
@@ -478,7 +478,7 @@ regressionSummary(toyota_y_test, toyota_y_pred)
 # # Resources
 # 
 # ## Other datasets suitable for regressions tasks
-# * [Boston Housing](../data/BostonHousing.csv) - predict the mean value of a homes
-# * [Software Resale](../data/Tayko.csv) - try to determine likely customer spend on software
-# * [Airfare](../data/airfares.csv) - predict the airfare for new routes
-# * [Cancer Death Rates](../data/cancer_reg.csv) - see if there is a set of predictors that can identifier higher death rate due to cancer
+# * {download}`Boston Housing] <../data/BostonHousing.csv>` - predict the mean value of a homes
+# * {download}`Software Resale] <../data/Tayko.csv>` - try to determine likely customer spend on software
+# * {download}`Airfare] <../data/airfares.csv>` - predict the airfare for new routes
+# * {download}`Cancer Death Rates] <../data/cancer_reg.csv>` - see if there is a set of predictors that can identifier higher death rate due to cancer

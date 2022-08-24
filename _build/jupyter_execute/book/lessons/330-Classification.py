@@ -172,7 +172,7 @@ print(f'Validation Set Accuracy: {validation_accuracy}')
 
 
 # ## Your Turn - Automobile Accidents
-# The file [accidentsFull.csv](../data/accidentsFull.csv) contains information on 42k actual accidents in the US in 2001.  There are three levels of injury provided NO INJURY, INJURY, FATALITY.  Your job, if you choose to accept it, is to use the predictors available to develop a model that can determine whether there was an injury at an accident (INJURY or FATALITY).
+# The file {download}`accidentsFull.csv <../data/accidentsFull.csv.` contains information on 42k actual accidents in the US in 2001.  There are three levels of injury provided NO INJURY, INJURY, FATALITY.  Your job, if you choose to accept it, is to use the predictors available to develop a model that can determine whether there was an injury at an accident (INJURY or FATALITY).
 # 
 # You can do the work right here in the following cells. To see one way to solve it you can check out [a solution here](335-ClassificationSolutions.ipynb).
 
@@ -233,10 +233,10 @@ print(f'Validation Set Accuracy: {validation_accuracy}')
 # [Worked solutions for classification problems](335-ClassificationSolutions.ipynb)
 # 
 # ## Other datasets suitable for classification tasks
-# * [Cleveland Heart Clinic](../data/HeartDisease_Cleveland.xlsx) - predict whether a patient is likely to have heart disease
-# * [Universal Bank](../data/UniversalBank.csv) - determine whether a customer should get a personal loan
-# * [Accidents](../data/accidentsFull.csv) - useful for practicing on a multi-class classification
-# * [Riding lawnmower sales](../data/RidingMowers.csv) - determine the best customers for a riding lawnmower company
-# * [Financial Condition of Banks](../data/banks.csv) - classify the financial health of banks
-# * [Systems Admins](../data/SystemAdministrators.csv) - can you identify the best systems admins
-# * [Competitive Auctions](../data/eBayAuctions.csv) - find competitive auctions
+# * {download}`Cleveland Heart Clinic <../data/HeartDisease_Cleveland.xlsx>` - predict whether a patient is likely to have heart disease
+# * {download}`Universal Bank <../data/UniversalBank.csv>` - determine whether a customer should get a personal loan
+# * {download}`Accidents <../data/accidentsFull.csv>` - useful for practicing on a multi-class classification
+# * {download}`Riding lawnmower sales <../data/RidingMowers.csv>` - determine the best customers for a riding lawnmower company
+# * {download}`Financial Condition of Banks <../data/banks.csv>` - classify the financial health of banks
+# * {download}`Systems Admins <../data/SystemAdministrators.csv>` - can you identify the best systems admins
+# * {download}`Competitive Auctions <../data/eBayAuctions.csv>` - find competitive auctions

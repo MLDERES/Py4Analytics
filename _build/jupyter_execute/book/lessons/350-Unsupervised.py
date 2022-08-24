@@ -283,4 +283,4 @@ pprint.pp(rules.sort_values(by=['lift'], ascending=False)
 # <img src='../img/research-in-association.jpg' width=400 height=300 class='center'/>
 # 
 # ## Other datasets
-# * [Charles Book Club](../data/CharlesBookClub.csv) is another great dataset to try with apriori rules to see how different genres of books sell
+# * {download}`Charles Book Club <../data/CharlesBookClub.csv>` is another great dataset to try with apriori rules to see how different genres of books sell

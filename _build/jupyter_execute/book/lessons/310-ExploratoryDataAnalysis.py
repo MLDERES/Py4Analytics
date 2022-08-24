@@ -131,7 +131,7 @@ ax.set_ylabel('% of CAT.MEDV')
 # 
 # From here we can see that, as previously, there are many more homes not on the Charles River and also that the age of the homes is skewed heavily toward the older home ages.
 # 
-# (Check out the extra notebook [Visualization Samples](visualizationSamples.ipynb) to see another library and possible visualizations.) 
+# (Check out the extra notebook [Visualization Samples](VisualizationSamples.ipynb) to see another library and possible visualizations.) 
 
 # In[11]:
 
@@ -174,9 +174,9 @@ correlationMatrix[abs(correlationMatrix) > 0.7]
 
 
 # ## Other datasets that are of interest for EDA
-# * [Amtrack](../data/Amtrak.csv) - includes data for timeseries analysis
-# * [Bankruptcy](../data/Bankruptcy.csv) - lots of factors to consider
-# * [Motor Vehicle Collisions](../data/NYPD_Motor_Vehicle_Collisions_1000.csv) - includes lat/long, useful for mapping visuals
+# * {download}`Amtrack <../data/Amtrak.csv>` - includes data for timeseries analysis
+# * {download}`Bankruptcy] <../data/Bankruptcy.csv>` - lots of factors to consider
+# * {download}`Motor Vehicle Collisions]<../data/NYPD_Motor_Vehicle_Collisions_1000.csv>` - includes lat/long, useful for mapping visuals
 # 
 # ## Other tools for EDA
-# You may find the notebook [Other Tools for EDA](311-OtherToolsForEDA.ipynb) an interesting tour as well.
+# You may find the notebook [Other Tools for EDA](311-OtherToolsForEDA) an interesting tour as well.

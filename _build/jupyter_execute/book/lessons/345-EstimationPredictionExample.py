@@ -29,7 +29,7 @@ InteractiveShell.ast_node_interactivity = "all"
 
 
 # # Predicting the price of used cars
-# In the data file [ToyotaCorrolla](../data/ToyotaCorolla.csv) we have data on used Toyotas from late 2004 in the Netherlands.  The goal is to predict the price based on it's specifications.
+# In the data file {download}`ToyotaCorrolla <../data/ToyotaCorolla.csv>` we have data on used Toyotas from late 2004 in the Netherlands.  The goal is to predict the price based on it's specifications.
 # 
 # Note there has been some significant EDA done ahead of time to reduce the number of columns and find interesting data.
 # - Cylinders: dropped because all the values are 4
