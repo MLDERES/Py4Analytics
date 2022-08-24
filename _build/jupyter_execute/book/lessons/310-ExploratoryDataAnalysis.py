@@ -6,7 +6,7 @@
 # 
 # The next cell is one that will appear in some configuration as the first in nearly every notebook.  It imports the key libraries we are going to use in our analysis and model building.  In the first case, we will depend on pandas and numpy for our data manipulation and we'll leverage matplotlib as our graphical library.  We'll also use the seaborn library to show off a few plots and visuals that are not quite as readily accessible with the matplotlib library.
 
-# In[ ]:
+# In[1]:
 
 
 # Import relevant libraries
@@ -49,7 +49,7 @@ plt.style.use('dark_background')
 # 
 # We can see that the input attributes have a mixture of units.
 
-# In[ ]:
+# In[2]:
 
 
 # Load up the housing dataset
@@ -63,7 +63,7 @@ housing_df
 # We'll end up doing quite a bit of EDA, usually we'll start with some EDA, clean up the data and munge it into an appropriate format for modeling and then we'll want to check out the results.  It pays to have a good grasp of a plotting library and some techniques to make this process go a bit faster.  There are a few libraries which are pretty common place in the data science with python world, including seaborn and matplotlib.  Many new libraries have been introduced recently as well that add much more interactive opportunities with less coding.
 # 
 
-# In[ ]:
+# In[3]:
 
 
 # Change the column to be more convenient (notice the space between . MEDV)
@@ -72,7 +72,7 @@ housing_df.rename(columns={'CAT. MEDV':'CAT_MEDV'},inplace=True)
 housing_df.head()
 
 
-# In[ ]:
+# In[4]:
 
 
 # check the rows and columns
@@ -81,13 +81,13 @@ housing_df.shape
 
 # We see from the ouput about that we have 506 rows and 14 columns, but we can't see all the columns - let's check out the column names and get an idea of the some descriptive statistics for each numerical column)
 
-# In[ ]:
+# In[5]:
 
 
 housing_df.describe()
 
 
-# In[ ]:
+# In[6]:
 
 
 housing_df.dtypes
@@ -95,7 +95,7 @@ housing_df.dtypes
 
 # Now that we have an idea of the numerical fields.  We should check out the distribution of the CAT_MEDV field to see how these are laid out.
 
-# In[ ]:
+# In[7]:
 
 
 print (housing_df.value_counts(['CAT_MEDV']))
@@ -105,20 +105,20 @@ housing_df.value_counts(['CAT_MEDV'])/len(housing_df)
 
 # We can now take a look at a couple of values as they relate to our target variable (CAT_MEDV).
 
-# In[ ]:
+# In[8]:
 
 
 housing_df.plot.scatter(x='LSTAT', y='MEDV', legend=False)
 
 
-# In[ ]:
+# In[9]:
 
 
 ax=housing_df.groupby('CHAS').mean().MEDV.plot(kind='bar')
 ax.set_ylabel('Avg. MEDV')
 
 
-# In[ ]:
+# In[10]:
 
 
 dataForPlot= housing_df.groupby('CHAS').mean()['CAT_MEDV']*100
@@ -133,7 +133,7 @@ ax.set_ylabel('% of CAT.MEDV')
 # 
 # (Check out the extra notebook [Visualization Samples](visualizationSamples.ipynb) to see another library and possible visualizations.) 
 
-# In[ ]:
+# In[11]:
 
 
 g = sns.FacetGrid(housing_df, col='CHAS')
@@ -142,7 +142,7 @@ g.map_dataframe(sns.histplot,x='AGE')
 
 # We may also be interested in the relationship between a set of the variables so that we can identify which ones may prove to be over-influencing a regression model.  For this we can use two approaches, first we'll look at a set of charts that are related in a pair-wise chart or a correlation map.  First a pairwise graph.  A pairwise graph shows the relationship between these 4 different variables to each other in one simple clean chart.
 
-# In[ ]:
+# In[12]:
 
 
 # setup a small subset of data
@@ -154,7 +154,7 @@ sns.pairplot(df)
 # 
 # Let's take a look and see if we can find any correlations
 
-# In[ ]:
+# In[13]:
 
 
 print(housing_df.corr())
@@ -164,7 +164,7 @@ sns.heatmap(df.corr(),  fmt='.2f',
     cmap='YlGnBu')
 
 
-# In[ ]:
+# In[14]:
 
 
 correlationMatrix = df.corr()
