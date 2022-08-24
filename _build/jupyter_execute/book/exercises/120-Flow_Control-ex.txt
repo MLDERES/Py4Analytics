@@ -1,0 +1,19 @@
+# Getting the current time
+from datetime import datetime as dt
+import pytz
+current_hour = dt.now(pytz.timezone("US/Central")).hour
+print(f'The current hour is: {current_hour}')
+
+# Assign the variable to my_name
+my_name = ...
+
+# Ask for the user's name
+user_name = input('What is your name?')
+
+# Set the greeting to default to nothing
+greeting = ''
+# If the the current hour is less than 12, change the greeting to 'Morning'
+# Otherwise, if the current hour is between 12 and 17 (5pm) set the greeting to 'Afternoon'
+# Otherwise, set the greeting to 'Evening'
+
+print(f'Good {greeting}, {user_name}!  My name is {my_name}')
