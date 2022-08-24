@@ -7,7 +7,7 @@
 # * Readibility.  There is no special encoding for these files.  They can be created or opened with a standard text editor.  
 # * Compatibility.  Because they are easy to pass around and simple to understand they are supported by lots and lots of platforms.
 
-# ## Deliminited formats
+# ## Delimited formats
 # Probably the most common format for portable files is the delimited format (often comma-delimited).  In these files, each line represents a single record and the fields of each record are denoted by some kind of special separator character (usually a comma and sometimes a tab or space).  There are no rules for these kinds of files, just conventions.  For instance, the first line of the file is typically a "header" record.  This record serves to describe the contents in the rows that follow.  This makes is straightforward for someone reading the file to understanding what is expected in the data rows.  Take for instance
 # > 
 # > ```
@@ -15,14 +15,9 @@
 # > 1,Alice,555-1234
 # > 2,Bob,555-0898
 # > 3,Charlie,555-9099
-# > 4,Doug,
+# > 4,Doug,867-5309
 # > ```
 # 
-# ````{csv-table}
-# ---
-# file: ../data/phone_numbers.csv
-# ---
-# ````
 # In this example, we can see clearly that there are 4 records with the id values from 1 to 4.  The first record, that is with id 1, has a name of Alice and a Phone Number of 555-1234.  While we can easily see each of the other records- we can tell in this simple example that line 4 is missing a phone number.
 # 
 # While easy to read for simple/small files - it becomes increasingly complex to read this file in a text editor if we are to try and find errors and missing values.  Fortunately, we can use the tools we have to import the file rather easily and find missing values, misaligned fields and generally interpret the data.
