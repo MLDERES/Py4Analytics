@@ -17,6 +17,12 @@
 # > 3,Charlie,555-9099
 # > 4,Doug,
 # > ```
+# 
+# ````{csv-table}
+# ---
+# file: ../data/phone_numbers.csv
+# ---
+# ````
 # In this example, we can see clearly that there are 4 records with the id values from 1 to 4.  The first record, that is with id 1, has a name of Alice and a Phone Number of 555-1234.  While we can easily see each of the other records- we can tell in this simple example that line 4 is missing a phone number.
 # 
 # While easy to read for simple/small files - it becomes increasingly complex to read this file in a text editor if we are to try and find errors and missing values.  Fortunately, we can use the tools we have to import the file rather easily and find missing values, misaligned fields and generally interpret the data.
