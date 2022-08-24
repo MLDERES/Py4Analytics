@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Introduction
+# # Working with data
 # The purpose of this lesson is to expose students to libraries for preparing and manipulating "rectangular" data files (that is data which has both rows and columns, where each row has the same number of columns).
 
 # The next cell is one that will appear in some configuration as the first in nearly every notebook.  It imports the key libraries we are going to use in our analysis and model building.  In the first case, we will depend on pandas and numpy for our data manipulation and we'll leverage matplotlib as our graphical library.  We'll also use the seaborn library to show off a few plots and visuals that are not quite as readily accessible with the matplotlib library.
@@ -24,10 +24,14 @@ from src.data import load_data, convert_to_bool
 pd.set_option('display.precision',4)
 
 
-# ## Boston Housing Dataset
+# ## Importing the dataset
+# 
+# ***Boston Housing Dataset***
 # Let's take a look at some basic data manipulation with pandas and understand how to get some data to work with.  In all of our examples, we'll use a pretty standard text format called (CSV) or comma-separated-values files.  This format is readable by nearly every statistical software package and by humans.  The first row is typically the name of the columns and each line of the file is a row of data with the values separated by commas.  The pandas library supports many different ways to load up a dataframe, which we will use as the primary mechanism for manipulating data in these notebooks.
 # 
-# ### Business Context
+# This particular file is available in the data directory [BostonHousing](../data/BostonHousing.csv).
+# 
+# ***Business Context***
 # Each record in the database describes a Boston suburb or town. The data was drawn from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. The attributes are deﬁned as follows (taken from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/)):
 # 
 # - **CRIM**: per capita crime rate by town
@@ -59,7 +63,7 @@ convert_to_bool(housing_df, 'CAT_MEDV',inplace=True)
 housing_df
 
 
-# # Inspect data
+# ## Data Inspection
 # One of the first things we want to do in our process is to take a look at the data we have and see what kinds of issues we might be dealing with.  For simple datasets, this can be a quick glance at a table of data, for move complex datasets or issues it will be helpful to use some kind of graphical analysis.
 # 
 # In the example above we see just 10 rows of the data (the first 5 and the last 5).  We can also inspect a few more from the front and a few more in the back using `head()` and `tail()`.
@@ -96,7 +100,7 @@ housing_df.describe()
 
 # We can see from our data dictionary, provided above, that `CAT_MEDV` is meant to be a categorical value (boolean)- not a numeric value.  So the descriptive statistics for it don't make much sense.  We can see however that there are 2 unique values (good, True/False) that False is the most common and it occurs 422 out of of 506 times.
 
-# ## Quick plots and charts
+# ### Quick plots and charts
 # We've got some interesting data here and we can get some quick plots to see how the data is distributed.  For instance, we might be interested in how old the houses are are or what the crime stats are like.  With this we can use the built-in dataframe functions for plotting.
 
 # In[ ]:
@@ -124,8 +128,6 @@ sns.histplot(data=housing_df,x='INDUS',color='yellow').set_title('proportion of 
 # Sometimes it is helpful to see many more dimensions of the data at once.  We can use color, size, shape and axises to show several dimensions, and one more commonly overlooked approach is to use faceting as yet another dimension.  Let's take a look at how the age of the houses vary by the relativeness to the Charles river.  
 # 
 # From here we can see that, as previously, there are many more homes not on the Charles River and also that the age of the homes is skewed heavily toward the older home ages.
-# 
-# (Check out the extra notebook [Visualization Samples](./visualizationSamples.ipynb) to see another library and possible visualizations.) 
 
 # In[ ]:
 
@@ -160,9 +162,9 @@ sns.pairplot(df)
 # 
 # First thing we need to know about dataframes is how they are accessed.  In other words, how do we get at specific rows/columns in the data.  Below are a few indexing techniques.
 
-# ## Data Understanding 
+# ***Insurance Dataset***
 # The following dataset represents individuals and their health insurances charges from a US company.  Some of the key indicators that influence the cost of the insurance are in this dataset.
-# ### Insurance
+# 
 # * __age__: age of primary beneficiary
 # * __sex__: insurance contractor gender, female, male
 # * __bmi__: Body mass index, providing an understanding of body, weights that are relatively high or low relative to height,

@@ -9,17 +9,6 @@ parts:
   - caption: Getting Started
     chapters:
     - file: book/lessons/01-JupyterNotebooks
-  # Introduction - (bootcamp content)
-  # - Chapter 1
-  #   - How to use Jupyter
-  #   - Output (print statement)
-  #   - Input (getting data from a user)
-  #   - Datatypes
-  #     - numbers
-  #     - strings
-  #     - integers
-  #     - lists
-  #     - dictionaries
   - caption: Part 1 - Python Basics
     maxdepth: 2
     chapters:
@@ -28,15 +17,11 @@ parts:
         - file: book/lessons/10-Introduction
         - file: book/lessons/20-Flow_Control
         - file: book/lessons/30-Functions
-    # - Chapter 1 - Exercises
-    #   - Simple Hello, World
-    #   - Hello, User
-    #   - Simple math (convert C to Fahrenheit)
       - file: book/lessons/TryIt_Part1
         sections:
         - file: book/exercises/10-Introduction-ex
         - file: book/exercises/30-Functions-ex
-  - caption: Part 2 - Working with Data
+  - caption: Part 2 - Intermediate Concepts
     maxdepth: 2
     chapters:
     - file: book/lessons/35-PartTwo
@@ -81,8 +66,22 @@ parts:
     maxdepth: 2
     chapters:
     - file: book/exercises/Coding_Challenges
-    
 
+# Introduction - (bootcamp content)
+# - Chapter 1
+#   - How to use Jupyter
+#   - Output (print statement)
+#   - Input (getting data from a user)
+#   - Datatypes
+#     - numbers
+#     - strings
+#     - integers
+#     - lists
+#     - dictionaries    
+# - Chapter 1 - Exercises
+#   - Simple Hello, World
+#   - Hello, User
+#   - Simple math (convert C to Fahrenheit)
 # - Chapter 2 
 #   - Conditional execution
 #   - For loops
