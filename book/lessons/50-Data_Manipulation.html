@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction</title>
+    <title>Working with data</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 2 - Working with Data
+  Part 2 - Intermediate Concepts
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -202,7 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Introduction
+     Working with data
     </a>
    </li>
    <li class="toctree-l2">
@@ -633,33 +633,24 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Introduction
+   Working with data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boston-housing-dataset">
-     Boston Housing Dataset
+    <a class="reference internal nav-link" href="#importing-the-dataset">
+     Importing the dataset
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-inspection">
+     Data Inspection
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#business-context">
-       Business Context
+      <a class="reference internal nav-link" href="#quick-plots-and-charts">
+       Quick plots and charts
       </a>
      </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inspect-data">
-   Inspect data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quick-plots-and-charts">
-     Quick plots and charts
-    </a>
-    <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#determining-the-interaction-between-a-set-of-variables">
        Determining the interaction between a set of variables
@@ -678,18 +669,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#where-to-get-more-help">
      Where to get more help
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-understanding">
-     Data Understanding
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#insurance">
-       Insurance
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pandas-series">
@@ -726,7 +705,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Working with data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -738,33 +717,24 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Introduction
+   Working with data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boston-housing-dataset">
-     Boston Housing Dataset
+    <a class="reference internal nav-link" href="#importing-the-dataset">
+     Importing the dataset
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-inspection">
+     Data Inspection
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#business-context">
-       Business Context
+      <a class="reference internal nav-link" href="#quick-plots-and-charts">
+       Quick plots and charts
       </a>
      </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inspect-data">
-   Inspect data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quick-plots-and-charts">
-     Quick plots and charts
-    </a>
-    <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#determining-the-interaction-between-a-set-of-variables">
        Determining the interaction between a set of variables
@@ -783,18 +753,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#where-to-get-more-help">
      Where to get more help
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-understanding">
-     Data Understanding
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#insurance">
-       Insurance
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pandas-series">
@@ -832,8 +790,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-data">
+<h1>Working with data<a class="headerlink" href="#working-with-data" title="Permalink to this headline">#</a></h1>
 <p>The purpose of this lesson is to expose students to libraries for preparing and manipulating “rectangular” data files (that is data which has both rows and columns, where each row has the same number of columns).</p>
 <p>The next cell is one that will appear in some configuration as the first in nearly every notebook.  It imports the key libraries we are going to use in our analysis and model building.  In the first case, we will depend on pandas and numpy for our data manipulation and we’ll leverage matplotlib as our graphical library.  We’ll also use the seaborn library to show off a few plots and visuals that are not quite as readily accessible with the matplotlib library.</p>
 <div class="cell docutils container">
@@ -855,13 +813,13 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="boston-housing-dataset">
-<h2>Boston Housing Dataset<a class="headerlink" href="#boston-housing-dataset" title="Permalink to this headline">#</a></h2>
-<p>Let’s take a look at some basic data manipulation with pandas and understand how to get some data to work with.  In all of our examples, we’ll use a pretty standard text format called (CSV) or comma-separated-values files.  This format is readable by nearly every statistical software package and by humans.  The first row is typically the name of the columns and each line of the file is a row of data with the values separated by commas.  The pandas library supports many different ways to load up a dataframe, which we will use as the primary mechanism for manipulating data in these notebooks.</p>
-<p>This particular file is available in the <code class="docutils literal notranslate"><span class="pre">{download}</span> <span class="pre">data</span> <span class="pre">directory</span> <span class="pre">&lt;../data/BostonHousing.csv&gt;</span></code></p>
-<section id="business-context">
-<h3>Business Context<a class="headerlink" href="#business-context" title="Permalink to this headline">#</a></h3>
-<p>Each record in the database describes a Boston suburb or town. The data was drawn from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. The attributes are deﬁned as follows (taken from the <a class="reference external" href="https://archive.ics.uci.edu/ml/machine-learning-databases/housing/">UCI Machine Learning Repository</a>):</p>
+<section id="importing-the-dataset">
+<h2>Importing the dataset<a class="headerlink" href="#importing-the-dataset" title="Permalink to this headline">#</a></h2>
+<p><em><strong>Boston Housing Dataset</strong></em>
+Let’s take a look at some basic data manipulation with pandas and understand how to get some data to work with.  In all of our examples, we’ll use a pretty standard text format called (CSV) or comma-separated-values files.  This format is readable by nearly every statistical software package and by humans.  The first row is typically the name of the columns and each line of the file is a row of data with the values separated by commas.  The pandas library supports many different ways to load up a dataframe, which we will use as the primary mechanism for manipulating data in these notebooks.</p>
+<p>This particular file is available in the data directory <span class="xref myst">BostonHousing</span>.</p>
+<p><em><strong>Business Context</strong></em>
+Each record in the database describes a Boston suburb or town. The data was drawn from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. The attributes are deﬁned as follows (taken from the <a class="reference external" href="https://archive.ics.uci.edu/ml/machine-learning-databases/housing/">UCI Machine Learning Repository</a>):</p>
 <ul class="simple">
 <li><p><strong>CRIM</strong>: per capita crime rate by town</p></li>
 <li><p><strong>ZN</strong>: proportion of residential land zoned for lots over 25,000 sq.ft.</p></li>
@@ -893,10 +851,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="inspect-data">
-<h1>Inspect data<a class="headerlink" href="#inspect-data" title="Permalink to this headline">#</a></h1>
+<section id="data-inspection">
+<h2>Data Inspection<a class="headerlink" href="#data-inspection" title="Permalink to this headline">#</a></h2>
 <p>One of the first things we want to do in our process is to take a look at the data we have and see what kinds of issues we might be dealing with.  For simple datasets, this can be a quick glance at a table of data, for move complex datasets or issues it will be helpful to use some kind of graphical analysis.</p>
 <p>In the example above we see just 10 rows of the data (the first 5 and the last 5).  We can also inspect a few more from the front and a few more in the back using <code class="docutils literal notranslate"><span class="pre">head()</span></code> and <code class="docutils literal notranslate"><span class="pre">tail()</span></code>.</p>
 <div class="cell docutils container">
@@ -932,7 +888,7 @@ title="Print to PDF"
 </div>
 <p>We can see from our data dictionary, provided above, that <code class="docutils literal notranslate"><span class="pre">CAT_MEDV</span></code> is meant to be a categorical value (boolean)- not a numeric value.  So the descriptive statistics for it don’t make much sense.  We can see however that there are 2 unique values (good, True/False) that False is the most common and it occurs 422 out of of 506 times.</p>
 <section id="quick-plots-and-charts">
-<h2>Quick plots and charts<a class="headerlink" href="#quick-plots-and-charts" title="Permalink to this headline">#</a></h2>
+<h3>Quick plots and charts<a class="headerlink" href="#quick-plots-and-charts" title="Permalink to this headline">#</a></h3>
 <p>We’ve got some interesting data here and we can get some quick plots to see how the data is distributed.  For instance, we might be interested in how old the houses are are or what the crime stats are like.  With this we can use the built-in dataframe functions for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -957,6 +913,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 <section id="determining-the-interaction-between-a-set-of-variables">
 <h3>Determining the interaction between a set of variables<a class="headerlink" href="#determining-the-interaction-between-a-set-of-variables" title="Permalink to this headline">#</a></h3>
 <p>Sometimes it is helpful to see many more dimensions of the data at once.  We can use color, size, shape and axises to show several dimensions, and one more commonly overlooked approach is to use faceting as yet another dimension.  Let’s take a look at how the age of the houses vary by the relativeness to the Charles river.</p>
@@ -1001,12 +958,8 @@ title="Print to PDF"
 <li><p>There are alot of examples in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html">pandas cookbook</a>, but if you can’t find it there - try <a class="reference external" href="https://stackoverflow.com/">stackoverflow</a></p></li>
 </ul>
 <p>First thing we need to know about dataframes is how they are accessed.  In other words, how do we get at specific rows/columns in the data.  Below are a few indexing techniques.</p>
-</section>
-<section id="data-understanding">
-<h2>Data Understanding<a class="headerlink" href="#data-understanding" title="Permalink to this headline">#</a></h2>
-<p>The following dataset represents individuals and their health insurances charges from a US company.  Some of the key indicators that influence the cost of the insurance are in this dataset.</p>
-<section id="insurance">
-<h3>Insurance<a class="headerlink" href="#insurance" title="Permalink to this headline">#</a></h3>
+<p><em><strong>Insurance Dataset</strong></em>
+The following dataset represents individuals and their health insurances charges from a US company.  Some of the key indicators that influence the cost of the insurance are in this dataset.</p>
 <ul class="simple">
 <li><p><strong>age</strong>: age of primary beneficiary</p></li>
 <li><p><strong>sex</strong>: insurance contractor gender, female, male</p></li>
@@ -1042,7 +995,6 @@ objective index of body weight (kg / m ^ 2) using the ratio of height to weight,
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="pandas-series">
 <h2>Pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h2>
