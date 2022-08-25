@@ -130,7 +130,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="05-PartOne.html">
+  <a class="reference internal" href="100-PartOne.html">
    Part 1 - Basic Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -140,17 +140,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="10-Introduction.html">
+    <a class="reference internal" href="110-Introduction.html">
      Learning to program
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="20-Flow_Control.html">
+    <a class="reference internal" href="120-Flow_Control.html">
      Flow Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="30-Functions.html">
+    <a class="reference internal" href="130-Functions.html">
      Reusing Code
     </a>
    </li>
@@ -167,12 +167,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/10-Introduction-ex.html">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
      Try it: Getting Started with Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/30-Functions-ex.html">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
+     Try it: Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
      Try it: Functions
     </a>
    </li>
@@ -181,12 +186,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 2 - Working with Data
+  Part 2 - Intermediate Concepts
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="35-PartTwo.html">
+  <a class="reference internal" href="200-PartTwo.html">
    Part 2 - Intermediate Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -196,32 +201,32 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="40-Object_Orientation.html">
+    <a class="reference internal" href="210-Object_Orientation.html">
      Namespace, Objective Orientation and Packaging
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="50-Data_Manipulation.html">
-     Introduction
+    <a class="reference internal" href="220-Data_Manipulation.html">
+     Working with data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="60-Web_Data.html">
-     Getting Data
+    <a class="reference internal" href="230-Web_Data.html">
+     Differing data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="70-Getting_Web_Data.html">
+    <a class="reference internal" href="240-Getting_Web_Data.html">
      Gather data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="80-Database_Connections.html">
+    <a class="reference internal" href="250-Database_Connections.html">
      Connecting to SQL
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="90-Data_Visualization.html">
+    <a class="reference internal" href="260-Data_Visualization.html">
      Exploratory Data Analysis
     </a>
    </li>
@@ -238,32 +243,32 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/40-Object_Orientation-ex.html">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
      Try it: Objects, Namespaces and Packages
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/50-Data_Manipulation-ex.html">
+    <a class="reference internal" href="../exercises/220-Data_Manipulation-ex.html">
      Try it: Manipulating Data With pandas
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/60-Web_Data-ex.html">
+    <a class="reference internal" href="../exercises/230-Web_Data-ex.html">
      Try it: Working with common data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/70-Getting_Web_Data-ex.html">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
      Try it: Getting data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/80-Database_Connections-ex.html">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
      Try-it: Connecting to a Database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/90-Data_Visualization-ex.html">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
      Try it: Data Visualization
     </a>
    </li>
@@ -1011,7 +1016,7 @@ $$precision = \frac{TruePositives}{TruePositives+FalsePositives}$$</p>
 </section>
 <section id="your-turn-automobile-accidents">
 <h2>Your Turn - Automobile Accidents<a class="headerlink" href="#your-turn-automobile-accidents" title="Permalink to this headline">#</a></h2>
-<p>The file <span class="xref myst">accidentsFull.csv</span> contains information on 42k actual accidents in the US in 2001.  There are three levels of injury provided NO INJURY, INJURY, FATALITY.  Your job, if you choose to accept it, is to use the predictors available to develop a model that can determine whether there was an injury at an accident (INJURY or FATALITY).</p>
+<p>The file <code class="xref download docutils literal notranslate"><span class="pre">accidentsFull.csv</span> <span class="pre">&lt;../data/accidentsFull.csv.</span></code> contains information on 42k actual accidents in the US in 2001.  There are three levels of injury provided NO INJURY, INJURY, FATALITY.  Your job, if you choose to accept it, is to use the predictors available to develop a model that can determine whether there was an injury at an accident (INJURY or FATALITY).</p>
 <p>You can do the work right here in the following cells. To see one way to solve it you can check out <a class="reference internal" href="335-ClassificationSolutions.html"><span class="doc std std-doc">a solution here</span></a>.</p>
 </section>
 </section>
@@ -1082,13 +1087,13 @@ Decision Trees (DTs) are a non-parametric supervised learning method used for cl
 <section id="other-datasets-suitable-for-classification-tasks">
 <h2>Other datasets suitable for classification tasks<a class="headerlink" href="#other-datasets-suitable-for-classification-tasks" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">Cleveland Heart Clinic</span> - predict whether a patient is likely to have heart disease</p></li>
-<li><p><span class="xref myst">Universal Bank</span> - determine whether a customer should get a personal loan</p></li>
-<li><p><span class="xref myst">Accidents</span> - useful for practicing on a multi-class classification</p></li>
-<li><p><span class="xref myst">Riding lawnmower sales</span> - determine the best customers for a riding lawnmower company</p></li>
-<li><p><span class="xref myst">Financial Condition of Banks</span> - classify the financial health of banks</p></li>
-<li><p><span class="xref myst">Systems Admins</span> - can you identify the best systems admins</p></li>
-<li><p><span class="xref myst">Competitive Auctions</span> - find competitive auctions</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/e5144b1799d3fb9d5fd01705be70bf30/HeartDisease_Cleveland.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">Cleveland</span> <span class="pre">Heart</span> <span class="pre">Clinic</span></code></a> - predict whether a patient is likely to have heart disease</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/43d1d16d0fd9c1e1e6a25be965b63811/UniversalBank.csv"><code class="xref download docutils literal notranslate"><span class="pre">Universal</span> <span class="pre">Bank</span></code></a> - determine whether a customer should get a personal loan</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/e369758936381e50cb8913a5a31fbf94/accidentsFull.csv"><code class="xref download docutils literal notranslate"><span class="pre">Accidents</span></code></a> - useful for practicing on a multi-class classification</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/f1bcf4d248c6105aee45b9a4b3e8d9a2/RidingMowers.csv"><code class="xref download docutils literal notranslate"><span class="pre">Riding</span> <span class="pre">lawnmower</span> <span class="pre">sales</span></code></a> - determine the best customers for a riding lawnmower company</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/705695eeb0c2510b9dfd1006833d0bf1/banks.csv"><code class="xref download docutils literal notranslate"><span class="pre">Financial</span> <span class="pre">Condition</span> <span class="pre">of</span> <span class="pre">Banks</span></code></a> - classify the financial health of banks</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/e578a4896a2499a70aaee14fdacef4fb/SystemAdministrators.csv"><code class="xref download docutils literal notranslate"><span class="pre">Systems</span> <span class="pre">Admins</span></code></a> - can you identify the best systems admins</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/a2065a5adc9df69b8bcecdca819c83c1/eBayAuctions.csv"><code class="xref download docutils literal notranslate"><span class="pre">Competitive</span> <span class="pre">Auctions</span></code></a> - find competitive auctions</p></li>
 </ul>
 </section>
 </section>
