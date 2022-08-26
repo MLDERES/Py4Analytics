@@ -8,7 +8,6 @@ This on-line resource starts with a basic introduction to the language syntax it
 ```
 
 > ***The Zen of Python, by Tim Peters***</br>
-> **</br>
 > *Beautiful is better than ugly.*</br>
 > *Explicit is better than implicit.*</br>
 > *Simple is better than complex.*</br>
