@@ -1,5 +1,7 @@
 .vscode/*
 .vscode
+.last_build
+.last_publish
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
