@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Flow Control
+# # Making Decisions & Looping
 # By now you have a solid understanding of a few of the data types that Python makes available to everyone.  Numbers, strings, list and dictionaries.  But often times we want to do more than just Python as a fancy calculator or simple word processor, for this need to combine together a set of actions that will be completed over and over again.  We want to let our algorithms make decisions or repeat actions until a particular condition is met.  
 # 
 # Let's take a quick look at a loop that counts from 1 to 10
@@ -38,7 +38,6 @@ print('All Done')
 
 # ## Reminder about boolean math
 # Boolean math is incredibly important to manage the flow of most computer programs.  So as a quick reminder, Boolean values can only be 1 or 0, that is `True` or `False`.  `and` means that both values must be `True` for the statement to be `True`, while the `or` statement says that only one of the values must be `True` in order for the condition to evaluate to `True`.  For instance,
-# 
 
 # In[ ]:
 
@@ -96,31 +95,32 @@ not True
 not not True
 
 
-# > ## Blocks of Code
-# > One more item we need to address before we get too far, code blocks.  While code is mostly meant to run from the top to the bottom on the page, we can put groups of statements together into code blocks.  > You can tell when you are looking at a code block because of indentions.  Three rules apply to code blocks
-# >
-# > 1.  Blocks begin when indention increases
-# > 2.  Blocks can contain other blocks
-# > 3.  Blocks end when the indention decreases to zero or a containing block's indention
-# > 
-# > You've seen an example of this already, but let's look at one more and be explicit.
-# > 
-# > ```
-# > name = 'Daniel'
-# > password = 'baby tigers are cute'
-# > 
-# > if name == 'Daniel':
-# >     print('Hello Daniel')
-# >     if password == 'baby tigers are cute':
-# >         print('Access granted')
-# >     else:
-# >         print('Access denied')
-# > 
-# > print('Next Command')
-# > ```
-# > Here we have a code block that starts with `print('Hello Daniel')` (rule 1) and contains all the lines up to `print('next command')` (rule 3).  There are two other code blocks `print('Access granted')` and > `print('Access denied')` (rule 2).
+# ## Blocks of Code
+# One more item we need to address before we get too far, code blocks.  While code is mostly meant to run from the top to the bottom on the page, we can put groups of statements together into code blocks. You can tell when you are looking at a code block because of indentions.<br/>
+# 
+# Three rules apply to code blocks
+# 1.  Blocks begin when indention increases
+# 2.  Blocks can contain other blocks
+# 3.  Blocks end when the indention decreases to zero or a containing block's indention
+# 
+# You've seen an example of this already, but let's look at one more and be explicit.
+# 
+# ```python
+# name = 'Daniel'
+# password = 'baby tigers are cute'
+# 
+# if name == 'Daniel':
+#     print('Hello Daniel')
+#     if password == 'baby tigers are cute':
+#         print('Access granted')
+#     else:
+#         print('Access denied')
+# 
+# print('Next Command')
+# ```
+# Here we have a code block that starts with `print('Hello Daniel')` **(rule 1)** and contains all the lines up to `print('next command')` **(rule 3)**.  There are two other code blocks `print('Access granted')` and `print('Access denied')` **(rule 2)**.
 
-# # Flow Control
+# ## Flow Control
 # Most of the interesting algorithms that we want to automate are more complex than just a list of tasks.  We often have to react to changing conditions or adjust the list of steps based on outcome of previous steps or the environment.  For instance, if we are going to make a PB&J sandwich, we might want to ask the person that is going to eat the sandwhich if they would like the bread toasted first.  If they say yes, then we will add a step to our algorithm which says "toast the bread".
 # 
 # __Making a PB&J__ (on bread or toast)
@@ -135,7 +135,7 @@ not not True
 # 
 # Notice that all the steps will be executed exactly the same, except that if the bread is to be toasted, we'll add one more step.
 # 
-# ## Conditional Statements
+# ### Conditional Statements
 # The most well-worn statement in all of programming is the `if` statement.  This expressions says: _if this condition is true, then execute the next block of code_.  One step further, we might want to take a different path 
 # 
 # Following is an example using Python
@@ -271,14 +271,14 @@ print(f"My number was: {our_random}")
 # ```
 # In this simple example, we are testing if the value in cell A1 is less than the value in B1 and if so, place _Yes_ in the current cell, otherwise fill the cell with _No_.
 
-# # Looping Statements
+# ## Repeating Statements
 # Another useful feature of common algorithms that we tend to use is to repeat a set of steps.  For instance, printing address labels for all our customers, reading lines from a file, or processing items in an ecommerce basket.  These situations may not happen quite as often in real life, but with compute power - repeating tasks is super cheap and incredibly efficient.
 # 
 # There are two common kinds of loops in Python.  
 # * Looping over a known set of items.  The set of items can be numbers, strings or something else.  For instance, make 4 sandwiches or make sandwiches for Alice, Bob and Charlie.
 # * Continue to loop until a condition is met.  An example of this would be: keep making sandwiches until someone tells us to stop.
 # 
-# ## `for` statement
+# ### `for` statement
 # The `for` statement in Python is an incredibly valuable and prevalent statement.  This statement will iterate over a some sequence of items (e.g. a list, letters in a string) with each pass assigning the next item to a common variable.  Let's take for instance
 # ```python
 # words = ['cat','house','window']
@@ -296,7 +296,6 @@ for w in words:
     print(f'{w}')
 
 
-# 
 # ### Creating a list of numbers automatically with `range`
 # In order to execute a for loop, it is sometimes helpful to have a sequence of numbers to iterate over.  And while you could type out a list with each number it in, that gets cumbersome and error prone.
 # ```python
@@ -326,39 +325,7 @@ for i in range(10,0,-1):
     print(i)
 
 
-# ## `while` statement
-# If we prefer instead to do each step repeatedly until a particular condition is met - then we'd want to use the `while` statement.
-# 
-# >__NOTE:__ There are a few things that catch new coders with `while` statements.  
-# > * First, the check condition will need to be established _before_ the loop starts, or else the loop won't start.  
-# > * Also, if there is no way for the condition to change in the loop, then the loop will not stop!
-# 
-# Next we'll go back to our guessing game and this time, we'll let the user continue to guess until they get the right answer.
-# 
-
-# In[ ]:
-
-
-# Get a number between 0 and 10
-our_random = random.randint(0,10)
-
-# We'll need to establish the check condition before the loop starts
-
-user_input_as_int = int(input("Please enter integer: "))
-
-# Until the users input matches our random number, do these steps
-while (user_input_as_int != our_random):
-    ## If the value was too high
-    if user_input_as_int > our_random:
-        print("Didn't guess it this time, your guess was too high")
-    else:
-        print("Didn't guess it this time, your guess was too low")
-    
-    # We need to make sure that user_input_as_int changes in the loop
-    user_input_as_int = int(input("Please enter integer: "))
-
-print(f"You got it!  My number was: {our_random}")
-
+# Below is one more fun example.  Combining `for` loops with decision making `if` statements.  Don't be put off by the use of emojis instead of characters, strings or numbers.  Emojis are just characters like any other character as far as Python is concerned.  (Which means you could use these in your variable or function names, but you probably shouldn't if you want your code to be understood by other humans).
 
 # In[ ]:
 
@@ -380,44 +347,63 @@ for fruit in all_the_fruits:
         print(f'I like this one {fruit}!')
 
 
-# Using just these two simple satements can allow us to make some pretty interesting use cases.
+# So as you can see, with just these two simple statements `if` and `for` we can implement some pretty interesting algorithms.
 # 
-
-# ## Your turn - Alphabet Soup
-# For this challenge, using what you have learned about `for` loops and `if` statements to capitalize all the vowels (a,e,i,o,u) in the string provided and print the results.  To help you out, the letters of the alphabet have been provided.  The next cell provides an outline of the steps in English.  Working through the logic in English first can make solving problems a bit easier.  Try working through the steps one by one and translating each line into the Python code that executes the action.  Bonus, leaving the comments in place essentially creates automated documentation for your code!
-# 
-# **HINT**: Remember strings are just a sequence of letters which can be iterated and also concatenated simply with `+`.
-
-# In[ ]:
-
-
-# This is the word for which you should be replacing the vowels
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
-# create a variable to hold the new set of letters
-# for each letter in the word provided
-    #  if the letter is an `a` then add a captial `A` to the new set of letters
-    #  otherwise if the letter is an `e` then add a capital `E` to the new set of letters
-    #  otherwise if the letter is an `i` then add a capital `I` to the new set of letters
-    #  otherwise if the letter is an `o` then add a capital `O` to the new set of letters
-    #  otherwise if the letter is an `u` then add a capital `U` to the new set of letters
-    #  otherwise add the current letter to the new set of letters
-# print the new string
-
+# Now would be a good time to head over to the [exercises](../exercises/120-Flow_Control-ex.ipynb) and try a couple on your own.
 
 # ## `while` Statements
-# You have already seen an example of the `while` statement a bit earlier, but it is helpful to address again briefly.  The `while` statement is useful when the condition that is being tested happens in the code block of the loop.  For instance, `while` loops are often used when reading lines from a file.  
+# You have already seen an example of the `while` statement a bit earlier, but it is helpful to address again briefly.  The `while` statement is useful when the condition that is being tested happens _in the code block of the loop_.  For instance, `while` loops are often used when reading lines from a file.  
 # ```python
 # line = ''
 # while not line is not None:
 #     print(line)
 #     line = read_line_from_file(f)
 # ```
-# In this case, we bootstrap the value of `line` to be an empty string, then we tell Python to continue to execute the code block until the iteration when the value of `line` has no more value.  If we were to do this with a `for` loop, we would need to know ahead of time how many lines were in the file or have a specific number of lines in mind.
+# In this case, we start by setting the value of `line` to be an empty string, then we tell Python to continue to execute the code block until the value of `line` has no value.  If we were to do this with a `for` loop, we would need to know ahead of time how many lines were in the file or have a specific number of lines in mind.  For instance,
 # 
+# ```python
+# line = ''
+# for line_number in range(num_lines_in_file):
+#     line = read_line_from_file_by_number(file, line_number)
+#     print(line)
+# ```
+# 
+# ````{caution}
+# Because of the way the blocks execute in `while` loops vs `for` loops, you will often see a little different logic.  For instance, with a `while` loop, the first value is set before the loop starts so typcially we will use the value initially and the last step in the loop is to update the condition we are checking.  In `for` loops the value is set when the loop starts, so there is no need to update the condition in the loop.
+# ````
+
 # One more common use of `while` is to avoid getting bad data from user inputs.  So for instance, the next cell shows an example of asking the user to specify a value between 1-10.  So long as the user doesn't provide a valid value, the prompt is repeated.
 # 
-# **Question** What would happen if we bootstrapped the value of `user_input` to say 4?
+# Next we'll go back to our guessing game and this time, we'll let the user continue to guess until they get the right answer.
+
+# In[1]:
+
+
+# Get a number between 0 and 10
+our_random = random.randint(0,10)
+
+# We need to establish the check condition before the loop starts
+user_input_as_int = int(input("Please enter integer: "))
+
+# Until the users input matches our random number, do these steps
+while (user_input_as_int != our_random):
+    ## If the value was too high
+    if user_input_as_int > our_random:
+        print("Didn't guess it this time, your guess was too high")
+    else:
+        print("Didn't guess it this time, your guess was too low")
+    
+    # We need to make sure that user_input_as_int changes in the loop
+    user_input_as_int = int(input("Please enter integer: "))
+
+print(f"You got it!  My number was: {our_random}")
+
+
+# ````{note} 
+# There are a few things that catch new coders with `while` statements.  
+# * First, the check condition will need to be established _before_ the loop starts, or else the loop won't start.  
+# * Also, if there is no way for the condition to change in the loop, then the loop will not stop!
+# ````
 
 # ### How to do nothing
 # There are rare occassions when our code requires us to have a block of statements even though we don't want to do anything with them.  This is common when we are starting to write our code and we want a placeholder or we aren't sure what to do just yet, but we want to be syntactically correct.  This is where we can use the keyword `pass` similar to comments, this is skipped over by the computer, but makes sure that our code works correctly.
@@ -444,4 +430,4 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'
 #         remove_invader()
 #     update_screen()
 # ```    
-# 
+# Pretty crazy to know that something as complex as Call of Duty is these same primitives as our simple guessing game!

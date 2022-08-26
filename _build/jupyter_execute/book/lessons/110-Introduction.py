@@ -30,8 +30,6 @@
 
 # ::::{tip} 
 # You can always open these interactive notebooks in JupyterHub to run them, make changes and generally experiment.  For help with this see the [Welcome To Jupyter](./01-JupyterNotebooks.ipynb) page
-# 
-# jjjj
 # ::::
 
 # ## Strings, numbers, and lists

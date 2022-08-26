@@ -17,3 +17,16 @@ greeting = ''
 # Otherwise, set the greeting to 'Evening'
 
 print(f'Good {greeting}, {user_name}!  My name is {my_name}')
+
+# This is the word for which you should be replacing the vowels
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+# create a variable to hold the new set of letters
+# for each letter in the word provided
+    #  if the letter is an `a` then add a captial `A` to the new set of letters
+    #  otherwise if the letter is an `e` then add a capital `E` to the new set of letters
+    #  otherwise if the letter is an `i` then add a capital `I` to the new set of letters
+    #  otherwise if the letter is an `o` then add a capital `O` to the new set of letters
+    #  otherwise if the letter is an `u` then add a capital `U` to the new set of letters
+    #  otherwise add the current letter to the new set of letters
+# print the new string

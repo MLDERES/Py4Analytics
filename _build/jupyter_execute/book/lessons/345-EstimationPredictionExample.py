@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[ ]:
 
 
 import pandas as pd
@@ -34,7 +34,7 @@ InteractiveShell.ast_node_interactivity = "all"
 # Note there has been some significant EDA done ahead of time to reduce the number of columns and find interesting data.
 # - Cylinders: dropped because all the values are 4
 
-# In[3]:
+# In[ ]:
 
 
 #
@@ -44,17 +44,17 @@ cars_df = cars_df.drop(columns=['Cylinders','Model'])
 cars_df.shape
 
 
-# _NOTE:_ Maybe it's worth noting (many notebooks leave these steps out because they are cumbersome and more complex to explain than to just do).  In a different notebook, I took a good look at the data to determine how to ensure that the data types were correct for each column.  You could do this in Excel (if your data is small enough) or you might use another tool where you can get a quick sample and try to understand the data.  For me, I took a look at the the types of data `cars_df.dtypes` then since I saw that many of the columns had just a 1 or a 0, I figured these were `boolean`.  Then looking at the names of the columns, like `Mfg_Year` and `Mfg_Month`, even though they are numbers, I felt it would be best to convert them what they are _ordinal_ values.  The other reason that this doesn't get much description is because the process is usually a bit non-linear and repeatitive.  For instance, once I determined the booleans, I converted them and then started looking for categoricals.  This would have taken 4 notebook cells (1. find bools, 2. convert columns to bool, 3. find non-bool number columns, 4. convert to ordinal).  As a reader you are really only interested in seeing the conversion of columns in a single cell instead of all the work behind it.
+# Maybe it's worth noting (many notebooks leave these steps out because they are cumbersome and more complex to explain than to just do).  In a different notebook, I took a good look at the data to determine how to ensure that the data types were correct for each column.  You could do this in Excel (if your data is small enough) or you might use another tool where you can get a quick sample and try to understand the data.  For me, I took a look at the the types of data `cars_df.dtypes` then since I saw that many of the columns had just a 1 or a 0, I figured these were `boolean`.  Then looking at the names of the columns, like `Mfg_Year` and `Mfg_Month`, even though they are numbers, I felt it would be best to convert them what they are _ordinal_ values.  The other reason that this doesn't get much description is because the process is usually a bit non-linear and repeatitive.  For instance, once I determined the booleans, I converted them and then started looking for categoricals.  This would have taken 4 notebook cells (1. find bools, 2. convert columns to bool, 3. find non-bool number columns, 4. convert to ordinal).  As a reader you are really only interested in seeing the conversion of columns in a single cell instead of all the work behind it.
 # 
 # Another example of the non-linear workflow, I discovered `Cylinders` as a unary value (all cars here have 4 cylinders).  If this column was dropped later in the notebook, then an update to the categorical columns as well.  Instead, I'll just let you know that I found this in a later step.  To be more clear, it was dropped immediately at the start before creating the categorical columns.  Additionally, I found later in the model that there are 300+ different car models in a dataset (within just 1400 rows), so this isn't going to be helpful later on either.
 
-# In[4]:
+# In[ ]:
 
 
 cars_df.dtypes
 
 
-# In[5]:
+# In[ ]:
 
 
 cars_df = convert_to_bool(cars_df,['Met_Color', 'Automatic', 'Mfr_Guarantee', 'BOVAG_Guarantee', 'ABS',
@@ -86,7 +86,7 @@ def remove_column(df, column_collection):
 # ## More EDA
 # Next, I'm going to do a few more steps to see if I can determine anything interesting about the data.  I'll start with a cumulative density plot of the price.  This helps me to see what the range of prices is and I've also plotted to the IQR's, this can be helpful to see how spread out the prices are.
 
-# In[6]:
+# In[ ]:
 
 
 iq1,iq2,iq3 = cars_df.Price.describe()[4:7]
@@ -103,7 +103,7 @@ plt.show();
 cars_df.Price.describe()
 
 
-# In[8]:
+# In[ ]:
 
 
 # Next, I want to see if  there are cases where there are too many of one class (bool or categorical)
@@ -116,7 +116,7 @@ cars_df[cat_columns].nunique()
 
 # Looking at the values above, it seems like `Parking_Assist` is pretty much useless in terms of determining the price since there are only 4 cars with this feature - I'll remove it from the categoricals.
 
-# In[9]:
+# In[ ]:
 
 
 # Now let's see how these categoricals relate to price
@@ -125,7 +125,7 @@ for ax, c in zip(axs.flat,cat_columns[1:]):
     sns.boxplot(data=cars_df, x=c,y='Price',ax=ax);
 
 
-# In[8]:
+# In[ ]:
 
 
 # We see above that it looks like these values may have some interest (certainly the newer the car the more valuable)
@@ -133,14 +133,14 @@ for ax, c in zip(axs.flat,cat_columns[1:]):
 cars_df['Doors'].value_counts()
 
 
-# In[9]:
+# In[ ]:
 
 
 # With only 2 samples of 2-door cars, we can safely drop these
 cars_df = cars_df.query('Doors>2')
 
 
-# In[10]:
+# In[ ]:
 
 
 # Next I noticed that the price seems to differ for each color pretty significantly
@@ -152,7 +152,7 @@ colors_df
 # ## Feature importance
 # Many of the notebooks you see or some of the examples, skip the step where show how they determined that they only want to use 6-8 of the features that are provided.  I'm going to start by looking at which features are best using a DT regressor, a LinearModel with ForwardSelection and Backward elimination, once we've done this - we can start again by dropping out the features that don't seem to have any value
 
-# In[15]:
+# In[ ]:
 
 
 from sklearn.tree import DecisionTreeRegressor
@@ -175,7 +175,7 @@ pre_processing = ColumnTransformer([
     ('num_encoder', StandardScaler(),num_cols)])
 
 
-# In[12]:
+# In[ ]:
 
 
 pipe = Pipeline([("pp",pre_processing), ("dtr",DecisionTreeRegressor(random_state=123))])
@@ -190,7 +190,7 @@ top_10_tree
 
 # Seems like the `Age`, `KM`, `HP` and `Weight` seem to be the most important variables.  Let's take a look using a different method and see which features float to to the top.  Here we'll try a forest of trees, this ought to give us an even better idea of which parameters are of the most value.
 
-# In[13]:
+# In[ ]:
 
 
 # And now one last try using GridSearch to find the best transformer
@@ -207,7 +207,7 @@ top_10_grid.name='top_10_grid'
 top_10_grid
 
 
-# In[19]:
+# In[ ]:
 
 
 # Now that we have both using a standard regressor and using GridSearch, let's compare
@@ -221,7 +221,7 @@ pd.concat([top_10_grid,top_10_tree],axis=1)
 # ## Making predictions
 # At this point we have done a thorough job of exploring the data, finding possible outliers, eliminating features and  coming up with a candidate list of good features.  We'll try a couple of different approaches finding a good predictive fit for the price.
 
-# In[60]:
+# In[ ]:
 
 
 X_cars = cars_df.drop(columns='Price')
@@ -243,7 +243,7 @@ pre_processing_transform = ColumnTransformer([
 X_train.columns.sort_values()
 
 
-# In[66]:
+# In[ ]:
 
 
 ohe = OneHotEncoder()
@@ -253,7 +253,7 @@ ode = OrdinalEncoder()
 ode.fit_transform(X_train[o_cols])
 
 
-# In[59]:
+# In[ ]:
 
 
 param_grid2 = {'reg__max_depth': [3,4,5]}
