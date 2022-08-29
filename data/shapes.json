@@ -1,0 +1,18 @@
+{
+    "shapes": [
+        {
+            "shape": "square",
+            "degrees": 360,
+            "sides": 4.0
+        },
+        {
+            "shape": "circle",
+            "degrees": 360
+        },
+        {
+            "shape": "triangle",
+            "degrees": 180,
+            "sides": 3.0
+        }
+    ]
+}
