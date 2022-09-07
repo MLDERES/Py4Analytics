@@ -95,6 +95,7 @@ not True
 not not True
 
 
+# (code-blocks)=
 # ## Blocks of Code
 # One more item we need to address before we get too far, code blocks.  While code is mostly meant to run from the top to the bottom on the page, we can put groups of statements together into code blocks. You can tell when you are looking at a code block because of indentions.<br/>
 # 
@@ -140,7 +141,7 @@ not not True
 # 
 # Following is an example using Python
 
-# In[9]:
+# In[1]:
 
 
 ## Ask the user for a number which is greater than zero.

@@ -27,7 +27,8 @@ parts:
     chapters:
     - file: book/lessons/200-PartTwo
       sections:
-      - file: book/lessons/210-Object_Orientation
+      - file: book/lessons/210-Namespaces
+      - file: book/lessons/211-Object_Orientation
       - file: book/lessons/220-Data_Manipulation
       - file: book/lessons/230-Web_Data
       - file: book/lessons/240-Getting_Web_Data

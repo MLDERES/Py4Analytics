@@ -17,9 +17,7 @@
 # 
 # Computers can't fill in the blanks, we have to be very precise.  But we also don't want to have to be extremely precise everytime we want to do a simple task, so we use abstractions in programming to help us with the mundane.  One example, the `print()` statement we saw earlier.  There is a lot of stuff happening to make a couple of letters appear on the screen.  Fortunately for us, someone else figured this out already and we can rely on their work.  
 # 
-# <br><br>
 # Functions (in other languages called subroutines) are self-contained lines of code which accomplish a specific task.  Functions can "take in" data, process it, and then "return" a result.
-# <br>
 # 
 # ## Defining Functions
 # In Python we define functions with the `def` keyword followed by the name of the function, a set of parenthesis, and a `:`.  To use the function, we just type it's name and the parenthesis. (There are a few more options, but this is the simplest form.)
@@ -122,18 +120,6 @@ print(multiply(5, 4))
 # <li><b>Functions encapsulate the variables keeping our "namespace" clean.</b><br/>  Since a, b, and c only contains values when the function is called, we can use the variable names a, b and c as parameters in other functions or in our main code without confusion.</li>
 # <li><b>Functions allow us to test our program in small pieces.</b><br/>  If we can execute a part of our program correctly by calling just one function, then we can continue to build our program knowing that the building blocks are solid.</li></ol>
 
-# ## Your turn
-# Okay, let's write a couple of functions.  In the next cell, write the `subtract` and `divide` functions.  After you have written your function, run the cell and see if you get the value you expect.
-
-# In[ ]:
-
-
-# Start by defining the subtract function.  
-# Don't forget to indent the code block the function name
-
-# call the subtract function to test it
-
-
 # ## Best Practices
 # There are a few things that should be considered when creating functions in any language and a few things that are specfic to Python.
 # <ul><li><b>Functions should perform exactly one task.</b><br/> Functions should have a very specific and limited intention.</li>
@@ -204,4 +190,4 @@ def add_subtract(x, y, add=True):
 
 
 # ## Conclusion
-# You've learned quite a bit in this set of exercises and probably already knew some it.  Next, put your skills to the test in the [Exercises](TryIt_Part1.md).
+# You've learned quite a bit in this set of exercises and probably already knew some it.  Next, put your skills to the test in the [Exercises](../exercises/130-Functions-ex.ipynb).
