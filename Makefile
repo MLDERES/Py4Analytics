@@ -9,7 +9,7 @@ build:
 
 ## Post the compiled book to the github pages
 publish: build
-	ghp-import -n -p -f ${book_path}/_build/html
+	ghp-import -n -c www.py4analytics.info -p -f ${book_path}/_build/html
 
 ## Clear out the pre-built book files
 clean:
