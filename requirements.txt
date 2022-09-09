@@ -6,5 +6,5 @@ scikit-learn
 mlxtend
 plotly
 openpyxl
-pasty
+patsy
 xgboost
