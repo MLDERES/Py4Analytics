@@ -33,6 +33,7 @@ html:
   favicon: favicon.png
   use_issues_button: true
   use_repository_button: true
+  base_url: www.py4analytics.info
 
 launch_buttons:
   thebe: true
@@ -54,3 +55,9 @@ parse:
   - csv
 
 only_build_toc_files: true
+
+sphinx: 
+  recursive_update: true
+  extra_extensions: [ sphinx.ext.githubpages ]
+  config: 
+    html_baseurl: www.py4analytics.info
