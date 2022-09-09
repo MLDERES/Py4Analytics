@@ -39,7 +39,7 @@ InteractiveShell.ast_node_interactivity = "all"
 # 
 # - [Feature Selection](#feature-selection-techniques)
 #   - reducing the number of features we consider in a dataset
-# - [pasty library](#using-the-patsy-library)
+# - [patsy library](#using-the-patsy-library)
 #   - patsy is used to create data mining matricies (especially linear models) which is especially helpful when there are variable interactions
 # - [Cross Validation](#cross-validation)
 #   - a technique which trains the model on cross-sections of the training data to help cut down on overfitting
