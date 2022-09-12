@@ -30,7 +30,8 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"ExecutableBookProject.myst-highlight",
-				"github.vscode-pull-request-github"
+				"github.vscode-pull-request-github",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	},

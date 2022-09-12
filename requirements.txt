@@ -8,3 +8,4 @@ plotly
 openpyxl
 patsy
 xgboost
+python-dotenv
