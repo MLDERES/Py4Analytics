@@ -616,12 +616,63 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-the-database">
+   Connecting to the database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sqlite3">
+   SQLITE3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-other-rdbms">
+   Connecting to other RDBMS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connecting-to-ms-sql-server">
+     Connecting to MS SQL Server
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#passing-parameters">
+   Passing parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-pandas">
+   Using pandas
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -633,6 +684,46 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-the-database">
+   Connecting to the database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sqlite3">
+   SQLITE3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-other-rdbms">
+   Connecting to other RDBMS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connecting-to-ms-sql-server">
+     Connecting to MS SQL Server
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#passing-parameters">
+   Passing parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-pandas">
+   Using pandas
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -642,14 +733,231 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="getting-data-from-a-database">
 <h1>Getting data from a database<a class="headerlink" href="#getting-data-from-a-database" title="Permalink to this headline">#</a></h1>
+<p>One common source of data, especially in institutions, is a relational database.  Microsoft SQL Server, Teradata, Oracle, Postgres, MySql are all examples of relational databases that in common use for storing and retrieving complex data.  Storing and retrieving data from these servers is a regular task in the life of an analyst because any process that does something interesting is likely to generate or ingest alot of data.  In this notebook, we’ll look at the main components of a database connection, establish a connection and put some data into a simple database and read some data out the database.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SQL (pronounced S-Q-L or see-kwil) is the primary data manipulation language, meaning SQL is the language we use to get data from a relational database.  You wont need an in-depth understanding to work through this notebook, but if you want to brush up on some of the basics, this is <a class="reference external" href="https://www.w3schools.com/sql/default.asp">a good resources</a>.</p>
+</div>
+<section id="connecting-to-the-database">
+<h2>Connecting to the database<a class="headerlink" href="#connecting-to-the-database" title="Permalink to this headline">#</a></h2>
+<p>There are three basic steps in order to execute a query against a relational database.</p>
+<ol class="simple">
+<li><p>Establish a connection to the database</p></li>
+<li><p>Create a command</p></li>
+<li><p>Execute the command</p></li>
+<li><p>Process the result (if there is a return)</p></li>
+</ol>
+<p>We are going to look at a few different approaches for making the connection to the database.  Which one you use will depend largely on the destination RDBMS server.  For instance some of the common protocols include ODBC, OLE-DB, and DBAPI.  We’ll take a look at a couple of these here.</p>
+</section>
+<section id="sqlite3">
+<h2>SQLITE3<a class="headerlink" href="#sqlite3" title="Permalink to this headline">#</a></h2>
+<p>Arguably one of the simplest relational databases to work with in is the <a class="reference external" href="https://www.sqlite.org/index.html">SQLite3</a> database.  It is one of the most used databases in the world.  It’s built into every <a class="reference external" href="https://www.sqlite.org/mostdeployed.html">mobile phone</a> and comes bundled in many applications people use on a regular basis.  It has many of the features of a more robust relational database, though it is all stored in a single portable file format.</p>
+<p>Before we make a connection and read from a SQLite database, we need to describe cursors.  A database <a class="reference external" href="https://en.wikipedia.org/wiki/Cursor_(databases)">cursor</a> is a mechanism which allows us to traverse the records in the database.  You can think of it as a pointer to a record.  We’ll use a cursor in the next example to get data from a predefined database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="c1"># Make a connection to the database</span>
+<span class="n">cnn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../output/sample.db&#39;</span><span class="p">)</span>
+
+<span class="c1"># Next make a cursor that can be used to run a query on the new connection</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Now we can execute our SQL statement against the database</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE pet(name , breed, owner)&#39;</span><span class="p">,)</span>
+
+<span class="c1"># Now we&#39;ll check to see if the data was made.</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT name FROM sqlite_master&#39;</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;pet&#39;,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll next insert a bit of data into our database to make it a little more interesting.  This is not a lesson on SQLite per se, for that I would point you to the <a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">documentation</a>.  But it should be noted that SQLite requires that transactions which intend to change to the database must be committed.  If you are unfamiliar with transactions, then you can brush up <a class="reference external" href="https://en.wikipedia.org/wiki/Database_transaction">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot; </span>
+<span class="s2">    INSERT INTO pet VALUES</span>
+<span class="s2">        (&#39;Sparky&#39;, &#39;goldfish&#39;, &#39;Jim&#39;),</span>
+<span class="s2">        (&#39;Buster&#39;,&#39;terrier&#39;,&#39;Louise&#39;),</span>
+<span class="s2">        (&#39;T-Rex&#39;,&#39;iguana&#39;,&#39;Caleb&#39;)</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="c1"># Make the changes to the database</span>
+<span class="n">cnn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s get the data back out</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM pet&#39;</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Sparky&#39;, &#39;goldfish&#39;, &#39;Jim&#39;),
+ (&#39;Buster&#39;, &#39;terrier&#39;, &#39;Louise&#39;),
+ (&#39;T-Rex&#39;, &#39;iguana&#39;, &#39;Caleb&#39;),
+ (&#39;Sparky&#39;, &#39;goldfish&#39;, &#39;Jim&#39;),
+ (&#39;Buster&#39;, &#39;terrier&#39;, &#39;Louise&#39;),
+ (&#39;T-Rex&#39;, &#39;iguana&#39;, &#39;Caleb&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="connecting-to-other-rdbms">
+<h2>Connecting to other RDBMS<a class="headerlink" href="#connecting-to-other-rdbms" title="Permalink to this headline">#</a></h2>
+<p>Again, this is just an introduction of how to get data to/from a database we are using SQLite as a portable and simple example. All the same principals apply even if you are connecting to a Microsoft SQL, Teradata, Oracle or other DBMS. But the connection mechanism for other databases can vary.  There are a few common libraries we can leverage such as <a class="reference external" href="https://github.com/mkleehammer/pyodbc/wiki">pyodbc</a>.  <a class="reference external" href="https://docs.microsoft.com/en-us/sql/odbc/reference/what-is-odbc?view=sql-server-ver16">ODBC</a> is a specification for a database API.  Nearly every commercial RDBMS supports connections and transactions using ODBC, meaning that to change between one database and another, the code changes very little - typcially the only thing that needs to change in the connection string and the precise SQL you are trying to execute.  Though that doesn’t mean it is easy, connection strings are database platform dependent and can vary widely.  Here’s <a class="reference external" href="https://www.connectionstrings.com/">one source</a> that might help.</p>
+<p>For SQL server, the connection string looks like:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="ss">&quot;Driver=SQL Server Native Client 11.0;Server=myservername; Database=myDatabase; User Id=myUserName; Password=myPassword;&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="connecting-to-ms-sql-server">
+<h3>Connecting to MS SQL Server<a class="headerlink" href="#connecting-to-ms-sql-server" title="Permalink to this headline">#</a></h3>
+<p>Most of the major RDBMS providers also provide python specific libraries if you know that you wont have to switch between different databases.  For instance, Microsoft provides <a class="reference external" href="http://www.pymssql.org/">pymssql</a>.  Using one of these libraries tends to make things a bit simpler if you just want to be able to do simple queries with a SQL database.</p>
+<div class="highlight-{note}Environment notranslate"><div class="highlight"><pre><span></span>Environment variables are variables that are stored in the operating system, rather than in our program.  Environment variables provide a way to configure your application without having to edit your source code when the configuration changes. Common config items that are often passed to application through environment variables are third-party API keys, network ports, database servers, and any custom options that your application may need to work properly.  For more information on environment variables [see this fantastic resource](https://www.twilio.com/blog/environment-variables-python).
+
+Additionally, the library I used here [`python-dotenv`](https://pypi.org/project/python-dotenv/)can get your environment from a `.env` file in root of your Python project.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">import</span> <span class="nn">pymssql</span>
+
+<span class="c1"># This library allows the environment variables to be loaded from a file</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># To get this working quickly, you can just replace these variables with your own values</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_SERVER&quot;</span><span class="p">)</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_USER&quot;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
+
+<span class="n">cnn</span> <span class="o">=</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">svr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">user</span><span class="o">=</span><span class="n">uid</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span><span class="n">database</span><span class="o">=</span><span class="n">db</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;select top 10 * from Actor&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;10, Mack&#39;)
+(2, &#39;101, Highway&#39;)
+(3, &#39;2, Kase&#39;)
+(4, &#39;2Pac&#39;)
+(5, &quot;4-Tay, Rappin&#39;&quot;)
+(6, &#39;7, Marc&#39;)
+(7, &#39;9mm, Orange&#39;)
+(8, &#39;Aaliyah&#39;)
+(9, &#39;Aames, Angela&#39;)
+(10, &#39;Aames, Willie&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As soon as developers understand the value of using Python to connect to SQL the very next step is to put the two things together to create dynamic queries.  For instance look at the following code snippet</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">month</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Which month should I get sales from?&#39;</span><span class="p">)</span>
+<span class="n">sql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM sales WHERE month = &quot;</span><span class="o">+</span><span class="n">month</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Normally we would expect that users wouldn’t do anything malicious - they would input a month number and we’d have a perfectly fine query.  But we could run across a user that is less than friendly, they could input something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">;</span> <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">sales</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The resulting string would be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">sales</span> <span class="n">WHERE</span> <span class="n">month</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">sales</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If this statement were executed by our program, we would inadvertantly end up losing our entire sales table!</p>
+</section>
+</section>
+<section id="passing-parameters">
+<h2>Passing parameters<a class="headerlink" href="#passing-parameters" title="Permalink to this headline">#</a></h2>
+<p>Fortunately we have a fix!  We can let the SQL parser to handle any issues like this, ensuring that we only get valid values for our parameters and not malicious code like above.</p>
+<p>In the next code snippet, we are going to use another database in the supplied data, <code class="docutils literal notranslate"><span class="pre">cereals.db</span></code>.  This database has nutrition data for a variety of cereals.  We’ll start by getting the columns that are in the database then we’ll move on to a query using parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to a sample database</span>
+<span class="n">cnn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/cereals.db&#39;</span><span class="p">)</span>
+<span class="n">cnn</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;select * from cereals&#39;</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">cnn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;index&#39;, &#39;name&#39;, &#39;mfr&#39;, &#39;type&#39;, &#39;calories&#39;, &#39;protein&#39;, &#39;fat&#39;, &#39;sodium&#39;, &#39;fiber&#39;, &#39;carbo&#39;, &#39;sugars&#39;, &#39;potass&#39;, &#39;vitamins&#39;, &#39;shelf&#39;, &#39;weight&#39;, &#39;cups&#39;, &#39;rating&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we know the kind of data we have in the table, we can go ahead with build a query where the number of calories are limited.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cnn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/cereals.db&#39;</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Set the max_calories to be considered a low-calorie option</span>
+<span class="n">max_calories</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select name,calories from cereals where calories &lt;= ?&quot;</span><span class="p">,[</span><span class="n">max_calories</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Low cal cereals&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;High cal cereals&quot;</span><span class="p">)</span>
+<span class="c1"># Now, using the same query we can ask for high-calorie cereals</span>
+<span class="n">max_calories</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select name,calories from cereals where calories &gt;= ?&quot;</span><span class="p">,[</span><span class="n">max_calories</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">cnn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Low cal cereals
+(&#39;100%_Bran&#39;, 70)
+(&#39;All-Bran&#39;, 70)
+(&#39;All-Bran_with_Extra_Fiber&#39;, 50)
+(&#39;Puffed_Rice&#39;, 50)
+(&#39;Puffed_Wheat&#39;, 50)
+
+High cal cereals
+(&#39;Muesli_Raisins,_Dates,_&amp;_Almonds&#39;, 150)
+(&#39;Muesli_Raisins,_Peaches,_&amp;_Pecans&#39;, 150)
+(&#39;Mueslix_Crispy_Blend&#39;, 160)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-pandas">
+<h2>Using pandas<a class="headerlink" href="#using-pandas" title="Permalink to this headline">#</a></h2>
+<p>Using Python, we can depend on one of our favorite data management utility libraries, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to get and put data into a SQLite database.  This is great news, because we already know how to do alot of different tasks with our utility library pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/laptopsales.db&#39;</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from sales&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM sales&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -711,99 +1019,99 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>39068</th>
-      <td>360</td>
-      <td>SW4 0LB</td>
-      <td>SW1V 4QQ</td>
-      <td>565.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>2</td>
-      <td>2.0</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>No</td>
-      <td>529182</td>
-      <td>175552</td>
-      <td>528924.0</td>
-      <td>178440.0</td>
-      <td>2008-06-01 00:00:00</td>
-    </tr>
-    <tr>
-      <th>39069</th>
-      <td>436</td>
-      <td>EC4A 3BQ</td>
-      <td>SW1P 3AU</td>
-      <td>322.0</td>
-      <td>17</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>80</td>
-      <td>No</td>
-      <td>531469</td>
-      <td>181384</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-06-01 00:06:00</td>
-    </tr>
-    <tr>
-      <th>39070</th>
-      <td>555</td>
-      <td>SW11 5RD</td>
-      <td>SW1V 4QQ</td>
-      <td>665.0</td>
-      <td>17</td>
-      <td>4</td>
-      <td>4</td>
-      <td>2.0</td>
-      <td>No</td>
-      <td>80</td>
-      <td>Yes</td>
-      <td>528144</td>
-      <td>175684</td>
-      <td>528924.0</td>
-      <td>178440.0</td>
-      <td>2008-06-01 00:07:00</td>
-    </tr>
-    <tr>
-      <th>39071</th>
-      <td>392</td>
-      <td>W2 1PU</td>
-      <td>SW1P 3AU</td>
-      <td>483.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>4</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>No</td>
-      <td>527090</td>
-      <td>181506</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-06-01 00:08:00</td>
-    </tr>
-    <tr>
-      <th>39072</th>
-      <td>60</td>
-      <td>WC1N 2PB</td>
+      <th>0</th>
+      <td>163</td>
+      <td>EC4V 5BH</td>
       <td>SE1 2BN</td>
-      <td>340.0</td>
+      <td>455.0</td>
       <td>15</td>
-      <td>4</td>
-      <td>2</td>
-      <td>1.5</td>
-      <td>No</td>
+      <td>5</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>Yes</td>
       <td>80</td>
-      <td>No</td>
-      <td>530769</td>
-      <td>182111</td>
+      <td>Yes</td>
+      <td>532041</td>
+      <td>180995</td>
       <td>534057.0</td>
       <td>179682.0</td>
-      <td>2008-06-01 00:12:00</td>
+      <td>2008-01-01 00:01:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>320</td>
+      <td>SW4 0JL</td>
+      <td>SW12 9HD</td>
+      <td>545.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>No</td>
+      <td>300</td>
+      <td>No</td>
+      <td>529240</td>
+      <td>175537</td>
+      <td>528739.0</td>
+      <td>173080.0</td>
+      <td>2008-01-01 00:02:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>23</td>
+      <td>EC3V 1LR</td>
+      <td>E2 0RY</td>
+      <td>515.0</td>
+      <td>15</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>Yes</td>
+      <td>533095</td>
+      <td>181047</td>
+      <td>535652.0</td>
+      <td>182961.0</td>
+      <td>2008-01-01 00:04:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>169</td>
+      <td>SW1P 3AU</td>
+      <td>SE1 2BN</td>
+      <td>395.0</td>
+      <td>15</td>
+      <td>5</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>No</td>
+      <td>40</td>
+      <td>Yes</td>
+      <td>529902</td>
+      <td>179641</td>
+      <td>534057.0</td>
+      <td>179682.0</td>
+      <td>2008-01-01 00:04:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>365</td>
+      <td>EC4V 4EG</td>
+      <td>SW1V 4QQ</td>
+      <td>585.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>No</td>
+      <td>120</td>
+      <td>Yes</td>
+      <td>531684</td>
+      <td>180948</td>
+      <td>528924.0</td>
+      <td>178440.0</td>
+      <td>2008-01-01 00:06:00</td>
     </tr>
     <tr>
       <th>...</th>
@@ -825,124 +1133,111 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>71813</th>
-      <td>97</td>
-      <td>NW6 2LU</td>
-      <td>N3 1DH</td>
-      <td>364.0</td>
-      <td>15</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>40</td>
-      <td>Yes</td>
-      <td>525540</td>
-      <td>184577</td>
-      <td>525109.0</td>
-      <td>190628.0</td>
-      <td>2008-06-30 23:55:00</td>
-    </tr>
-    <tr>
-      <th>71814</th>
-      <td>634</td>
-      <td>EC4M 7DE</td>
+      <th>297567</th>
+      <td>703</td>
+      <td>SE1 2UP</td>
       <td>SW1P 3AU</td>
-      <td>329.0</td>
+      <td>NaN</td>
       <td>17</td>
       <td>5</td>
-      <td>2</td>
-      <td>1.5</td>
+      <td>4</td>
+      <td>2.0</td>
       <td>No</td>
-      <td>40</td>
-      <td>No</td>
-      <td>531815</td>
-      <td>181170</td>
+      <td>300</td>
+      <td>Yes</td>
+      <td>533595</td>
+      <td>180025</td>
       <td>529902.0</td>
       <td>179641.0</td>
-      <td>2008-06-30 23:55:00</td>
+      <td>2008-12-30 23:55:00</td>
     </tr>
     <tr>
-      <th>71815</th>
-      <td>276</td>
-      <td>TW1 3AW</td>
-      <td>W4 3PH</td>
-      <td>406.0</td>
-      <td>15</td>
-      <td>5</td>
-      <td>4</td>
-      <td>2.4</td>
-      <td>Yes</td>
-      <td>80</td>
-      <td>No</td>
-      <td>516617</td>
-      <td>173615</td>
-      <td>519585.0</td>
-      <td>177640.0</td>
-      <td>2008-06-30 23:56:00</td>
-    </tr>
-    <tr>
-      <th>71816</th>
-      <td>292</td>
-      <td>W1G 7EQ</td>
-      <td>NW5 2QH</td>
-      <td>435.0</td>
-      <td>15</td>
+      <th>297568</th>
+      <td>731</td>
+      <td>N13 4JD</td>
+      <td>N3 1DH</td>
+      <td>392.0</td>
+      <td>17</td>
       <td>6</td>
       <td>1</td>
       <td>1.5</td>
-      <td>Yes</td>
-      <td>80</td>
       <td>No</td>
-      <td>528714</td>
-      <td>181753</td>
-      <td>529248.0</td>
-      <td>185213.0</td>
-      <td>2008-06-30 23:56:00</td>
+      <td>80</td>
+      <td>Yes</td>
+      <td>531165</td>
+      <td>192973</td>
+      <td>525109.0</td>
+      <td>190628.0</td>
+      <td>2008-12-30 23:55:00</td>
     </tr>
     <tr>
-      <th>71817</th>
-      <td>624</td>
-      <td>E1 0LA</td>
-      <td>SE8 3JD</td>
-      <td>590.0</td>
-      <td>17</td>
-      <td>5</td>
-      <td>1</td>
+      <th>297569</th>
+      <td>375</td>
+      <td>SE25 6EF</td>
+      <td>CR7 8LE</td>
+      <td>441.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
       <td>2.4</td>
-      <td>No</td>
+      <td>Yes</td>
       <td>300</td>
-      <td>No</td>
-      <td>535205</td>
-      <td>181287</td>
+      <td>Yes</td>
+      <td>534086</td>
+      <td>168521</td>
+      <td>532714.0</td>
+      <td>168302.0</td>
+      <td>2008-12-30 23:57:00</td>
+    </tr>
+    <tr>
+      <th>297570</th>
+      <td>101</td>
+      <td>SW8 1LA</td>
+      <td>SW1P 3AU</td>
+      <td>406.0</td>
+      <td>15</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>120</td>
+      <td>Yes</td>
+      <td>530716</td>
+      <td>177488</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-12-30 23:58:00</td>
+    </tr>
+    <tr>
+      <th>297571</th>
+      <td>343</td>
+      <td>SE16 4QZ</td>
+      <td>SE8 3JD</td>
+      <td>530.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>Yes</td>
+      <td>534348</td>
+      <td>179162</td>
       <td>537175.0</td>
       <td>177885.0</td>
-      <td>2008-06-30 23:59:00</td>
+      <td>2008-12-30 23:58:00</td>
     </tr>
   </tbody>
 </table>
-<p>32722 rows × 16 columns</p>
+<p>297572 rows × 16 columns</p>
 </div></div></div>
 </div>
+<p>Likewise we can do some work with our dataframe and put it into a database with the <code class="docutils literal notranslate"><span class="pre">pd.to_sql()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/laptopsales.db&#39;</span><span class="p">)</span>
-<span class="n">sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/LaptopSales.csv&#39;</span><span class="p">)</span>
-<span class="n">sales</span><span class="p">[</span><span class="s1">&#39;sale_date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">sales</span><span class="o">.</span><span class="n">Date</span><span class="p">)</span>
-<span class="n">sales</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">june_sales</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="n">sales</span><span class="o">.</span><span class="n">sale_date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">6</span><span class="p">]</span>
-<span class="n">june_sales</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span><span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/laptopsales.db&#39;</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from sales&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pandas dataframe</span>
+<span class="n">phone_book_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="s1">&#39;Charlie&#39;</span><span class="p">],</span><span class="s1">&#39;Phone&#39;</span><span class="p">:[</span><span class="s1">&#39;555-555-1234&#39;</span><span class="p">,</span><span class="s1">&#39;123-456-7890&#39;</span><span class="p">,</span><span class="s1">&#39;555-867-5309&#39;</span><span class="p">]})</span>
+<span class="n">phone_book_df</span>
 </pre></div>
 </div>
 </div>
@@ -965,265 +1260,97 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Configuration</th>
-      <th>Customer Postcode</th>
-      <th>Store Postcode</th>
-      <th>Retail Price</th>
-      <th>Screen Size (Inches)</th>
-      <th>Battery Life (Hours)</th>
-      <th>RAM (GB)</th>
-      <th>Processor Speeds (GHz)</th>
-      <th>Integrated Wireless?</th>
-      <th>HD Size (GB)</th>
-      <th>Bundled Applications?</th>
-      <th>customer X</th>
-      <th>customer Y</th>
-      <th>store X</th>
-      <th>store Y</th>
-      <th>sale_date</th>
-    </tr>
-    <tr>
-      <th>sale_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>Phone</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>39068</th>
-      <td>360</td>
-      <td>SW4 0LB</td>
-      <td>SW1V 4QQ</td>
-      <td>565.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>2</td>
-      <td>2.0</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>No</td>
-      <td>529182</td>
-      <td>175552</td>
-      <td>528924.0</td>
-      <td>178440.0</td>
-      <td>2008-06-01 00:00:00</td>
+      <th>0</th>
+      <td>Alice</td>
+      <td>555-555-1234</td>
     </tr>
     <tr>
-      <th>39069</th>
-      <td>436</td>
-      <td>EC4A 3BQ</td>
-      <td>SW1P 3AU</td>
-      <td>322.0</td>
-      <td>17</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>80</td>
-      <td>No</td>
-      <td>531469</td>
-      <td>181384</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-06-01 00:06:00</td>
+      <th>1</th>
+      <td>Bob</td>
+      <td>123-456-7890</td>
     </tr>
     <tr>
-      <th>39070</th>
-      <td>555</td>
-      <td>SW11 5RD</td>
-      <td>SW1V 4QQ</td>
-      <td>665.0</td>
-      <td>17</td>
-      <td>4</td>
-      <td>4</td>
-      <td>2.0</td>
-      <td>No</td>
-      <td>80</td>
-      <td>Yes</td>
-      <td>528144</td>
-      <td>175684</td>
-      <td>528924.0</td>
-      <td>178440.0</td>
-      <td>2008-06-01 00:07:00</td>
-    </tr>
-    <tr>
-      <th>39071</th>
-      <td>392</td>
-      <td>W2 1PU</td>
-      <td>SW1P 3AU</td>
-      <td>483.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>4</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>No</td>
-      <td>527090</td>
-      <td>181506</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-06-01 00:08:00</td>
-    </tr>
-    <tr>
-      <th>39072</th>
-      <td>60</td>
-      <td>WC1N 2PB</td>
-      <td>SE1 2BN</td>
-      <td>340.0</td>
-      <td>15</td>
-      <td>4</td>
-      <td>2</td>
-      <td>1.5</td>
-      <td>No</td>
-      <td>80</td>
-      <td>No</td>
-      <td>530769</td>
-      <td>182111</td>
-      <td>534057.0</td>
-      <td>179682.0</td>
-      <td>2008-06-01 00:12:00</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>71813</th>
-      <td>97</td>
-      <td>NW6 2LU</td>
-      <td>N3 1DH</td>
-      <td>364.0</td>
-      <td>15</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>40</td>
-      <td>Yes</td>
-      <td>525540</td>
-      <td>184577</td>
-      <td>525109.0</td>
-      <td>190628.0</td>
-      <td>2008-06-30 23:55:00</td>
-    </tr>
-    <tr>
-      <th>71814</th>
-      <td>634</td>
-      <td>EC4M 7DE</td>
-      <td>SW1P 3AU</td>
-      <td>329.0</td>
-      <td>17</td>
-      <td>5</td>
-      <td>2</td>
-      <td>1.5</td>
-      <td>No</td>
-      <td>40</td>
-      <td>No</td>
-      <td>531815</td>
-      <td>181170</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-06-30 23:55:00</td>
-    </tr>
-    <tr>
-      <th>71815</th>
-      <td>276</td>
-      <td>TW1 3AW</td>
-      <td>W4 3PH</td>
-      <td>406.0</td>
-      <td>15</td>
-      <td>5</td>
-      <td>4</td>
-      <td>2.4</td>
-      <td>Yes</td>
-      <td>80</td>
-      <td>No</td>
-      <td>516617</td>
-      <td>173615</td>
-      <td>519585.0</td>
-      <td>177640.0</td>
-      <td>2008-06-30 23:56:00</td>
-    </tr>
-    <tr>
-      <th>71816</th>
-      <td>292</td>
-      <td>W1G 7EQ</td>
-      <td>NW5 2QH</td>
-      <td>435.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>1</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>80</td>
-      <td>No</td>
-      <td>528714</td>
-      <td>181753</td>
-      <td>529248.0</td>
-      <td>185213.0</td>
-      <td>2008-06-30 23:56:00</td>
-    </tr>
-    <tr>
-      <th>71817</th>
-      <td>624</td>
-      <td>E1 0LA</td>
-      <td>SE8 3JD</td>
-      <td>590.0</td>
-      <td>17</td>
-      <td>5</td>
-      <td>1</td>
-      <td>2.4</td>
-      <td>No</td>
-      <td>300</td>
-      <td>No</td>
-      <td>535205</td>
-      <td>181287</td>
-      <td>537175.0</td>
-      <td>177885.0</td>
-      <td>2008-06-30 23:59:00</td>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>555-867-5309</td>
     </tr>
   </tbody>
 </table>
-<p>32722 rows × 16 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a connection to the sqlite3 database</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../output/phone_book.db&#39;</span><span class="p">)</span>
+<span class="c1"># This says to create a table named `phone_numbers` in the phone_book database.</span>
+<span class="c1"># If the db or table is already there, replace it</span>
+<span class="c1"># Don&#39;t store the index value in the db</span>
+<span class="n">phone_book_df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;phone_numbers&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM phone_numbers&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>555-555-1234</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>123-456-7890</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>555-867-5309</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
