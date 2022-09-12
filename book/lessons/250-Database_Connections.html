@@ -823,10 +823,11 @@ title="Print to PDF"
 <section id="connecting-to-ms-sql-server">
 <h3>Connecting to MS SQL Server<a class="headerlink" href="#connecting-to-ms-sql-server" title="Permalink to this headline">#</a></h3>
 <p>Most of the major RDBMS providers also provide python specific libraries if you know that you wont have to switch between different databases.  For instance, Microsoft provides <a class="reference external" href="http://www.pymssql.org/">pymssql</a>.  Using one of these libraries tends to make things a bit simpler if you just want to be able to do simple queries with a SQL database.</p>
-<div class="highlight-{note}Environment notranslate"><div class="highlight"><pre><span></span>Environment variables are variables that are stored in the operating system, rather than in our program.  Environment variables provide a way to configure your application without having to edit your source code when the configuration changes. Common config items that are often passed to application through environment variables are third-party API keys, network ports, database servers, and any custom options that your application may need to work properly.  For more information on environment variables [see this fantastic resource](https://www.twilio.com/blog/environment-variables-python).
-
-Additionally, the library I used here [`python-dotenv`](https://pypi.org/project/python-dotenv/)can get your environment from a `.env` file in root of your Python project.
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Environment Variables
+Environment variables are variables that are stored in the operating system, rather than in our program.  Environment variables provide a way to configure your application without having to edit your source code when the configuration changes. Common config items that are often passed to application through environment variables are third-party API keys, network ports, database servers, and any custom options that your application may need to work properly.  For more information on environment variables <a class="reference external" href="https://www.twilio.com/blog/environment-variables-python">see this fantastic resource</a>.</p>
+<p>Additionally, the library I used here <a class="reference external" href="https://pypi.org/project/python-dotenv/"><code class="docutils literal notranslate"><span class="pre">python-dotenv</span></code></a>can get your environment from a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file in root of your Python project.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
