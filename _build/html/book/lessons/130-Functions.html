@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="www.py4analytics.info/book/lessons/130-Functions.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Exercises" href="TryIt_Part1.html" />
@@ -222,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="250-Database_Connections.html">
-     Connecting to SQL
+     Getting data from a database
     </a>
    </li>
    <li class="toctree-l2">
@@ -657,11 +659,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#your-turn">
-   Your turn
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#best-practices">
    Best Practices
   </a>
@@ -711,11 +708,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#your-turn">
-   Your turn
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#best-practices">
    Best Practices
   </a>
@@ -749,9 +741,7 @@ title="Print to PDF"
 <p>We’ve really shortcutted a bunch of steps here right?  I mean, “grabbing the peanut butter” means going to the pantry, openning the door, finding the jar, selecting the jar, walking back…</p>
 <p>This would get very frustating if we had to explain this over and over for each kind of sandwich we want to make or with different kinds of jelly right?  So we have learned that, using words, we can communicate whole steps without having to break down the details each time.  We might have to provide a bit of context - say, if you’re at my house, the PB is in the cabinet, but at your place it’s in the pantry.  But in general humans can fill in the blanks.</p>
 <p>Computers can’t fill in the blanks, we have to be very precise.  But we also don’t want to have to be extremely precise everytime we want to do a simple task, so we use abstractions in programming to help us with the mundane.  One example, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement we saw earlier.  There is a lot of stuff happening to make a couple of letters appear on the screen.  Fortunately for us, someone else figured this out already and we can rely on their work.</p>
-<p><br><br>
-Functions (in other languages called subroutines) are self-contained lines of code which accomplish a specific task.  Functions can “take in” data, process it, and then “return” a result.
-<br></p>
+<p>Functions (in other languages called subroutines) are self-contained lines of code which accomplish a specific task.  Functions can “take in” data, process it, and then “return” a result.</p>
 <section id="defining-functions">
 <h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">#</a></h2>
 <p>In Python we define functions with the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword followed by the name of the function, a set of parenthesis, and a <code class="docutils literal notranslate"><span class="pre">:</span></code>.  To use the function, we just type it’s name and the parenthesis. (There are a few more options, but this is the simplest form.)</p>
@@ -851,20 +841,6 @@ Functions (in other languages called subroutines) are self-contained lines of co
 <li><b>Functions allow us to reuse code.</b><br/> This is essential, because it saves us from typos, ensures that we are doing calculations and tasks consistently whereever it is used and even allows others to use our code without understanding how the subtask is executed.</li>
 <li><b>Functions encapsulate the variables keeping our "namespace" clean.</b><br/>  Since a, b, and c only contains values when the function is called, we can use the variable names a, b and c as parameters in other functions or in our main code without confusion.</li>
 <li><b>Functions allow us to test our program in small pieces.</b><br/>  If we can execute a part of our program correctly by calling just one function, then we can continue to build our program knowing that the building blocks are solid.</li></ol></section>
-<section id="your-turn">
-<h2>Your turn<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h2>
-<p>Okay, let’s write a couple of functions.  In the next cell, write the <code class="docutils literal notranslate"><span class="pre">subtract</span></code> and <code class="docutils literal notranslate"><span class="pre">divide</span></code> functions.  After you have written your function, run the cell and see if you get the value you expect.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start by defining the subtract function.  </span>
-<span class="c1"># Don&#39;t forget to indent the code block the function name</span>
-
-<span class="c1"># call the subtract function to test it</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="best-practices">
 <h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">#</a></h2>
 <p>There are a few things that should be considered when creating functions in any language and a few things that are specfic to Python.</p>
@@ -937,7 +913,7 @@ Functions (in other languages called subroutines) are self-contained lines of co
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
-<p>You’ve learned quite a bit in this set of exercises and probably already knew some it.  Next, put your skills to the test in the <a class="reference internal" href="TryIt_Part1.html"><span class="doc std std-doc">Exercises</span></a>.</p>
+<p>You’ve learned quite a bit in this set of exercises and probably already knew some it.  Next, put your skills to the test in the <a class="reference internal" href="../exercises/130-Functions-ex.html"><span class="doc std std-doc">Exercises</span></a>.</p>
 </section>
 </section>
 

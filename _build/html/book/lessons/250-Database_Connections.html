@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Connecting to SQL</title>
+    <title>Getting data from a database</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="www.py4analytics.info/book/lessons/250-Database_Connections.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Exploratory Data Analysis" href="260-Data_Visualization.html" />
@@ -222,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Connecting to SQL
+     Getting data from a database
     </a>
    </li>
    <li class="toctree-l2">
@@ -445,6 +447,71 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=tree/book/lessons/250-Database_Connections.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=tree/Py4Analytics/book/lessons/250-Database_Connections.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -561,7 +628,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Connecting to SQL</h1>
+                <h1>Getting data from a database</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -573,8 +640,590 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="connecting-to-sql">
-<h1>Connecting to SQL<a class="headerlink" href="#connecting-to-sql" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-data-from-a-database">
+<h1>Getting data from a database<a class="headerlink" href="#getting-data-from-a-database" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/laptopsales.db&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from sales&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Configuration</th>
+      <th>Customer Postcode</th>
+      <th>Store Postcode</th>
+      <th>Retail Price</th>
+      <th>Screen Size (Inches)</th>
+      <th>Battery Life (Hours)</th>
+      <th>RAM (GB)</th>
+      <th>Processor Speeds (GHz)</th>
+      <th>Integrated Wireless?</th>
+      <th>HD Size (GB)</th>
+      <th>Bundled Applications?</th>
+      <th>customer X</th>
+      <th>customer Y</th>
+      <th>store X</th>
+      <th>store Y</th>
+      <th>sale_date</th>
+    </tr>
+    <tr>
+      <th>sale_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>39068</th>
+      <td>360</td>
+      <td>SW4 0LB</td>
+      <td>SW1V 4QQ</td>
+      <td>565.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>No</td>
+      <td>529182</td>
+      <td>175552</td>
+      <td>528924.0</td>
+      <td>178440.0</td>
+      <td>2008-06-01 00:00:00</td>
+    </tr>
+    <tr>
+      <th>39069</th>
+      <td>436</td>
+      <td>EC4A 3BQ</td>
+      <td>SW1P 3AU</td>
+      <td>322.0</td>
+      <td>17</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>80</td>
+      <td>No</td>
+      <td>531469</td>
+      <td>181384</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-06-01 00:06:00</td>
+    </tr>
+    <tr>
+      <th>39070</th>
+      <td>555</td>
+      <td>SW11 5RD</td>
+      <td>SW1V 4QQ</td>
+      <td>665.0</td>
+      <td>17</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2.0</td>
+      <td>No</td>
+      <td>80</td>
+      <td>Yes</td>
+      <td>528144</td>
+      <td>175684</td>
+      <td>528924.0</td>
+      <td>178440.0</td>
+      <td>2008-06-01 00:07:00</td>
+    </tr>
+    <tr>
+      <th>39071</th>
+      <td>392</td>
+      <td>W2 1PU</td>
+      <td>SW1P 3AU</td>
+      <td>483.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>4</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>No</td>
+      <td>527090</td>
+      <td>181506</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-06-01 00:08:00</td>
+    </tr>
+    <tr>
+      <th>39072</th>
+      <td>60</td>
+      <td>WC1N 2PB</td>
+      <td>SE1 2BN</td>
+      <td>340.0</td>
+      <td>15</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td>No</td>
+      <td>80</td>
+      <td>No</td>
+      <td>530769</td>
+      <td>182111</td>
+      <td>534057.0</td>
+      <td>179682.0</td>
+      <td>2008-06-01 00:12:00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>71813</th>
+      <td>97</td>
+      <td>NW6 2LU</td>
+      <td>N3 1DH</td>
+      <td>364.0</td>
+      <td>15</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>40</td>
+      <td>Yes</td>
+      <td>525540</td>
+      <td>184577</td>
+      <td>525109.0</td>
+      <td>190628.0</td>
+      <td>2008-06-30 23:55:00</td>
+    </tr>
+    <tr>
+      <th>71814</th>
+      <td>634</td>
+      <td>EC4M 7DE</td>
+      <td>SW1P 3AU</td>
+      <td>329.0</td>
+      <td>17</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td>No</td>
+      <td>40</td>
+      <td>No</td>
+      <td>531815</td>
+      <td>181170</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-06-30 23:55:00</td>
+    </tr>
+    <tr>
+      <th>71815</th>
+      <td>276</td>
+      <td>TW1 3AW</td>
+      <td>W4 3PH</td>
+      <td>406.0</td>
+      <td>15</td>
+      <td>5</td>
+      <td>4</td>
+      <td>2.4</td>
+      <td>Yes</td>
+      <td>80</td>
+      <td>No</td>
+      <td>516617</td>
+      <td>173615</td>
+      <td>519585.0</td>
+      <td>177640.0</td>
+      <td>2008-06-30 23:56:00</td>
+    </tr>
+    <tr>
+      <th>71816</th>
+      <td>292</td>
+      <td>W1G 7EQ</td>
+      <td>NW5 2QH</td>
+      <td>435.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>80</td>
+      <td>No</td>
+      <td>528714</td>
+      <td>181753</td>
+      <td>529248.0</td>
+      <td>185213.0</td>
+      <td>2008-06-30 23:56:00</td>
+    </tr>
+    <tr>
+      <th>71817</th>
+      <td>624</td>
+      <td>E1 0LA</td>
+      <td>SE8 3JD</td>
+      <td>590.0</td>
+      <td>17</td>
+      <td>5</td>
+      <td>1</td>
+      <td>2.4</td>
+      <td>No</td>
+      <td>300</td>
+      <td>No</td>
+      <td>535205</td>
+      <td>181287</td>
+      <td>537175.0</td>
+      <td>177885.0</td>
+      <td>2008-06-30 23:59:00</td>
+    </tr>
+  </tbody>
+</table>
+<p>32722 rows × 16 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/laptopsales.db&#39;</span><span class="p">)</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/LaptopSales.csv&#39;</span><span class="p">)</span>
+<span class="n">sales</span><span class="p">[</span><span class="s1">&#39;sale_date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">sales</span><span class="o">.</span><span class="n">Date</span><span class="p">)</span>
+<span class="n">sales</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">june_sales</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="n">sales</span><span class="o">.</span><span class="n">sale_date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">june_sales</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span><span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../data/laptopsales.db&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from sales&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;sale_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Configuration</th>
+      <th>Customer Postcode</th>
+      <th>Store Postcode</th>
+      <th>Retail Price</th>
+      <th>Screen Size (Inches)</th>
+      <th>Battery Life (Hours)</th>
+      <th>RAM (GB)</th>
+      <th>Processor Speeds (GHz)</th>
+      <th>Integrated Wireless?</th>
+      <th>HD Size (GB)</th>
+      <th>Bundled Applications?</th>
+      <th>customer X</th>
+      <th>customer Y</th>
+      <th>store X</th>
+      <th>store Y</th>
+      <th>sale_date</th>
+    </tr>
+    <tr>
+      <th>sale_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>39068</th>
+      <td>360</td>
+      <td>SW4 0LB</td>
+      <td>SW1V 4QQ</td>
+      <td>565.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>No</td>
+      <td>529182</td>
+      <td>175552</td>
+      <td>528924.0</td>
+      <td>178440.0</td>
+      <td>2008-06-01 00:00:00</td>
+    </tr>
+    <tr>
+      <th>39069</th>
+      <td>436</td>
+      <td>EC4A 3BQ</td>
+      <td>SW1P 3AU</td>
+      <td>322.0</td>
+      <td>17</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>80</td>
+      <td>No</td>
+      <td>531469</td>
+      <td>181384</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-06-01 00:06:00</td>
+    </tr>
+    <tr>
+      <th>39070</th>
+      <td>555</td>
+      <td>SW11 5RD</td>
+      <td>SW1V 4QQ</td>
+      <td>665.0</td>
+      <td>17</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2.0</td>
+      <td>No</td>
+      <td>80</td>
+      <td>Yes</td>
+      <td>528144</td>
+      <td>175684</td>
+      <td>528924.0</td>
+      <td>178440.0</td>
+      <td>2008-06-01 00:07:00</td>
+    </tr>
+    <tr>
+      <th>39071</th>
+      <td>392</td>
+      <td>W2 1PU</td>
+      <td>SW1P 3AU</td>
+      <td>483.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>4</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>No</td>
+      <td>527090</td>
+      <td>181506</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-06-01 00:08:00</td>
+    </tr>
+    <tr>
+      <th>39072</th>
+      <td>60</td>
+      <td>WC1N 2PB</td>
+      <td>SE1 2BN</td>
+      <td>340.0</td>
+      <td>15</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td>No</td>
+      <td>80</td>
+      <td>No</td>
+      <td>530769</td>
+      <td>182111</td>
+      <td>534057.0</td>
+      <td>179682.0</td>
+      <td>2008-06-01 00:12:00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>71813</th>
+      <td>97</td>
+      <td>NW6 2LU</td>
+      <td>N3 1DH</td>
+      <td>364.0</td>
+      <td>15</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>40</td>
+      <td>Yes</td>
+      <td>525540</td>
+      <td>184577</td>
+      <td>525109.0</td>
+      <td>190628.0</td>
+      <td>2008-06-30 23:55:00</td>
+    </tr>
+    <tr>
+      <th>71814</th>
+      <td>634</td>
+      <td>EC4M 7DE</td>
+      <td>SW1P 3AU</td>
+      <td>329.0</td>
+      <td>17</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td>No</td>
+      <td>40</td>
+      <td>No</td>
+      <td>531815</td>
+      <td>181170</td>
+      <td>529902.0</td>
+      <td>179641.0</td>
+      <td>2008-06-30 23:55:00</td>
+    </tr>
+    <tr>
+      <th>71815</th>
+      <td>276</td>
+      <td>TW1 3AW</td>
+      <td>W4 3PH</td>
+      <td>406.0</td>
+      <td>15</td>
+      <td>5</td>
+      <td>4</td>
+      <td>2.4</td>
+      <td>Yes</td>
+      <td>80</td>
+      <td>No</td>
+      <td>516617</td>
+      <td>173615</td>
+      <td>519585.0</td>
+      <td>177640.0</td>
+      <td>2008-06-30 23:56:00</td>
+    </tr>
+    <tr>
+      <th>71816</th>
+      <td>292</td>
+      <td>W1G 7EQ</td>
+      <td>NW5 2QH</td>
+      <td>435.0</td>
+      <td>15</td>
+      <td>6</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>Yes</td>
+      <td>80</td>
+      <td>No</td>
+      <td>528714</td>
+      <td>181753</td>
+      <td>529248.0</td>
+      <td>185213.0</td>
+      <td>2008-06-30 23:56:00</td>
+    </tr>
+    <tr>
+      <th>71817</th>
+      <td>624</td>
+      <td>E1 0LA</td>
+      <td>SE8 3JD</td>
+      <td>590.0</td>
+      <td>17</td>
+      <td>5</td>
+      <td>1</td>
+      <td>2.4</td>
+      <td>No</td>
+      <td>300</td>
+      <td>No</td>
+      <td>535205</td>
+      <td>181287</td>
+      <td>537175.0</td>
+      <td>177885.0</td>
+      <td>2008-06-30 23:59:00</td>
+    </tr>
+  </tbody>
+</table>
+<p>32722 rows × 16 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

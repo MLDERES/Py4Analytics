@@ -39,3 +39,6 @@ print('Welcome to Jupyter.  You have successfully run a code cell.')
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
+
+# ## Opening the notebooks directly on a Jupyter Hub
+# It is possible to open just the notebooks on the Jupyter Hub directly, if you prefer not to open each page individually.  This can be helpful if you are just wanting to execute each notebook or focus on the exercises.  In order to do so, use the following [link](https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fmlderes%2Fpy4analytics&urlpath=lab%2Ftree%2Fpy4analytics%2Flessons%2F100-PartOne.md&branch=source-only)
