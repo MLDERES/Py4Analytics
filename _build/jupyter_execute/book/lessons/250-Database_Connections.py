@@ -74,10 +74,10 @@ result.fetchall()
 # ### Connecting to MS SQL Server
 # Most of the major RDBMS providers also provide python specific libraries if you know that you wont have to switch between different databases.  For instance, Microsoft provides [pymssql](http://www.pymssql.org/).  Using one of these libraries tends to make things a bit simpler if you just want to be able to do simple queries with a SQL database.
 # 
-# ````{note}Environment Variables
+# ````{note} Environment Variables
 # Environment variables are variables that are stored in the operating system, rather than in our program.  Environment variables provide a way to configure your application without having to edit your source code when the configuration changes. Common config items that are often passed to application through environment variables are third-party API keys, network ports, database servers, and any custom options that your application may need to work properly.  For more information on environment variables [see this fantastic resource](https://www.twilio.com/blog/environment-variables-python).
 # 
-# Additionally, the library I used here [`python-dotenv`](https://pypi.org/project/python-dotenv/)can get your environment from a `.env` file in root of your Python project.
+# Additionally, the library I used here [`python-dotenv`](https://pypi.org/project/python-dotenv/) can get your environment from a `.env` file in root of your Python project.
 # ````
 
 # In[4]:
