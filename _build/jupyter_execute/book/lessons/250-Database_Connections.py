@@ -1,30 +1,46 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Getting data from a database
-# One common source of data, especially in institutions, is a relational database.  Microsoft SQL Server, Teradata, Oracle, Postgres, MySql are all examples of relational databases that in common use for storing and retrieving complex data.  Storing and retrieving data from these servers is a regular task in the life of an analyst because any process that does something interesting is likely to generate or ingest alot of data.  In this notebook, we'll look at the main components of a database connection, establish a connection and put some data into a simple database and read some data out the database.
+# # Working with relational database
+# One common source of data, especially in institutions, is a relational database.  Microsoft SQL Server, Teradata, Oracle, Postgres, MySql are all examples of relational databases that are in common use for managing transactional data.  Storing and retrieving data from these servers is a regular task in the life of an analyst because any process that does anything interesting is likely to generate or ingest a lot of data.  In this notebook, we'll look at the main components of a database connection, how to establish a connection and put some data into a simple database and read some data out the database.
 # 
 # ````{note}
-# SQL (pronounced S-Q-L or see-kwil) is the primary data manipulation language, meaning SQL is the language we use to get data from a relational database.  You wont need an in-depth understanding to work through this notebook, but if you want to brush up on some of the basics, this is [a good resources](https://www.w3schools.com/sql/default.asp).
+# SQL (pronounced S-Q-L or see-kwil) is the primary data manipulation language. This means SQL is the language we use to get/save data with a relational database.  You won't need an in-depth understanding of SQL to work through this notebook, but if you want to brush up on some of the basics, this is [a good resources](https://www.w3schools.com/sql/default.asp).
+# ````
 
-# ## Connecting to the database
+# ## Definitions
+# Before we start, let's define a few terms generically so that when you see them it becomes more clear what is happening.
+# 
+# * **Database Server** - A database server is the hardware which runs database software.  We will often refer to the database server as both the hardware and the software together.
+# * **Database** - A database is a collection of tables, functions, procedures, et al, which allow access to the actual data.  The distinction between the server and the database are an important distinction, as a single *database server* can be hosting many *databases*.
+# * **Connection** - in order to be able to run queries on a particular database, the client software needs to establish a connection to the database server/database combination.
+# * **Cursor** - A database [cursor](https://en.wikipedia.org/wiki/Cursor_(databases)) is a mechanism which allows us to traverse the records in the database.  We can have many different cursors using the same connection to the database.
+# 
+# ## How to run a query
 # There are three basic steps in order to execute a query against a relational database.
 # 1. Establish a connection to the database
-# 2. Create a command
-# 3. Execute the command
-# 4. Process the result (if there is a return)
+# 2. Using the connection create a cursor upon which to execute one or more SQL commands
+# 3. Execute the SQL command using the cursor
+# 4. Assuming there is a result, process the results of the query
+# 5. The cursor may be reused if there are more commands to run
+# 6. When the operation is complete, close the connection
 # 
 # We are going to look at a few different approaches for making the connection to the database.  Which one you use will depend largely on the destination RDBMS server.  For instance some of the common protocols include ODBC, OLE-DB, and DBAPI.  We'll take a look at a couple of these here.
 
 # ## SQLITE3
-# Arguably one of the simplest relational databases to work with in is the [SQLite3](https://www.sqlite.org/index.html) database.  It is one of the most used databases in the world.  It's built into every [mobile phone](https://www.sqlite.org/mostdeployed.html) and comes bundled in many applications people use on a regular basis.  It has many of the features of a more robust relational database, though it is all stored in a single portable file format.
+# Arguably one of the simplest relational databases to work with in is the [SQLite3](https://www.sqlite.org/index.html) database.  It is also one of the most used databases in the world.  It's built into every [mobile phone](https://www.sqlite.org/mostdeployed.html) and comes bundled in many applications people use on a regular basis.  It has many of the features of a more robust relational database, though the data is all stored in a single portable file format.
 # 
 # Before we make a connection and read from a SQLite database, we need to describe cursors.  A database [cursor](https://en.wikipedia.org/wiki/Cursor_(databases)) is a mechanism which allows us to traverse the records in the database.  You can think of it as a pointer to a record.  We'll use a cursor in the next example to get data from a predefined database.
+# 
+# ````{caution}
+# If you get an error running the next cell, it's likely that their is a database file already in the `output` folder.  In order to resolve, either delete the file `sample.db` or rename it to something like `sample.db.bak`
+# ````
 
-# In[1]:
+# In[5]:
 
 
 import sqlite3
+
 # Make a connection to the database
 cnn = sqlite3.connect('../output/sample.db')
 
@@ -41,7 +57,7 @@ result.fetchone()
 
 # We'll next insert a bit of data into our database to make it a little more interesting.  This is not a lesson on SQLite per se, for that I would point you to the [documentation](https://docs.python.org/3/library/sqlite3.html).  But it should be noted that SQLite requires that transactions which intend to change to the database must be committed.  If you are unfamiliar with transactions, then you can brush up [here](https://en.wikipedia.org/wiki/Database_transaction).
 
-# In[2]:
+# In[ ]:
 
 
 cur.execute(""" 
@@ -55,12 +71,15 @@ cur.execute("""
 cnn.commit()
 
 
-# In[3]:
+# In[ ]:
 
 
 # Now let's get the data back out
 result = cur.execute('SELECT * FROM pet')
 result.fetchall()
+
+# When we are finally done, we want to be sure to close the connection.
+cnn.close()
 
 
 # ## Connecting to other RDBMS
@@ -80,7 +99,7 @@ result.fetchall()
 # Additionally, the library I used here [`python-dotenv`](https://pypi.org/project/python-dotenv/) can get your environment from a `.env` file in root of your Python project.
 # ````
 
-# In[4]:
+# In[ ]:
 
 
 from dotenv import load_dotenv
@@ -96,16 +115,38 @@ uid = getenv("PYMSSQL_USER")
 pwd = getenv("PYMSSQL_PASSWORD")
 db = getenv("PYMSSQL_DATABASE")
 
+# Connect to a MS SQL Server Database
 cnn = pymssql.connect(server=f'{svr}',user=uid, password=pwd,database=db)
+
+# Create the cursor required to run the command
 cur = cnn.cursor()
-cur.execute('select top 10 * from Actor')
+
+# Run the SQL command
+cur.execute('SELECT top 10 * FROM Actor')
 
 for row in cur:
     print(row)
 
 
-# As soon as developers understand the value of using Python to connect to SQL the very next step is to put the two things together to create dynamic queries.  For instance look at the following code snippet
+# ### Dynamic Queries
+# As soon as developers understand the value of using Python to connect to SQL the very next step is to put the two things together to create dynamic queries.  For instance look at the following code snippet.
+
+# In[11]:
+
+
+import datetime as dt
+from dateutil.relativedelta import *
+
+last_month = (dt.date.today()+relativedelta(months=-1)).month
+sql_query = f"SELECT * FROM sales WHERE month = {last_month}"
+
+# Connect to the database and do something interesting
+# ...
+
+
+# This is super handy, cause now we can get just the data we need like last month's sales and export it to an Excel sheet.  Python of course is terrific at automating this kind of thing and when we combine with SQL, we get some really powerful automation.
 # 
+# Even better we could ask a user to give us a date and we can create a query from the response
 # ```python
 # ...
 # month = input('Which month should I get sales from?')
@@ -114,7 +155,7 @@ for row in cur:
 # ```
 # Normally we would expect that users wouldn't do anything malicious - they would input a month number and we'd have a perfectly fine query.  But we could run across a user that is less than friendly, they could input something like
 # 
-# ```
+# ```sql
 # 1; DROP TABLE sales;
 # ```
 # The resulting string would be 
@@ -122,13 +163,14 @@ for row in cur:
 # SELECT * FROM sales WHERE month = 1; DROP TABLE sales;
 # ```
 # If this statement were executed by our program, we would inadvertantly end up losing our entire sales table!
+
 # 
 # ## Passing parameters
-# Fortunately we have a fix!  We can let the SQL parser to handle any issues like this, ensuring that we only get valid values for our parameters and not malicious code like above.
+# Fortunately there is protection.  We can let the SQL parser handle any issues like this, ensuring that we only get valid values for our parameters and not malicious code like above.  We simply pass parameters to fill in the variable parts of our SQL statement.
 # 
-# In the next code snippet, we are going to use another database in the supplied data, `cereals.db`.  This database has nutrition data for a variety of cereals.  We'll start by getting the columns that are in the database then we'll move on to a query using parameters
+# In the next code snippet, we are going to use another database in the supplied data, `cereals.db`.  This database has nutrition data for a variety of cereals.  We'll start by getting the columns that are in the database then we'll move on to a query using parameters.
 
-# In[5]:
+# In[ ]:
 
 
 # Connect to a sample database
@@ -143,33 +185,36 @@ cnn.close()
 
 # Now that we know the kind of data we have in the table, we can go ahead with build a query where the number of calories are limited.
 
-# In[6]:
+# In[15]:
 
 
 cnn = sqlite3.connect('../data/cereals.db')
 cur = cnn.cursor()
 
 # Set the max_calories to be considered a low-calorie option
+print("Low calorie cereals")
+print("-"*10)
 max_calories = 75
-cur.execute("select name,calories from cereals where calories <= ?",[max_calories])
-print("Low cal cereals")
+cur.execute("SELECT name,calories FROM cereals WHERE calories <= ?",[max_calories])
 for row in cur.fetchall():
-    print(row)
+    print(f'{row[0]}: {row[1]}')
 
-print()
-print("High cal cereals")
+
 # Now, using the same query we can ask for high-calorie cereals
+print()
+print("High calorie cereals")
+print("-"*10)
 max_calories = 150
-cur.execute("select name,calories from cereals where calories >= ?",[max_calories])
+cur.execute("SELECT name,calories FROM cereals WHERE calories >= ?",[max_calories])
 for row in cur.fetchall():
-    print(row)
+    print(f'{row[0]}: {row[1]}')
 cnn.close()
 
 
 # ## Using pandas
 # Using Python, we can depend on one of our favorite data management utility libraries, `pandas` to get and put data into a SQLite database.  This is great news, because we already know how to do alot of different tasks with our utility library pandas.
 
-# In[7]:
+# In[ ]:
 
 
 import pandas as pd
@@ -180,15 +225,18 @@ pd.read_sql('SELECT * FROM sales', conn,index_col='sale_id')
 
 # Likewise we can do some work with our dataframe and put it into a database with the `pd.to_sql()` function.
 
-# In[8]:
+# In[ ]:
 
 
 # Create a pandas dataframe
-phone_book_df = pd.DataFrame({'Name':['Alice','Bob','Charlie'],'Phone':['555-555-1234','123-456-7890','555-867-5309']})
+phone_book_df = pd.DataFrame({
+    'Name':['Alice','Bob','Charlie'],
+    'Phone':['555-555-1234','123-456-7890','555-867-5309']
+    })
 phone_book_df
 
 
-# In[9]:
+# In[ ]:
 
 
 # Create a connection to the sqlite3 database
@@ -199,14 +247,10 @@ conn = sqlite3.connect('../output/phone_book.db')
 phone_book_df.to_sql('phone_numbers',conn,if_exists='replace',index=False)
 
 
-# In[10]:
+# In[ ]:
 
 
 pd.read_sql('SELECT * FROM phone_numbers',conn)
 
 
-# In[11]:
-
-
-
-
+# Being able to connect to a SQL database and run queries from Python is super handy and really useful. Combining the simplicity of Python and the power of a relational database can make for some very compelling and useful automation of common tasks.
