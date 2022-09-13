@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Getting data from a database</title>
+    <title>Working with relational database</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Getting data from a database
+     Working with relational database
     </a>
    </li>
    <li class="toctree-l2">
@@ -639,8 +639,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connecting-to-the-database">
-   Connecting to the database
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-run-a-query">
+   How to run a query
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -656,6 +661,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#connecting-to-ms-sql-server">
      Connecting to MS SQL Server
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-queries">
+     Dynamic Queries
     </a>
    </li>
   </ul>
@@ -679,7 +689,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Getting data from a database</h1>
+                <h1>Working with relational database</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -690,8 +700,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connecting-to-the-database">
-   Connecting to the database
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-run-a-query">
+   How to run a query
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -707,6 +722,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#connecting-to-ms-sql-server">
      Connecting to MS SQL Server
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-queries">
+     Dynamic Queries
     </a>
    </li>
   </ul>
@@ -731,31 +751,48 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="getting-data-from-a-database">
-<h1>Getting data from a database<a class="headerlink" href="#getting-data-from-a-database" title="Permalink to this headline">#</a></h1>
-<p>One common source of data, especially in institutions, is a relational database.  Microsoft SQL Server, Teradata, Oracle, Postgres, MySql are all examples of relational databases that in common use for storing and retrieving complex data.  Storing and retrieving data from these servers is a regular task in the life of an analyst because any process that does something interesting is likely to generate or ingest alot of data.  In this notebook, we’ll look at the main components of a database connection, establish a connection and put some data into a simple database and read some data out the database.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-relational-database">
+<h1>Working with relational database<a class="headerlink" href="#working-with-relational-database" title="Permalink to this headline">#</a></h1>
+<p>One common source of data, especially in institutions, is a relational database.  Microsoft SQL Server, Teradata, Oracle, Postgres, MySql are all examples of relational databases that are in common use for managing transactional data.  Storing and retrieving data from these servers is a regular task in the life of an analyst because any process that does anything interesting is likely to generate or ingest a lot of data.  In this notebook, we’ll look at the main components of a database connection, how to establish a connection and put some data into a simple database and read some data out the database.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SQL (pronounced S-Q-L or see-kwil) is the primary data manipulation language, meaning SQL is the language we use to get data from a relational database.  You wont need an in-depth understanding to work through this notebook, but if you want to brush up on some of the basics, this is <a class="reference external" href="https://www.w3schools.com/sql/default.asp">a good resources</a>.</p>
+<p>SQL (pronounced S-Q-L or see-kwil) is the primary data manipulation language. This means SQL is the language we use to get/save data with a relational database.  You won’t need an in-depth understanding of SQL to work through this notebook, but if you want to brush up on some of the basics, this is <a class="reference external" href="https://www.w3schools.com/sql/default.asp">a good resources</a>.</p>
 </div>
-<section id="connecting-to-the-database">
-<h2>Connecting to the database<a class="headerlink" href="#connecting-to-the-database" title="Permalink to this headline">#</a></h2>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<p>Before we start, let’s define a few terms generically so that when you see them it becomes more clear what is happening.</p>
+<ul class="simple">
+<li><p><strong>Database Server</strong> - A database server is the hardware which runs database software.  We will often refer to the database server as both the hardware and the software together.</p></li>
+<li><p><strong>Database</strong> - A database is a collection of tables, functions, procedures, et al, which allow access to the actual data.  The distinction between the server and the database are an important distinction, as a single <em>database server</em> can be hosting many <em>databases</em>.</p></li>
+<li><p><strong>Connection</strong> - in order to be able to run queries on a particular database, the client software needs to establish a connection to the database server/database combination.</p></li>
+<li><p><strong>Cursor</strong> - A database <a class="reference external" href="https://en.wikipedia.org/wiki/Cursor_(databases)">cursor</a> is a mechanism which allows us to traverse the records in the database.  We can have many different cursors using the same connection to the database.</p></li>
+</ul>
+</section>
+<section id="how-to-run-a-query">
+<h2>How to run a query<a class="headerlink" href="#how-to-run-a-query" title="Permalink to this headline">#</a></h2>
 <p>There are three basic steps in order to execute a query against a relational database.</p>
 <ol class="simple">
 <li><p>Establish a connection to the database</p></li>
-<li><p>Create a command</p></li>
-<li><p>Execute the command</p></li>
-<li><p>Process the result (if there is a return)</p></li>
+<li><p>Using the connection create a cursor upon which to execute one or more SQL commands</p></li>
+<li><p>Execute the SQL command using the cursor</p></li>
+<li><p>Assuming there is a result, process the results of the query</p></li>
+<li><p>The cursor may be reused if there are more commands to run</p></li>
+<li><p>When the operation is complete, close the connection</p></li>
 </ol>
 <p>We are going to look at a few different approaches for making the connection to the database.  Which one you use will depend largely on the destination RDBMS server.  For instance some of the common protocols include ODBC, OLE-DB, and DBAPI.  We’ll take a look at a couple of these here.</p>
 </section>
 <section id="sqlite3">
 <h2>SQLITE3<a class="headerlink" href="#sqlite3" title="Permalink to this headline">#</a></h2>
-<p>Arguably one of the simplest relational databases to work with in is the <a class="reference external" href="https://www.sqlite.org/index.html">SQLite3</a> database.  It is one of the most used databases in the world.  It’s built into every <a class="reference external" href="https://www.sqlite.org/mostdeployed.html">mobile phone</a> and comes bundled in many applications people use on a regular basis.  It has many of the features of a more robust relational database, though it is all stored in a single portable file format.</p>
+<p>Arguably one of the simplest relational databases to work with in is the <a class="reference external" href="https://www.sqlite.org/index.html">SQLite3</a> database.  It is also one of the most used databases in the world.  It’s built into every <a class="reference external" href="https://www.sqlite.org/mostdeployed.html">mobile phone</a> and comes bundled in many applications people use on a regular basis.  It has many of the features of a more robust relational database, though the data is all stored in a single portable file format.</p>
 <p>Before we make a connection and read from a SQLite database, we need to describe cursors.  A database <a class="reference external" href="https://en.wikipedia.org/wiki/Cursor_(databases)">cursor</a> is a mechanism which allows us to traverse the records in the database.  You can think of it as a pointer to a record.  We’ll use a cursor in the next example to get data from a predefined database.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you get an error running the next cell, it’s likely that their is a database file already in the <code class="docutils literal notranslate"><span class="pre">output</span></code> folder.  In order to resolve, either delete the file <code class="docutils literal notranslate"><span class="pre">sample.db</span></code> or rename it to something like <code class="docutils literal notranslate"><span class="pre">sample.db.bak</span></code></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+
 <span class="c1"># Make a connection to the database</span>
 <span class="n">cnn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../output/sample.db&#39;</span><span class="p">)</span>
 
@@ -798,6 +835,9 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s get the data back out</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM pet&#39;</span><span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># When we are finally done, we want to be sure to close the connection.</span>
+<span class="n">cnn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -844,9 +884,14 @@ Environment variables are variables that are stored in the operating system, rat
 <span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_PASSWORD&quot;</span><span class="p">)</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
 
+<span class="c1"># Connect to a MS SQL Server Database</span>
 <span class="n">cnn</span> <span class="o">=</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">svr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">user</span><span class="o">=</span><span class="n">uid</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span><span class="n">database</span><span class="o">=</span><span class="n">db</span><span class="p">)</span>
+
+<span class="c1"># Create the cursor required to run the command</span>
 <span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;select top 10 * from Actor&#39;</span><span class="p">)</span>
+
+<span class="c1"># Run the SQL command</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT top 10 * FROM Actor&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
@@ -868,7 +913,31 @@ Environment variables are variables that are stored in the operating system, rat
 </div>
 </div>
 </div>
-<p>As soon as developers understand the value of using Python to connect to SQL the very next step is to put the two things together to create dynamic queries.  For instance look at the following code snippet</p>
+</section>
+<section id="dynamic-queries">
+<h3>Dynamic Queries<a class="headerlink" href="#dynamic-queries" title="Permalink to this headline">#</a></h3>
+<p>As soon as developers understand the value of using Python to connect to SQL the very next step is to put the two things together to create dynamic queries.  For instance look at the following code snippet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">last_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">+</span><span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">month</span>
+<span class="n">sql_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT * FROM sales WHERE month = </span><span class="si">{</span><span class="n">last_month</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Connect to the database and do something interesting</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ellipsis
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is super handy, cause now we can get just the data we need like last month’s sales and export it to an Excel sheet.  Python of course is terrific at automating this kind of thing and when we combine with SQL, we get some really powerful automation.</p>
+<p>Even better we could ask a user to give us a date and we can create a query from the response</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">month</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Which month should I get sales from?&#39;</span><span class="p">)</span>
 <span class="n">sql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM sales WHERE month = &quot;</span><span class="o">+</span><span class="n">month</span>
@@ -876,7 +945,7 @@ Environment variables are variables that are stored in the operating system, rat
 </pre></div>
 </div>
 <p>Normally we would expect that users wouldn’t do anything malicious - they would input a month number and we’d have a perfectly fine query.  But we could run across a user that is less than friendly, they could input something like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">;</span> <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">sales</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">sales</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The resulting string would be</p>
@@ -888,8 +957,8 @@ Environment variables are variables that are stored in the operating system, rat
 </section>
 <section id="passing-parameters">
 <h2>Passing parameters<a class="headerlink" href="#passing-parameters" title="Permalink to this headline">#</a></h2>
-<p>Fortunately we have a fix!  We can let the SQL parser to handle any issues like this, ensuring that we only get valid values for our parameters and not malicious code like above.</p>
-<p>In the next code snippet, we are going to use another database in the supplied data, <code class="docutils literal notranslate"><span class="pre">cereals.db</span></code>.  This database has nutrition data for a variety of cereals.  We’ll start by getting the columns that are in the database then we’ll move on to a query using parameters</p>
+<p>Fortunately there is protection.  We can let the SQL parser handle any issues like this, ensuring that we only get valid values for our parameters and not malicious code like above.  We simply pass parameters to fill in the variable parts of our SQL statement.</p>
+<p>In the next code snippet, we are going to use another database in the supplied data, <code class="docutils literal notranslate"><span class="pre">cereals.db</span></code>.  This database has nutrition data for a variety of cereals.  We’ll start by getting the columns that are in the database then we’ll move on to a query using parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to a sample database</span>
@@ -916,35 +985,40 @@ Environment variables are variables that are stored in the operating system, rat
 <span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
 <span class="c1"># Set the max_calories to be considered a low-calorie option</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Low calorie cereals&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">max_calories</span> <span class="o">=</span> <span class="mi">75</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select name,calories from cereals where calories &lt;= ?&quot;</span><span class="p">,[</span><span class="n">max_calories</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Low cal cereals&quot;</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name,calories FROM cereals WHERE calories &lt;= ?&quot;</span><span class="p">,[</span><span class="n">max_calories</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;High cal cereals&quot;</span><span class="p">)</span>
+
 <span class="c1"># Now, using the same query we can ask for high-calorie cereals</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;High calorie cereals&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">max_calories</span> <span class="o">=</span> <span class="mi">150</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select name,calories from cereals where calories &gt;= ?&quot;</span><span class="p">,[</span><span class="n">max_calories</span><span class="p">])</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name,calories FROM cereals WHERE calories &gt;= ?&quot;</span><span class="p">,[</span><span class="n">max_calories</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">cnn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Low cal cereals
-(&#39;100%_Bran&#39;, 70)
-(&#39;All-Bran&#39;, 70)
-(&#39;All-Bran_with_Extra_Fiber&#39;, 50)
-(&#39;Puffed_Rice&#39;, 50)
-(&#39;Puffed_Wheat&#39;, 50)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Low calorie cereals
+----------
+100%_Bran: 70
+All-Bran: 70
+All-Bran_with_Extra_Fiber: 50
+Puffed_Rice: 50
+Puffed_Wheat: 50
 
-High cal cereals
-(&#39;Muesli_Raisins,_Dates,_&amp;_Almonds&#39;, 150)
-(&#39;Muesli_Raisins,_Peaches,_&amp;_Pecans&#39;, 150)
-(&#39;Mueslix_Crispy_Blend&#39;, 160)
+High calorie cereals
+----------
+Muesli_Raisins,_Dates,_&amp;_Almonds: 150
+Muesli_Raisins,_Peaches,_&amp;_Pecans: 150
+Mueslix_Crispy_Blend: 160
 </pre></div>
 </div>
 </div>
@@ -1237,7 +1311,10 @@ High cal cereals
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pandas dataframe</span>
-<span class="n">phone_book_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Name&#39;</span><span class="p">:[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="s1">&#39;Charlie&#39;</span><span class="p">],</span><span class="s1">&#39;Phone&#39;</span><span class="p">:[</span><span class="s1">&#39;555-555-1234&#39;</span><span class="p">,</span><span class="s1">&#39;123-456-7890&#39;</span><span class="p">,</span><span class="s1">&#39;555-867-5309&#39;</span><span class="p">]})</span>
+<span class="n">phone_book_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Name&#39;</span><span class="p">:[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="s1">&#39;Charlie&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Phone&#39;</span><span class="p">:[</span><span class="s1">&#39;555-555-1234&#39;</span><span class="p">,</span><span class="s1">&#39;123-456-7890&#39;</span><span class="p">,</span><span class="s1">&#39;555-867-5309&#39;</span><span class="p">]</span>
+    <span class="p">})</span>
 <span class="n">phone_book_df</span>
 </pre></div>
 </div>
@@ -1351,6 +1428,7 @@ High cal cereals
 </table>
 </div></div></div>
 </div>
+<p>Being able to connect to a SQL database and run queries from Python is super handy and really useful. Combining the simplicity of Python and the power of a relational database can make for some very compelling and useful automation of common tasks.</p>
 </section>
 </section>
 
