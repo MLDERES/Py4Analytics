@@ -2,6 +2,7 @@
 .vscode
 .last_build
 .last_publish
+_build/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
