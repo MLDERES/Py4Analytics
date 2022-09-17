@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -42,6 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Exploratory Data Analysis" href="260-Data_Visualization.html" />
     <link rel="prev" title="Gather data from the web" href="240-Getting_Web_Data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -404,7 +405,10 @@ const thebe_selector_output = ".output, .cell_output"
              <!-- To handle the deprecated key -->
             
             <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            <div>
+  Last Update: Sat Sep 17 20:50:23 2022
+</div>
+
             </div>
             
         </div>
@@ -667,13 +671,15 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#dynamic-queries">
      Dynamic Queries
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#passing-parameters">
+       Passing parameters
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#passing-parameters">
-   Passing parameters
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-pandas">
@@ -728,13 +734,15 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#dynamic-queries">
      Dynamic Queries
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#passing-parameters">
+       Passing parameters
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#passing-parameters">
-   Passing parameters
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-pandas">
@@ -770,7 +778,7 @@ title="Print to PDF"
 </section>
 <section id="how-to-run-a-query">
 <h2>How to run a query<a class="headerlink" href="#how-to-run-a-query" title="Permalink to this headline">#</a></h2>
-<p>There are three basic steps in order to execute a query against a relational database.</p>
+<p>There are a few basic steps in order to execute a query against a relational database.</p>
 <ol class="simple">
 <li><p>Establish a connection to the database</p></li>
 <li><p>Using the connection create a cursor upon which to execute one or more SQL commands</p></li>
@@ -857,23 +865,54 @@ title="Print to PDF"
 <h2>Connecting to other RDBMS<a class="headerlink" href="#connecting-to-other-rdbms" title="Permalink to this headline">#</a></h2>
 <p>Again, this is just an introduction of how to get data to/from a database we are using SQLite as a portable and simple example. All the same principals apply even if you are connecting to a Microsoft SQL, Teradata, Oracle or other DBMS. But the connection mechanism for other databases can vary.  There are a few common libraries we can leverage such as <a class="reference external" href="https://github.com/mkleehammer/pyodbc/wiki">pyodbc</a>.  <a class="reference external" href="https://docs.microsoft.com/en-us/sql/odbc/reference/what-is-odbc?view=sql-server-ver16">ODBC</a> is a specification for a database API.  Nearly every commercial RDBMS supports connections and transactions using ODBC, meaning that to change between one database and another, the code changes very little - typcially the only thing that needs to change in the connection string and the precise SQL you are trying to execute.  Though that doesn’t mean it is easy, connection strings are database platform dependent and can vary widely.  Here’s <a class="reference external" href="https://www.connectionstrings.com/">one source</a> that might help.</p>
 <p>For SQL server, the connection string looks like:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="ss">&quot;Driver=SQL Server Native Client 11.0;Server=myservername; Database=myDatabase; User Id=myUserName; Password=myPassword;&quot;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Driver=SQL Server Native Client 18.0;Server=myservername; Database=myDatabase; User Id=myUserName; Password=myPassword;&quot;</span>
 </pre></div>
 </div>
-<section id="connecting-to-ms-sql-server">
-<h3>Connecting to MS SQL Server<a class="headerlink" href="#connecting-to-ms-sql-server" title="Permalink to this headline">#</a></h3>
-<p>Most of the major RDBMS providers also provide python specific libraries if you know that you wont have to switch between different databases.  For instance, Microsoft provides <a class="reference external" href="http://www.pymssql.org/">pymssql</a>.  Using one of these libraries tends to make things a bit simpler if you just want to be able to do simple queries with a SQL database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">import</span> <span class="nn">pyodbc</span>
+
+<span class="c1"># This library allows the environment variables to be loaded from a file</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># To get this working quickly, you can just replace these variables with your own values</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_SERVER&quot;</span><span class="p">)</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_USER&quot;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
+<span class="n">cnxn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;DRIVER={ODBC Driver 18 for SQL Server};SERVER=&#39;</span><span class="o">+</span><span class="n">svr</span><span class="o">+</span><span class="s1">&#39;;DATABASE=&#39;</span><span class="o">+</span><span class="n">db</span><span class="o">+</span><span class="s1">&#39;;UID=&#39;</span><span class="o">+</span><span class="n">uid</span><span class="o">+</span><span class="s1">&#39;;PWD=&#39;</span><span class="o">+</span> <span class="n">pwd</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">cnxn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="nn">/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb Cell 9</span> in <span class="ni">&lt;cell line: 13&gt;</span><span class="nt">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X42sdnNjb2RlLXJlbW90ZQ%3D%3D?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_PASSWORD&quot;</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X42sdnNjb2RlLXJlbW90ZQ%3D%3D?line=11&#39;</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X42sdnNjb2RlLXJlbW90ZQ%3D%3D?line=12&#39;</span><span class="o">&gt;</span><span class="mi">13</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">cnxn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;DRIVER={ODBC Driver 18 for SQL Server};SERVER=&#39;</span><span class="o">+</span><span class="n">svr</span><span class="o">+</span><span class="s1">&#39;;DATABASE=&#39;</span><span class="o">+</span><span class="n">db</span><span class="o">+</span><span class="s1">&#39;;UID=&#39;</span><span class="o">+</span><span class="n">uid</span><span class="o">+</span><span class="s1">&#39;;PWD=&#39;</span><span class="o">+</span> <span class="n">pwd</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X42sdnNjb2RlLXJlbW90ZQ%3D%3D?line=13&#39;</span><span class="o">&gt;</span><span class="mi">14</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnxn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="ne">OperationalError</span>: (&#39;08001&#39;, &#39;[08001] [Microsoft][ODBC Driver 18 for SQL Server]SSL Provider: [error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed:self signed certificate] (-1) (SQLDriverConnect)&#39;)
+</pre></div>
+</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Environment Variables
 Environment variables are variables that are stored in the operating system, rather than in our program.  Environment variables provide a way to configure your application without having to edit your source code when the configuration changes. Common config items that are often passed to application through environment variables are third-party API keys, network ports, database servers, and any custom options that your application may need to work properly.  For more information on environment variables <a class="reference external" href="https://www.twilio.com/blog/environment-variables-python">see this fantastic resource</a>.</p>
 <p>Additionally, the library I used here <a class="reference external" href="https://pypi.org/project/python-dotenv/"><code class="docutils literal notranslate"><span class="pre">python-dotenv</span></code></a> can get your environment from a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file in root of your Python project.</p>
 </div>
+<section id="connecting-to-ms-sql-server">
+<h3>Connecting to MS SQL Server<a class="headerlink" href="#connecting-to-ms-sql-server" title="Permalink to this headline">#</a></h3>
+<p>Most of the major RDBMS providers also provide python specific libraries if you know that you wont have to switch between different databases.  For instance, Microsoft provides <a class="reference external" href="http://www.pymssql.org/">pymssql</a>.  Using one of these libraries tends to make things a bit simpler if you just want to be able to do simple queries with a SQL database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
-<span class="kn">import</span> <span class="nn">pymssql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymssql</span>
 
 <span class="c1"># This library allows the environment variables to be loaded from a file</span>
 <span class="n">load_dotenv</span><span class="p">()</span>
@@ -899,16 +938,33 @@ Environment variables are variables that are stored in the operating system, rat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;10, Mack&#39;)
-(2, &#39;101, Highway&#39;)
-(3, &#39;2, Kase&#39;)
-(4, &#39;2Pac&#39;)
-(5, &quot;4-Tay, Rappin&#39;&quot;)
-(6, &#39;7, Marc&#39;)
-(7, &#39;9mm, Orange&#39;)
-(8, &#39;Aaliyah&#39;)
-(9, &#39;Aames, Angela&#39;)
-(10, &#39;Aames, Willie&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">MSSQLDatabaseException</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
+<span class="nn">File src/pymssql/_pymssql.pyx:646,</span> in <span class="ni">pymssql._pymssql.connect</span><span class="nt">()</span>
+
+<span class="nn">File src/pymssql/_mssql.pyx:2108,</span> in <span class="ni">pymssql._mssql.connect</span><span class="nt">()</span>
+
+<span class="nn">File src/pymssql/_mssql.pyx:700,</span> in <span class="ni">pymssql._mssql.MSSQLConnection.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/pymssql/_mssql.pyx:1817,</span> in <span class="ni">pymssql._mssql.maybe_raise_MSSQLDatabaseException</span><span class="nt">()</span>
+
+<span class="nn">File src/pymssql/_mssql.pyx:1834,</span> in <span class="ni">pymssql._mssql.raise_MSSQLDatabaseException</span><span class="nt">()</span>
+
+<span class="ne">MSSQLDatabaseException</span>: (18456, b&#39;DB-Lib error message 20018, severity 14:\nGeneral SQL Server error: Check messages from the SQL Server\nDB-Lib error message 20002, severity 9:\nAdaptive Server connection failed (essql1.walton.uark.edu)\nDB-Lib error message 20002, severity 9:\nAdaptive Server connection failed (essql1.walton.uark.edu)\n&#39;)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="nn">/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb Cell 12</span> in <span class="ni">&lt;cell line: 13&gt;</span><span class="nt">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X11sdnNjb2RlLXJlbW90ZQ%3D%3D?line=9&#39;</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X11sdnNjb2RlLXJlbW90ZQ%3D%3D?line=11&#39;</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Connect to a MS SQL Server Database</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X11sdnNjb2RlLXJlbW90ZQ%3D%3D?line=12&#39;</span><span class="o">&gt;</span><span class="mi">13</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">cnn</span> <span class="o">=</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">svr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">user</span><span class="o">=</span><span class="n">uid</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span><span class="n">database</span><span class="o">=</span><span class="n">db</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X11sdnNjb2RlLXJlbW90ZQ%3D%3D?line=14&#39;</span><span class="o">&gt;</span><span class="mi">15</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Create the cursor required to run the command</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/250-Database_Connections.ipynb#X11sdnNjb2RlLXJlbW90ZQ%3D%3D?line=15&#39;</span><span class="o">&gt;</span><span class="mi">16</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="nn">File src/pymssql/_pymssql.pyx:652,</span> in <span class="ni">pymssql._pymssql.connect</span><span class="nt">()</span>
+
+<span class="ne">OperationalError</span>: (18456, b&#39;DB-Lib error message 20018, severity 14:\nGeneral SQL Server error: Check messages from the SQL Server\nDB-Lib error message 20002, severity 9:\nAdaptive Server connection failed (essql1.walton.uark.edu)\nDB-Lib error message 20002, severity 9:\nAdaptive Server connection failed (essql1.walton.uark.edu)\n&#39;)
 </pre></div>
 </div>
 </div>
@@ -953,10 +1009,8 @@ Environment variables are variables that are stored in the operating system, rat
 </pre></div>
 </div>
 <p>If this statement were executed by our program, we would inadvertantly end up losing our entire sales table!</p>
-</section>
-</section>
 <section id="passing-parameters">
-<h2>Passing parameters<a class="headerlink" href="#passing-parameters" title="Permalink to this headline">#</a></h2>
+<h4>Passing parameters<a class="headerlink" href="#passing-parameters" title="Permalink to this headline">#</a></h4>
 <p>Fortunately there is protection.  We can let the SQL parser handle any issues like this, ensuring that we only get valid values for our parameters and not malicious code like above.  We simply pass parameters to fill in the variable parts of our SQL statement.</p>
 <p>In the next code snippet, we are going to use another database in the supplied data, <code class="docutils literal notranslate"><span class="pre">cereals.db</span></code>.  This database has nutrition data for a variety of cereals.  We’ll start by getting the columns that are in the database then we’ll move on to a query using parameters.</p>
 <div class="cell docutils container">
@@ -1023,6 +1077,8 @@ Mueslix_Crispy_Blend: 160
 </div>
 </div>
 </div>
+</section>
+</section>
 </section>
 <section id="using-pandas">
 <h2>Using pandas<a class="headerlink" href="#using-pandas" title="Permalink to this headline">#</a></h2>
