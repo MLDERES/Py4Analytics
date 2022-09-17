@@ -34,9 +34,11 @@ html:
   use_issues_button: true
   use_repository_button: true
   base_url: www.py4analytics.info
+  comments:
+    hypothesis: true
   extra_navbar: |
     <div>
-      Last Update: Sat Sep 17 20:43:14 2022
+      Last Update: Sat Sep 17 20:50:23 2022
     </div>
 
 launch_buttons:
