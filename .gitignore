@@ -3,6 +3,7 @@
 .last_build
 .last_publish
 _build/
+output
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

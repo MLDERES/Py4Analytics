@@ -5,6 +5,7 @@ book_path = /workspaces/py4analytics
 
 ## Build the jupyter book
 build:
+	./scripts/update_ver.sh
 	jupyter-book build ${book_path}
 
 ## Post the compiled book to the github pages
