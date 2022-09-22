@@ -36,6 +36,7 @@ html:
   base_url: www.py4analytics.info
   comments:
     hypothesis: true
+  google_analytics_id: G-NZH9210CF9
   extra_navbar: |
     <div>
       Last Update: Sat Sep 17 20:51:36 2022
