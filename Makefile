@@ -3,9 +3,11 @@ book_path = /workspaces/py4analytics
 # # Description: A list of make targets with examples in Makefile
 # 	@grep -F ":" Makefile | awk '!/awk/' | awk '!/Description/' | sed -e 's/://'
 
+update_ver:
+	./scripts/update_ver.sh
+	
 ## Build the jupyter book
 build:
-	./scripts/update_ver.sh
 	jupyter-book build ${book_path}
 
 ## Post the compiled book to the github pages
