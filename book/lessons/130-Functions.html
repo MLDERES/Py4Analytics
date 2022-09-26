@@ -654,16 +654,30 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#defining-functions">
    Defining Functions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hiding-the-details">
+     Hiding the details
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configurable-functions">
    Configurable functions
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-something-back">
-   Getting something back
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-something-back">
+     Getting something back
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-parameters">
+     Optional Parameters
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-write-functions">
@@ -703,16 +717,30 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#defining-functions">
    Defining Functions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hiding-the-details">
+     Hiding the details
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configurable-functions">
    Configurable functions
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-something-back">
-   Getting something back
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-something-back">
+     Getting something back
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-parameters">
+     Optional Parameters
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-write-functions">
@@ -742,35 +770,59 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="reusing-code">
 <h1>Reusing Code<a class="headerlink" href="#reusing-code" title="Permalink to this headline">#</a></h1>
 <p>One of the fundamental skills that every programmer must have is the ability to make their code reusable.  Not just cut/paste reusable, but being able to be reused with in a variety of conditions without having to rework the code.</p>
-<p>When you think about a simple task, like making a peanut butter and jelly sandwich, you can tell your friend how to make that sandwich with just a few words.  For instance,</p>
+<p>When you think about a simple task, like making a peanut butter and jelly sandwich, you can ask your friend to make that sandwich with just a few words, like “Would you make me a sandwich?”.  This works because we are often taught how to do simple tasks as we grow up.  But what if your friend has never made a sandwich before?  Then it might take a few more instructions such as:</p>
 <ul class="simple">
-<li><p>Grab the peanut butter</p></li>
-<li><p>Choose the jelly</p></li>
-<li><p>Open the bread</p></li>
-<li><p>Spread the PB on one slice and the jelly on another piece of bread</p></li>
-<li><p>Put the bread slices together with the PB and jelly touching</p></li>
+<li><p>First, get the peanut butter from the pantry</p></li>
+<li><p>Get the grape jelly from the refrigerator</p></li>
+<li><p>Grab the white bread off the counter</p></li>
+<li><p>Spread the PB on one slice of bread and the jelly on another</p></li>
+<li><p>Fold the bread slices together with the PB and jelly touching</p></li>
 </ul>
-<p>We’ve really shortcutted a bunch of steps here right?  I mean, “grabbing the peanut butter” means going to the pantry, openning the door, finding the jar, selecting the jar, walking back…</p>
-<p>This would get very frustating if we had to explain this over and over for each kind of sandwich we want to make or with different kinds of jelly right?  So we have learned that, using words, we can communicate whole steps without having to break down the details each time.  We might have to provide a bit of context - say, if you’re at my house, the PB is in the cabinet, but at your place it’s in the pantry.  But in general humans can fill in the blanks.</p>
+<p>Even here we’ve shortcut a bunch of steps?  For instance, “get the peanut butter from the pantry” means <em>go to the pantry, open the door, finding the jar, grabbing the jar, walk back, put it on the counter</em>…</p>
+<p>Imagine now if your friend came over once a week for a PB&amp;J and we had to explain how to do each of these steps every time.  It wouldn’t take more than once or twice for us to figure out that it might be best to just write down the steps for our friend and give them the notecard of instructions to follow whenever they are hungry.  That would be helpful, but what if our friend gets sick of grape jelly and would prefer instead strawberry jam?  Or she would prefer her bread toasted first?  In that case we’d need to create new notecards for each combination of outcomes.</p>
+<p>This helps us to understand quite a bit about how computers work and why our program is important.  Computers don’t have a memory, so we do have to tell the computer each time all the steps each time we want to perform a particular task!  Just like our forgetful friend, the computer needs to be reminded of the steps to take every time.  What’s more computers only do what we tell them to do (using programming languages).  If we told the computer to get the grape jelly from the fridge and there wasn’t any grape jelly - our friend might automatically choose strawberry instead, the computer won’t make this choice for us unless it’s told that strawberry is suitable alternative to grape.</p>
 <p>Computers can’t fill in the blanks, we have to be very precise.  But we also don’t want to have to be extremely precise everytime we want to do a simple task, so we use abstractions in programming to help us with the mundane.  One example, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement we saw earlier.  There is a lot of stuff happening to make a couple of letters appear on the screen.  Fortunately for us, someone else figured this out already and we can rely on their work.</p>
 <p>Functions (in other languages called subroutines) are self-contained lines of code which accomplish a specific task.  Functions can “take in” data, process it, and then “return” a result.</p>
 <section id="defining-functions">
 <h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">#</a></h2>
-<p>In Python we define functions with the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword followed by the name of the function, a set of parenthesis, and a <code class="docutils literal notranslate"><span class="pre">:</span></code>.  To use the function, we just type it’s name and the parenthesis. (There are a few more options, but this is the simplest form.)</p>
+<p>In Python we establish functions with the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword (short for <em>define</em>) followed by the name of the function, a set of parenthesis, and a <code class="docutils literal notranslate"><span class="pre">:</span></code>.  To use the function, we just type it’s name and the parenthesis. (There are a few more options, but this is the simplest form.)</p>
+<p>In the next cell, we have defined a function named <code class="docutils literal notranslate"><span class="pre">say_hello_world</span></code>.  Notice how it has the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, the name of the function, <code class="docutils literal notranslate"><span class="pre">()</span></code> and a <code class="docutils literal notranslate"><span class="pre">:</span></code>?  The body of the function, the code which is executed when we call (run) the function, consists of all the lines in function code block.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function will output the phrase, Hello World!</span>
 <span class="k">def</span> <span class="nf">say_hello_world</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
 
+<span class="c1"># Run the function</span>
 <span class="n">say_hello_world</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
 </div>
-<p>Now that we have defined the function, we can call it over and over again without having to define it again.  Even better, if we decide to change it - we don’t need to update the code that is calling the function to change it.</p>
+</div>
+</div>
+<p>Now that we have defined the function, we can use it over and over again without having to define it again.  Even better, if we decide to change it - we don’t need to update the code that is calling the function to change it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the say_hello_world function</span>
+<span class="n">say_hello_world</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
 <p>You can try it here.  Create a new code cell and type <code class="docutils literal notranslate"><span class="pre">say_hello_world</span></code> into the new cell and see it prints out the same message.</p>
-<p>Functions can replace several lines of code into a single statement when used, because they “encapsulate” the details.  In this example, we just repeated the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function but what about something more complex like getting input from a user and then responding to the message.  Could we shortcut all this into one function?</p>
+<p>Once you have done that, go back to the cell with the defintion of the function and change the text <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;Hi</span> <span class="pre">World!&quot;</span></code>.  If you run that cell and then the next  one you’ll see the new output.</p>
+<section id="hiding-the-details">
+<h3>Hiding the details<a class="headerlink" href="#hiding-the-details" title="Permalink to this headline">#</a></h3>
+<p>Functions can replace several lines of code into a single statement when used, because they encapsulate the details.  In this example, we just repeated the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function but what about something more complex like getting input from a user and then responding to the message.  Could we shortcut all this into one function?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to a particular user</span>
@@ -782,69 +834,145 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-</div>
-<p>Functions can be very simple or much more complex.  The best practice though is to make functions just big enough to complete a task and no more.  This could mean calling other functions and doing some other processing, but let’s not worry about complexity just yet.</p>
-</section>
-<section id="configurable-functions">
-<h2>Configurable functions<a class="headerlink" href="#configurable-functions" title="Permalink to this headline">#</a></h2>
-<p>While our previous examples were simple, they weren’t very useful because they only do one thing.  Most often what we want to complete a task with some specific parameters or configurable steps.  For instance, the <code class="docutils literal notranslate"><span class="pre">print</span></code> function wouldn’t be very helpful if we had to write a new function everytime we wanted to change the output! Instead, we can send in the characters we want outputted to the screen using <em>arguments</em>.  Functions define temporary variables to hold the value of these arguments, called parameters.</p>
-<p>Starting with a simple example.  Let’s rewrite our <code class="docutils literal notranslate"><span class="pre">say_hello_user()</span></code> function, but this time, let’s supply the greeting and the users name outside of the function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to a particular user</span>
-<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-
-<span class="n">users_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
-
-<span class="c1"># We can pass parameters with a &quot;fixed&quot; value or as a variable</span>
-<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span><span class="p">,</span> <span class="n">users_name</span><span class="p">)</span>
-<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Hi &quot;</span><span class="p">,</span> <span class="n">users_name</span><span class="p">)</span>
-<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Ciao &quot;</span><span class="p">,</span> <span class="n">users_name</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello,  Mr. Ed  it&#39;s nice to meet you!
 </pre></div>
 </div>
 </div>
 </div>
+<p>Functions can be very simple or much more complex.  The best practice though is to make functions just big enough to complete a single task and no more.  This could mean calling other functions and doing some other processing, but let’s not worry about complexity just yet.</p>
 </section>
+</section>
+<section id="configurable-functions">
+<h2>Configurable functions<a class="headerlink" href="#configurable-functions" title="Permalink to this headline">#</a></h2>
+<p>Most often when defining functions, we want to complete a task with some specific parameters or configurable steps.  For instance, the <code class="docutils literal notranslate"><span class="pre">print</span></code> function wouldn’t be very helpful if we had to write a new function everytime we wanted to change the output! Instead, we can send in the characters we want printed to the screen using <em>arguments</em>.  Functions define temporary variables to hold the value of these arguments, called <em>parameters</em>.</p>
+<p>Starting with a simple example.  Let’s rewrite our <code class="docutils literal notranslate"><span class="pre">say_hello_user()</span></code> function, but this time, let’s supply the greeting and the users name outside of the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to a particular user</span>
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">greeting</span><span class="p">):</span>
+    <span class="c1"># The value of greeting and name are set by the caller of the function</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">users_name</span> <span class="o">=</span> <span class="s2">&quot;Mr. Ed&quot;</span>
+
+<span class="c1"># We can pass parameters with a &quot;fixed&quot; value or as a variable</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="n">users_name</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="n">users_name</span><span class="p">,</span> <span class="s2">&quot;Hi&quot;</span><span class="p">)</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="n">users_name</span><span class="p">,</span> <span class="s2">&quot;Ciao&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Mr. Ed
+Hi Mr. Ed
+Ciao Mr. Ed
+</pre></div>
+</div>
+</div>
+</div>
 <section id="getting-something-back">
-<h2>Getting something back<a class="headerlink" href="#getting-something-back" title="Permalink to this headline">#</a></h2>
-<p>Many functions are helpful just as they are, they do some work and then go away.  Sometimes we want feedback from a function or the result of doing some work in a function.  In these cases, we use another Python keyword <code class="docutils literal notranslate"><span class="pre">return</span></code>.  The <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword says the function is complete and this bit of information is the result of the effort.  As a caller of the function we can use the returned value just like we use variables, we can assign it to variable for safe-keeping pass it along to another function or ignore it all together.</p>
+<h3>Getting something back<a class="headerlink" href="#getting-something-back" title="Permalink to this headline">#</a></h3>
+<p>Many functions are helpful just as they are, they do some work and then go away.  Sometimes we want feedback from a function or to capture the result of doing some work in a function.  In these cases, we use another Python keyword <code class="docutils literal notranslate"><span class="pre">return</span></code>.  The <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword says the function is complete and this bit of information is the result of the effort.  As a caller of the function we can use the returned value just like we use variables, we can assign it to variable for safe-keeping, pass it along to another function or ignore it all together.</p>
 <p>Let’s consider a simple example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
     <span class="k">return</span> <span class="n">c</span>
 </pre></div>
 </div>
-<p>Here we have a function named <code class="docutils literal notranslate"><span class="pre">add</span></code>, we know it is a Python function because it has the word <code class="docutils literal notranslate"><span class="pre">def</span></code> in front of the name.  Our <code class="docutils literal notranslate"><span class="pre">add</span></code> function “takes in” two values (paramters) named <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, these two values become variables that exist only while the function is called we call these <em>function parameters</em>.  Finally, our function does something useful and sends back the result <code class="docutils literal notranslate"><span class="pre">c</span></code>.  So now, when we want to use this function, we just need to specify the name of the function, the value for the two parameters and collect the result into another variable.</p>
+<p>Here we have a function named <code class="docutils literal notranslate"><span class="pre">add</span></code>, we know it is a Python function because it has the word <code class="docutils literal notranslate"><span class="pre">def</span></code> in front of the name.  Our <code class="docutils literal notranslate"><span class="pre">add</span></code> function “takes in” two values (parameters) named <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, these two values become variables that exist only while the function is called. We call these <em>function parameters</em>.  Finally, our function does something useful and sends back the result <code class="docutils literal notranslate"><span class="pre">c</span></code>.  So now, when we want to use this function, we just need to specify the name of the function, a value for each of the two parameters and then we can collect the result into another variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add the numbers represented by the parameters a and b</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="c1"># The value for a and b are provided by the caller</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="c1"># The value stored in the variable, c, is sent back to the caller</span>
     <span class="k">return</span> <span class="n">c</span>
 
+<span class="c1"># Call the `add` function, where the value `a` is 5, `b` is 4 </span>
+<span class="c1">#  and the result of the fuction is stored in the new variable `return_value`</span>
 <span class="n">return_value</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now what we have is a function that will perform a set of actions, but we don’t have to know ahead of time what the values for <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> will be.  We just know that they should be two numbers.</p>
-<p>This is a very simple example of course and the number of lines in a function can be very long.  As a matter of fact we can even call other functions inside of our functions.</p>
+<p>This is a very simple example, of coarse, in more complex functions the number of lines of code can be very long.  As a matter of fact we often encapsulate many of the things we’ve already learned like making decisions and looping in our functions.  We can even call other functions inside of our functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="c1"># Make sure that we have a variable to capture the ouput</span>
+    <span class="c1">#  We set it to zero as a &quot;default&quot;.  So that if nothing happens in our function</span>
+    <span class="c1">#  that at least we know that result of the execution will be a known value of 0</span>
     <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y</span><span class="p">):</span> 
         <span class="n">z</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># Calling our add function</span>
     <span class="k">return</span> <span class="n">z</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">multiply</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">mult_result</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mult_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">#</a></h3>
+<p>Sometimes we want the flexibility that providing parameters offers, but we also want to offer the caller a sensible default.  For example, let’s go back to our greeting function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Say hello to a particular user</span>
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="c1"># The value of greeting and name are set by the caller of the function</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Say hi to Alice, Bob and Charlie</span>
+
+<span class="c1"># We can pass parameters with a &quot;fixed&quot; value or as a variable</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="n">say_hello</span><span class="p">(</span><span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When we call the function, we want the ability to use another greeting (as we saw above), but if most of the time we just want to assume “Hello”, we can set this default in the function defintion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Greet a user by name</span>
+<span class="k">def</span> <span class="nf">greet_user</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">):</span>
+    <span class="c1"># The value of greeting and name are set by the caller of the function</span>
+    <span class="c1"># If the caller doesn&#39;t give us a value for `greeting`, then use &quot;Hello&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Say hi to Alice, Bob and Charlie</span>
+
+<span class="c1"># Say Hello to Alice</span>
+<span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>
+<span class="c1"># Greet Bob with &quot;Hi&quot;</span>
+<span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">&quot;Hi&quot;</span><span class="p">)</span>
+<span class="c1"># Greet Charlie with &quot;Yo!&quot;</span>
+<span class="n">greet_user</span><span class="p">(</span><span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">&quot;Yo!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Alice
+Hi Bob
+Yo! Charlie
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="why-write-functions">
 <h2>Why write functions?<a class="headerlink" href="#why-write-functions" title="Permalink to this headline">#</a></h2>
