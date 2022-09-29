@@ -53,19 +53,31 @@ exclude_patterns: [ book/src/*, book/extras/*, README.md]
 
 parse:
   myst_enable_extensions:
-  - html_image
-  - colon_fence
+    - colon_fence
+    - html_image
+    - html_admonition
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
   myst_ref_domains:
-  - std
-  - py
-  - ipynb
-  - csv
+    - std
+    - py
+    - ipynb
+    - csv
 
 only_build_toc_files: true
 
 sphinx: 
   recursive_update: true
-  extra_extensions: [ sphinx.ext.githubpages ]
+  extra_extensions:
+    - sphinx.ext.githubpages
+    - sphinx_exercise
+    - sphinx_togglebutton
   config: 
     html_baseurl: www.py4analytics.info
     language: en
+    nb_custom_formats:
+      .Rmd:
+        - jupytext.reads
+        - fmt: Rmd

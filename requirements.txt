@@ -10,3 +10,10 @@ patsy
 xgboost
 python-dotenv
 pymssql
+jupytext
+nbclient
+sphinx-click
+sphinx-examples
+sphinx_inline_tabs
+sphinx-exercise
+sphinx-togglebutton
