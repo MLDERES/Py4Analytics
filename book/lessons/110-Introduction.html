@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -668,7 +669,7 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#let-s-talk-python">
+  <a class="reference internal nav-link" href="#lets-talk-python">
    Let’s talk Python
   </a>
   <ul class="visible nav section-nav flex-column">
@@ -806,7 +807,7 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#let-s-talk-python">
+  <a class="reference internal nav-link" href="#lets-talk-python">
    Let’s talk Python
   </a>
   <ul class="visible nav section-nav flex-column">
@@ -934,8 +935,8 @@ title="Print to PDF"
 <p>Often times, new learners, once they have successfully identified the algorithm that completes the task at hand, converting this algorithm to words, phrases and symbols that the computer understands is the second challenge.  These notebooks are focused on Python syntax, but students should constantly be on the lookout for the algorithms as well.  The algorithms used here are small/simple tasks - but they are often building blocks for more complex algorithms.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="let-s-talk-python">
-<h1>Let’s talk Python<a class="headerlink" href="#let-s-talk-python" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lets-talk-python">
+<h1>Let’s talk Python<a class="headerlink" href="#lets-talk-python" title="Permalink to this headline">#</a></h1>
 <p>Okay, there are <a class="reference external" href="https://medium.com/velotio-perspectives/the-ultimate-beginners-guide-to-jupyter-notebooks-6b00846ed2af">many</a>, <a class="reference external" href="https://www.kdnuggets.com/2018/05/jupyter-notebook-beginners-tutorial.html">many</a> valuable resources to learn the ins and outs of Jupyter notebooks, so I’ll leave you to explore the many ways they can be used.  <em>If you are already a Python whiz</em> try some of the <a class="reference internal" href="../exercises/Coding_Challenges.html"><span class="doc std std-doc">Coding Challenges</span></a> or explore <a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/">Jupyter Notebook Tips,Tricks</a>.</p>
 <p>Now, one more thing before we get too far. You will see in many places, where there is non-computer code that gives other humans an idea of what is going on in the code. We call these pieces of text comments. Comments in Python start with a <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol and tell the computer that everything following this symbol <em>on the current line</em> is to be ignored. Comments are a valuable part of coding as they can help you to capture what you are trying to do (algorithm) before writing any code (syntax) and can be used once the code is in place to remember or clarify what exactly a bit of code is supposed to do. Here are a few examples of comments.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is the first comment</span>
@@ -1173,56 +1174,60 @@ Is 10 less than 5? False
 </section>
 <section id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h2>
-<p>As you are no doubt already aware, variables are text used to store values in our programs.  The computer doesn’t care what you call your variables, but other humans do, so name your variables something useful such as</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">height</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
-</pre></div>
-</div>
-<p>You will notice when we use assignment (<code class="docutils literal notranslate"><span class="pre">=</span></code>) that the value is not displayed on the output of the cell, also if we try to use a variable before it has been defined we’ll get an error.  Try executing the next cell.</p>
-<p>You should get an error like</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>NameError: name &#39;Area&#39; is not defined
-</pre></div>
-</div>
-<p>Try removing the n on the last line and replace that line with the variable ‘area’</p>
+<p>As you are no doubt already aware, variables are text used to store values in our programs.  The computer doesn’t care what you call your variables, but other humans do, so name your variables something useful.  For instance, take a look at this code, can you tell what the purpose of the code is?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">height</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">Area</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">/workspaces/py4analytics/book/lessons/10-Introduction.ipynb Cell 28</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/10-Introduction.ipynb#X36sdnNjb2RlLXJlbW90ZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">12</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/10-Introduction.ipynb#X36sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B633a5c50726f6a656374735c707934616e616c7974696373/workspaces/py4analytics/book/lessons/10-Introduction.ipynb#X36sdnNjb2RlLXJlbW90ZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">Area</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Area&#39; is not defined
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clearly the result is to print the value of 5*12, but why?</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">x1</span><span class="o">*</span><span class="n">x2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>A better option might be:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">width</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example, it is very clear that we are calculating area of a rectangle</span>
+<span class="c1"># The width of the rectangle is 5, the height of the rectangle is 12</span>
+<span class="c1"># and the area of the rectangle is the product of the width and the height</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">height</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">width</span><span class="o">*</span><span class="n">height</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>What we tried to do was to show the value of a variable before we gave it a value!  Let’s edit the previous example and replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with the variable <code class="docutils literal notranslate"><span class="pre">area</span></code> instead.</p>
+<p>There are just a few rules for naming variables in Python</p>
+<ul class="simple">
+<li><p>Variable names can only contain alpha-numeric characters and underscores</p>
+<ul>
+<li><p>That is A-Z, a-z, 0-9 and <code class="docutils literal notranslate"><span class="pre">_</span></code></p></li>
+</ul>
+</li>
+<li><p>The variable name must start with a letter or the underscore <code class="docutils literal notranslate"><span class="pre">_</span></code> character</p></li>
+<li><p>The variable cannot start with a number</p></li>
+</ul>
+<p>By convention, variable names are local case and if the name is two or more words, the words are separated by an <code class="docutils literal notranslate"><span class="pre">_</span></code>.  You will see variables that start with the <code class="docutils literal notranslate"><span class="pre">_</span></code> character, but this is a special convention, so it’s best to avoid.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Legal variable names</span>
+<span class="n">myvar</span> <span class="o">=</span> <span class="s1">&#39;Joe&#39;</span>
+<span class="n">my_var</span> <span class="o">=</span> <span class="s1">&#39;Joe&#39;</span>
+<span class="n">myVar</span> <span class="o">=</span> <span class="s1">&#39;Joe&#39;</span>
+<span class="n">MY_VAR</span> <span class="o">=</span> <span class="s1">&#39;JOE&#39;</span>
+<span class="n">my_var2</span> <span class="o">=</span> <span class="s1">&#39;Joe2&#39;</span>
+
+<span class="c1"># Illegal variable names</span>
+<span class="mi">2</span><span class="n">my_var</span> <span class="o">=</span> <span class="s1">&#39;Joe&#39;</span>
+<span class="n">my</span><span class="o">-</span><span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;Joe&#39;</span>
+<span class="n">my</span><span class="o">&amp;</span><span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;Joe&#39;</span>
+</pre></div>
+</div>
 <section id="strings">
 <h3>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h3>
 <p>Besides numbers, Python can also manipulate strings.  Strings are one of the most basic concepts in many languages and have tremendous value, as we most often use text to communicate with users.  Strings are used to provide real time feedback (think text boxes and labels, usernames and passwords), error messages, status logs, and communication with other programs.  Getting good with manipulating strings is extremely important to be successful.  Read about all the things you can do with strings in the Python <a class="reference external" href="https://docs.python.org/3/tutorial/introduction.html#strings">tutorial</a>.</p>
-<p>Strings in Python can expressed in several ways.  They can be enclosed in single quotes(’…’) or double quotes(”…”), both are equally acceptable.</p>
+<p>Strings in Python can expressed in several ways.  They can be enclosed in single quotes(‘…’) or double quotes(“…”), both are equally acceptable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spam eggs&#39;</span><span class="p">)</span>  <span class="c1"># single quotes</span>
@@ -1322,7 +1327,7 @@ Is 10 less than 5? False
 </section>
 <section id="input">
 <h2>Input<a class="headerlink" href="#input" title="Permalink to this headline">#</a></h2>
-<p>While sending the results of calculations to the screen, to a file or across the world is super helpful and one of the main activities we’ll automate with Python.  Soliciting input from outside the program is equally helpful.  We’ll look at many different ways of getting data later on, but for now, the simplest way to do this is to use the <code class="docutils literal notranslate"><span class="pre">input</span></code> function.  <code class="docutils literal notranslate"><span class="pre">input</span></code> will prompt the user to type some text in response to an optional prompt.  Try the next cell and see what happens. (You may notice that the cell continues to run until you have answered the prompt and hit the enter key.)</p>
+<p>Sending the results of calculations to the screen, to a file or across the world is super helpful and one of the main activities we’ll automate with Python.  Also soliciting input from outside the program is equally useful.  We’ll look at many different ways of getting data later on, but for now, the simplest way to do this is to use the <code class="docutils literal notranslate"><span class="pre">input</span></code> function.  <code class="docutils literal notranslate"><span class="pre">input</span></code> will prompt the user to type some text in response to an optional prompt.  Try the next cell and see what happens. (You may notice that the cell continues to run until you have answered the prompt and hit the enter key.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Hello, what is your name?&#39;</span><span class="p">)</span>
@@ -1330,7 +1335,7 @@ Is 10 less than 5? False
 </div>
 </div>
 </div>
-<p>Just like other actions in Jupyter, the result of the operation is immediately shown in the cell’s result.  Usually we want to keep track of what was given to us so that we can use it later on.  In this case, we can use a variable to capture the result of the <code class="docutils literal notranslate"><span class="pre">input</span></code> function and then print it.  See the next example.</p>
+<p>Just like other actions in Jupyter, the result of the operation is immediately shown in the cell’s result.  (You should see the response you gave in the result cell.)  Usually we want to keep track of what was given to us so that we can use it later on.  In this case, we can use a variable to capture the result of the <code class="docutils literal notranslate"><span class="pre">input</span></code> function and then print it.  See the next example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask the user for their name, store the result in the variable user_name</span>
@@ -1339,26 +1344,49 @@ Is 10 less than 5? False
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is: Joe
+</pre></div>
+</div>
+</div>
 </div>
 <p>One thing that is important to note is that the result of the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function is always a string, even if the user types in numbers.  This means if we want to assume that the result is a number that we will have to convert it from a string to a number.  Try the next example:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>if you don’t enter a number as input, you will get an error message.  We’ll talk about how to deal with this a bit more gracefully later, but for now it would be best to just input numbers at the prompt.)</p>
+<p>If you don’t enter a number as input, you will get an error message.  We’ll talk about how to deal with this a bit more gracefully later, but for now it would be best to just input numbers at the prompt.)</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask the user for their age, store the result in user_age</span>
 <span class="n">user_age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">.  What is your age?&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">user_age</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You said your age is: &#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_age</span><span class="p">))</span><span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You said your age is:  10
 </pre></div>
 </div>
 </div>
 </div>
+<div class="exercise admonition" id="user-prompt">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1 </span></p>
+<section id="exercise-content">
+<p>Can you now combine what you’ve learned so far and ask the user for their name
+and then ask the user for their age</p>
+<p>You should then respond by greeting the user with the name and age.</p>
+<p>Replace the <code class="docutils literal notranslate"><span class="pre">...</span></code> in the following code block</p>
+</section>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Can you now combine what you&#39;ve learned and ask the user for their name </span>
-<span class="c1"># and then their age (you&#39;ll need to separate prompts (e.g. input statements))</span>
-<span class="c1">#  then respond with a statement similar to the output above?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prompt the user for their name</span>
+<span class="n">u_name</span> <span class="o">=</span> <span class="o">...</span>
+<span class="c1"># Prompt the user for their current age</span>
+<span class="n">u_age</span> <span class="o">=</span> <span class="o">...</span>
+<span class="c1"># Output a greeting</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1372,8 +1400,14 @@ Is 10 less than 5? False
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">]</span> <span class="c1"># This is a list of squares</span>
 <span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">]</span> <span class="c1"># this is a list of people&#39;s names</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
-<span class="n">people</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Squares: &quot;</span><span class="p">,</span> <span class="n">squares</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;People:&#39;</span><span class="p">,</span> <span class="n">people</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Squares:  [1, 4, 9, 16, 25, 36]
+People: [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
 </pre></div>
 </div>
 </div>

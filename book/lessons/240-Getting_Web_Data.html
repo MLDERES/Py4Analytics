@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -809,7 +810,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>With one simple command, we have scraped 200 rows of data!  A little clicking <a class="reference external" href="https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200">around on the website</a> and I can gather another page of movies as well.</p>
-<p>Now, with a little detective work I can see that the only difference between the two URLs is that last item <code class="docutils literal notranslate"><span class="pre">offset=200</span></code>.  I wonder what happens if I change that value to <code class="docutils literal notranslate"><span class="pre">offset=400</span></code>?  Try it, I’ll wait here….</p>
+<p>Now, with a little detective work I can see that the only difference between the two URLs is that last item <code class="docutils literal notranslate"><span class="pre">offset=200</span></code>.  I wonder what happens if I change that value to <code class="docutils literal notranslate"><span class="pre">offset=400</span></code>?  Try it, I’ll wait here…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since I already know there is only 1 dataframe in the list, let&#39;s just grab the first one immediately</span>
@@ -848,10 +849,10 @@ title="Print to PDF"
 </section>
 <section id="query-parameters">
 <h2>Query parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline">#</a></h2>
-<p>A bit of background, (a very little bit), web page links usually only “resolve” to a particular page on a particular server.  The webserver looks up the page and returns whatever is stored there.  This isn’t very handy if you have alot of data to display - for instance in the case of boxofficemojo.com, they don’t want to have to create 5 different web pages for each set of 200 movies.  So instead they built one web page and used parameters (yes!  just like function parameters in Python) which define the exact contents to display.  Fortunately for us, this makes it very transparent how to manipulate the page.  We can see exactly what details the server needs to give the data we want.</p>
-<p>The URL format is, <code class="docutils literal notranslate"><span class="pre">&lt;protocol&gt;</span></code> (like https://) followed by the endpoint (www.boxofficemojo.com/chart/mpaa_title_lifetime_gross) then a <code class="docutils literal notranslate"><span class="pre">?</span></code> followed by 0 or more query parameters.  Query parameters are name/value pairs and delimited by an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.  So let’s look at that url from before again.</p>
+<p>A bit of background, (a very little bit), web page links usually only “resolve” to a particular page on a particular server.  The webserver looks up the page and returns whatever is stored there.  This isn’t very handy if you have alot of data to display - for instance in the case of <a class="reference external" href="http://boxofficemojo.com">boxofficemojo.com</a>, they don’t want to have to create 5 different web pages for each set of 200 movies.  So instead they built one web page and used parameters (yes!  just like function parameters in Python) which define the exact contents to display.  Fortunately for us, this makes it very transparent how to manipulate the page.  We can see exactly what details the server needs to give the data we want.</p>
+<p>The URL format is, <code class="docutils literal notranslate"><span class="pre">&lt;protocol&gt;</span></code> (like https://) followed by the endpoint (<a class="reference external" href="http://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross">www.boxofficemojo.com/chart/mpaa_title_lifetime_gross</a>) then a <code class="docutils literal notranslate"><span class="pre">?</span></code> followed by 0 or more query parameters.  Query parameters are name/value pairs and delimited by an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.  So let’s look at that url from before again.</p>
 <blockquote>
-<div><p>https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200</p>
+<div><p><a class="reference external" href="https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200">https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200</a></p>
 </div></blockquote>
 <p>Here the query parameters are <code class="docutils literal notranslate"><span class="pre">by_mpaa</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code>.  So that’s interesting, now that we notice this, it’s possible that we could change the <code class="docutils literal notranslate"><span class="pre">by_mpaa</span></code> parameter as well and get R rated movies as well?  Let’s try it by hand first.  Paste the link into the website and change the PG-13 to R and see what happens.</p>
 <p>That’s great, so with a simple change we could also R rated movies in a dataframe as well.  (You can copy the code above and try it out for yourself below).</p>

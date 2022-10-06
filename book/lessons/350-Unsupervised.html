@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -924,7 +925,7 @@ title="Print to PDF"
 </div>
 <p>We can see just from looking at the data here, that we have numbers that are all over the place in terms of scale.  Sales are in the thousands, while costs are in the single digits and the other values are somewhere in-between.  This is going to present a problem, the distance from a ‘centroid’ is going to be significantly impacted by sales while the other variables don’t move it much at all.  Our first task then is to normalize the values.</p>
 <p>Here’s why, if we calculate the distance using Euclidean distance this is measured as
-$$distance = \sqrt{(x_{i1} - x_{j1})^2+(x_{i2} - x_{j2})^2 + .. (x_{ip} - x_{jp})^2}$$</p>
+$$distance = \sqrt{(x_{i1} - x_{j1})^2+(x_{i2} - x_{j2})^2 + … (x_{ip} - x_{jp})^2}$$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardize all the columns into a new dataframe</span>
