@@ -415,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Last Update: Thu Oct 13 14:22:24 2022
+  Last Update: Thu Oct 13 16:32:05 2022
 </div>
 
             </div>
@@ -1227,7 +1227,7 @@ Is 10 less than 5? False
 <section id="strings">
 <h3>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h3>
 <p>Besides numbers, Python can also manipulate strings.  Strings are one of the most basic concepts in many languages and have tremendous value, as we most often use text to communicate with users.  Strings are used to provide real time feedback (think text boxes and labels, usernames and passwords), error messages, status logs, and communication with other programs.  Getting good with manipulating strings is extremely important to be successful.  Read about all the things you can do with strings in the Python <a class="reference external" href="https://docs.python.org/3/tutorial/introduction.html#strings">tutorial</a>.</p>
-<p>Strings in Python can expressed in several ways.  They can be enclosed in single quotes(‘…’) or double quotes(“…”), both are equally acceptable.</p>
+<p>Strings in Python can be expressed in several ways.  They can be enclosed in single quotes(‘…’) or double quotes(“…”), both are equally acceptable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spam eggs&#39;</span><span class="p">)</span>  <span class="c1"># single quotes</span>
@@ -1359,7 +1359,7 @@ Is 10 less than 5? False
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ask the user for their age, store the result in user_age</span>
 <span class="n">user_age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">.  What is your age?&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You said your age is: &#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_age</span><span class="p">))</span><span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You said your age is: &#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_age</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1394,8 +1394,8 @@ and then ask the user for their age</p>
 </section>
 <section id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
-<p>Python knows about a number of different <em>compound</em> data types that is ways to store many values together.  Two of the most common are <em>list</em> and <em>dictionary</em>.  We’ll start first with a list and then give you a chance to work with a list in a simple challenge.</p>
-<p>Lists are written as a set of values between square brackets that are separated by commas.  While lists, can have different types of ‘elements’ most often they are the same type.</p>
+<p>Python knows about a number of different <em>compound</em> data types, (i.e. ways to store many values together).  Two of the most common are <em>list</em> and <em>dictionary</em>.  We’ll start first with a list and then give you a chance to work with a list in a simple challenge.</p>
+<p>Lists are written as a set of values between square brackets that are separated by commas.  While lists can have different types of ‘elements’, most often they are the same type.  (e.g. list of strings, list of numbers, list of booleans etc.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">]</span> <span class="c1"># This is a list of squares</span>
@@ -1462,7 +1462,7 @@ People: [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
 </div>
 </div>
 </div>
-<p>Finally, Python also knows what do with negative numbers.  We can use negative numbers to index starting at the right or as our step.</p>
+<p>Finally, Python also knows what to do with negative numbers.  We can use negative numbers to index starting at the right or as our step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># Give me the first value starting on the right of the list</span>
@@ -1490,7 +1490,7 @@ People: [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
 </div>
 </div>
 </div>
-<p>Another handy feature of sequence types is that support several built-in functions.  Probably one of the most useful is the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function, which returns an integer that shows the length of the sequence.</p>
+<p>Another handy feature of sequence types is that they support several built-in <a class="reference internal" href="130-Functions.html"><span class="doc std std-doc">functions</span></a>.  Probably one of the most useful is the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function, which returns an integer that shows the length of the sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
@@ -1509,12 +1509,23 @@ People: [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]
+</pre></div>
 </div>
-<p>So, the first item in the list is actually the list <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the second item in the list is the list of letters <code class="docutils literal notranslate"><span class="pre">l</span></code></p>
+</div>
+</div>
+<p>The first item in the list <code class="docutils literal notranslate"><span class="pre">x</span></code> is actually the list <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the second item in the list is the list of letters <code class="docutils literal notranslate"><span class="pre">l</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The item at index 0 is a list of numbers : </span><span class="si">{</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The item at index 1 is a list of letters: </span><span class="si">{</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The item at index 0 is a list of numbers : &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The item at index 1 is a list of letters: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The item at index 0 is a list of numbers :  [1, 2, 3]
+The item at index 1 is a list of letters:  [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 </pre></div>
 </div>
 </div>
@@ -1529,6 +1540,14 @@ People: [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;]
 <span class="c1"># Or we can just do a double subscript</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Same value using the double subscript approach:&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value in the index 1 of the sublist is 2
+
+Same value using the double subscript approach:
+2
 </pre></div>
 </div>
 </div>

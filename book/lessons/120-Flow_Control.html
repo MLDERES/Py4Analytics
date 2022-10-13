@@ -415,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Last Update: Thu Oct 13 14:22:24 2022
+  Last Update: Thu Oct 13 16:32:05 2022
 </div>
 
             </div>
@@ -1041,20 +1041,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_17503</span><span class="o">/</span><span class="mf">1346376050.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">user_response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter integer: &quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># We&#39;ll need to change it into an integer</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">user_input_as_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_response</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># Save the result ahead of the checks</span>
-
-<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="alternate-paths">
@@ -1164,13 +1150,14 @@ else
 <span class="n">user_input_as_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_response</span><span class="p">)</span>
 
 <span class="c1">## If the value was too high</span>
-<span class="k">if</span> <span class="p">:</span> 
+<span class="k">if</span> <span class="n">user_input_as_int</span> <span class="o">&gt;</span> <span class="n">our_random</span> <span class="p">:</span> 
    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Didn&#39;t guess it this time, your guess was too high&quot;</span><span class="p">)</span>
 
 <span class="c1"># If the value too low</span>
-<span class="k">elif</span> <span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Didn&#39;t guess it this time, your guess was too high&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">user_input_as_int</span> <span class="o">&lt;</span> <span class="n">our_random</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Didn&#39;t guess it this time, your guess was too low&quot;</span><span class="p">)</span>
 
+<span class="c1"># If the value was neither too high or too low, then it was spot on.</span>
 <span class="k">else</span><span class="p">:</span> 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Congratulations you guessed it!&quot;</span><span class="p">)</span>
 
@@ -1201,16 +1188,23 @@ else
 <h3><code class="docutils literal notranslate"><span class="pre">for</span></code> statement<a class="headerlink" href="#for-statement" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> statement in Python is an incredibly valuable and prevalent statement.  This statement will iterate over a some sequence of items (e.g. a list, letters in a string) with each pass assigning the next item to a common variable.  Let’s take for instance</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="s1">&#39;house&#39;</span><span class="p">,</span><span class="s1">&#39;window&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">current_word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this simple example, the variable <code class="docutils literal notranslate"><span class="pre">w</span></code> is assigned the value <code class="docutils literal notranslate"><span class="pre">cat</span></code> for the duration of the code block following the for statement, then when the block has completed, <code class="docutils literal notranslate"><span class="pre">w</span></code> is assigned the value <code class="docutils literal notranslate"><span class="pre">house</span></code> and finally <code class="docutils literal notranslate"><span class="pre">window</span></code>.  The next cell shows this in action.</p>
+<p>In this simple example, the variable <code class="docutils literal notranslate"><span class="pre">current_word</span></code> is assigned the value <code class="docutils literal notranslate"><span class="pre">cat</span></code> for the duration of the code block following the for statement, then when the block has completed, <code class="docutils literal notranslate"><span class="pre">current_word</span></code> is assigned the value <code class="docutils literal notranslate"><span class="pre">house</span></code> and finally <code class="docutils literal notranslate"><span class="pre">window</span></code>.  The next cell shows this in action.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="s1">&#39;house&#39;</span><span class="p">,</span><span class="s1">&#39;window&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">current_word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">current_word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cat
+house
+window
 </pre></div>
 </div>
 </div>
@@ -1260,10 +1254,34 @@ else
 <span class="c1"># One at a time, assign the characters in the string &#39;fruits_i_like&#39;</span>
 <span class="c1">#    to the variable named fruit</span>
 <span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">all_the_fruits</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fruit</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The next fruit is: &quot;</span><span class="p">,</span> <span class="n">fruit</span><span class="p">)</span>
     <span class="c1"># Check if the current fruit is in the list of fruits I like</span>
     <span class="k">if</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits_i_like</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;I like this one </span><span class="si">{</span><span class="n">fruit</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I like this one &#39;</span><span class="p">,</span> <span class="n">fruit</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The next fruit is:  🍇
+I like this one  🍇 !
+The next fruit is:  🍈
+The next fruit is:  🍉
+The next fruit is:  🍊
+I like this one  🍊 !
+The next fruit is:  🍌
+I like this one  🍌 !
+The next fruit is:  🍍
+I like this one  🍍 !
+The next fruit is:  🍑
+The next fruit is:  🍒
+I like this one  🍒 !
+The next fruit is:  🍓
+I like this one  🍓 !
+The next fruit is:  🍋
+The next fruit is:  🍐
+The next fruit is:  🍎
+The next fruit is:  🍏
+The next fruit is:  🥭
 </pre></div>
 </div>
 </div>
