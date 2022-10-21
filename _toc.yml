@@ -68,6 +68,7 @@ parts:
     maxdepth: 2
     chapters:
     - file: book/exercises/Coding_Challenges
+    - file: book/lessons/400-Contributors
 
 # Introduction - (bootcamp content)
 # - Chapter 1
