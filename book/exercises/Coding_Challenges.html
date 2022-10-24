@@ -502,24 +502,6 @@ title="Launch on JupyterHub"
 
       </li>
       
-      <li>
-        
-<button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="headerbtn__text-container">Live Code</span>
-</button>
-
-      </li>
-      
     </ul>
   </div>
 </div>
@@ -1099,8 +1081,8 @@ Built-in string functions will be helpful.  Three in particular: <code class="do
     {
         requestKernel: true,
         binderOptions: {
-            repo: "mlderes/Py4Analytics",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
