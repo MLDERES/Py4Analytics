@@ -6,6 +6,8 @@ scikit-learn
 mlxtend
 plotly
 openpyxl
+pyodbc
+ghp-import
 patsy
 xgboost
 python-dotenv
