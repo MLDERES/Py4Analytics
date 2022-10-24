@@ -874,7 +874,7 @@ title="Print to PDF"
 <h2>Connecting to other RDBMS<a class="headerlink" href="#connecting-to-other-rdbms" title="Permalink to this headline">#</a></h2>
 <p>Again, this is just an introduction of how to get data to/from a database we are using SQLite as a portable and simple example. All the same principals apply even if you are connecting to a Microsoft SQL, Teradata, Oracle or other DBMS. But the connection mechanism for other databases can vary.  There are a few common libraries we can leverage such as <a class="reference external" href="https://github.com/mkleehammer/pyodbc/wiki">pyodbc</a>.  <a class="reference external" href="https://docs.microsoft.com/en-us/sql/odbc/reference/what-is-odbc?view=sql-server-ver16">ODBC</a> is a specification for a database API.  Nearly every commercial RDBMS supports connections and transactions using ODBC, meaning that to change between one database and another, the code changes very little - typcially the only thing that needs to change in the connection string and the precise SQL you are trying to execute.  Though that doesn’t mean it is easy, connection strings are database platform dependent and can vary widely.  Here’s <a class="reference external" href="https://www.connectionstrings.com/">one source</a> that might help.</p>
 <p>For SQL server, the connection string looks like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Driver=SQL Server Native Client 18.0;Server=myservername; Database=myDatabase; User Id=myUserName; Password=myPassword;&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Driver=SQL Server Native Client 18.0;Server=myservername; Database=myDatabase; User Id=myUserName; Password=myPassword;TrustServerCertificate=Yes;&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -886,6 +886,7 @@ Environment variables are variables that are stored in the operating system, rat
 <section id="connecting-to-ms-sql-server">
 <h3>Connecting to MS SQL Server<a class="headerlink" href="#connecting-to-ms-sql-server" title="Permalink to this headline">#</a></h3>
 <p>Most of the major RDBMS providers also provide python specific libraries if you know that you wont have to switch between different databases.  For instance, Microsoft provides <a class="reference external" href="http://www.pymssql.org/">pymssql</a>.  Using one of these libraries tends to make things a bit simpler if you just want to be able to do simple queries with a SQL database.</p>
+<p>For examples of connecting to a DB with ODBC see <span class="xref myst">this notebook</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
@@ -1447,6 +1448,9 @@ Mueslix_Crispy_Blend: 160
 </div></div></div>
 </div>
 <p>Being able to connect to a SQL database and run queries from Python is super handy and really useful. Combining the simplicity of Python and the power of a relational database can make for some very compelling and useful automation of common tasks.  Using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is especially handy because once we create the connection to the database - the rest of the logic flows without concerning about specific SQL syntax.  So, we could just as easily execute the last few operations with a MS SQL server connection, a SQLite connection or on a CSV file.</p>
+<div class="highlight-{Caution}:::: notranslate"><div class="highlight"><pre><span></span>Using pandas dataframes with relational databases is a bit limiting beyond simply gathering and pushing data.  The only two supported approaches are SQLite3 and using the Object Relational Mapping connection provided by [SQLAlchemy](https://www.sqlalchemy.org/).  There is an example of connecting to a SQL server using this kind of approach in [this notebook](./251-SQL_Alchemy.ipynb).
+</pre></div>
+</div>
 </section>
 </section>
 
