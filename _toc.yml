@@ -67,6 +67,10 @@ parts:
     maxdepth: 2
     chapters:
     - file: book/exercises/Coding_Challenges
+    - file: book/extras
+      sections:
+      - file: book/extras/251-SQL_Alchemy
+      - file: book/extras/252-SQL_ODBC
 
 # Introduction - (bootcamp content)
 # - Chapter 1
