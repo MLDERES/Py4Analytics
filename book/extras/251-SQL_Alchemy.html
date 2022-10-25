@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Using an Object Relational Mapping Database - UNDER CONSTRUCTION</title>
+    <title>Using an Object Relational Mapping Database</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Connecting to a db using ODBC" href="252-SQL_ODBC.html" />
+    <link rel="next" title="Connecting to MS SQL using ODBC" href="252-SQL_ODBC.html" />
     <link rel="prev" title="Extras" href="00-extras.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -418,12 +418,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Using an Object Relational Mapping Database - UNDER CONSTRUCTION
+     Using an Object Relational Mapping Database
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="252-SQL_ODBC.html">
-     Connecting to a db using ODBC
+     Connecting to MS SQL using ODBC
     </a>
    </li>
   </ul>
@@ -437,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Last Update: Tue Oct 25 20:38:05 2022
+  Last Update: Tue Oct 25 21:12:50 2022
 </div>
 
             </div>
@@ -645,7 +645,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Using an Object Relational Mapping Database - UNDER CONSTRUCTION</h1>
+                <h1>Using an Object Relational Mapping Database</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -657,8 +657,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="using-an-object-relational-mapping-database-under-construction">
-<h1>Using an Object Relational Mapping Database - UNDER CONSTRUCTION<a class="headerlink" href="#using-an-object-relational-mapping-database-under-construction" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-an-object-relational-mapping-database">
+<h1>Using an Object Relational Mapping Database<a class="headerlink" href="#using-an-object-relational-mapping-database" title="Permalink to this headline">#</a></h1>
+<p>UNDER CONSTRUCTION</p>
+<p>Being able to treat database tables like other Python objects is very valuable.  Expecting each row to be represented by a particular Python object allows us to access the columns as properties of the class and handles the insert/update/delete functions for us without having to depend on fragile SQL strings.  (Fragile SQL strings means that we are putting code logic into a string which isn’t checked by Python before being run, so if there is a change in the database, we have to search through strings in our code to update the logic rather than being able to depend on refactoring tools provided by our IDEs.  Glad you asked what ‘fragile SQL strings’ means?)</p>
+<p>The library most often used to do ORM (object relational mapping) is a library called SQLAlchemy.  But SQLAlchemy provides more than just ORM utilities, we can use it to create database connections (called engines in SQLAlchemy) as well.  The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library requires that we provide either a SQLAlchemy engine or the name of a SQLite3 database if we want to leverage the handy <code class="docutils literal notranslate"><span class="pre">.to_sql()</span></code> and <code class="docutils literal notranslate"><span class="pre">.from_sql()</span></code> methods.  If you are going to manipulate the data in a dataframe anyway, creating a SQLAlchemy engine and using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> saves a few steps.</p>
+<p>The example below shows how to make a SQLAlchemy engine to connect to a SQL Server database.  An example on the power of ORM is visited further down the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
@@ -667,24 +671,37 @@ title="Print to PDF"
 
 <span class="c1"># This library allows the environment variables to be loaded from a file</span>
 <span class="n">load_dotenv</span><span class="p">()</span>
+<span class="c1"># Set the values for server, user_id, password, and database from environment variables</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MSSQL_SERVER&quot;</span><span class="p">)</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HALLUX_USER&quot;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HALLUX_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HALLUX_DB&quot;</span><span class="p">)</span>
 
 <span class="c1"># To get this working quickly, you can just replace these variables with your own values</span>
-<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MSSQL_SERVER&quot;</span><span class="p">)</span>
-<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MOVIES_USER&quot;</span><span class="p">)</span>
-<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MOVIES_PWD&quot;</span><span class="p">)</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MOVIES_DB&quot;</span><span class="p">)</span>
+<span class="c1"># svr = &#39;my-server-name&#39;</span>
+<span class="c1"># uid = &#39;my-user-id&#39;</span>
+<span class="c1"># pwd = &#39;my-password&#39;</span>
+<span class="c1"># db = &#39;my-database-name&#39;</span>
 
-<span class="c1">#</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mssql+pyodbc://</span><span class="si">{</span><span class="n">uid</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">svr</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db</span><span class="si">}</span><span class="s2">?driver=ODBC+Driver+18+for+SQL+Server&amp;TrustServerCertificate=yes&quot;</span><span class="p">,</span> <span class="n">fast_executemany</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">cnn</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">cnn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;select top 1 * from Actor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cnn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;select top 10 * from Band&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;10, Mack&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, &#39;A&#39;, &#39;The A-Bomb Project                                                                                  &#39;, &#39;90001&#39;, 110000, datetime.datetime(1999, 1, 4, 0, 0))
+(1001, &#39;A&#39;, &#39;Festive Deepak                                                                                      &#39;, &#39;39577&#39;, 110010, datetime.datetime(2011, 4, 24, 0, 0))
+(1002, &#39;A&#39;, &#39;Crash The Drug                                                                                      &#39;, &#39;00924&#39;, 110020, datetime.datetime(1999, 8, 19, 0, 0))
+(1003, &#39;A&#39;, &#39;Fight The Shame                                                                                     &#39;, &#39;11694&#39;, 200037, datetime.datetime(2013, 10, 6, 0, 0))
+(1004, &#39;A&#39;, &#39;Capricious Revelation                                                                               &#39;, &#39;75681&#39;, 200002, datetime.datetime(2011, 8, 17, 0, 0))
+(1005, &#39;A&#39;, &#39;Offbeat Sofia                                                                                       &#39;, &#39;17046&#39;, 200040, datetime.datetime(2012, 7, 11, 0, 0))
+(1006, &#39;A&#39;, &#39;Ramakrishna Jain                                                                                    &#39;, &#39;37211&#39;, 110060, datetime.datetime(2007, 9, 15, 0, 0))
+(1007, &#39;A&#39;, &#39;The Fernandez Disaster                                                                              &#39;, &#39;92243&#39;, 110070, datetime.datetime(2007, 11, 27, 0, 0))
+(1008, &#39;A&#39;, &#39;Gabby Dorothy                                                                                       &#39;, &#39;11375&#39;, 110080, datetime.datetime(2009, 8, 13, 0, 0))
+(1009, &#39;A&#39;, &#39;The Rivera Gamble                                                                                   &#39;, &#39;21532&#39;, 200016, datetime.datetime(1998, 9, 15, 0, 0))
 </pre></div>
 </div>
 </div>
@@ -728,7 +745,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="252-SQL_ODBC.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Connecting to a db using ODBC</p>
+        <p class="prev-next-title">Connecting to MS SQL using ODBC</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Connecting to a db using ODBC</title>
+    <title>Connecting to MS SQL using ODBC</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Using an Object Relational Mapping Database - UNDER CONSTRUCTION" href="251-SQL_Alchemy.html" />
+    <link rel="prev" title="Using an Object Relational Mapping Database" href="251-SQL_Alchemy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -417,12 +417,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="251-SQL_Alchemy.html">
-     Using an Object Relational Mapping Database - UNDER CONSTRUCTION
+     Using an Object Relational Mapping Database
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Connecting to a db using ODBC
+     Connecting to MS SQL using ODBC
     </a>
    </li>
   </ul>
@@ -436,7 +436,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Last Update: Tue Oct 25 20:38:05 2022
+  Last Update: Tue Oct 25 21:12:50 2022
 </div>
 
             </div>
@@ -644,7 +644,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Connecting to a db using ODBC</h1>
+                <h1>Connecting to MS SQL using ODBC</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -656,24 +656,31 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="connecting-to-a-db-using-odbc">
-<h1>Connecting to a db using ODBC<a class="headerlink" href="#connecting-to-a-db-using-odbc" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="connecting-to-ms-sql-using-odbc">
+<h1>Connecting to MS SQL using ODBC<a class="headerlink" href="#connecting-to-ms-sql-using-odbc" title="Permalink to this headline">#</a></h1>
+<p>ODBC (Open Database Connectivity) represents a common protocol to connect to many different databases (MS SQL, Postgres, Oracle, DB2, Terradata, etc).  There are several different components to an ODBC implementation, but we are only focused on one, the actual “driver” used by Python to allow us to connect to a database server.  Just like with the other methods, once we have made the connection, we can create a cursor to execute queries using the connected data source.  One might choose to use ODBC versus a vendor specific library (like pymssql) in order to limit the code changes if a different backend database is chosen.</p>
+<p>The most confusing part of an ODBC connection for many users is defining the connection string.  The connection string is a string that formatted with instructions about how the driver should connect to the target database.  It sets a variety of parameters which affect the connection and can look very cryptic.  The key attributes of the connection string include the particular driver that should be used, the database server, the authentication information, and potentially a default database.  Other parameters that can be set are dependent on the driver utilized.</p>
+<p>In the example that follows, we see that the connection string uses the ODBC Driver for SQL Server and gathers the other information from environment variables.  In order to try this out for yourself, simply replace the variables for <code class="docutils literal notranslate"><span class="pre">svr</span></code>, <code class="docutils literal notranslate"><span class="pre">uid</span></code>, <code class="docutils literal notranslate"><span class="pre">pwd</span></code> and <code class="docutils literal notranslate"><span class="pre">db</span></code> with the values provided by your administrator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One more example, this time using pyodbc</span>
 <span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
 <span class="kn">import</span> <span class="nn">pyodbc</span>
-<span class="kn">import</span> <span class="nn">pymssql</span>
 
 <span class="c1"># This library allows the environment variables to be loaded from a file</span>
 <span class="n">load_dotenv</span><span class="p">()</span>
+<span class="c1"># Set the values for server, user_id, password, and database from environment variables</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MSSQL_SERVER&quot;</span><span class="p">)</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HALLUX_USER&quot;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HALLUX_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;HALLUX_DB&quot;</span><span class="p">)</span>
 
 <span class="c1"># To get this working quickly, you can just replace these variables with your own values</span>
-<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_SERVER&quot;</span><span class="p">)</span>
-<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_USER&quot;</span><span class="p">)</span>
-<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_PASSWORD&quot;</span><span class="p">)</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
+<span class="c1"># svr = &#39;my-server-name&#39;</span>
+<span class="c1"># uid = &#39;my-user-id&#39;</span>
+<span class="c1"># pwd = &#39;my-password&#39;</span>
+<span class="c1"># db = &#39;my-database-name&#39;</span>
 
 <span class="n">cnxn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;DRIVER={ODBC Driver 18 for SQL Server};SERVER=&#39;</span><span class="o">+</span><span class="n">svr</span><span class="o">+</span><span class="s1">&#39;;DATABASE=&#39;</span><span class="o">+</span><span class="n">db</span><span class="o">+</span><span class="s1">&#39;;UID=&#39;</span><span class="o">+</span><span class="n">uid</span><span class="o">+</span><span class="s1">&#39;;PWD=&#39;</span><span class="o">+</span> <span class="n">pwd</span><span class="o">+</span><span class="s1">&#39;;TrustServerCertificate=yes;&#39;</span><span class="p">)</span>
 
@@ -681,24 +688,26 @@ title="Print to PDF"
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnxn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
 <span class="c1"># Run the SQL command</span>
-<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT top 10 * FROM Actor&#39;</span><span class="p">)</span>
+<span class="c1"># Replace this SQL statement with an appropriate query </span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT top 10 * FROM Band&#39;</span><span class="p">)</span>
 
+<span class="c1"># print out each of the resultant rows</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;10, Mack&#39;)
-(2, &#39;101, Highway&#39;)
-(3, &#39;2, Kase&#39;)
-(4, &#39;2Pac&#39;)
-(5, &quot;4-Tay, Rappin&#39;&quot;)
-(6, &#39;7, Marc&#39;)
-(7, &#39;9mm, Orange&#39;)
-(8, &#39;Aaliyah&#39;)
-(9, &#39;Aames, Angela&#39;)
-(10, &#39;Aames, Willie&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, &#39;A&#39;, &#39;The A-Bomb Project                                                                                  &#39;, &#39;90001&#39;, 110000, datetime.datetime(1999, 1, 4, 0, 0))
+(1001, &#39;A&#39;, &#39;Festive Deepak                                                                                      &#39;, &#39;39577&#39;, 110010, datetime.datetime(2011, 4, 24, 0, 0))
+(1002, &#39;A&#39;, &#39;Crash The Drug                                                                                      &#39;, &#39;00924&#39;, 110020, datetime.datetime(1999, 8, 19, 0, 0))
+(1003, &#39;A&#39;, &#39;Fight The Shame                                                                                     &#39;, &#39;11694&#39;, 200037, datetime.datetime(2013, 10, 6, 0, 0))
+(1004, &#39;A&#39;, &#39;Capricious Revelation                                                                               &#39;, &#39;75681&#39;, 200002, datetime.datetime(2011, 8, 17, 0, 0))
+(1005, &#39;A&#39;, &#39;Offbeat Sofia                                                                                       &#39;, &#39;17046&#39;, 200040, datetime.datetime(2012, 7, 11, 0, 0))
+(1006, &#39;A&#39;, &#39;Ramakrishna Jain                                                                                    &#39;, &#39;37211&#39;, 110060, datetime.datetime(2007, 9, 15, 0, 0))
+(1007, &#39;A&#39;, &#39;The Fernandez Disaster                                                                              &#39;, &#39;92243&#39;, 110070, datetime.datetime(2007, 11, 27, 0, 0))
+(1008, &#39;A&#39;, &#39;Gabby Dorothy                                                                                       &#39;, &#39;11375&#39;, 110080, datetime.datetime(2009, 8, 13, 0, 0))
+(1009, &#39;A&#39;, &#39;The Rivera Gamble                                                                                   &#39;, &#39;21532&#39;, 200016, datetime.datetime(1998, 9, 15, 0, 0))
 </pre></div>
 </div>
 </div>
@@ -736,7 +745,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Using an Object Relational Mapping Database - UNDER CONSTRUCTION</p>
+            <p class="prev-next-title">Using an Object Relational Mapping Database</p>
         </div>
     </a>
 </div>
