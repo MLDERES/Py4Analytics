@@ -39,7 +39,7 @@ html:
   google_analytics_id: G-NZH9210CF9
   extra_navbar: |
     <div>
-      Last Update: Mon Oct 24 20:17:26 2022
+      Last Update: Tue Oct 25 21:12:50 2022
     </div>
 
 launch_buttons:
@@ -48,7 +48,7 @@ launch_buttons:
   notebook_interface: jupyterlab
   jupyterhub_url: https://isys5103-uark.msappproxy.net/
 
-exclude_patterns: [ book/src/*, book/extras/*, README.md]
+exclude_patterns: [ book/src/*, README.md]
 
 parse:
   myst_enable_extensions:
