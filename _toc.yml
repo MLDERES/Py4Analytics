@@ -67,7 +67,7 @@ parts:
     maxdepth: 2
     chapters:
     - file: book/exercises/Coding_Challenges
-    - file: book/extras
+    - file: book/extras/00-extras
       sections:
       - file: book/extras/251-SQL_Alchemy
       - file: book/extras/252-SQL_ODBC
