@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercises</title>
+    <title>Connecting to a db using ODBC</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="www.py4analytics.info/book/lessons/TryIt_Part3.html" />
+    <link rel="canonical" href="www.py4analytics.info/book/extras/252-SQL_ODBC.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Try It: Exploratory Data Analysis" href="../exercises/310-ExploratoryDataAnalysis-ex.html" />
-    <link rel="prev" title="Visualization Samples" href="VisualizationSamples.html" />
+    <link rel="prev" title="Using an Object Relational Mapping Database - UNDER CONSTRUCTION" href="251-SQL_Alchemy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -130,7 +129,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01-JupyterNotebooks.html">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
    Welcome to Jupyter Notebooks
   </a>
  </li>
@@ -142,7 +141,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="100-PartOne.html">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
    Part 1 - Basic Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -152,24 +151,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="110-Introduction.html">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
      Learning to program
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="120-Flow_Control.html">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
      Making Decisions &amp; Looping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="130-Functions.html">
+    <a class="reference internal" href="../lessons/130-Functions.html">
      Reusing Code
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part1.html">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -203,7 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="200-PartTwo.html">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
    Part 2 - Intermediate Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -213,39 +212,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="210-Object_Orientation.html">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
      Namespace, Objective Orientation and Packaging
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="220-Data_Manipulation.html">
+    <a class="reference internal" href="../lessons/220-Data_Manipulation.html">
      Working with data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="230-Web_Data.html">
+    <a class="reference internal" href="../lessons/230-Web_Data.html">
      Differing data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="240-Getting_Web_Data.html">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
      Gather data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="250-Database_Connections.html">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
      Working with relational database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="260-Data_Visualization.html">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
      Exploratory Data Analysis
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part2.html">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -292,9 +291,9 @@ const thebe_selector_output = ".output, .cell_output"
   Part 3
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="300-PartThree.html">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
    Part 3 - Using Python for Machine Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -304,84 +303,84 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="310-ExploratoryDataAnalysis.html">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
      Exploratory Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="311-OtherToolsForEDA.html">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
      Other tools for Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="312-VisualizationSamples.html">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
      Visualization Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="320-DataPreparation.html">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
      Data Preparation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="330-Classification.html">
+    <a class="reference internal" href="../lessons/330-Classification.html">
      Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="335-ClassificationSolutions.html">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
      Automobile Accidents
      <a id="auto-accidents">
      </a>
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="340-EstimationPrediction.html">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
      Prediction and Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="341-AdvancedTechniques.html">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
      Advanced Techniques
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="342-Pipelines.html">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
      Pipelines
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="343-Ensembling.html">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
      Ensembling
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="345-EstimationPredictionExample.html">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
      Predicting the price of used cars
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="350-Unsupervised.html">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
      Unsupervised Data Mining
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="360-NeuralNetworks.html">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
      Neural Networks
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="VisualizationSamples.html">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
      Visualization Samples
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
    Exercises
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
@@ -400,29 +399,29 @@ const thebe_selector_output = ".output, .cell_output"
   Appendix
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../exercises/Coding_Challenges.html">
    Coding Challenges
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../extras/00-extras.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-extras.html">
    Extras
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
+    <a class="reference internal" href="251-SQL_Alchemy.html">
      Using an Object Relational Mapping Database - UNDER CONSTRUCTION
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Connecting to a db using ODBC
     </a>
    </li>
@@ -482,6 +481,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/extras/252-SQL_ODBC.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/extras/252-SQL_ODBC.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -521,7 +567,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/TryIt_Part3.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/extras/252-SQL_ODBC.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -549,7 +595,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/lessons/TryIt_Part3.md"
+        <a href="../../_sources/book/extras/252-SQL_ODBC.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -560,7 +606,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -598,7 +644,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercises</h1>
+                <h1>Connecting to a db using ODBC</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -610,14 +656,52 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
-<p>This section includes some notebooks which can be used to check what you’ve learned in the prior sections.  You can read these exercises as part of the book, but if you really want to work through these exercises then you will want to open these notebooks in the JupyterHub associated with this book.  When you are on a page that can be executed in the JupyterHub, you will see something like this</p>
-<figure class="align-default" id="link-to-jupyter">
-<a class="reference internal image-reference" href="../../_images/Link-Jupyter.png"><img alt="../../_images/Link-Jupyter.png" src="../../_images/Link-Jupyter.png" style="width: 60%;" /></a>
-</figure>
-<p>just above the title on the page.  When you select JupyterHub it will launch the page you are on in the hub so that you can run cells, add new cells and generally try out the materials.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="connecting-to-a-db-using-odbc">
+<h1>Connecting to a db using ODBC<a class="headerlink" href="#connecting-to-a-db-using-odbc" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One more example, this time using pyodbc</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">import</span> <span class="nn">pyodbc</span>
+<span class="kn">import</span> <span class="nn">pymssql</span>
+
+<span class="c1"># This library allows the environment variables to be loaded from a file</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># To get this working quickly, you can just replace these variables with your own values</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_SERVER&quot;</span><span class="p">)</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_USER&quot;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_PASSWORD&quot;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PYMSSQL_DATABASE&quot;</span><span class="p">)</span>
+
+<span class="n">cnxn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;DRIVER={ODBC Driver 18 for SQL Server};SERVER=&#39;</span><span class="o">+</span><span class="n">svr</span><span class="o">+</span><span class="s1">&#39;;DATABASE=&#39;</span><span class="o">+</span><span class="n">db</span><span class="o">+</span><span class="s1">&#39;;UID=&#39;</span><span class="o">+</span><span class="n">uid</span><span class="o">+</span><span class="s1">&#39;;PWD=&#39;</span><span class="o">+</span> <span class="n">pwd</span><span class="o">+</span><span class="s1">&#39;;TrustServerCertificate=yes;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create the cursor required to run the command</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">cnxn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Run the SQL command</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT top 10 * FROM Actor&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;10, Mack&#39;)
+(2, &#39;101, Highway&#39;)
+(3, &#39;2, Kase&#39;)
+(4, &#39;2Pac&#39;)
+(5, &quot;4-Tay, Rappin&#39;&quot;)
+(6, &#39;7, Marc&#39;)
+(7, &#39;9mm, Orange&#39;)
+(8, &#39;Aaliyah&#39;)
+(9, &#39;Aames, Angela&#39;)
+(10, &#39;Aames, Willie&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 
@@ -634,7 +718,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./book/lessons"
+            path: "./book/extras"
         },
         predefinedOutput: true
     }
@@ -648,19 +732,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="VisualizationSamples.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="251-SQL_Alchemy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Visualization Samples</p>
+            <p class="prev-next-title">Using an Object Relational Mapping Database - UNDER CONSTRUCTION</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../exercises/310-ExploratoryDataAnalysis-ex.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Try It: Exploratory Data Analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
