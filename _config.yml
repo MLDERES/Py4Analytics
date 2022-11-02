@@ -59,6 +59,8 @@ parse:
     - replacements
     - smartquotes
     - substitution
+    - dollarmath
+    - amsmath
   myst_ref_domains:
     - std
     - py
