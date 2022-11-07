@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="www.py4analytics.info/book/lessons/320-DataPreparation.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -1280,7 +1282,9 @@ title="Print to PDF"
 <h3>Normalization &amp; Standardization<a class="headerlink" href="#normalization-standardization" title="Permalink to this headline">#</a></h3>
 <p>Often when we are dealing with data, the units are not on the same scale.  For instance in this case, <code class="docutils literal notranslate"><span class="pre">calories</span></code> is a range from 50 to 160 whereas <code class="docutils literal notranslate"><span class="pre">weight</span></code> ranges from 0.5 to 1.5.  Most of our mathematical algorithms used in machine learning would give <code class="docutils literal notranslate"><span class="pre">calories</span></code> an inappropriately large influence on the outcome.  So we need to adjust for both of these to be on a similar scale.  This is where standardization and normalization comes in.  We can use a min/max normalization which will make each category on a scale from 0-1</p>
 <p>We do this with the following formula
-$$x_{scaled} = \frac{x-min(x)}{max(x)-min(x)}$$</p>
+$<span class="math notranslate nohighlight">\(
+x_{scaled} = \frac{x-min(x)}{max(x)-min(x)}
+\)</span>$</p>
 <p><em>The terms normalization and standardization are sometimes used interchangeably, but they usually refer to different things. Normalization usually means to scale a variable to have a values between a desired range (like [-1,1] or [0,1]) while standardization transforms data to have a mean of zero and a standard deviation of 1. Advantage of Normalization over Standardization is that we are not bound to any specific distribution. In addition to that Normalization also suppresses the effect of outliers to some extent.</em></p>
 <p>Normalization is a good technique to use when you do not know the distribution of your data or when you know the distribution is not Gaussian (a bell curve). Normalization is useful when your data has varying scales and the algorithm you are using does not make assumptions about the distribution of your data, such as k-nearest neighbors and artificial neural networks</p>
 <div class="cell docutils container">
@@ -1313,7 +1317,10 @@ $$x_{scaled} = \frac{x-min(x)}{max(x)-min(x)}$$</p>
 <p>In statistics, standardization is the process of putting different variables on the same scale. This process allows you to compare scores between different types of variables. Typically, to standardize variables, you calculate the mean and standard deviation for a variable. Then, for each observed value of the variable, you subtract the mean and divide by the standard deviation.</p>
 <p>This process produces standard scores that represent the number of standard deviations above or below the mean that a specific observation falls. For instance, a standardized value of 2 indicates that the observation falls 2 standard deviations above the mean. This interpretation is true regardless of the type of variable that you standardize.
 We use the following formula to Standardize a Variable value</p>
-<p>$$z=\frac{(X-\mu)}{\sigma}$$</p>
+<div class="math notranslate nohighlight">
+\[
+z=\frac{(X-\mu)}{\sigma}
+\]</div>
 <p>Standardization works best when the variable follows a Normal distribution due to the fact that in a Normal Distribution 68% of data lies within 1 standard deviation from the mean, 95% within 2 standard deviation and 99.7% within 3 standard devations from the mean. So it is highly unlikely that a variable value is greater than ±3</p>
 <p>Standardization assumes that your data has a Gaussian (bell curve) distribution. This does not strictly have to be true, but the technique is more effective if your attribute distribution is Gaussian. Standardization is useful when your data has varying scales and the algorithm you are using does make assumptions about your data having a Gaussian distribution, such as linear regression, logistic regression, and linear discriminant analysis.</p>
 <div class="cell docutils container">
@@ -1408,8 +1415,8 @@ We use the following formula to Standardize a Variable value</p>
 <p>Other methods to consider:
 = combining continuous variables with simple math (addition, subtraction, multiplication, division),</p>
 <ul class="simple">
-<li><p>polynomial fits : instead of $y=\beta_0x_0 + \epsilon$ a more appropriate fit might be $y=\beta_0x_0^2 +\beta_1x_0  + \epsilon$</p></li>
-<li><p>Ensembling: first clustering records and then using this outcome as predictor in a different model.</p></li>
+<li><p><strong>polynomial fits</strong> : instead of <span class="math notranslate nohighlight">\(y=\beta_0x_0 + \epsilon\)</span> a more appropriate fit might be <span class="math notranslate nohighlight">\(y=\beta_0x_0^2 +\beta_1x_0  + \epsilon\)</span></p></li>
+<li><p><strong>Ensembling</strong> : first clustering records and then using this outcome as predictor in a different model.</p></li>
 </ul>
 <p>Aside from using the pandas library to add new series, the patsy library has also been built to provide a consise language syntax for generating statisical matricies.  This is covered in the <a class="reference internal" href="341-AdvancedTechniques.html"><span class="doc std std-doc">AdvancedTechniques</span></a> notebook.</p>
 </section>

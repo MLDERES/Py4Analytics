@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="www.py4analytics.info/book/lessons/330-Classification.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -900,9 +902,15 @@ title="Print to PDF"
 <li><p>Precision</p></li>
 </ul>
 <p>We’ll focus here on <em>accuracy</em></p>
-<p>$$accuracy = \frac{NumberOfCorrectPredictions}{AllPredictions}$$
-and <em>precision</em>
-$$precision = \frac{TruePositives}{TruePositives+FalsePositives}$$</p>
+<div class="math notranslate nohighlight">
+\[
+accuracy = \frac{NumberOfCorrectPredictions}{AllPredictions}
+\]</div>
+<p>and <em>precision</em></p>
+<div class="math notranslate nohighlight">
+\[
+precision = \frac{TruePositives}{TruePositives+FalsePositives}
+\]</div>
 <section id="naive-performance">
 <h3>Naive Performance<a class="headerlink" href="#naive-performance" title="Permalink to this headline">#</a></h3>
 <p>The simplest way to determine if a model is valuable or not is to compare to the “naive rule”.  In essense, if we predict the most common outcome every time what is the misclassification rate.  If our model is no better than this, then our model isn’t very helpful.</p>

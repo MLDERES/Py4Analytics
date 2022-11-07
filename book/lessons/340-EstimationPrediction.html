@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="www.py4analytics.info/book/lessons/340-EstimationPrediction.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -908,14 +910,16 @@ title="Print to PDF"
 <section id="multiple-linear-regression">
 <h2>Multiple Linear Regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">#</a></h2>
 <p>Linear regression models are a great model to explain a linear relationship between predictors and target variables (assuming a linear relationship exists).  They are easy to explain and have a built-in metric to identify the importance of each predictor.  Also, we can use this information to include just enough of the variables to accurately describe the target possibly reducing the complexity</p>
-<p>With linear regression we are attempting to describe a target variable in terms of a set of coefficients in a linear equation such as:
-$$Y = \beta_0+\beta_1X_1+\beta_2X_2 + … \beta_nX_n + \epsilon$$
-where $\beta$ represents coefficients and $X$ are the predictive factors (independent variables) and $\epsilon$ is <em>noise</em> or <em>unexplainable</em> part.  Data is used to estimate the coefficients and quantify the noise.</p>
+<p>With linear regression we are attempting to describe a target variable in terms of a set of coefficients in a linear equation such as:</p>
+<p><span class="math notranslate nohighlight">\(
+Y = \beta_0+\beta_1X_1+\beta_2X_2 + ... \beta_nX_n + \epsilon
+\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> represents coefficients and <span class="math notranslate nohighlight">\(X\)</span> are the predictive factors (independent variables) and <span class="math notranslate nohighlight">\(\epsilon\)</span> is <em>noise</em> or <em>unexplainable</em> part.  Data is used to estimate the coefficients and quantify the noise.</p>
 </section>
 <section id="medical-insurance-forecast">
 <h2>Medical Insurance Forecast<a class="headerlink" href="#medical-insurance-forecast" title="Permalink to this headline">#</a></h2>
 <p>Insurance companies need to set the insurance premiums following the population trends despite having limited information about the insured population if they have to put themselves in a position to make profits. This makes it necessary to estimate the average medical care expenses based on trends in the population segments, such as smokers, drivers, etc</p>
-<p>[data dictionary] &lt;…/data/DataDictionary.md#insurance)</p>
+<p>See <a class="reference external" href="../data/DataDictionary.md#insurance">data dictionary</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">insurance_df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;insurance&#39;</span><span class="p">)</span>
@@ -1156,9 +1160,12 @@ where $\beta$ represents coefficients and $X$ are the predictive factors (indepe
 </div>
 <section id="comparing-model-performance">
 <h3>Comparing model performance<a class="headerlink" href="#comparing-model-performance" title="Permalink to this headline">#</a></h3>
-<p>Since we are about to reduce the number of predictors, we need to decide what is the best set of predictors.  One way to compare models of course is just to look at the outcomes and see which is best, but this can be misleading.  Several criteria for evaluating and comparing models are based on metrics computed from training data alone.  One popular method is <em>adjusted</em> $R^2$.  This is defined as
-$$R^2_{adj}=1-\frac{n-1}{n-p-1}(1-R^2)$$
-where $R^2$ is the proportion of variance explained by by a single predictor, <em>n</em> represents the number of observations and <em>p</em> is the number of predictors.  A higher $R^2$ means more variance from a single predictor.  But if we use an adjusted score because otherwise we would automatically get higher scores simply by adding more predictors.  There are other approaches as well <a class="reference external" href="https://en.wikipedia.org/wiki/Akaike_information_criterion">AIC</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_information_criterion">BIC</a>.  In each case a higher value means a better set of predictors.  Since they all produce the same outcomes, we’ll show the values, but not go into the formulas</p>
+<p>Since we are about to reduce the number of predictors, we need to decide what is the best set of predictors.  One way to compare models of course is just to look at the outcomes and see which is best, but this can be misleading.  Several criteria for evaluating and comparing models are based on metrics computed from training data alone.  One popular method is <em>adjusted</em> <span class="math notranslate nohighlight">\(R^2\)</span>.  This is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+R^2_{adj}=1-\frac{n-1}{n-p-1}(1-R^2)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(R^2\)</span> is the proportion of variance explained by by a single predictor, <em>n</em> represents the number of observations and <em>p</em> is the number of predictors.  A higher <span class="math notranslate nohighlight">\(R^2\)</span> means more variance from a single predictor.  But if we use an adjusted score because otherwise we would automatically get higher scores simply by adding more predictors.  There are other approaches as well <a class="reference external" href="https://en.wikipedia.org/wiki/Akaike_information_criterion">AIC</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_information_criterion">BIC</a>.  In each case a higher value means a better set of predictors.  Since they all produce the same outcomes, we’ll show the values, but not go into the formulas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Just to ensure we have a clean dataset to work with</span>
@@ -1231,7 +1238,8 @@ where $R^2$ is the proportion of variance explained by by a single predictor, <e
 </div>
 <p>While it is great that we know how to do this variable selection, it would be helpful if we could combine our knowledge and have a transformer to do the work for us.  Fortunately, the sklearn library has this on offer.  We have several variable selection techniques available and we can use what we know about.  If you are unfamiliar with Pipelines now would be a good opportunity to go <a class="reference internal" href="342-Pipelines.html"><span class="doc std std-doc">review the notebook</span></a> on these first.</p>
 <p>Often our pipeline looks something like</p>
-<style>
+<a class="reference internal image-reference" href="../../_images/MLPipeline.png"><img alt="../../_images/MLPipeline.png" src="../../_images/MLPipeline.png" style="width: 400px; height: 300px;" /></a>
+<!-- <style>
 .center
 {
     display:block;
@@ -1240,8 +1248,9 @@ where $R^2$ is the proportion of variance explained by by a single predictor, <e
     width: 50%;
 }
 </style>
-<img src='../img/MLPipeline.png' width=400 height=300 class='center'/>
-Putting this together with our Toyota cars dataset we can see how this improves (or not) our model<div class="cell docutils container">
+<img src='../img/MLPipeline.png' width=400 height=300 class='center'/> -->
+<p>Putting this together with our Toyota cars dataset we can see how this improves (or not) our model</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span>

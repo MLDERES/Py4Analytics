@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="www.py4analytics.info/book/lessons/350-Unsupervised.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -887,10 +889,9 @@ title="Print to PDF"
     display:block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
 }
 </style>
-<p><a class="center reference internal" href="../../_images/dendrogram.png"><img alt="../../_images/dendrogram.png" class="center" src="../../_images/dendrogram.png" style="width: 100px; height: 400px;" /></a><a class="reference external" href="https://www.mygreatlearning.com/blog/hierarchical-clustering/">image src</a></p>
+<p><a class="center reference internal" href="../../_images/dendrogram.png"><img alt="../../_images/dendrogram.png" class="center" src="../../_images/dendrogram.png" style="width: 400px; height: 200px;" /></a><a class="reference external" href="https://www.mygreatlearning.com/blog/hierarchical-clustering/">image src</a></p>
 </section>
 </section>
 <section id="k-means-clustering-example">
@@ -929,7 +930,9 @@ title="Print to PDF"
 </div>
 <p>We can see just from looking at the data here, that we have numbers that are all over the place in terms of scale.  Sales are in the thousands, while costs are in the single digits and the other values are somewhere in-between.  This is going to present a problem, the distance from a ‘centroid’ is going to be significantly impacted by sales while the other variables don’t move it much at all.  Our first task then is to normalize the values.</p>
 <p>Here’s why, if we calculate the distance using Euclidean distance this is measured as
-$$distance = \sqrt{(x_{i1} - x_{j1})^2+(x_{i2} - x_{j2})^2 + … (x_{ip} - x_{jp})^2}$$</p>
+<span class="math notranslate nohighlight">\(
+distance = \sqrt{(x_{i1} - x_{j1})^2+(x_{i2} - x_{j2})^2 + .. (x_{ip} - x_{jp})^2}
+\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardize all the columns into a new dataframe</span>
@@ -1051,7 +1054,7 @@ $$distance = \sqrt{(x_{i1} - x_{j1})^2+(x_{i2} - x_{j2})^2 + … (x_{ip} - x_{jp
 <h3>Selling Phone Faceplates<a class="headerlink" href="#selling-phone-faceplates" title="Permalink to this headline">#</a></h3>
 <p>Suppose we have a store that sells phone face plates. These faceplates come in six different colors and the store wants to offer a two-for-one promotion.  The manager would like to know which two colors are sold together most often.</p>
 <p>We start by looking at all the purchases, then we can count the number of faceplates of each color that has been bought.  From there we can find all the combinations of two different colors and then three’s and four’s and so on.  This can get complex - especially if we have lots of different products.  Instead what we want is the most frequently purchased sets.  Determining what qualifies as a frequent set is called <em>support</em>.  Support is calculated simply by the occurences of the outcome divided by the total outcomes
-$support=\frac{p}{n}$
+<span class="math notranslate nohighlight">\(support=\frac{p}{n}\)</span>
 where <em>p</em> is the number of occurences and <em>n</em> is the total number of transactions</p>
 <p>Association rules include two parts, an <strong>antecedent</strong> (if) and a <strong>consequent</strong> (then) that is the if-then association that occurs more frequently in the dataset.  For instance, {Bread}=&gt;{Milk}, says If a person buy’s bread, then they may also buy milk.  Or {Bread, Eggs}=&gt;{Milk}: if a person buys both bread and eggs then they may buy milk.</p>
 <p>By determining the 1 item set and an acceptable level of support we can decide if it should be considered in a two-item set and so forth.</p>
@@ -1078,10 +1081,14 @@ where <em>p</em> is the number of occurences and <em>n</em> is the total number 
 <section id="support-and-confidence">
 <h4>Support and Confidence<a class="headerlink" href="#support-and-confidence" title="Permalink to this headline">#</a></h4>
 <p>In addition to support, we can calculate the degree of certainty about the rules we have created.  <em>Confidence</em> measures the co-occurane of the antecendent and consequent itemsets in the data to the occurence of the antecent itemset on it’s own.
-$$Confidence=\frac{n_{ac}}{n_a}$$
-<em>where $n</em>{ac}$ is the number of items with the antecendent and the consequence and $n_a$ is the number of items with the antecedent itemset_</p>
+$<span class="math notranslate nohighlight">\(
+Confidence=\frac{n_{ac}}{n_a}
+\)</span>$</p>
+<p><em>where <span class="math notranslate nohighlight">\(n_{ac}\)</span> is the number of items with the antecendent and the consequence and <span class="math notranslate nohighlight">\(n_a\)</span> is the number of items with the antecedent itemset</em></p>
 <p>Therefore looking at the example above, if we want to say what is the confidence of {Red}=&gt;{Blue}
-$$\frac{n_{(Red,Blue)}}{(n_{red})}=\frac{4}{6}=0.75$$</p>
+$<span class="math notranslate nohighlight">\(
+\frac{n_{(Red,Blue)}}{(n_{red})}=\frac{4}{6}=0.75
+\)</span>$</p>
 <p>Fortunately, we can also use the <code class="docutils literal notranslate"><span class="pre">mlxtend</span></code> library to do some of the heavy lifting for us.  The next example shows the all the rules which have at least a support of 0.2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1096,7 +1103,9 @@ $$\frac{n_{(Red,Blue)}}{(n_{red})}=\frac{4}{6}=0.75$$</p>
 <section id="lift">
 <h4>Lift<a class="headerlink" href="#lift" title="Permalink to this headline">#</a></h4>
 <p>One of the challenges with just looking at confidence is that either the antecedent rules or the consequent rules may already have a high support.  In other words, what if everyone buys a red phone cover, then it’s not very helpful to say that if a customer buys a red faceplate that they would also buy a green one.  So it’s useful to compare to a benchmark, so that we can determine that the occurence of the consequence is truly independent of the occurence of the antencedent.  We can get the benchmark confidence of the consequence by using the formula
-$$\frac{n_{consequent}}{n}$$
+$<span class="math notranslate nohighlight">\(
+\frac{n_{consequent}}{n}
+\)</span>$
 that is the probabilty of seeing the consequent in the database.</p>
 <p>We can then calculate the <em>lift ratio</em> by dividing the confidence by the benchmark confidence.  A <em>lift ratio</em> value of greater than 1.0 suggests that there is some usefulness to the rule.</p>
 <div class="cell docutils container">
