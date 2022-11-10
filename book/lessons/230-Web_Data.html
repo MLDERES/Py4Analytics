@@ -827,6 +827,18 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Only specifying `a`
+Hello 0 all
+Providing `a` and `b` only
+Hello 12 all
+Providing `a` and `b` explicitly
+Hello 12 all
+Providing `a` (by position) and `c` explicitly.
+Hello 0 everyone
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now back to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html?highlight=read_csv#pandas.read_csv"><code class="docutils literal notranslate"><span class="pre">read_csv()</span></code></a> function.  The function definition can be intimidating because it has lots of options, but this is also helpful to ensure that the operation works exactly as we expect it to.  For instance, there are parameters which define what the delimiter is (especially if we choose not to use commas), an option to specify the field names, several parameters which help specify the date format (day first) and whether the file has an index defined in it.</p>
 <p>In each case, we are interested in reading the file into a dataframe and then working on it with the tools we know about dataframes.  Let’s look at a couple of simple examples.  All the data files can be found in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory so you can take a look in any text editor to read the file.
@@ -841,6 +853,133 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Quarter</th>
+      <th>Shipments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q1-1985</td>
+      <td>4009</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Q2-1985</td>
+      <td>4321</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Q3-1985</td>
+      <td>4224</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Q4-1985</td>
+      <td>3944</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Q1-1986</td>
+      <td>4123</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Q2-1986</td>
+      <td>4522</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Q3-1986</td>
+      <td>4657</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Q4-1986</td>
+      <td>4030</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Q1-1987</td>
+      <td>4493</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Q2-1987</td>
+      <td>4806</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Q3-1987</td>
+      <td>4551</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Q4-1987</td>
+      <td>4485</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Q1-1988</td>
+      <td>4595</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Q2-1988</td>
+      <td>4799</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Q3-1988</td>
+      <td>4417</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Q4-1988</td>
+      <td>4258</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Q1-1989</td>
+      <td>4245</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Q2-1989</td>
+      <td>4900</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Q3-1989</td>
+      <td>4585</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Q4-1989</td>
+      <td>4533</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Sometimes the files have an identifier that we want to keep.  For instance the bankruptcy file has an account number which we want to use as our index.  We can tell pandas to keep this as the index rather than specifying a new one.  Here we are using the
 <a class="reference download internal" download="" href="../../_downloads/4eb47434f4bde72c69a1e8da939325b3/Bankruptcy.csv"><code class="xref download docutils literal notranslate"><span class="pre">Bankruptcy.csv</span></code></a> file found in the data directory.</p>
@@ -851,6 +990,197 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>D</th>
+      <th>YR</th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+      <th>R4</th>
+      <th>R5</th>
+      <th>R6</th>
+      <th>R7</th>
+      <th>R8</th>
+      <th>...</th>
+      <th>R15</th>
+      <th>R16</th>
+      <th>R17</th>
+      <th>R18</th>
+      <th>R19</th>
+      <th>R20</th>
+      <th>R21</th>
+      <th>R22</th>
+      <th>R23</th>
+      <th>R24</th>
+    </tr>
+    <tr>
+      <th>NO</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>78</td>
+      <td>0.23</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.46</td>
+      <td>0.12</td>
+      <td>0.19</td>
+      <td>10.36</td>
+      <td>...</td>
+      <td>0.05</td>
+      <td>0.57</td>
+      <td>0.15</td>
+      <td>0.23</td>
+      <td>3.56</td>
+      <td>0.26</td>
+      <td>1.55</td>
+      <td>0.43</td>
+      <td>0.11</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>77</td>
+      <td>0.19</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>3.13</td>
+      <td>...</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.16</td>
+      <td>0.22</td>
+      <td>3.78</td>
+      <td>1.29</td>
+      <td>1.40</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>72</td>
+      <td>0.07</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.10</td>
+      <td>0.14</td>
+      <td>2.41</td>
+      <td>...</td>
+      <td>-0.03</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>13.29</td>
+      <td>1.61</td>
+      <td>1.43</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>0.07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>80</td>
+      <td>0.07</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>5.55</td>
+      <td>...</td>
+      <td>-0.02</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>5.36</td>
+      <td>1.30</td>
+      <td>1.12</td>
+      <td>-0.06</td>
+      <td>-0.08</td>
+      <td>-0.09</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>81</td>
+      <td>0.09</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.08</td>
+      <td>0.11</td>
+      <td>2.85</td>
+      <td>...</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.10</td>
+      <td>0.14</td>
+      <td>7.74</td>
+      <td>1.48</td>
+      <td>1.41</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.06</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -860,6 +1190,84 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>D</th>
+      <th>YR</th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+    </tr>
+    <tr>
+      <th>NO</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>78</td>
+      <td>0.23</td>
+      <td>0.08</td>
+      <td>0.02</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>77</td>
+      <td>0.19</td>
+      <td>0.07</td>
+      <td>0.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>72</td>
+      <td>0.07</td>
+      <td>0.02</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>80</td>
+      <td>0.07</td>
+      <td>0.03</td>
+      <td>0.04</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>81</td>
+      <td>0.09</td>
+      <td>0.02</td>
+      <td>0.03</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="outputing-using-pandas">
@@ -909,6 +1317,52 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>shape</th>
+      <th>degrees</th>
+      <th>sides</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>square</td>
+      <td>360</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>circle</td>
+      <td>360</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>triangle</td>
+      <td>180</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="hierarchical-data">
@@ -1052,6 +1506,13 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All Artists
+{&#39;name&#39;: &#39;Radiohead&#39;}
+{&#39;name&#39;: &#39;Portishead&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1066,6 +1527,17 @@ title="Print to PDF"
     <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">artist</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">):</span>
         <span class="c1"># Again, since we know the attribute we are after we&#39;ll just index it directly</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">album</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All Artists/Albums
+Artist: Radiohead
+	The King of Limbs
+	OK Computer
+Artist: Portishead
+	Dummy
+	Third
 </pre></div>
 </div>
 </div>
@@ -1087,6 +1559,59 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All Artists/Albums
+Artist: Radiohead
+	Album: The King of Limbs
+		Bloom
+		Morning Mr Magpie
+		Little by Little
+		Feral
+		Lotus Flower
+		Codex
+		Give Up the Ghost
+		Separator
+	Album: OK Computer
+		Airbag
+		Paranoid Android
+		Subterranean Homesick Alien
+		Exit Music (For a Film)
+		Let Down
+		Karma Police
+		Fitter Happier
+		Electioneering
+		Climbing Up the Walls
+		No Surprises
+		Lucky
+		The Tourist
+Artist: Portishead
+	Album: Dummy
+		Mysterons
+		Sour Times
+		Strangers
+		It Could Be Sweet
+		Wandering Star
+		It&#39;s a Fire
+		Numb
+		Roads
+		Pedestal
+		Biscuit
+		Glory Box
+	Album: Third
+		Silence
+		Hunter
+		Nylon Smile
+		The Rip
+		Plastic
+		We Carry On
+		Deep Water
+		Machine Gun
+		Small
+		Magic Doors
+		Threads
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="going-further-with-xpath-support">
@@ -1105,6 +1630,32 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Radiohead only
+Artist: Radiohead
+		Bloom
+		Morning Mr Magpie
+		Little by Little
+		Feral
+		Lotus Flower
+		Codex
+		Give Up the Ghost
+		Separator
+		Airbag
+		Paranoid Android
+		Subterranean Homesick Alien
+		Exit Music (For a Film)
+		Let Down
+		Karma Police
+		Fitter Happier
+		Electioneering
+		Climbing Up the Walls
+		No Surprises
+		Lucky
+		The Tourist
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1114,6 +1665,19 @@ title="Print to PDF"
 <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;.//album&#39;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Album:&#39;</span><span class="p">,</span> <span class="n">album</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Link:&#39;</span><span class="p">,</span><span class="n">album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Only album name and description links
+Album: The King of Limbs
+Link: http://en.wikipedia.org/wiki/The_King_of_Limbs
+Album: OK Computer
+Link: http://en.wikipedia.org/wiki/OK_Computer
+Album: Dummy
+Link: http://en.wikipedia.org/wiki/Dummy_%28album%29
+Album: Third
+Link: http://en.wikipedia.org/wiki/Third_%28Portishead_album%29
 </pre></div>
 </div>
 </div>
@@ -1149,6 +1713,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;shapes&#39;: [{&#39;shape&#39;: &#39;square&#39;, &#39;degrees&#39;: 360, &#39;sides&#39;: 4.0}, {&#39;shape&#39;: &#39;circle&#39;, &#39;degrees&#39;: 360}, {&#39;shape&#39;: &#39;triangle&#39;, &#39;degrees&#39;: 180, &#39;sides&#39;: 3.0}]}
+[{&#39;shape&#39;: &#39;square&#39;, &#39;degrees&#39;: 360, &#39;sides&#39;: 4.0}, {&#39;shape&#39;: &#39;circle&#39;, &#39;degrees&#39;: 360}, {&#39;shape&#39;: &#39;triangle&#39;, &#39;degrees&#39;: 180, &#39;sides&#39;: 3.0}]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1158,7 +1728,15 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;shape&#39;: &#39;square&#39;, &#39;degrees&#39;: 360, &#39;sides&#39;: 4.0}
+{&#39;shape&#39;: &#39;circle&#39;, &#39;degrees&#39;: 360}
+{&#39;shape&#39;: &#39;triangle&#39;, &#39;degrees&#39;: 180, &#39;sides&#39;: 3.0}
+</pre></div>
 </div>
+</div>
+</div>
+<p>Since the values themselves are dictionaries, we can access the values with string indicies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since the values are dictionaries, we can access the values with string indexes</span>
@@ -1167,12 +1745,32 @@ title="Print to PDF"
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Degrees: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;degrees&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="c1"># But keep in mind, that we aren&#39;t guaranteed to have all the same name/value pairs</span>
+    <span class="c1">#  For instance, circles don&#39;t have a &#39;sides&#39; key if we don&#39;t use get(), we&#39;ll end up with an error</span>
     <span class="c1"># So using the &#39;get&#39; method is a better option when dealing with unreliable data</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sides: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sides&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape: square
+Degrees: 360
+Sides: 4.0
+
+Shape: circle
+Degrees: 360
+Sides: 0
+
+Shape: triangle
+Degrees: 180
+Sides: 3.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example aboves uses the built-in dictionary function <code class="docutils literal notranslate"><span class="pre">get()</span></code>.  It is helpful to use <code class="docutils literal notranslate"><span class="pre">get()</span></code> when we aren’t positive or guaranteed to get have a key where we expect it to be.  For instance, in the dictionary provided above, circles don’t have sides, so this value is left out of the reponse.  So if we were to try and access a key called sides, we’d get an error reminding us that there was no such key.  By using <code class="docutils literal notranslate"><span class="pre">get()</span></code> instead, we’ve told Python - “if you don’t have a key with the value we expect, then just give us back this other default value (in our case 0).”</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1180,6 +1778,11 @@ title="Print to PDF"
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/shapes.json&#39;</span><span class="p">)</span>
 <span class="n">json_data_file</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">json_data_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;shapes&#39;: [{&#39;shape&#39;: &#39;square&#39;, &#39;degrees&#39;: 360, &#39;sides&#39;: 4.0}, {&#39;shape&#39;: &#39;circle&#39;, &#39;degrees&#39;: 360}, {&#39;shape&#39;: &#39;triangle&#39;, &#39;degrees&#39;: 180, &#39;sides&#39;: 3.0}]}
 </pre></div>
 </div>
 </div>
@@ -1255,11 +1858,22 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data
+included
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a list with one item, a dictionary</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;type&#39;: &#39;articles&#39;, &#39;id&#39;: &#39;1&#39;, &#39;attributes&#39;: {&#39;title&#39;: &#39;JSON:API paints my bikeshed!&#39;, &#39;body&#39;: &#39;The shortest article. Ever.&#39;, &#39;created&#39;: &#39;2015-05-22T14:56:29.000Z&#39;, &#39;updated&#39;: &#39;2015-05-22T14:56:28.000Z&#39;}, &#39;relationships&#39;: {&#39;author&#39;: {&#39;data&#39;: {&#39;id&#39;: &#39;42&#39;, &#39;type&#39;: &#39;people&#39;}}}}]
 </pre></div>
 </div>
 </div>
@@ -1269,6 +1883,11 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># So now we get the first item in the list, and it&#39;s a dictionary</span>
 <span class="n">data_dictionary</span> <span class="o">=</span> <span class="n">api_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data_dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;articles&#39;, &#39;id&#39;: &#39;1&#39;, &#39;attributes&#39;: {&#39;title&#39;: &#39;JSON:API paints my bikeshed!&#39;, &#39;body&#39;: &#39;The shortest article. Ever.&#39;, &#39;created&#39;: &#39;2015-05-22T14:56:29.000Z&#39;, &#39;updated&#39;: &#39;2015-05-22T14:56:28.000Z&#39;}, &#39;relationships&#39;: {&#39;author&#39;: {&#39;data&#39;: {&#39;id&#39;: &#39;42&#39;, &#39;type&#39;: &#39;people&#39;}}}}
 </pre></div>
 </div>
 </div>
@@ -1282,6 +1901,14 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: articles
+id: 1
+attributes: {&#39;title&#39;: &#39;JSON:API paints my bikeshed!&#39;, &#39;body&#39;: &#39;The shortest article. Ever.&#39;, &#39;created&#39;: &#39;2015-05-22T14:56:29.000Z&#39;, &#39;updated&#39;: &#39;2015-05-22T14:56:28.000Z&#39;}
+relationships: {&#39;author&#39;: {&#39;data&#39;: {&#39;id&#39;: &#39;42&#39;, &#39;type&#39;: &#39;people&#39;}}}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1291,6 +1918,16 @@ title="Print to PDF"
 <span class="nb">print</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">a_key</span><span class="p">,</span> <span class="n">a_value</span> <span class="ow">in</span> <span class="n">attributes_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a_key</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">a_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;JSON:API paints my bikeshed!&#39;, &#39;body&#39;: &#39;The shortest article. Ever.&#39;, &#39;created&#39;: &#39;2015-05-22T14:56:29.000Z&#39;, &#39;updated&#39;: &#39;2015-05-22T14:56:28.000Z&#39;}
+
+title: JSON:API paints my bikeshed!
+body: The shortest article. Ever.
+created: 2015-05-22T14:56:29.000Z
+updated: 2015-05-22T14:56:28.000Z
 </pre></div>
 </div>
 </div>
@@ -1311,15 +1948,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">/workspaces/py4analytics/book/lessons/60-Web_Data.ipynb Cell 31</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B643a5c5465616368696e675c707934616e616c7974696373/workspaces/py4analytics/book/lessons/60-Web_Data.ipynb#X44sdnNjb2RlLXJlbW90ZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># Relationships is even more complex with extra sub-dictionaries, so take it one step at a time</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B643a5c5465616368696e675c707934616e616c7974696373/workspaces/py4analytics/book/lessons/60-Web_Data.ipynb#X44sdnNjb2RlLXJlbW90ZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">relationships_dict</span> <span class="o">=</span> <span class="n">data_dictionary</span><span class="p">[</span><span class="s1">&#39;relationships&#39;</span><span class="p">]</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B643a5c5465616368696e675c707934616e616c7974696373/workspaces/py4analytics/book/lessons/60-Web_Data.ipynb#X44sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">relationships_dict</span><span class="p">)</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://dev-container%2B643a5c5465616368696e675c707934616e616c7974696373/workspaces/py4analytics/book/lessons/60-Web_Data.ipynb#X44sdnNjb2RlLXJlbW90ZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">()</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;author&#39;: {&#39;data&#39;: {&#39;id&#39;: &#39;42&#39;, &#39;type&#39;: &#39;people&#39;}}}
 
-<span class="ne">NameError</span>: name &#39;data_dictionary&#39; is not defined
+{&#39;data&#39;: {&#39;id&#39;: &#39;42&#39;, &#39;type&#39;: &#39;people&#39;}}
+
+{&#39;id&#39;: &#39;42&#39;, &#39;type&#39;: &#39;people&#39;}
+42
 </pre></div>
 </div>
 </div>
