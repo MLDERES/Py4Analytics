@@ -31,7 +31,11 @@
 				"ms-python.vscode-pylance",
 				"ExecutableBookProject.myst-highlight",
 				"github.vscode-pull-request-github",
-				"yzhang.markdown-all-in-one"
+				"yzhang.markdown-all-in-one",
+				"dbaeumer.vscode-eslint",
+				"GitHub.copilot",
+				"ms-toolsai.vscode-jupyter-cell-tags",
+				"nick-rudenko.back-n-forth"
 			]
 		}
 	},
