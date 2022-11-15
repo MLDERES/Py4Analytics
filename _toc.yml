@@ -64,6 +64,13 @@ parts:
     - file: book/lessons/TryIt_Part3
       sections:
       - file: book/exercises/310-ExploratoryDataAnalysis-ex
+  - caption: Student Contributions
+    maxdepth: 2
+    chapters:
+    - file: book/contrib/00-studentcontributions
+      sections:
+      ## Add a link to your file here, don't include the .ipynb ext
+      - file: book/contrib/100-samplecontrib
   - caption: Appendix
     maxdepth: 2
     chapters:
