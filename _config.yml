@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: ''
-# title: Python 4 Analytics
+title: 'Python 4 Analytics'
+# title: 
 author: Michael Dereszynski
 copyright: "2022"
 logo: logo.png
