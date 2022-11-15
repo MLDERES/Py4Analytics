@@ -218,6 +218,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="211-Methods.html">
+     Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="220-Data_Manipulation.html">
      Working with data
     </a>
@@ -427,6 +432,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="400-Contributors.html">
+   Contributors
+  </a>
  </li>
 </ul>
 
@@ -782,7 +792,7 @@ title="Print to PDF"
 </ul>
 <section id="delimited-formats">
 <h2>Delimited formats<a class="headerlink" href="#delimited-formats" title="Permalink to this headline">#</a></h2>
-<p>Probably the most common format for portable files is the delimited format (often comma-delimited).  In these files, each line represents a single record and the fields of each record are denoted by some kind of special separator character (usually a comma and sometimes a tab or space).  There are no rules for these kinds of files, just conventions.  For instance, the first line of the file is typically a “header” record.  This record serves to describe the contents in the rows that follow.  This makes is straightforward for someone reading the file to understanding what is expected in the data rows.  Take for instance</p>
+<p>Probably the most common format for portable files is the delimited format (often comma-delimited).  In these files, each line represents a single record and the fields of each record are denoted by some kind of special separator character (usually a comma and sometimes a tab or space).  There are no rules for these kinds of files, just conventions.  For instance, the first line of the file is typically a “header” record.  This record serves to describe the contents in the rows that follow.  This makes it straightforward for someone reading the file to understand what is expected in the data rows.  Take for instance</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Id</span><span class="p">,</span><span class="n">Name</span><span class="p">,</span><span class="n">Phone</span> <span class="n">Number</span>
 <span class="mi">1</span><span class="p">,</span><span class="n">Alice</span><span class="p">,</span><span class="mi">555</span><span class="o">-</span><span class="mi">1234</span>
@@ -796,7 +806,7 @@ title="Print to PDF"
 <p>While easy to read for simple/small files - it becomes increasingly complex to read this file in a text editor if we are to try and find errors and missing values.  Fortunately, we can use the tools we have to import the file rather easily and find missing values, misaligned fields and generally interpret the data.</p>
 <section id="reading-writting-delimited-files">
 <h3>Reading/Writting Delimited Files<a class="headerlink" href="#reading-writting-delimited-files" title="Permalink to this headline">#</a></h3>
-<p>We can certainly read data files line by line and processing them this way, but most often, for our purposes we are looking to do something specific like evaluate the data, use it for analysis or convert it to another format.  If you are interested in the nuts and bolts of reading files line by line then I would refer you to <a class="reference external" href="https://docs.python.org/3/library/csv.html">this documentation</a> or simply google ‘reading csv file in Python’.  In order to use the data effectively, we’ll depend instead on our ever useful and super-handy <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library.</p>
+<p>We can certainly read data files line by line and process them this way, but most often, for our purposes we are looking to do something specific like evaluate the data, use it for analysis or convert it to another format.  If you are interested in the nuts and bolts of reading files line by line then I would refer you to <a class="reference external" href="https://docs.python.org/3/library/csv.html">this documentation</a> or simply google ‘reading csv file in Python’.  In order to use the data effectively, we’ll depend instead on our ever useful and super-handy <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library actually can help us to read lots of different file formats from CSV files and Excel files, XML, JSON and even web pages (and suprisingly the clipboard!).  Mostly they work a lot alike, so we’ll focus on the format and the nuances of the most common cases you’ll run across.</p>
 <div class="admonition-optional-parameters admonition">
 <p class="admonition-title">Optional Parameters</p>
@@ -1272,7 +1282,7 @@ Hello 0 everyone
 </section>
 <section id="outputing-using-pandas">
 <h3>Outputing using pandas<a class="headerlink" href="#outputing-using-pandas" title="Permalink to this headline">#</a></h3>
-<p>It is also helpful to gather data in one format a write to another.  There are many, many ways to go about this, but one simple way to handle this is to use the <code class="docutils literal notranslate"><span class="pre">to_*</span></code> functions.  We’ll look a few others, but for now, let’s say we have cleaned up our bankruptcy file and need to import into Excel.  We can easily write it to a csv file with a simple command.  Run the next cell and then check out the result.</p>
+<p>It is also helpful to gather data in one format and write to another.  There are many, many ways to go about this, but one simple way to handle this is to use the <code class="docutils literal notranslate"><span class="pre">to_*</span></code> functions.  We’ll look at a few others, but for now, let’s say we have cleaned up our bankruptcy file and need to import into Excel.  We can easily write it to a csv file with a simple command.  Run the next cell and then check out the result.</p>
 <p><code class="xref download docutils literal notranslate"><span class="pre">my_new_file.csv</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1818,7 +1828,7 @@ Sides: 3.0
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In this example, we have a dictionary with two “keys” - <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">included</span></code>.  These keys have associated values which are lists (see the <code class="docutils literal notranslate"><span class="pre">[]</span></code>) even though their is only one item in each of these value lists.  So in order to processing the “sub-dictionaries” it becomes necessary first to get the first item in the list, then use the resulting dictionary to parse the next set of name/value pairs.</p>
+<p>In this example, we have a dictionary with two “keys” - <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">included</span></code>.  These keys have associated values which are lists (see the <code class="docutils literal notranslate"><span class="pre">[]</span></code>) even though their is only one item in each of these value lists.  So in order to process the “sub-dictionaries” it becomes necessary first to get the first item in the list, then use the resulting dictionary to parse the next set of name/value pairs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>

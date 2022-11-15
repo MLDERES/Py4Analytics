@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exploratory Data Analysis</title>
+    <title>Methods</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="www.py4analytics.info/book/lessons/260-Data_Visualization.html" />
+    <link rel="canonical" href="www.py4analytics.info/book/lessons/211-Methods.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercises" href="TryIt_Part2.html" />
-    <link rel="prev" title="Working with relational database" href="250-Database_Connections.html" />
+    <link rel="next" title="Working with data" href="220-Data_Manipulation.html" />
+    <link rel="prev" title="Namespace, Objective Orientation and Packaging" href="210-Object_Orientation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -217,8 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
      Namespace, Objective Orientation and Packaging
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="211-Methods.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Methods
     </a>
    </li>
@@ -242,8 +242,8 @@ const thebe_selector_output = ".output, .cell_output"
      Working with relational database
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="260-Data_Visualization.html">
      Exploratory Data Analysis
     </a>
    </li>
@@ -500,7 +500,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/lessons/260-Data_Visualization.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/lessons/211-Methods.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -518,7 +518,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/lessons/260-Data_Visualization.ipynb&branch=main"
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/lessons/211-Methods.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -578,7 +578,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/260-Data_Visualization.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/211-Methods.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -606,7 +606,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/lessons/260-Data_Visualization.ipynb"
+        <a href="../../_sources/book/lessons/211-Methods.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -643,23 +643,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#header-2">
+   header 2
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exploratory Data Analysis</h1>
+                <h1>Methods</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#header-2">
+   header 2
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -667,8 +704,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
-<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">#</a></h1>
+<section id="header-2">
+<h2>header 2<a class="headerlink" href="#header-2" title="Permalink to this headline">#</a></h2>
+<p><em>my name is precious</em></p>
+<p><strong>my name is precious</strong></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -698,17 +740,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="250-Database_Connections.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="210-Object_Orientation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Working with relational database</p>
+            <p class="prev-next-title">Namespace, Objective Orientation and Packaging</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="TryIt_Part2.html" title="next page">
+    <a class='right-next' id="next-link" href="220-Data_Manipulation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Working with data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

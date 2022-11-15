@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Differing data formats" href="230-Web_Data.html" />
-    <link rel="prev" title="Namespace, Objective Orientation and Packaging" href="210-Object_Orientation.html" />
+    <link rel="prev" title="Methods" href="211-Methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -215,6 +215,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="210-Object_Orientation.html">
      Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="211-Methods.html">
+     Methods
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -427,6 +432,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="400-Contributors.html">
+   Contributors
+  </a>
  </li>
 </ul>
 
@@ -820,6 +830,13 @@ title="Print to PDF"
 <p>The next cell is one that will appear in some configuration as the first in nearly every notebook.  It imports the key libraries we are going to use in our analysis and model building.  In the first case, we will depend on pandas and numpy for our data manipulation and we’ll leverage matplotlib as our graphical library.  We’ll also use the seaborn library to show off a few plots and visuals that are not quite as readily accessible with the matplotlib library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup code</span>
 <span class="c1"># Import relevant libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -833,6 +850,20 @@ title="Print to PDF"
 
 <span class="c1"># Limit the precision to 4 significant digits</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Setup code</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Import relevant libraries</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">panda</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;panda&#39;
 </pre></div>
 </div>
 </div>
@@ -902,7 +933,7 @@ Each record in the database describes a Boston suburb or town. The data was draw
 </div>
 </div>
 </div>
-<p>We see from the ouput about that we have 506 rows and 14 columns, but we can’t see all the columns - let’s check out the column names and get an idea of the some descriptive statistics for each numerical column)</p>
+<p>We see from the ouput that we have 506 rows and 14 columns, but we can’t see all the columns - let’s check out the column names and get an idea of some of the descriptive statistics for each numerical column)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -913,7 +944,7 @@ Each record in the database describes a Boston suburb or town. The data was draw
 <p>We can see from our data dictionary, provided above, that <code class="docutils literal notranslate"><span class="pre">CAT_MEDV</span></code> is meant to be a categorical value (boolean)- not a numeric value.  So the descriptive statistics for it don’t make much sense.  We can see however that there are 2 unique values (good, True/False) that False is the most common and it occurs 422 out of of 506 times.</p>
 <section id="quick-plots-and-charts">
 <h3>Quick plots and charts<a class="headerlink" href="#quick-plots-and-charts" title="Permalink to this headline">#</a></h3>
-<p>We’ve got some interesting data here and we can get some quick plots to see how the data is distributed.  For instance, we might be interested in how old the houses are are or what the crime stats are like.  With this we can use the built-in dataframe functions for plotting.</p>
+<p>We’ve got some interesting data here and we can get some quick plots to see how the data is distributed.  For instance, we might be interested in how old the houses are or what the crime stats are like.  With this we can use the built-in dataframe functions for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It&#39;s always safe to use the `index` method to get a particular column</span>
@@ -957,7 +988,7 @@ Each record in the database describes a Boston suburb or town. The data was draw
 </div>
 </div>
 </div>
-<p>We may also be interested in the relationship between a set of the variables so that we can identify which ones may prove to be over-influencing a regression model.  For this we can use two approaches, first we’ll look at a set of charts that are related in a pair-wise chart or a correlation map.  First a pairwise graph.  A pairwise graph shows the relationship between these 4 different variables to each other in one simple clean chart.</p>
+<p>We may also be interested in the relationship between a set of the variables so that we can identify which ones may prove to be over-influencing a regression model.  For this we can use two approaches, first we’ll look at a set of charts that are related in a pair-wise chart or a correlation map.  First a pairwise graph.  A pairwise graph shows the relationship between these 5 different variables to each other in one simple clean chart.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">housing_df</span><span class="p">[[</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span><span class="s1">&#39;INDUS&#39;</span><span class="p">,</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span><span class="s2">&quot;RM&quot;</span><span class="p">,</span><span class="s2">&quot;MEDV&quot;</span><span class="p">]]</span>
@@ -971,7 +1002,7 @@ Each record in the database describes a Boston suburb or town. The data was draw
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-manipulation">
 <h1>Data manipulation<a class="headerlink" href="#data-manipulation" title="Permalink to this headline">#</a></h1>
-<p>Visualization is helpful and can be really useful in Python in lots of situations, especially if you need something super specific that can’t be done other tools - or if you just need a quick visual of what’s happening.  The real power unleashed by coding is to manipulate the data in a series of steps that can be repeated over and over again.  This is where <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and Python shine.</p>
+<p>Visualization is helpful and can be really useful in Python in lots of situations, especially if you need something super specific that can’t be done using other tools - or if you just need a quick visual of what’s happening.  The real power unleashed by coding is to manipulate the data in a series of steps that can be repeated over and over again.  This is where <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and Python shine.</p>
 <section id="where-to-get-more-help">
 <h2>Where to get more help<a class="headerlink" href="#where-to-get-more-help" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -1200,11 +1231,11 @@ objective index of body weight (kg / m ^ 2) using the ratio of height to weight,
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="210-Object_Orientation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="211-Methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Namespace, Objective Orientation and Packaging</p>
+            <p class="prev-next-title">Methods</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="230-Web_Data.html" title="next page">
