@@ -6,5 +6,5 @@
 - `/book/contrib/contrib_img/` - image files in support of student notebooks (prefer `.png`)
 
 ## List of Student Contributions
-````{toctree}
+````{tableofcontents}
 ````
