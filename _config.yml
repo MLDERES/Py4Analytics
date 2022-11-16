@@ -39,7 +39,7 @@ html:
   google_analytics_id: G-NZH9210CF9
   extra_navbar: |
     <div>
-      Revision: 1.0
+      Revision: 1.0 <br/>
       Last Update: Wed Nov 16 23:23:31 2022
     </div>
 
