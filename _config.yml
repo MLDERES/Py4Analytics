@@ -39,6 +39,7 @@ html:
   google_analytics_id: G-NZH9210CF9
   extra_navbar: |
     <div>
+      Revision: 1.0
       Last Update: Tue Nov 15 17:39:12 2022
     </div>
 
@@ -66,8 +67,14 @@ parse:
     - py
     - ipynb
     - csv
+  myst_substitutions:
+    matplotlib_url: "[matplotlib](https://matplotlib.org/)"
+    pandas_url: '[pandas](https://pandas.pydata.org/)'
+    numpy_url: '[numpy](https://numpy.org/)'
+    seaborn_url: '[seaborn](https://seaborn.pydata.org/)'
+    UCI_url: '[UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/)'
 
-only_build_toc_files: true
+only_build_toc_files: false
 
 sphinx: 
   recursive_update: true
