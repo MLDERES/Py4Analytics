@@ -45,7 +45,7 @@ html:
 
 launch_buttons:
   thebe: false
-  # binderhub_url: https://mybinder.org
+  binderhub_url: https://mybinder.org
   notebook_interface: jupyterlab
   jupyterhub_url: https://isys5103-uark.msappproxy.net/
 
