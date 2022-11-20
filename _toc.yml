@@ -68,10 +68,11 @@ parts:
     maxdepth: 2
     chapters:
     - file: book/contrib/00-studentcontributions
-    - file: book/contrib/Test Example
       sections:
       ## Add a link to your file here, don't include the .ipynb ext
       - file: book/contrib/100-samplecontrib
+      - file: book/contrib/How to upload final deliverable_HBeck
+      - file: book/contrib/Test Example
   - caption: Appendix
     maxdepth: 2
     chapters:
