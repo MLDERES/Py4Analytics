@@ -29,16 +29,16 @@ parts:
       sections:
       - file: book/lessons/210-Object_Orientation
       - file: book/lessons/211-Methods
-      - file: book/lessons/220-Data_Manipulation
-      - file: book/lessons/230-Web_Data
+      - file: book/lessons/220-Web_Data_Formats
+      - file: book/lessons/230-Data_Manipulation
       - file: book/lessons/240-Getting_Web_Data
       - file: book/lessons/250-Database_Connections
       - file: book/lessons/260-Data_Visualization
     - file: book/lessons/TryIt_Part2
       sections:
       - file: book/exercises/210-Object_Orientation-ex
-      - file: book/exercises/220-Data_Manipulation-ex
-      - file: book/exercises/230-Web_Data-ex
+      - file: book/exercises/220-Web_Data_Formats-ex.ipynb
+      - file: book/exercises/230-Data_Manipulation-ex
       - file: book/exercises/240-Getting_Web_Data-ex
       - file: book/exercises/250-Database_Connections-ex
       - file: book/exercises/260-Data_Visualization-ex
@@ -64,6 +64,13 @@ parts:
     - file: book/lessons/TryIt_Part3
       sections:
       - file: book/exercises/310-ExploratoryDataAnalysis-ex
+  - caption: Student Contributions
+    maxdepth: 2
+    chapters:
+    - file: book/contrib/00-studentcontributions
+      sections:
+      ## Add a link to your file here, don't include the .ipynb ext
+      - file: book/contrib/100-samplecontrib
   - caption: Appendix
     maxdepth: 2
     chapters:
