@@ -71,6 +71,8 @@ parts:
       sections:
       ## Add a link to your file here, don't include the .ipynb ext
       - file: book/contrib/100-samplecontrib
+      - file: book/contrib/hallux
+      - file: book/contrib/persona
   - caption: Appendix
     maxdepth: 2
     chapters:
