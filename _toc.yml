@@ -71,6 +71,7 @@ parts:
       sections:
       ## Add a link to your file here, don't include the .ipynb ext
       - file: book/contrib/100-samplecontrib
+      - file: IRSMarkDown
   - caption: Appendix
     maxdepth: 2
     chapters:
