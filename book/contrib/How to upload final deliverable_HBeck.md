@@ -164,3 +164,21 @@ Click “Ok”.
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.022.png)
 
 \***Note: if you make changes to your file (say you found a spelling mistake, or someone gave you a pointer on how to have more concise code), as long as the repository owner has not approved the pull request, you can make changes to the file. It is as simple as committing the file (from your local machine) and syncing the changes to the cloud (github.com website). Once the pull request has been approved, you will need to submit a new pull request.**
+
+
+# How to ensure most accuracy
+Sometimes the owner of the repository will make updates to their codes. It is important to ensure you have the most recent version of the repository. There are greater complications if you do not do this, therefore, just trust Prof. Dereszynski when he asks you to “Sync fork” before working on any project. 
+
+![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.039.png)
+
+![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.040.png)
+
+Click “Update branch”. There is a brief “fetching and merging screen” (not pictured here because it was so fast!) then it returns to the main branch. If you click “Sync Fork” again (just to make sure it synced) you will get the following:
+
+![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.041.png)
+
+After you sync your fork, you need to ensure your local copy (GitDesktop) is up to date. Here is an example of what it looks like when you haven’t synced your local copy:
+
+![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.042.png)
+
+Once you click  “Pull origin”, this tile will disappear. Proceed forward. 
