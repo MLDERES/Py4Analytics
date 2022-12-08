@@ -1,0 +1,1493 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using Personas to Simulate Hallux Data &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="www.py4analytics.info/book/contrib/persona.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Uploading and downloading file to SQL Server using flask api" href="upload_file_to_table.html" />
+    <link rel="prev" title="Working with IRS data" href="IRSMarkDown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NZH9210CF9"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-NZH9210CF9');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Python For Analytics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 - Python Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
+   Part 1 - Basic Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
+     Learning to program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
+     Making Decisions &amp; Looping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/130-Functions.html">
+     Reusing Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
+     Try it: Getting Started with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
+     Try it: Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
+     Try it: Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Intermediate Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
+   Part 2 - Intermediate Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
+     Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/211-Methods.html">
+     Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/220-Web_Data_Formats.html">
+     Differing data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/230-Data_Manipulation.html">
+     Working with data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
+     Gather data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
+     Working with relational database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
+     Try it: Objects, Namespaces and Packages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
+     Try it: Working with common data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
+     Try it: Getting data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
+     Try-it: Connecting to a Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
+     Try it: Data Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 - Using Python for Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
+   Part 3 - Using Python for Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
+     Other tools for Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
+     Visualization Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
+     Data Preparation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/330-Classification.html">
+     Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
+     Automobile Accidents
+     <a id="auto-accidents">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
+     Prediction and Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
+     Advanced Techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
+     Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
+     Ensembling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
+     Predicting the price of used cars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
+     Unsupervised Data Mining
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
+     Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
+     Visualization Samples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+     Try It: Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extras/00-extras.html">
+   Extras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
+     Using an Object Relational Mapping Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
+     Connecting to MS SQL using ODBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/400-Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="hallux.html">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="US_Median_Housing.html">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <div>
+  Revision: 1.0 <br/>
+  Last Update: Wed Nov 16 23:23:31 2022
+</div>
+
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/contrib/persona.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/contrib/persona.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/contrib/persona.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/contrib/persona.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/contrib/persona.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-example-has-two-goals">
+   This example has two goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-example-starts-by-importing-the-required-libraries-and-creating-dictionaries">
+   The example starts by importing the required libraries and creating dictionaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lets-assign-personas">
+   Let’s assign
+   <strong>
+    Personas
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dictionaries-defined-above-reflect-the-hallux-tables-designed-to-support-personas">
+     The dictionaries defined above reflect the Hallux tables designed to support personas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-an-individual-entitys-persona">
+     Set an individual entity’s persona
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-an-individual-entitys-persona">
+     Get an individual entity’s persona
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-my-persona">
+     What is my Persona?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-personas">
+     Assign Personas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-that-the-personas-have-been-assigned-we-can-start-simulating-data">
+   Now that the Personas have been assigned we can start
+   <strong>
+    Simulating
+   </strong>
+   data…
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lets-start-with-the-new-tables-in-hallux-that-support-social-media">
+     Let’s start with the new tables in Hallux that support social media
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulate-follower-data">
+     Simulate Follower Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulate-playlist-data">
+     Simulate Playlist Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simuate-streaming-data">
+     Simuate Streaming Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simuate-data">
+     Simuate Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-we-go">
+     Here we go…
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Using Personas to Simulate Hallux Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-example-has-two-goals">
+   This example has two goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-example-starts-by-importing-the-required-libraries-and-creating-dictionaries">
+   The example starts by importing the required libraries and creating dictionaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lets-assign-personas">
+   Let’s assign
+   <strong>
+    Personas
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dictionaries-defined-above-reflect-the-hallux-tables-designed-to-support-personas">
+     The dictionaries defined above reflect the Hallux tables designed to support personas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-an-individual-entitys-persona">
+     Set an individual entity’s persona
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-an-individual-entitys-persona">
+     Get an individual entity’s persona
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-my-persona">
+     What is my Persona?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-personas">
+     Assign Personas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-that-the-personas-have-been-assigned-we-can-start-simulating-data">
+   Now that the Personas have been assigned we can start
+   <strong>
+    Simulating
+   </strong>
+   data…
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lets-start-with-the-new-tables-in-hallux-that-support-social-media">
+     Let’s start with the new tables in Hallux that support social media
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulate-follower-data">
+     Simulate Follower Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulate-playlist-data">
+     Simulate Playlist Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simuate-streaming-data">
+     Simuate Streaming Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simuate-data">
+     Simuate Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-we-go">
+     Here we go…
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="using-personas-to-simulate-hallux-data">
+<h1>Using <strong>Personas</strong> to Simulate Hallux Data<a class="headerlink" href="#using-personas-to-simulate-hallux-data" title="Permalink to this headline">#</a></h1>
+<section id="this-example-has-two-goals">
+<h2>This example has two goals<a class="headerlink" href="#this-example-has-two-goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>To assign personas to the different entities in the Hallux database either randomly or based on existing data.</p></li>
+<li><p>To use the assigned personas to predict an entity’s behavoior in order to create new data.</p></li>
+</ul>
+</section>
+<section id="the-example-starts-by-importing-the-required-libraries-and-creating-dictionaries">
+<h2>The example starts by importing the required libraries and creating dictionaries<a class="headerlink" href="#the-example-starts-by-importing-the-required-libraries-and-creating-dictionaries" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="o">*</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pymssql</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+
+<span class="c1"># Personas dictionary (defined in Hallux tables Persona_Type and Persona)</span>
+
+<span class="n">Personas</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Album&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bomb&quot;</span><span class="p">,</span><span class="s2">&quot;Non-Certified&quot;</span><span class="p">,</span><span class="s2">&quot;Gold&quot;</span><span class="p">,</span><span class="s2">&quot;Platinum&quot;</span><span class="p">,</span><span class="s2">&quot;Multi Platinum&quot;</span><span class="p">,</span><span class="s2">&quot;Diamond&quot;</span><span class="p">),</span> 
+    <span class="s2">&quot;Band&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bar Band&quot;</span><span class="p">,</span><span class="s2">&quot;Cover&quot;</span><span class="p">,</span><span class="s2">&quot;Tribute&quot;</span><span class="p">,</span><span class="s2">&quot;1 hit wonder&quot;</span><span class="p">,</span><span class="s2">&quot;Popular&quot;</span><span class="p">,</span><span class="s2">&quot;Cult Following&quot;</span><span class="p">,</span><span class="s2">&quot;Megaband&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Customer&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Occasioanl&quot;</span><span class="p">,</span><span class="s2">&quot;Discount&quot;</span><span class="p">,</span><span class="s2">&quot;Loyal&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Employee&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bad&quot;</span><span class="p">,</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span><span class="s2">&quot;Overachiever&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Experience&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bad&quot;</span><span class="p">,</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span><span class="s2">&quot;Wonderful&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Fan&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Casual&quot;</span><span class="p">,</span><span class="s2">&quot;Fan&quot;</span><span class="p">,</span><span class="s2">&quot;Fanatic&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Music&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Popular&quot;</span><span class="p">,</span> <span class="s2">&quot;Regional&quot;</span><span class="p">,</span><span class="s2">&quot;Seasonal&quot;</span><span class="p">,</span><span class="s2">&quot;Specialty&quot;</span><span class="p">,</span><span class="s2">&quot;Nostalgic&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Musician&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Amateur&quot;</span><span class="p">,</span><span class="s2">&quot;Studio&quot;</span><span class="p">,</span><span class="s2">&quot;Backup&quot;</span><span class="p">,</span><span class="s2">&quot;Lead&quot;</span><span class="p">,</span><span class="s2">&quot;Superstar&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Performance&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bad&quot;</span><span class="p">,</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span><span class="s2">&quot;Epic&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Person&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Student&quot;</span><span class="p">,</span><span class="s2">&quot;Young Adult&quot;</span><span class="p">,</span><span class="s2">&quot;Mature&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Song&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bad&quot;</span><span class="p">,</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span><span class="s2">&quot;Popular&quot;</span><span class="p">,</span><span class="s2">&quot;Hit&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Video&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Bad&quot;</span><span class="p">,</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span><span class="s2">&quot;Viral&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Hallux entity types dictionary defined in the Entity_Type table</span>
+<span class="c1"># Added an additional value list (table, id column, persona type, assignment method)</span>
+<span class="c1"># and put in the order needed for processing if not using random selection</span>
+<span class="c1"># For example, a band&#39;s persona will be determined by the personas of its band members.</span>
+
+<span class="n">Entities_List_Columns</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Table Name&quot;</span><span class="p">,</span><span class="s2">&quot;Artificial Key&quot;</span><span class="p">,</span><span class="s2">&quot;Persona Type&quot;</span><span class="p">,</span><span class="s2">&quot;Assignment Method&quot;</span><span class="p">,</span><span class="s2">&quot;Persona Status&quot;</span><span class="p">,</span><span class="s2">&quot;Simulation Status&quot;</span><span class="p">)</span>
+
+<span class="n">Entities</span> <span class="o">=</span> <span class="p">{</span>
+    
+    <span class="s2">&quot;Genre&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Genre&quot;</span><span class="p">,</span><span class="s2">&quot;Genre_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Music&quot;</span><span class="p">,</span><span class="s2">&quot;Market Share&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span> 
+    <span class="s2">&quot;Member&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Band_Member&quot;</span><span class="p">,</span><span class="s2">&quot;Member_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Musician&quot;</span><span class="p">,</span><span class="s2">&quot;Random&quot;</span><span class="p">,</span><span class="s2">&quot;Completed&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Band&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Band&quot;</span><span class="p">,</span><span class="s2">&quot;Band_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Band&quot;</span><span class="p">,</span><span class="s2">&quot;Members&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Agent&quot;</span>   <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Agent&quot;</span><span class="p">,</span><span class="s2">&quot;Agent_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Employee&quot;</span><span class="p">,</span><span class="s2">&quot;Commissions&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Album&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Album&quot;</span><span class="p">,</span><span class="s2">&quot;Album_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Album&quot;</span><span class="p">,</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span> 
+    <span class="s2">&quot;Song&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Song&quot;</span><span class="p">,</span><span class="s2">&quot;Song_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Song&quot;</span><span class="p">,</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Performance&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Performance&quot;</span><span class="p">,</span><span class="s2">&quot;Performance_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Performance&quot;</span><span class="p">,</span><span class="s2">&quot;Revenue&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Producer&quot;</span>   <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Producer&quot;</span><span class="p">,</span><span class="s2">&quot;Producer_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Employee&quot;</span><span class="p">,</span><span class="s2">&quot;Revenue&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Video&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Video&quot;</span><span class="p">,</span><span class="s2">&quot;Video_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Video&quot;</span><span class="p">,</span><span class="s2">&quot;Streams&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Profile&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Customer_Profile&quot;</span><span class="p">,</span><span class="s2">&quot;Profile_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Person&quot;</span><span class="p">,</span><span class="s2">&quot;Demographics&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Customer&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Customer&quot;</span><span class="p">,</span><span class="s2">&quot;Customer_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Customer&quot;</span><span class="p">,</span><span class="s2">&quot;Purchases&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Follower&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Band_Follower&quot;</span><span class="p">,</span><span class="s2">&quot;Follower_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Fan&quot;</span><span class="p">,</span><span class="s2">&quot;Engagement&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Playlist&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Playlist&quot;</span><span class="p">,</span><span class="s2">&quot;Playlist_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Experience&quot;</span><span class="p">,</span><span class="s2">&quot;Streams&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Order&quot;</span>   <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Order&quot;</span><span class="p">,</span><span class="s2">&quot;Order_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Experience&quot;</span><span class="p">,</span><span class="s2">&quot;Probability&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Stream&quot;</span>   <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span><span class="s2">&quot;Stream_Id&quot;</span><span class="p">,</span><span class="s2">&quot;Experience&quot;</span><span class="p">,</span><span class="s2">&quot;Probability&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lets-assign-personas">
+<h2>Let’s assign <strong>Personas</strong><a class="headerlink" href="#lets-assign-personas" title="Permalink to this headline">#</a></h2>
+<section id="the-dictionaries-defined-above-reflect-the-hallux-tables-designed-to-support-personas">
+<h3>The dictionaries defined above reflect the Hallux tables designed to support personas<a class="headerlink" href="#the-dictionaries-defined-above-reflect-the-hallux-tables-designed-to-support-personas" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/persona_tables.png"><img alt="../../_images/persona_tables.png" src="../../_images/persona_tables.png" style="width: 800px; height: 1000px;" /></a>
+</section>
+<section id="set-an-individual-entitys-persona">
+<h3>Set an individual entity’s persona<a class="headerlink" href="#set-an-individual-entitys-persona" title="Permalink to this headline">#</a></h3>
+<p>The set_persona function will update the database with an entities persona</p>
+<p><em>Note: This function uses a stored procedure to update data (sql provided below).
+This allows for greater security and users do not need update, insert or delete permission on specific tables, only execute permission for this stored procedure.  Also, the stored procedure will determine if the information needs to be inserted or updated.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_persona</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">a_entity_id</span><span class="p">,</span> <span class="n">a_persona_type</span><span class="p">,</span> <span class="n">a_persona</span> <span class="p">):</span>   
+
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+   
+    <span class="n">sp_exec_sql</span> <span class="o">=</span> <span class="s2">&quot;prc_set_Persona&quot;</span>
+    <span class="n">parm_list</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a_entity_type</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">a_entity_id</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">a_persona_type</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">a_persona</span><span class="p">))</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="n">sp_exec_sql</span><span class="p">,</span><span class="n">parm_list</span><span class="p">)</span>    
+ 
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">IF</span><span class="w"> </span><span class="n">OBJECT_ID</span><span class="p">(</span><span class="s1">&#39;dbo.prc_set_Persona&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="k">BEGIN</span><span class="w"></span>
+<span class="w">    </span><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">dbo</span><span class="p">.</span><span class="n">prc_set_Persona</span><span class="w"></span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">OBJECT_ID</span><span class="p">(</span><span class="s1">&#39;dbo.prc_set_Persona&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="w">        </span><span class="n">PRINT</span><span class="w"> </span><span class="s1">&#39;&lt;&lt;&lt; FAILED DROPPING PROCEDURE dbo.prc_set_Persona &gt;&gt;&gt;&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">ELSE</span><span class="w"></span>
+<span class="w">        </span><span class="n">PRINT</span><span class="w"> </span><span class="s1">&#39;&lt;&lt;&lt; DROPPED PROCEDURE dbo.prc_set_Persona &gt;&gt;&gt;&#39;</span><span class="w"></span>
+<span class="k">END</span><span class="w"></span>
+<span class="k">go</span><span class="w"></span>
+<span class="k">Create</span><span class="w"> </span><span class="n">Proc</span><span class="w"> </span><span class="n">dbo</span><span class="p">.</span><span class="n">prc_set_Persona</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">@</span><span class="n">a_Entity_Type</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="o">@</span><span class="n">a_Entity_Id</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">a_Persona_Type</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">a_Persona</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span>
+<span class="k">As</span><span class="w"> </span>
+<span class="k">Begin</span><span class="w"> </span>
+<span class="w"> </span>
+<span class="cm">/*----------------------------------------------------------------------------- </span>
+<span class="cm">  Procedure Name: prc_set_Persona</span>
+
+<span class="cm">       Function: Populate the persona table</span>
+<span class="cm">       Parameters: a_Entity_Type, a_Entity_Id, a_Persona_Type, a_Persona</span>
+<span class="cm">                 </span>
+<span class="cm">   Modifications:  </span>
+<span class="cm"> </span>
+<span class="cm">	11/18/2022	JDS	Initial Version</span>
+
+<span class="cm"> -----------------------------------------------------------------------------*/</span><span class="w"> </span>
+
+
+<span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w">		</span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">errorNum</span><span class="w"> 		</span><span class="nb">int</span><span class="w"></span>
+<span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">RowCount</span><span class="w"> 		</span><span class="nb">int</span><span class="w"></span>
+<span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">Entity_Type_Id</span><span class="w">	</span><span class="nb">int</span><span class="w"></span>
+<span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Type_Id</span><span class="w">	</span><span class="nb">int</span><span class="w"></span>
+<span class="w">	</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Id</span><span class="w">		</span><span class="nb">int</span><span class="w"></span>
+
+
+<span class="w">  </span><span class="c1">-- Initialization										 </span>
+
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+
+
+<span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Entity_Type</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Entity_Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">a_Entity_Type</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">@</span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"></span>
+<span class="w">  </span><span class="k">BEGIN</span><span class="w"> </span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Unknown Entity Type.&#39;</span><span class="w"> </span>
+<span class="w">    </span><span class="k">GOTO</span><span class="w"> </span><span class="n">err_rtn</span><span class="w"></span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Type_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Persona_Type_Id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Persona_Type</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Persona_Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">a_Persona_Type</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Type_Id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"></span>
+<span class="w">  </span><span class="k">BEGIN</span><span class="w"> </span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Unknown Persona Type.&#39;</span><span class="w"> </span>
+<span class="w">    </span><span class="k">GOTO</span><span class="w"> </span><span class="n">err_rtn</span><span class="w"></span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Persona_Id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Persona</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Persona_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">a_Persona</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">Persona_Type_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Type_Id</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"></span>
+<span class="w">  </span><span class="k">BEGIN</span><span class="w"> </span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Unknown Persona.&#39;</span><span class="w"> </span>
+<span class="w">    </span><span class="k">GOTO</span><span class="w"> </span><span class="n">err_rtn</span><span class="w"></span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">Persona_Entity</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Entity_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">a_Entity_Id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">Entity_Type_Id</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"> </span>
+
+<span class="w">    </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">Persona_Entity</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Persona_Id</span><span class="p">,</span><span class="w"> </span><span class="n">Entity_Id</span><span class="p">,</span><span class="w"> </span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">Persona_Id</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">a_Entity_Id</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@@</span><span class="n">error</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">Rowcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@@</span><span class="n">Rowcount</span><span class="w"></span>
+<span class="w"> </span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="o">@</span><span class="n">errorNum</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">Rowcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="k">BEGIN</span><span class="w"> </span>
+<span class="w">      </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Failed inserting row into Persona_Entity.&#39;</span><span class="w"> </span>
+<span class="w">      </span><span class="k">GOTO</span><span class="w"> </span><span class="n">err_rtn</span><span class="w"></span>
+<span class="w">    </span><span class="k">END</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">end</span><span class="w">    </span>
+<span class="w">  </span><span class="k">else</span><span class="w"></span>
+<span class="w">  </span><span class="k">begin</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">update</span><span class="w"> </span><span class="n">Persona_Entity</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">Persona_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">Persona_Id</span><span class="w"> </span>
+<span class="w">     </span><span class="k">where</span><span class="w"> </span><span class="n">Entity_Id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">a_Entity_Id</span><span class="w"></span>
+<span class="w">       </span><span class="k">and</span><span class="w"> </span><span class="n">Entity_Type_Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">Entity_Type_Id</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@@</span><span class="n">error</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">Rowcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@@</span><span class="n">Rowcount</span><span class="w"></span>
+<span class="w"> </span>
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="o">@</span><span class="n">errorNum</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">Rowcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="k">BEGIN</span><span class="w"> </span>
+<span class="w">      </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Update of Persona_Entity failed.&#39;</span><span class="w"> </span>
+<span class="w">      </span><span class="k">GOTO</span><span class="w"> </span><span class="n">err_rtn</span><span class="w"></span>
+<span class="w">    </span><span class="k">END</span><span class="w"> </span>
+
+
+<span class="w">  </span><span class="k">end</span><span class="w"></span>
+
+<span class="n">good_rtn</span><span class="p">:</span><span class="w"> </span>
+<span class="w"> </span>
+<span class="w">  </span><span class="k">Return</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+<span class="n">err_rtn</span><span class="p">:</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SQL Exception (&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">object_name</span><span class="p">(</span><span class="o">@@</span><span class="n">procid</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;) - &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">@</span><span class="n">errorMsg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="k">IsNull</span><span class="p">(</span><span class="o">@</span><span class="n">errornum</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="s1">&#39; (SQL Errno: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">convert</span><span class="p">(</span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="o">@</span><span class="n">errorNum</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;)&#39;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">end</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">errmsg</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">Return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span>
+<span class="w">  </span>
+<span class="k">End</span><span class="w"> </span><span class="cm">/* prc_set_Persona */</span><span class="w"></span>
+<span class="k">go</span><span class="w"></span>
+
+<span class="k">IF</span><span class="w"> </span><span class="n">OBJECT_ID</span><span class="p">(</span><span class="s1">&#39;dbo.prc_set_Persona&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="s1">&#39;&lt;&lt;&lt; CREATED PROCEDURE dbo.prc_set_Persona &gt;&gt;&gt;&#39;</span><span class="w"></span>
+<span class="k">ELSE</span><span class="w"></span>
+<span class="w">    </span><span class="n">PRINT</span><span class="w"> </span><span class="s1">&#39;&lt;&lt;&lt; FAILED CREATING PROCEDURE dbo.prc_set_Persona &gt;&gt;&gt;&#39;</span><span class="w"></span>
+<span class="k">go</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="get-an-individual-entitys-persona">
+<h3>Get an individual entity’s persona<a class="headerlink" href="#get-an-individual-entitys-persona" title="Permalink to this headline">#</a></h3>
+<p>The get_persona function will return an entity’s persona</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_persona</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">a_entity_id</span><span class="p">,</span> <span class="n">a_persona_type</span><span class="p">):</span>   
+    
+    <span class="n">my_persona</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    
+    <span class="k">return</span> <span class="n">my_persona</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-my-persona">
+<h3>What is my Persona?<a class="headerlink" href="#what-is-my-persona" title="Permalink to this headline">#</a></h3>
+<p>The my_persona function will determine the persona for an entity</p>
+<p><em>Will start by using a random selection</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">whats_my_persona</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">a_entity_id</span><span class="p">,</span> <span class="n">a_persona_type</span><span class="p">,</span> <span class="n">a_assignment_method</span> <span class="p">):</span>   
+
+    
+    <span class="n">my_persona</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">a_assignment_method</span> <span class="o">==</span> <span class="s1">&#39;Random&#39;</span> <span class="p">:</span>
+    
+        <span class="k">if</span> <span class="n">a_persona_type</span> <span class="ow">in</span> <span class="n">Personas</span><span class="p">:</span>
+            <span class="n">persona_list</span> <span class="o">=</span> <span class="n">Personas</span><span class="p">[</span><span class="n">a_persona_type</span><span class="p">]</span>
+            <span class="n">ndx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">persona_list</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>       
+            <span class="n">my_persona</span> <span class="o">=</span> <span class="n">persona_list</span><span class="p">[</span><span class="n">ndx</span><span class="p">]</span>
+                             
+
+    <span class="k">return</span> <span class="n">my_persona</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assign-personas">
+<h3>Assign Personas<a class="headerlink" href="#assign-personas" title="Permalink to this headline">#</a></h3>
+<p>The assign_personas function will loop thru all the members of a specific Hallux entity and assign them personas</p>
+<p><em>This is where the hard work is done!</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_personas</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">a_persona_type</span><span class="p">,</span> <span class="n">a_assignment_method</span><span class="p">,</span> <span class="n">a_status</span> <span class="p">):</span>   
+
+    
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="n">a_status</span>
+    
+    <span class="k">if</span> <span class="n">a_status</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Completed&#39;</span><span class="p">,</span><span class="s1">&#39;Under Construction&#39;</span><span class="p">)</span> <span class="p">:</span>
+      
+    
+        <span class="c1"># get all the entity ids</span>
+
+        <span class="k">if</span> <span class="n">a_entity_type</span> <span class="ow">in</span> <span class="n">Entities</span><span class="p">:</span>
+
+            <span class="n">entity_list</span> <span class="o">=</span> <span class="n">Entities</span><span class="p">[</span><span class="n">a_entity_type</span><span class="p">]</span>
+            <span class="n">sql_select</span> <span class="o">=</span> <span class="s1">&#39;SELECT &#39;</span> <span class="o">+</span> <span class="n">entity_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; FROM &#39;</span> <span class="o">+</span> <span class="n">entity_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; order by &#39;</span> <span class="o">+</span> <span class="n">entity_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">df_entity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_select</span><span class="p">,</span> <span class="n">eng</span><span class="p">)</span>
+            <span class="n">df_entity</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">entity_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_entity</span><span class="p">))</span>
+
+        <span class="c1"># assign and save persona</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_entity</span><span class="p">)):</span>
+
+            <span class="n">curr_entity_id</span> <span class="o">=</span> <span class="n">df_entity</span><span class="p">[</span><span class="n">entity_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">curr_persona</span>   <span class="o">=</span> <span class="n">whats_my_persona</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">curr_entity_id</span><span class="p">,</span> <span class="n">a_persona_type</span><span class="p">,</span> <span class="n">a_assignment_method</span> <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">curr_persona</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="p">:</span>
+                <span class="n">set_persona</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">curr_entity_id</span><span class="p">,</span> <span class="n">a_persona_type</span><span class="p">,</span> <span class="n">curr_persona</span> <span class="p">)</span>   
+
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_entity</span><span class="p">))</span>
+        
+
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="now-that-the-personas-have-been-assigned-we-can-start-simulating-data">
+<h2>Now that the Personas have been assigned we can start <strong>Simulating</strong> data…<a class="headerlink" href="#now-that-the-personas-have-been-assigned-we-can-start-simulating-data" title="Permalink to this headline">#</a></h2>
+<section id="lets-start-with-the-new-tables-in-hallux-that-support-social-media">
+<h3>Let’s start with the new tables in Hallux that support social media<a class="headerlink" href="#lets-start-with-the-new-tables-in-hallux-that-support-social-media" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/social_media_tables.png"><img alt="../../_images/social_media_tables.png" src="../../_images/social_media_tables.png" style="width: 500px; height: 600px;" /></a>
+</section>
+<section id="simulate-follower-data">
+<h3>Simulate Follower Data<a class="headerlink" href="#simulate-follower-data" title="Permalink to this headline">#</a></h3>
+<p>This fuction will determine which bands the specified customer profile will follow, if any</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_follower_data</span> <span class="p">(</span><span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span><span class="p">):</span>   
+    
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="s1">&#39;Under Construction&#39;</span>
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulate-playlist-data">
+<h3>Simulate Playlist Data<a class="headerlink" href="#simulate-playlist-data" title="Permalink to this headline">#</a></h3>
+<p>This fuction will determine which playlists the specified customer profile will create, if any</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_playlist_data</span> <span class="p">(</span><span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span><span class="p">):</span>   
+    
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="s1">&#39;Under Construction&#39;</span>
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simuate-streaming-data">
+<h3>Simuate Streaming Data<a class="headerlink" href="#simuate-streaming-data" title="Permalink to this headline">#</a></h3>
+<p>This fuction will determine which songs the specified customer profile will stream, if any</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_streaming_data</span> <span class="p">(</span><span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span><span class="p">):</span>   
+    
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="s1">&#39;Under Construction&#39;</span>
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simuate-data">
+<h3>Simuate Data<a class="headerlink" href="#simuate-data" title="Permalink to this headline">#</a></h3>
+<p>This fuction calls the appropriate simulation function based on the entitity type and status</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_data</span> <span class="p">(</span> <span class="n">a_entity_type</span><span class="p">,</span> <span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span><span class="p">,</span> <span class="n">a_status</span> <span class="p">):</span>   
+
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="n">a_status</span>
+    
+    <span class="k">if</span> <span class="n">a_status</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Completed&#39;</span><span class="p">,</span><span class="s1">&#39;Under Construction&#39;</span><span class="p">)</span> <span class="p">:</span>
+    
+    
+        <span class="k">if</span> <span class="n">a_entity_type</span> <span class="o">==</span> <span class="s1">&#39;Follower&#39;</span><span class="p">:</span>
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="n">sim_follower_data</span> <span class="p">(</span><span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">a_entity_type</span> <span class="o">==</span> <span class="s1">&#39;Playlist&#39;</span><span class="p">:</span>
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="n">sim_playlist_data</span> <span class="p">(</span><span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">a_entity_type</span> <span class="o">==</span> <span class="s1">&#39;Stream&#39;</span><span class="p">:</span>
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="n">sim_streaming_data</span> <span class="p">(</span><span class="n">a_start_date</span><span class="p">,</span> <span class="n">a_end_date</span> <span class="p">)</span>
+        
+    
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="here-we-go">
+<h3>Here we go…<a class="headerlink" href="#here-we-go" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Initalization, database engine</p></li>
+<li><p>Assign personas to Hallux entities</p></li>
+<li><p>Generate the data for the specified date range!</p></li>
+</ul>
+<p>This section of code loops thru the different entities and calls the appropriate functions to assign personas and/or simulated data. The persona and simulation status columns in the Entities dictionary are used to determine whether or not an action should be performed.  Currently, there is only a random persona assignment logic and no data simulation logic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hallux_svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxsvr&quot;</span><span class="p">)</span>
+<span class="n">hallux_usr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxusr&quot;</span><span class="p">)</span>
+<span class="n">hallux_psd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxpsd&quot;</span><span class="p">)</span>
+<span class="n">hallux_db</span>  <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxdb&quot;</span><span class="p">)</span>
+
+<span class="c1"># for use in creating a dataframe</span>
+<span class="n">conn_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;mssql+pyodbc://</span><span class="si">{</span><span class="n">hallux_usr</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">hallux_psd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">hallux_svr</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">hallux_db</span><span class="si">}</span><span class="s2">?driver=SQL+Server+Native+Client+11.0&amp;TrustServerCertificate=yes&quot;</span>
+<span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">conn_string</span><span class="p">,</span> <span class="n">fast_executemany</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># used for executing dynamic sql</span>
+<span class="n">conn</span>   <span class="o">=</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hallux_svr</span><span class="p">,</span> <span class="n">hallux_usr</span><span class="p">,</span> <span class="n">hallux_psd</span><span class="p">,</span> <span class="n">hallux_db</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># loop thru the entities and assign the appropriate persona</span>
+
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end_date</span>   <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>  
+
+<span class="k">for</span> <span class="n">curr_entity</span><span class="p">,</span> <span class="n">curr_value</span> <span class="ow">in</span> <span class="n">Entities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">curr_entity</span><span class="p">)</span>
+    
+    <span class="n">ret_per</span> <span class="o">=</span> <span class="n">assign_personas</span> <span class="p">(</span><span class="n">curr_entity</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">ret_sim</span> <span class="o">=</span> <span class="n">sim_data</span> <span class="p">(</span><span class="n">curr_entity</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Personas:   &#39;</span><span class="p">,</span><span class="n">ret_per</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Simulation: &#39;</span><span class="p">,</span> <span class="n">ret_sim</span> <span class="p">)</span>
+
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">eng</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Genre
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Member
+   Personas:    1415
+   Simulation:  Under Construction
+Band
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Agent
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Album
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Song
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Performance
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Producer
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Video
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Profile
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Customer
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Follower
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Playlist
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Order
+   Personas:    Under Construction
+   Simulation:  Under Construction
+Stream
+   Personas:    Under Construction
+   Simulation:  Under Construction
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/contrib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="IRSMarkDown.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Working with IRS data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="upload_file_to_table.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uploading and downloading file to SQL Server using flask api</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

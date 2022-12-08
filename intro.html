@@ -295,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 3
+  Part 3 - Using Python for Machine Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -403,30 +403,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Student Contributions
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="book/contrib/00-studentcontributions.html">
-   Student Contributions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="book/contrib/100-samplecontrib.html">
-     Sample Contribution
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Appendix
  </span>
 </p>
@@ -440,8 +416,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="book/extras/00-extras.html">
    Extras
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -462,6 +438,68 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="book/extras/400-Contributors.html">
    Contributors
   </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="book/contrib/01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="book/contrib/00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/contrib/hallux.html">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/contrib/IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/contrib/persona.html">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/contrib/upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/contrib/US_Median_Housing.html">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="book/contrib/working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -650,8 +688,18 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-pages-on-jupyterhub">
-     Running pages on JupyterHub
+    <a class="reference internal nav-link" href="#running-pages-on-jupyterhub-with-ua-credentials">
+     Running pages on JupyterHub (with UA Credentials)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-binder">
+     Running on Binder
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-your-own-copy">
+     Getting your own copy
     </a>
     <ul class="nav section-nav flex-column">
     </ul>
@@ -683,8 +731,18 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-pages-on-jupyterhub">
-     Running pages on JupyterHub
+    <a class="reference internal nav-link" href="#running-pages-on-jupyterhub-with-ua-credentials">
+     Running pages on JupyterHub (with UA Credentials)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-on-binder">
+     Running on Binder
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-your-own-copy">
+     Getting your own copy
     </a>
     <ul class="nav section-nav flex-column">
     </ul>
@@ -707,16 +765,20 @@ title="Print to PDF"
 <section id="how-to-use-this-book">
 <h2>How to use this book<a class="headerlink" href="#how-to-use-this-book" title="Permalink to this headline">#</a></h2>
 <p>Most of the content in this book is meant to be read and evaluated.  If you are reading this on the <a class="reference external" href="https://www.py4analytics.info/">py4analytics</a> website, the code samples and the results available immediately.  If you are interested in running these samples in a live environment, making changes to try new things or experimenting with the content (which we definitely encourage!) then you need to open the pages in either JupyterHub (preferred) or Binder.  The pages available to be opened in these platforms will be copied from the source directly into the environment.  From there you can edit, run, download, copy etc.</p>
-<section id="running-pages-on-jupyterhub">
-<h3>Running pages on JupyterHub<a class="headerlink" href="#running-pages-on-jupyterhub" title="Permalink to this headline">#</a></h3>
-<p>There are two options for running on JupyterHub depending on whether you have a University of Arkansas credential.</p>
+<section id="running-pages-on-jupyterhub-with-ua-credentials">
+<h3>Running pages on JupyterHub (with UA Credentials)<a class="headerlink" href="#running-pages-on-jupyterhub-with-ua-credentials" title="Permalink to this headline">#</a></h3>
 <p>If you have credentials for the University of Arkansas, then on pages with a rocket ship, you can simply select - Run on JupyterHub.  when you select this option, the pages will be copied onto a University managed server for your account. From there you can run cells, make changes, add new cells and adjust the code.</p>
 <figure class="align-default">
-<img alt="img/launch-jupyter.png" src="img/launch-jupyter.png" />
+<img alt="screenshot of rocket icon and JupyterHub launch button" src="_images/launch-jupyter.png" />
 </figure>
-<ol class="simple">
-<li></li>
-</ol>
+</section>
+<section id="running-on-binder">
+<h3>Running on Binder<a class="headerlink" href="#running-on-binder" title="Permalink to this headline">#</a></h3>
+<p>Another simple option for running this set of notebooks is to use the <a class="reference external" href="https://mybinder.org">binder service</a>.  binder turns a Git repository into a collection of interactive notebooks.  Similar to the <em>launch on JupyterHub</em> instructions, open any page where the rocket icon shows up and select <strong>binder</strong>.  This will create an environment on <a class="reference external" href="https://mybinder.org/">mybinder.org</a> with the latest version of the notebooks.</p>
+</section>
+<section id="getting-your-own-copy">
+<h3>Getting your own copy<a class="headerlink" href="#getting-your-own-copy" title="Permalink to this headline">#</a></h3>
+<p>If you have an different environment, would like to contribute, or just want to see how the sausage is made.  You can select the GitHub icon on any page which will take you to the GitHub repository.  From there you can fork the repo, download a copy or even open a <a class="reference external" href="https://github.com/features/codespaces">codespace</a>.  The great thing about using the codespace example is that the entire environment is already set-up (nothing to install) and you will be able to immediately be able to run the notebooks with very little setup time.</p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
@@ -755,7 +817,7 @@ title="Print to PDF"
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3 - Using Python for Machine Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="book/lessons/300-PartThree.html">Part 3 - Using Python for Machine Learning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="book/lessons/310-ExploratoryDataAnalysis.html">Exploratory Data Analysis</a></li>
@@ -784,15 +846,6 @@ title="Print to PDF"
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Student Contributions</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="book/contrib/00-studentcontributions.html">Student Contributions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="book/contrib/100-samplecontrib.html">Sample Contribution</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="book/exercises/Coding_Challenges.html">Coding Challenges</a></li>
@@ -801,6 +854,21 @@ title="Print to PDF"
 <li class="toctree-l1"><a class="reference internal" href="book/exercises/Coding_Challenges.html#challenge-5-fruit-calculator">Challenge 5 - Fruit Calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="book/extras/00-extras.html">Extras</a></li>
 <li class="toctree-l1"><a class="reference internal" href="book/extras/400-Contributors.html">Contributors</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Student Contributions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="book/contrib/01-contributing_a_notebook.html">Implementing/Creating Jupyter Notebook for final deliverable:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/contrib/00-studentcontributions.html">Student Contributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="book/contrib/hallux.html">My test data is <strong>Dated</strong>!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="book/contrib/IRSMarkDown.html">Working with IRS data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="book/contrib/persona.html">Using <strong>Personas</strong> to Simulate Hallux Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="book/contrib/upload_file_to_table.html">Uploading and downloading file to SQL Server using flask api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="book/contrib/US_Median_Housing.html">US Census Bureau Median Housing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="book/contrib/working_with_age_data.html">Manipulating census data with pandas</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>

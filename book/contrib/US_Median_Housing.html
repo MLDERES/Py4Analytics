@@ -1,0 +1,3101 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>US Census Bureau Median Housing Data &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="www.py4analytics.info/book/contrib/US_Median_Housing.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Manipulating census data with pandas" href="working_with_age_data.html" />
+    <link rel="prev" title="Uploading and downloading file to SQL Server using flask api" href="upload_file_to_table.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NZH9210CF9"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-NZH9210CF9');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Python For Analytics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 - Python Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
+   Part 1 - Basic Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
+     Learning to program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
+     Making Decisions &amp; Looping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/130-Functions.html">
+     Reusing Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
+     Try it: Getting Started with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
+     Try it: Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
+     Try it: Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Intermediate Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
+   Part 2 - Intermediate Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
+     Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/211-Methods.html">
+     Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/220-Web_Data_Formats.html">
+     Differing data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/230-Data_Manipulation.html">
+     Working with data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
+     Gather data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
+     Working with relational database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
+     Try it: Objects, Namespaces and Packages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
+     Try it: Working with common data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
+     Try it: Getting data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
+     Try-it: Connecting to a Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
+     Try it: Data Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 - Using Python for Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
+   Part 3 - Using Python for Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
+     Other tools for Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
+     Visualization Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
+     Data Preparation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/330-Classification.html">
+     Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
+     Automobile Accidents
+     <a id="auto-accidents">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
+     Prediction and Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
+     Advanced Techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
+     Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
+     Ensembling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
+     Predicting the price of used cars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
+     Unsupervised Data Mining
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
+     Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
+     Visualization Samples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+     Try It: Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extras/00-extras.html">
+   Extras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
+     Using an Object Relational Mapping Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
+     Connecting to MS SQL using ODBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/400-Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="hallux.html">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persona.html">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <div>
+  Revision: 1.0 <br/>
+  Last Update: Wed Nov 16 23:23:31 2022
+</div>
+
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/contrib/US_Median_Housing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/contrib/US_Median_Housing.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/contrib/US_Median_Housing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/contrib/US_Median_Housing.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/contrib/US_Median_Housing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zcta-vs-zip-code">
+   ZCTA Vs Zip Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obtaining-the-data">
+   Obtaining The Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   Importing The Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cleaning-the-data">
+   Cleaning the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-the-data-apart">
+     Break the data apart
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rejoin-the-data">
+     Rejoin the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-the-buckets-into-start-and-end-years">
+     Break The Buckets Into Start and End  Years
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-the-buckets-to-individual-years">
+     Break The Buckets To Individual Years
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-steps-zip-to-zcta">
+     Next Steps - Zip to ZCTA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ready-to-import-to-database">
+     Ready to Import to Database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-querying">
+     Get Querying
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>US Census Bureau Median Housing Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zcta-vs-zip-code">
+   ZCTA Vs Zip Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obtaining-the-data">
+   Obtaining The Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   Importing The Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cleaning-the-data">
+   Cleaning the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-the-data-apart">
+     Break the data apart
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rejoin-the-data">
+     Rejoin the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-the-buckets-into-start-and-end-years">
+     Break The Buckets Into Start and End  Years
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-the-buckets-to-individual-years">
+     Break The Buckets To Individual Years
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-steps-zip-to-zcta">
+     Next Steps - Zip to ZCTA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ready-to-import-to-database">
+     Ready to Import to Database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-querying">
+     Get Querying
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="us-census-bureau-median-housing-data">
+<h1>US Census Bureau Median Housing Data<a class="headerlink" href="#us-census-bureau-median-housing-data" title="Permalink to this headline">#</a></h1>
+<p>The US Census Bureau publicly provides an extensive amount of information that it obtains. Sifting through and finding the right data you’re looking for is difficult enough. Getting that data into a usable format that can then be uploaded to an RDBMS is something else entirely. This guide will walk us through how to retrieve the data, how to clean it and modify it within Python, and then how to export it to an Excel or CSV file that can be uploaded to an RDBMS. This is the same process used to create the MEDIAN_HOUSE_VALUE table on the USZIPCODE database for the University.</p>
+<section id="zcta-vs-zip-code">
+<h2>ZCTA Vs Zip Code<a class="headerlink" href="#zcta-vs-zip-code" title="Permalink to this headline">#</a></h2>
+<p>For this example we will be using The Census Bureau derived ZCTA and not actual Zip Codes. You can read up on ZCTA more in the link below. We will also create a table that will allow us to convert and group Zip Codes to ZCTA so we can compare data in either format.
+<br>
+<a class="reference external" href="https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html">Census Bureau ZCTAs</a>
+<br></p>
+<div class="admonition-tl-dr admonition">
+<p class="admonition-title">TL:DR</p>
+<p>ZCTA combine Zip Codes with very few addresses and assign the most frequent Zip within that grouping as the ZCTA.</p>
+</div>
+</section>
+<section id="obtaining-the-data">
+<h2>Obtaining The Data<a class="headerlink" href="#obtaining-the-data" title="Permalink to this headline">#</a></h2>
+<p>1.) Navigate to <a class="reference external" href="https://data.census.gov/cedsci/table">https://data.census.gov/cedsci/table</a>. Here you can search for all of the different information that the US Census Bureau publicy provides. For this example, search for “B25109” or “Median Value by Year Householder Moved Into Unit” to use the same dataset, or another table of interest that allows you to break out that data by ZCTA5 code in the next step.
+<br>
+<br>
+2.) Click the “Geos” button in the table header and navigate to “Zip Code Tabulation Area” (we will refer to this as ZCTA from here on.) If you want to work with a smaller subset of data first, select a single state and then All ZCTA for that state. Or select the top button for all ZCTA in the US. This will likely take some time since the table is roughly 100,000 rows. Hit the “Transpose” button to format the data so that ZCTA, Estimate, and Margin of Error are the rows and the year ranges are the columns.
+<br>
+<br></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As stated in the first step, not all tables will allow you to break out the data into ZCTA. While some of the steps can be used for data outside of ZCTA level data, this guide is explicitly for cleaning ZCTA data.</p>
+</div>
+<br>
+<br>
+3.) The first column is now giving us a median of the medians and should be removed since we can do this calculation easily later if we wanted to. I also removed the final two columns of data before 2000, but these can be kept if you are interested in historical data going that far back. To remove these columns, click "Columns" on the far right side of the website and de-select the top two buttons with no title next to them, and the final two buttons for data before 2000.
+<br>
+<br>
+4.) Press the CSV button on the top header to export your dataset to a CSV and file and wait for it to download. This will likely take some time since it is almost 100,000 rows.
+</section>
+<section id="importing-the-data">
+<h2>Importing The Data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
+<p>We’re finally ready to start preparing our data! It is a good idea to move the downloaded file to the same folder you want the Jupyter Notebook or Python program to be saved in. I also renamed the file to easily identify what it was and easily read it into Jupyter.
+<br>
+<br>
+Execute the following cell looking at both the head and the tail.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;contrib_data/US_Housing_by_zip.csv&quot;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#df.tail(10)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Label (Grouping)</th>
+      <th>Median value --!!Total:!!Moved in 2019 or later</th>
+      <th>Median value --!!Total:!!Moved in 2015 to 2018</th>
+      <th>Median value --!!Total:!!Moved in 2010 to 2014</th>
+      <th>Median value --!!Total:!!Moved in 2000 to 2009</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ZCTA5 00601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Estimate</td>
+      <td>-</td>
+      <td>82,300</td>
+      <td>81,700</td>
+      <td>95,100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Margin of Error</td>
+      <td>**</td>
+      <td>±10,863</td>
+      <td>±29,876</td>
+      <td>±20,917</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ZCTA5 00602</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Estimate</td>
+      <td>-</td>
+      <td>144,600</td>
+      <td>116,100</td>
+      <td>112,200</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Margin of Error</td>
+      <td>**</td>
+      <td>±45,088</td>
+      <td>±15,512</td>
+      <td>±20,066</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ZCTA5 00603</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Estimate</td>
+      <td>260,300</td>
+      <td>134,400</td>
+      <td>130,400</td>
+      <td>124,100</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Margin of Error</td>
+      <td>±31,083</td>
+      <td>±57,761</td>
+      <td>±13,058</td>
+      <td>±12,732</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ZCTA5 00606</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="cleaning-the-data">
+<h2>Cleaning the Data<a class="headerlink" href="#cleaning-the-data" title="Permalink to this headline">#</a></h2>
+<p>To put it simply, this data is ugly. The current format is essentially unqueryable. The data does follow a recognizable pattern though.
+<br></p>
+<ul class="simple">
+<li><p>Every 3 rows are ZCTA #, Estimate, Margin of Error with the Estimate and Margin of Error below it relatting to the ZCTA above</p></li>
+<li><p>The ZCTA row always starts with ‘ZCTA5’ and has no values.</p></li>
+<li><p>Margin of Error always starts with ± when it has a value.
+<br>
+<br>
+One other thing to note is the final 3 rows are an aggregate of all United States data. Since there is no single ZCTA associated with this row and we can easily run this aggregate with a query when we are finished, we will want to drop these last 3 rows.
+<br>
+<br>
+To get this data into a usable format we will:</p></li>
+</ul>
+<ol class="simple">
+<li><p>Rename the columns for easier management and querying</p>
+<ul class="simple">
+<li><p>This isn’t necessary, but like working with SQL aliases this makes some things much easier</p></li>
+</ul>
+</li>
+<li><p>Remove all ± and other special characters</p>
+<ul class="simple">
+<li><p>This will help with point 5 and is an easy cleaning step before processing</p></li>
+</ul>
+</li>
+<li><p>Drop the last 3 rows for reasons stated above</p></li>
+<li><p>Match each ‘Estimate’ and ‘Margin of Error’ with the appropriate ZCTA</p>
+<ul class="simple">
+<li><p>This will get the data for each ZCTA into a single row</p></li>
+</ul>
+</li>
+<li><p>Ensure each column is the proper data type</p>
+<ul class="simple">
+<li><p>Zip and ACTA can have leading zeros. We need to ensure they import with these zeros for joining</p></li>
+</ul>
+</li>
+<li><p>Break out the year buckets into individual years</p>
+<ul class="simple">
+<li><p>This will make querying more intuitive and allow for easier appending when new data for years becomes available</p></li>
+</ul>
+</li>
+<li><p>Drop any rows in the final dataframe that have no values
+<br>
+<br>
+These steps will produce a final dataframe that is easy to query, easy to manage, and match the schema of the other tables in the database. We will be taking the above, and transform it to the format below.</p></li>
+</ol>
+<table class="table" id="example-table">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ZCTA</p></th>
+<th class="head"><p>Estimate</p></th>
+<th class="head"><p>Margin_of_Error</p></th>
+<th class="head"><p>Year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>00601</p></td>
+<td><p>82300</p></td>
+<td><p>10863</p></td>
+<td><p>2015</p></td>
+</tr>
+<tr class="row-odd"><td><p>00601</p></td>
+<td><p>81700</p></td>
+<td><p>29876</p></td>
+<td><p>2014</p></td>
+</tr>
+</tbody>
+</table>
+<p>Lets get started. Execute the following cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rename the columns </span>
+<span class="c1"># Remove all of the ±</span>
+<span class="c1"># Drop the last 3 rows</span>
+<span class="n">df2</span> <span class="o">=</span><span class="n">df</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2019_Or_Later&#39;</span><span class="p">,</span> <span class="s1">&#39;2015_To_2018&#39;</span><span class="p">,</span> <span class="s1">&#39;2010_To_2014&#39;</span><span class="p">,</span> <span class="s1">&#39;2000_To_2009&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;^\±&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>2019_Or_Later</th>
+      <th>2015_To_2018</th>
+      <th>2010_To_2014</th>
+      <th>2000_To_2009</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ZCTA5 00601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Estimate</td>
+      <td>-</td>
+      <td>82,300</td>
+      <td>81,700</td>
+      <td>95,100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Margin of Error</td>
+      <td>**</td>
+      <td>10,863</td>
+      <td>29,876</td>
+      <td>20,917</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ZCTA5 00602</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Estimate</td>
+      <td>-</td>
+      <td>144,600</td>
+      <td>116,100</td>
+      <td>112,200</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>99355</th>
+      <td>Estimate</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>99356</th>
+      <td>Margin of Error</td>
+      <td>**</td>
+      <td>**</td>
+      <td>**</td>
+      <td>**</td>
+    </tr>
+    <tr>
+      <th>99357</th>
+      <td>ZCTA5 99929</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>99358</th>
+      <td>Estimate</td>
+      <td>-</td>
+      <td>196,900</td>
+      <td>178,800</td>
+      <td>231,900</td>
+    </tr>
+    <tr>
+      <th>99359</th>
+      <td>Margin of Error</td>
+      <td>**</td>
+      <td>52,061</td>
+      <td>30,051</td>
+      <td>93,901</td>
+    </tr>
+  </tbody>
+</table>
+<p>99360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<section id="break-the-data-apart">
+<h3>Break the data apart<a class="headerlink" href="#break-the-data-apart" title="Permalink to this headline">#</a></h3>
+<p>In the next steps we will create new dataframes for all ZCTA, Estimate, and Margin of Error rows. When we break these out into their separate tables they will retain their order. Even though each row will not directly have a ZCTA associated with it, we know that the first row will be ZCTA 00601, the second row ZCTA 00602 and so on based in the index because the rows retained their order. This will then allow us to merge these 3 dataframes back together based on their index giving us a single row for each ZCTA with the Estimate ‘EST’ and Margin of Error ‘MOE’ for each year bucket.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter for only rows that start with &#39;ZCTA&#39; and create a new dataframe. Retain the order and reindex the rows.</span>
+<span class="c1"># Drop all columns except the first column because they contain no data</span>
+<span class="c1"># Remove the &#39;ZCTA5 &#39; from each row so we are left with just the ZCTA numbers</span>
+<span class="n">ZCTA</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;ZCTA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ZCTA</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">ZCTA</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ZCTA</span> <span class="o">=</span> <span class="n">ZCTA</span><span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ZCTA</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        00601
+1        00602
+2        00603
+3        00606
+4        00610
+         ...  
+33115    99923
+33116    99925
+33117    99926
+33118    99927
+33119    99929
+Name: ZCTA5, Length: 33120, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter the original dataframe for only rows that start with &#39;Estimate&#39; and create a new dataframe. Retain the order and reindex the rows</span>
+<span class="c1"># Rename the columns identifying them as EST columns for each year bucket</span>
+<span class="c1"># Drop the first column because it would just say Estimate 33,000 times</span>
+<span class="n">EST</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Estimate&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">EST</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2019_Or_Later_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2015_To_2018_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2010_To_2014_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2000_To_2009_EST&#39;</span><span class="p">]</span>
+<span class="n">EST</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">EST</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">EST</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2019_Or_Later_EST</th>
+      <th>2015_To_2018_EST</th>
+      <th>2010_To_2014_EST</th>
+      <th>2000_To_2009_EST</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-</td>
+      <td>82,300</td>
+      <td>81,700</td>
+      <td>95,100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-</td>
+      <td>144,600</td>
+      <td>116,100</td>
+      <td>112,200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>260,300</td>
+      <td>134,400</td>
+      <td>130,400</td>
+      <td>124,100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-</td>
+      <td>58,200</td>
+      <td>97,000</td>
+      <td>92,900</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-</td>
+      <td>115,900</td>
+      <td>110,500</td>
+      <td>112,000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>-</td>
+      <td>263,900</td>
+      <td>339,200</td>
+      <td>181,300</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>-</td>
+      <td>170,300</td>
+      <td>243,800</td>
+      <td>154,400</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>-</td>
+      <td>196,900</td>
+      <td>178,800</td>
+      <td>231,900</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same process as above but for MOE</span>
+<span class="n">MOE</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">MOE</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2019_Or_Later_MOE&#39;</span><span class="p">,</span> <span class="s1">&#39;2015_To_2018_MOE&#39;</span><span class="p">,</span> <span class="s1">&#39;2010_To_2014_MOE&#39;</span><span class="p">,</span> <span class="s1">&#39;2000_To_2009_MOE&#39;</span><span class="p">]</span>
+<span class="n">MOE</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">MOE</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">MOE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2019_Or_Later_MOE</th>
+      <th>2015_To_2018_MOE</th>
+      <th>2010_To_2014_MOE</th>
+      <th>2000_To_2009_MOE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>**</td>
+      <td>10,863</td>
+      <td>29,876</td>
+      <td>20,917</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>**</td>
+      <td>45,088</td>
+      <td>15,512</td>
+      <td>20,066</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>31,083</td>
+      <td>57,761</td>
+      <td>13,058</td>
+      <td>12,732</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>**</td>
+      <td>25,881</td>
+      <td>37,195</td>
+      <td>14,438</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>**</td>
+      <td>26,647</td>
+      <td>15,103</td>
+      <td>14,945</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>**</td>
+      <td>**</td>
+      <td>**</td>
+      <td>**</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>**</td>
+      <td>31,175</td>
+      <td>33,706</td>
+      <td>19,820</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>**</td>
+      <td>20,982</td>
+      <td>162,405</td>
+      <td>31,403</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>**</td>
+      <td>**</td>
+      <td>**</td>
+      <td>**</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>**</td>
+      <td>52,061</td>
+      <td>30,051</td>
+      <td>93,901</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="rejoin-the-data">
+<h3>Rejoin the data<a class="headerlink" href="#rejoin-the-data" title="Permalink to this headline">#</a></h3>
+<p>Here we will first rejoin the EST and MOE tables to clean them before joining back to the ZCTAs. Since we want to keep ZCTA in ‘object’ or text format, not having it with the other data will allow us to clean and put the rest of the data that we do want in a numeric format easily.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join the EST and MOE tables back together on the index</span>
+<span class="c1"># Remove commas because it seems to confuse pandas and doesn&#39;t allow conversion to numeric</span>
+<span class="c1"># Remove other special characters and replace with nan</span>
+<span class="c1"># Convert all data in the dataframe to numeric</span>
+<span class="n">Merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">EST</span><span class="p">,</span> <span class="n">MOE</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Merge</span> <span class="o">=</span> <span class="n">Merge</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Merge</span> <span class="o">=</span> <span class="n">Merge</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;-&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;***&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">})</span>
+<span class="n">Merge</span> <span class="o">=</span> <span class="n">Merge</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="n">Merge</span>
+<span class="c1">#Merge.dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2019_Or_Later_EST</th>
+      <th>2015_To_2018_EST</th>
+      <th>2010_To_2014_EST</th>
+      <th>2000_To_2009_EST</th>
+      <th>2019_Or_Later_MOE</th>
+      <th>2015_To_2018_MOE</th>
+      <th>2010_To_2014_MOE</th>
+      <th>2000_To_2009_MOE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>82300.0</td>
+      <td>81700.0</td>
+      <td>95100.0</td>
+      <td>NaN</td>
+      <td>10863.0</td>
+      <td>29876.0</td>
+      <td>20917.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>144600.0</td>
+      <td>116100.0</td>
+      <td>112200.0</td>
+      <td>NaN</td>
+      <td>45088.0</td>
+      <td>15512.0</td>
+      <td>20066.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>260300.0</td>
+      <td>134400.0</td>
+      <td>130400.0</td>
+      <td>124100.0</td>
+      <td>31083.0</td>
+      <td>57761.0</td>
+      <td>13058.0</td>
+      <td>12732.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>58200.0</td>
+      <td>97000.0</td>
+      <td>92900.0</td>
+      <td>NaN</td>
+      <td>25881.0</td>
+      <td>37195.0</td>
+      <td>14438.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>115900.0</td>
+      <td>110500.0</td>
+      <td>112000.0</td>
+      <td>NaN</td>
+      <td>26647.0</td>
+      <td>15103.0</td>
+      <td>14945.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>NaN</td>
+      <td>263900.0</td>
+      <td>339200.0</td>
+      <td>181300.0</td>
+      <td>NaN</td>
+      <td>31175.0</td>
+      <td>33706.0</td>
+      <td>19820.0</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>NaN</td>
+      <td>170300.0</td>
+      <td>243800.0</td>
+      <td>154400.0</td>
+      <td>NaN</td>
+      <td>20982.0</td>
+      <td>162405.0</td>
+      <td>31403.0</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>NaN</td>
+      <td>196900.0</td>
+      <td>178800.0</td>
+      <td>231900.0</td>
+      <td>NaN</td>
+      <td>52061.0</td>
+      <td>30051.0</td>
+      <td>93901.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that dtypes are float and we want int in the database. This is fine since the target table in the database will be int and that is how the data will import</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join the data with its resepctive ZCTA</span>
+<span class="n">Merge2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ZCTA</span><span class="p">,</span> <span class="n">Merge</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Merge2</span>
+<span class="c1">#Merge2.dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>2019_Or_Later_EST</th>
+      <th>2015_To_2018_EST</th>
+      <th>2010_To_2014_EST</th>
+      <th>2000_To_2009_EST</th>
+      <th>2019_Or_Later_MOE</th>
+      <th>2015_To_2018_MOE</th>
+      <th>2010_To_2014_MOE</th>
+      <th>2000_To_2009_MOE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>NaN</td>
+      <td>82300.0</td>
+      <td>81700.0</td>
+      <td>95100.0</td>
+      <td>NaN</td>
+      <td>10863.0</td>
+      <td>29876.0</td>
+      <td>20917.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>NaN</td>
+      <td>144600.0</td>
+      <td>116100.0</td>
+      <td>112200.0</td>
+      <td>NaN</td>
+      <td>45088.0</td>
+      <td>15512.0</td>
+      <td>20066.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>260300.0</td>
+      <td>134400.0</td>
+      <td>130400.0</td>
+      <td>124100.0</td>
+      <td>31083.0</td>
+      <td>57761.0</td>
+      <td>13058.0</td>
+      <td>12732.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>NaN</td>
+      <td>58200.0</td>
+      <td>97000.0</td>
+      <td>92900.0</td>
+      <td>NaN</td>
+      <td>25881.0</td>
+      <td>37195.0</td>
+      <td>14438.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>NaN</td>
+      <td>115900.0</td>
+      <td>110500.0</td>
+      <td>112000.0</td>
+      <td>NaN</td>
+      <td>26647.0</td>
+      <td>15103.0</td>
+      <td>14945.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>99923</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>99925</td>
+      <td>NaN</td>
+      <td>263900.0</td>
+      <td>339200.0</td>
+      <td>181300.0</td>
+      <td>NaN</td>
+      <td>31175.0</td>
+      <td>33706.0</td>
+      <td>19820.0</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>99926</td>
+      <td>NaN</td>
+      <td>170300.0</td>
+      <td>243800.0</td>
+      <td>154400.0</td>
+      <td>NaN</td>
+      <td>20982.0</td>
+      <td>162405.0</td>
+      <td>31403.0</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>NaN</td>
+      <td>196900.0</td>
+      <td>178800.0</td>
+      <td>231900.0</td>
+      <td>NaN</td>
+      <td>52061.0</td>
+      <td>30051.0</td>
+      <td>93901.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that ZCTA5 is dtype object and retained the leading zeros like we wanted</p>
+</div>
+</section>
+<section id="break-the-buckets-into-start-and-end-years">
+<h3>Break The Buckets Into Start and End  Years<a class="headerlink" href="#break-the-buckets-into-start-and-end-years" title="Permalink to this headline">#</a></h3>
+<p>Since querying for an individual year is more intuitive than querying a column bucket year range, we will now break out each each bucket to its respective years. First, we will create tables with new columns for beginning and ending years of the buckets for year range. Then we will do the equivalent of a SQL UNION to bring them all back together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new table for only ZCTA5 and the 2019_Or_Later buckets</span>
+<span class="c1"># Create a new column for the first year in the bucket</span>
+<span class="c1"># Create a new column for the last year in the bucket (in this case we do not have data after 2019 so end in 2020)</span>
+<span class="c1"># Rename the columns</span>
+<span class="n">Trans1</span> <span class="o">=</span> <span class="n">Merge2</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2019_Or_Later_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2019_Or_Later_MOE&#39;</span> <span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Trans1</span><span class="p">[</span><span class="s1">&#39;Start_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2019</span>
+<span class="n">Trans1</span><span class="p">[</span><span class="s1">&#39;End_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="n">Trans1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;ESTIMATE&#39;</span><span class="p">,</span> <span class="s1">&#39;MARGIN_OF_ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;Start_Year&#39;</span><span class="p">,</span> <span class="s1">&#39;End_Year&#39;</span><span class="p">]</span>
+
+<span class="n">Trans1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Start_Year</th>
+      <th>End_Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>260300.0</td>
+      <td>31083.0</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>99923</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>99925</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>99926</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same as above except 2015 start and 2018 end</span>
+<span class="c1"># Rename the columns same as above to allow matching for union later</span>
+<span class="n">Trans2</span> <span class="o">=</span> <span class="n">Merge2</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2015_To_2018_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2015_To_2018_MOE&#39;</span><span class="p">])</span>
+<span class="n">Trans2</span><span class="p">[</span><span class="s1">&#39;Start_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2015</span>
+<span class="n">Trans2</span><span class="p">[</span><span class="s1">&#39;End_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2018</span>
+<span class="n">Trans2</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;ESTIMATE&#39;</span><span class="p">,</span> <span class="s1">&#39;MARGIN_OF_ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;Start_Year&#39;</span><span class="p">,</span> <span class="s1">&#39;End_Year&#39;</span><span class="p">]</span>
+
+<span class="n">Trans2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Start_Year</th>
+      <th>End_Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>82300.0</td>
+      <td>10863.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>144600.0</td>
+      <td>45088.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>134400.0</td>
+      <td>57761.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>58200.0</td>
+      <td>25881.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>115900.0</td>
+      <td>26647.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>99923</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>99925</td>
+      <td>263900.0</td>
+      <td>31175.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>99926</td>
+      <td>170300.0</td>
+      <td>20982.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same as above except for 2010 start and 2014 end</span>
+<span class="n">Trans3</span> <span class="o">=</span> <span class="n">Merge2</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2010_To_2014_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2010_To_2014_MOE&#39;</span><span class="p">])</span>
+<span class="n">Trans3</span><span class="p">[</span><span class="s1">&#39;Start_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2010</span>
+<span class="n">Trans3</span><span class="p">[</span><span class="s1">&#39;End_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2014</span>
+<span class="n">Trans3</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;ESTIMATE&#39;</span><span class="p">,</span> <span class="s1">&#39;MARGIN_OF_ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;Start_Year&#39;</span><span class="p">,</span> <span class="s1">&#39;End_Year&#39;</span><span class="p">]</span>
+
+<span class="n">Trans3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Start_Year</th>
+      <th>End_Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>81700.0</td>
+      <td>29876.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>116100.0</td>
+      <td>15512.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>130400.0</td>
+      <td>13058.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>97000.0</td>
+      <td>37195.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>110500.0</td>
+      <td>15103.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>99923</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>99925</td>
+      <td>339200.0</td>
+      <td>33706.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>99926</td>
+      <td>243800.0</td>
+      <td>162405.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>178800.0</td>
+      <td>30051.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same as above except for 2000 start and 2009 end</span>
+<span class="n">Trans4</span> <span class="o">=</span> <span class="n">Merge2</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;2000_To_2009_EST&#39;</span><span class="p">,</span> <span class="s1">&#39;2000_To_2009_MOE&#39;</span><span class="p">])</span>
+<span class="n">Trans4</span><span class="p">[</span><span class="s1">&#39;Start_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">Trans4</span><span class="p">[</span><span class="s1">&#39;End_Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2009</span>
+<span class="n">Trans4</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;ESTIMATE&#39;</span><span class="p">,</span> <span class="s1">&#39;MARGIN_OF_ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;Start_Year&#39;</span><span class="p">,</span> <span class="s1">&#39;End_Year&#39;</span><span class="p">]</span>
+
+<span class="n">Trans4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Start_Year</th>
+      <th>End_Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>112200.0</td>
+      <td>20066.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>124100.0</td>
+      <td>12732.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>92900.0</td>
+      <td>14438.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>112000.0</td>
+      <td>14945.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33115</th>
+      <td>99923</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>33116</th>
+      <td>99925</td>
+      <td>181300.0</td>
+      <td>19820.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>33117</th>
+      <td>99926</td>
+      <td>154400.0</td>
+      <td>31403.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>231900.0</td>
+      <td>93901.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+  </tbody>
+</table>
+<p>33120 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the 4 new dataframes as list &#39;frames&#39; </span>
+<span class="c1"># Bring all data back together by concatonating our frames list together. Sort the data by ZCTA and Year</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">Trans1</span><span class="p">,</span> <span class="n">Trans2</span><span class="p">,</span> <span class="n">Trans3</span><span class="p">,</span> <span class="n">Trans4</span><span class="p">]</span>
+<span class="n">frames2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span> <span class="s1">&#39;Start_Year&#39;</span><span class="p">])</span>
+
+<span class="n">frames2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Start_Year</th>
+      <th>End_Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>81700.0</td>
+      <td>29876.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>82300.0</td>
+      <td>10863.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>112200.0</td>
+      <td>20066.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>231900.0</td>
+      <td>93901.0</td>
+      <td>2000</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>178800.0</td>
+      <td>30051.0</td>
+      <td>2010</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2015</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+<p>132480 rows × 5 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="break-the-buckets-to-individual-years">
+<h3>Break The Buckets To Individual Years<a class="headerlink" href="#break-the-buckets-to-individual-years" title="Permalink to this headline">#</a></h3>
+<p>Now we could do a SQL query for Year Between Star_Year and End_Year, but we want to be able to query for a single row and single year to be consistent with some of the other tables in the database. To do this, we will use the lambda function to create a column with a list of all the years in each bucket. Then we use explode to create a row for each Year in that new Year list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create list of all years in the bucket</span>
+<span class="n">frames2</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames2</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Start_Year&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;End_Year&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">frames2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Start_Year</th>
+      <th>End_Year</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2000</td>
+      <td>2009</td>
+      <td>[2000, 2001, 2002, 2003, 2004, 2005, 2006, 200...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>81700.0</td>
+      <td>29876.0</td>
+      <td>2010</td>
+      <td>2014</td>
+      <td>[2010, 2011, 2012, 2013, 2014]</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>82300.0</td>
+      <td>10863.0</td>
+      <td>2015</td>
+      <td>2018</td>
+      <td>[2015, 2016, 2017, 2018]</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+      <td>[2019, 2020]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>112200.0</td>
+      <td>20066.0</td>
+      <td>2000</td>
+      <td>2009</td>
+      <td>[2000, 2001, 2002, 2003, 2004, 2005, 2006, 200...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33118</th>
+      <td>99927</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+      <td>[2019, 2020]</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>231900.0</td>
+      <td>93901.0</td>
+      <td>2000</td>
+      <td>2009</td>
+      <td>[2000, 2001, 2002, 2003, 2004, 2005, 2006, 200...</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>178800.0</td>
+      <td>30051.0</td>
+      <td>2010</td>
+      <td>2014</td>
+      <td>[2010, 2011, 2012, 2013, 2014]</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2015</td>
+      <td>2018</td>
+      <td>[2015, 2016, 2017, 2018]</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2019</td>
+      <td>2020</td>
+      <td>[2019, 2020]</td>
+    </tr>
+  </tbody>
+</table>
+<p>132480 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explode the Year list to new columns and drop the now unnecessary start and end year columns</span>
+<span class="c1"># Drop any rows where there is no estimate. If there is no data, there is no reason for it to be in the databse.</span>
+<span class="n">final</span> <span class="o">=</span> <span class="n">frames2</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Start_Year&#39;</span><span class="p">,</span><span class="s1">&#39;End_Year&#39;</span><span class="p">])</span>
+<span class="n">final</span> <span class="o">=</span> <span class="n">final</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ESTIMATE&#39;</span><span class="p">])</span>
+
+<span class="n">final</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>ESTIMATE</th>
+      <th>MARGIN_OF_ERROR</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2001</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2003</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>95100.0</td>
+      <td>20917.0</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>178800.0</td>
+      <td>30051.0</td>
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2017</td>
+    </tr>
+    <tr>
+      <th>33119</th>
+      <td>99929</td>
+      <td>196900.0</td>
+      <td>52061.0</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+<p>501841 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="next-steps-zip-to-zcta">
+<h3>Next Steps - Zip to ZCTA<a class="headerlink" href="#next-steps-zip-to-zcta" title="Permalink to this headline">#</a></h3>
+<p>Now that we have our data in a format that matches some of the other tables in the database, we need to be able to match this ZCTA level table to Zip Code level tables. To do this, we will use the Zip to ZCTA Crosswalk provided from the link below. This will allow us to write a Group By statement in a SQL query that will convert Zip level data to ZCTA level data that can then be joined to our ZCTA level data. This table also has the added benefit of including the City and State name for each Zip.</p>
+<p><a class="reference external" href="https://udsmapper.org/zip-code-to-zcta-crosswalk/">https://udsmapper.org/zip-code-to-zcta-crosswalk/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Specify each column as str on import or it will drop the leading zeros that we need.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;contrib_data/ZIPCodetoZCTACrosswalk2021UDS.xlsx&quot;</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ZIP_CODE&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;PO_NAME&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;STATE&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;ZIP_TYPE&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;ZCTA&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;zip_join_type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZIP_CODE</th>
+      <th>PO_NAME</th>
+      <th>STATE</th>
+      <th>ZIP_TYPE</th>
+      <th>ZCTA</th>
+      <th>zip_join_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00501</td>
+      <td>Holtsville</td>
+      <td>NY</td>
+      <td>Post Office or large volume customer</td>
+      <td>11742</td>
+      <td>Spatial join to ZCTA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00544</td>
+      <td>Holtsville</td>
+      <td>NY</td>
+      <td>Post Office or large volume customer</td>
+      <td>11742</td>
+      <td>Spatial join to ZCTA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00601</td>
+      <td>Adjuntas</td>
+      <td>PR</td>
+      <td>Zip Code Area</td>
+      <td>00601</td>
+      <td>Zip matches ZCTA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00602</td>
+      <td>Aguada</td>
+      <td>PR</td>
+      <td>Zip Code Area</td>
+      <td>00602</td>
+      <td>Zip matches ZCTA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00603</td>
+      <td>Aguadilla</td>
+      <td>PR</td>
+      <td>Zip Code Area</td>
+      <td>00603</td>
+      <td>Zip matches ZCTA</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>41086</th>
+      <td>99926</td>
+      <td>Metlakatla</td>
+      <td>AK</td>
+      <td>Zip Code Area</td>
+      <td>99926</td>
+      <td>Zip matches ZCTA</td>
+    </tr>
+    <tr>
+      <th>41087</th>
+      <td>99927</td>
+      <td>Point Baker</td>
+      <td>AK</td>
+      <td>Zip Code Area</td>
+      <td>99927</td>
+      <td>Zip matches ZCTA</td>
+    </tr>
+    <tr>
+      <th>41088</th>
+      <td>99928</td>
+      <td>Ward Cove</td>
+      <td>AK</td>
+      <td>Post Office or large volume customer</td>
+      <td>99901</td>
+      <td>Spatial join to ZCTA</td>
+    </tr>
+    <tr>
+      <th>41089</th>
+      <td>99929</td>
+      <td>Wrangell</td>
+      <td>AK</td>
+      <td>Zip Code Area</td>
+      <td>99929</td>
+      <td>Zip matches ZCTA</td>
+    </tr>
+    <tr>
+      <th>41090</th>
+      <td>99950</td>
+      <td>Ketchikan</td>
+      <td>AK</td>
+      <td>Zip Code Area</td>
+      <td>99921</td>
+      <td>Spatial join to ZCTA</td>
+    </tr>
+  </tbody>
+</table>
+<p>41091 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="ready-to-import-to-database">
+<h3>Ready to Import to Database<a class="headerlink" href="#ready-to-import-to-database" title="Permalink to this headline">#</a></h3>
+<p>Both of the tables are now ready to import into the database. Refer to the P4Analytics page on different methods to connect and import data.</p>
+</section>
+<section id="get-querying">
+<h3>Get Querying<a class="headerlink" href="#get-querying" title="Permalink to this headline">#</a></h3>
+<p>The following query is an example of how we might use some of the data we have. Lets say we wanted to look at the average income and the median home sale price in all Little Rock AR Zips for 2018. Our income data is at the Zip Code level and the Median housing data as at the Zip code level. Because of the 2 different levels of data, we will first need to group the Zip code level income data into ZCTAs. We can then use this Income ZCTA table as a subquery and join it to ZCTA median housing data. Because we know that the ZCTA is associated with the most frequent Zip, we can also join it back to the Zip to ZCTA conversion table to get the City and State of that Zip/ZCTA and filter the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pypyodbc</span> <span class="k">as</span> <span class="nn">pyodbc</span>
+<span class="c1">#Change the values below to your personal and server credentials</span>
+
+<span class="n">svr</span> <span class="o">=</span> <span class="s1">&#39;the_server&#39;</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;your_user_id&#39;</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="s1">&#39;your_password&#39;</span>
+<span class="n">db</span> <span class="o">=</span> <span class="s1">&#39;the_database&#39;</span>
+
+<span class="n">cnxn</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;DRIVER={ODBC Driver 18 for SQL Server};SERVER=&#39;</span><span class="o">+</span><span class="n">svr</span><span class="o">+</span><span class="s1">&#39;;DATABASE=&#39;</span><span class="o">+</span><span class="n">db</span><span class="o">+</span><span class="s1">&#39;;UID=&#39;</span><span class="o">+</span><span class="n">uid</span><span class="o">+</span><span class="s1">&#39;;PWD=&#39;</span><span class="o">+</span> <span class="n">pwd</span><span class="o">+</span><span class="s1">&#39;;TrustServerCertificate=yes;&#39;</span><span class="p">)</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;select d.PO_NAME as City </span><span class="se">\</span>
+<span class="s2">, d.STATE </span><span class="se">\</span>
+<span class="s2">, INCOME.* </span><span class="se">\</span>
+<span class="s2">, c.ESTIMATE as MEDIAN_HOUSING_ESTIMATE </span><span class="se">\</span>
+<span class="s2">, c.ESTIMATE - c.MARGIN_OF_ERROR as MEDIAN_HOUSE_LB </span><span class="se">\</span>
+<span class="s2">, c.ESTIMATE + c.MARGIN_OF_ERROR as MEDIAN_HOUSE_UB </span><span class="se">\</span>
+<span class="s2">from(select b.ZCTA </span><span class="se">\</span>
+<span class="s2">, sum(a.Number_Of_Returns) as NBR_RTRNS </span><span class="se">\</span>
+<span class="s2">, floor(avg(a.Total_Income_Amount)) as AVG_INCOME </span><span class="se">\</span>
+<span class="s2">, a.Date_Year </span><span class="se">\</span>
+<span class="s2">from IRS_ZIPCODE_SOURCE a </span><span class="se">\</span>
+<span class="s2">join ZIP_TO_ZCTA b </span><span class="se">\</span>
+<span class="s2">on a.Zipcode = b.ZIP_CODE </span><span class="se">\</span>
+<span class="s2">group by b.ZCTA, a.Date_Year) as INCOME </span><span class="se">\</span>
+<span class="s2">join MEDIAN_HOUSE_VALUE c </span><span class="se">\</span>
+<span class="s2">on INCOME.ZCTA = c.ZCTA5 </span><span class="se">\</span>
+<span class="s2">and INCOME.Date_Year = c.Year </span><span class="se">\</span>
+<span class="s2">join ZIP_TO_ZCTA d </span><span class="se">\</span>
+<span class="s2">on c.ZCTA5 = d.ZIP_CODE </span><span class="se">\</span>
+<span class="s2">where d.STATE = &#39;AR&#39; </span><span class="se">\</span>
+<span class="s2">and d.PO_NAME = &#39;Little Rock&#39; </span><span class="se">\</span>
+<span class="s2">and INCOME.Date_Year = 2018&quot;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">cnxn</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/contrib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="upload_file_to_table.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Uploading and downloading file to SQL Server using flask api</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="working_with_age_data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Manipulating census data with pandas</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

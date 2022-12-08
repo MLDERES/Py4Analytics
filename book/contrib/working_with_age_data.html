@@ -1,0 +1,3145 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Manipulating census data with pandas &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="www.py4analytics.info/book/contrib/working_with_age_data.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="US Census Bureau Median Housing Data" href="US_Median_Housing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NZH9210CF9"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-NZH9210CF9');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Python For Analytics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 - Python Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
+   Part 1 - Basic Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
+     Learning to program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
+     Making Decisions &amp; Looping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/130-Functions.html">
+     Reusing Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
+     Try it: Getting Started with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
+     Try it: Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
+     Try it: Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Intermediate Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
+   Part 2 - Intermediate Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
+     Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/211-Methods.html">
+     Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/220-Web_Data_Formats.html">
+     Differing data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/230-Data_Manipulation.html">
+     Working with data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
+     Gather data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
+     Working with relational database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
+     Try it: Objects, Namespaces and Packages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
+     Try it: Working with common data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
+     Try it: Getting data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
+     Try-it: Connecting to a Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
+     Try it: Data Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 - Using Python for Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
+   Part 3 - Using Python for Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
+     Other tools for Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
+     Visualization Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
+     Data Preparation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/330-Classification.html">
+     Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
+     Automobile Accidents
+     <a id="auto-accidents">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
+     Prediction and Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
+     Advanced Techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
+     Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
+     Ensembling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
+     Predicting the price of used cars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
+     Unsupervised Data Mining
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
+     Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
+     Visualization Samples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+     Try It: Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extras/00-extras.html">
+   Extras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
+     Using an Object Relational Mapping Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
+     Connecting to MS SQL using ODBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/400-Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="hallux.html">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persona.html">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="US_Median_Housing.html">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <div>
+  Revision: 1.0 <br/>
+  Last Update: Wed Nov 16 23:23:31 2022
+</div>
+
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/contrib/working_with_age_data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/contrib/working_with_age_data.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/contrib/working_with_age_data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/contrib/working_with_age_data.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/contrib/working_with_age_data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zcta5-age-data">
+   ZCTA5 - Age Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-the-result-to-the-sql-server-database">
+     Load the result to the sql server database
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-cases">
+   Use cases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-1">
+     Use case 1:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-2">
+     Use case 2:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-3">
+     Use case 3:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-4">
+     Use case 4:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Manipulating census data with pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zcta5-age-data">
+   ZCTA5 - Age Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-the-result-to-the-sql-server-database">
+     Load the result to the sql server database
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-cases">
+   Use cases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-1">
+     Use case 1:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-2">
+     Use case 2:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-3">
+     Use case 3:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-case-4">
+     Use case 4:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="manipulating-census-data-with-pandas">
+<h1>Manipulating census data with pandas<a class="headerlink" href="#manipulating-census-data-with-pandas" title="Permalink to this headline">#</a></h1>
+<section id="zcta5-age-data">
+<h2>ZCTA5 - Age Data<a class="headerlink" href="#zcta5-age-data" title="Permalink to this headline">#</a></h2>
+<p>For my project, I choose the Zip Code dataset. I found the dataset from the Census Bureau <a class="reference external" href="https://data.census.gov/">age dataset</a></p>
+<p>For the raw data extraction select the above census bureau link and apply the filter ‘All 5-digit zip code’. Next, select the code ‘S0101AGE AND SEX’ from the vast number of available datasets. The data is available from 2010-2020. In this project we have considered the last 4 years 2017-2020. Download the data by selecting the years. Once download is complete unzip the file and there are three files under the zip. First, the metadata file which has all the information about the columns. Second, table notes which describes about the table and finally the actual data which is a csv file. Inside the csv file there are 33,146 records and 434 columns. For this proect we are selecting the subset of columns which cosniders the total population across the age groups.</p>
+<p>Below are the steps I have followed to transform and load the dataset to the sql database:</p>
+<p>Import the necessary libraries required:</p>
+<ol class="simple">
+<li><p>Pandas - It presents a diverse range of utilities, ranging from parsing multiple file formats to converting an entire data table into a NumPy matrix array</p></li>
+<li><p>Numpy - NumPy aims to provide an array object that is up to 50x faster than traditional Python lists.</p></li>
+<li><p>Sys - The sys module provides various functions and variables that are used to manipulate different parts of the Python runtime environment.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load the csv file as dataframe using read_csv</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;contrib_data/Age_Data_Zip.csv&#39;</span><span class="p">)</span> <span class="c1">#read the file</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1">#print first 10 records</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Geography</th>
+      <th>Geographic Area Name</th>
+      <th>Estimate!!Total!!Total population</th>
+      <th>Annotation of Estimate!!Total!!Total population</th>
+      <th>Margin of Error!!Total MOE!!Total population</th>
+      <th>Annotation of Margin of Error!!Total MOE!!Total population</th>
+      <th>Estimate!!Total!!Total population!!AGE!!Under 5 years</th>
+      <th>Annotation of Estimate!!Total!!Total population!!AGE!!Under 5 years</th>
+      <th>Margin of Error!!Total MOE!!Total population!!AGE!!Under 5 years</th>
+      <th>Annotation of Margin of Error!!Total MOE!!Total population!!AGE!!Under 5 years</th>
+      <th>...</th>
+      <th>Margin of Error!!Total MOE!!Total population!!AGE!!75 to 79 years</th>
+      <th>Annotation of Margin of Error!!Total MOE!!Total population!!AGE!!75 to 79 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!80 to 84 years</th>
+      <th>Annotation of Estimate!!Total!!Total population!!AGE!!80 to 84 years</th>
+      <th>Margin of Error!!Total MOE!!Total population!!AGE!!80 to 84 years</th>
+      <th>Annotation of Margin of Error!!Total MOE!!Total population!!AGE!!80 to 84 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!85 years and over</th>
+      <th>Margin of Error!!Total MOE!!Total population!!AGE!!85 years and over</th>
+      <th>Annotation of Margin of Error!!Total MOE!!Total population!!AGE!!85 years and over</th>
+      <th>Annotation of Estimate!!Total!!Total population!!AGE!!85 years and over</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8600000US00601</td>
+      <td>ZCTA5 00601</td>
+      <td>17599</td>
+      <td>NaN</td>
+      <td>261</td>
+      <td>NaN</td>
+      <td>938</td>
+      <td>NaN</td>
+      <td>40</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>96</td>
+      <td>NaN</td>
+      <td>349</td>
+      <td>NaN</td>
+      <td>83</td>
+      <td>NaN</td>
+      <td>328</td>
+      <td>95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8600000US00602</td>
+      <td>ZCTA5 00602</td>
+      <td>39209</td>
+      <td>NaN</td>
+      <td>128</td>
+      <td>NaN</td>
+      <td>1794</td>
+      <td>NaN</td>
+      <td>75</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>159</td>
+      <td>NaN</td>
+      <td>789</td>
+      <td>NaN</td>
+      <td>142</td>
+      <td>NaN</td>
+      <td>648</td>
+      <td>164</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8600000US00603</td>
+      <td>ZCTA5 00603</td>
+      <td>50135</td>
+      <td>NaN</td>
+      <td>805</td>
+      <td>NaN</td>
+      <td>2469</td>
+      <td>NaN</td>
+      <td>92</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>245</td>
+      <td>NaN</td>
+      <td>1315</td>
+      <td>NaN</td>
+      <td>229</td>
+      <td>NaN</td>
+      <td>727</td>
+      <td>158</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8600000US00606</td>
+      <td>ZCTA5 00606</td>
+      <td>6304</td>
+      <td>NaN</td>
+      <td>255</td>
+      <td>NaN</td>
+      <td>312</td>
+      <td>NaN</td>
+      <td>45</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>64</td>
+      <td>NaN</td>
+      <td>74</td>
+      <td>NaN</td>
+      <td>48</td>
+      <td>NaN</td>
+      <td>174</td>
+      <td>87</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8600000US00610</td>
+      <td>ZCTA5 00610</td>
+      <td>27590</td>
+      <td>NaN</td>
+      <td>163</td>
+      <td>NaN</td>
+      <td>1256</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>146</td>
+      <td>NaN</td>
+      <td>576</td>
+      <td>NaN</td>
+      <td>112</td>
+      <td>NaN</td>
+      <td>365</td>
+      <td>115</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>8600000US00612</td>
+      <td>ZCTA5 00612</td>
+      <td>62566</td>
+      <td>NaN</td>
+      <td>1480</td>
+      <td>NaN</td>
+      <td>3260</td>
+      <td>NaN</td>
+      <td>241</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>319</td>
+      <td>NaN</td>
+      <td>1433</td>
+      <td>NaN</td>
+      <td>238</td>
+      <td>NaN</td>
+      <td>1578</td>
+      <td>271</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8600000US00616</td>
+      <td>ZCTA5 00616</td>
+      <td>10687</td>
+      <td>NaN</td>
+      <td>1192</td>
+      <td>NaN</td>
+      <td>469</td>
+      <td>NaN</td>
+      <td>216</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>106</td>
+      <td>NaN</td>
+      <td>326</td>
+      <td>NaN</td>
+      <td>160</td>
+      <td>NaN</td>
+      <td>320</td>
+      <td>138</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8600000US00617</td>
+      <td>ZCTA5 00617</td>
+      <td>24508</td>
+      <td>NaN</td>
+      <td>296</td>
+      <td>NaN</td>
+      <td>1340</td>
+      <td>NaN</td>
+      <td>25</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>188</td>
+      <td>NaN</td>
+      <td>450</td>
+      <td>NaN</td>
+      <td>159</td>
+      <td>NaN</td>
+      <td>503</td>
+      <td>177</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8600000US00622</td>
+      <td>ZCTA5 00622</td>
+      <td>7405</td>
+      <td>NaN</td>
+      <td>1118</td>
+      <td>NaN</td>
+      <td>224</td>
+      <td>NaN</td>
+      <td>140</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>150</td>
+      <td>NaN</td>
+      <td>334</td>
+      <td>NaN</td>
+      <td>151</td>
+      <td>NaN</td>
+      <td>241</td>
+      <td>129</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>8600000US00623</td>
+      <td>ZCTA5 00623</td>
+      <td>42321</td>
+      <td>NaN</td>
+      <td>1118</td>
+      <td>NaN</td>
+      <td>1945</td>
+      <td>NaN</td>
+      <td>140</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>266</td>
+      <td>NaN</td>
+      <td>1184</td>
+      <td>NaN</td>
+      <td>213</td>
+      <td>NaN</td>
+      <td>737</td>
+      <td>189</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 78 columns</p>
+</div></div></div>
+</div>
+<p>Select the necessary columns from the dataset using <b>iloc</b> -&gt; Integer-location based indexing for selection by position.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">74</span><span class="p">]]</span> 
+
+<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#print first 10 records</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Geographic Area Name</th>
+      <th>Estimate!!Total!!Total population</th>
+      <th>Estimate!!Total!!Total population!!AGE!!Under 5 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!5 to 9 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!10 to 14 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!15 to 19 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!20 to 24 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!25 to 29 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!30 to 34 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!35 to 39 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!40 to 44 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!45 to 49 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!50 to 54 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!55 to 59 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!60 to 64 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!65 to 69 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!70 to 74 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!75 to 79 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!80 to 84 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!85 years and over</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ZCTA5 00601</td>
+      <td>17599</td>
+      <td>938</td>
+      <td>1046</td>
+      <td>1278</td>
+      <td>1250</td>
+      <td>1218</td>
+      <td>1148</td>
+      <td>1073</td>
+      <td>1121</td>
+      <td>918</td>
+      <td>1147</td>
+      <td>1257</td>
+      <td>1215</td>
+      <td>1093</td>
+      <td>1080</td>
+      <td>616</td>
+      <td>524</td>
+      <td>349</td>
+      <td>328</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ZCTA5 00602</td>
+      <td>39209</td>
+      <td>1794</td>
+      <td>2320</td>
+      <td>2113</td>
+      <td>2706</td>
+      <td>2751</td>
+      <td>2537</td>
+      <td>2350</td>
+      <td>2715</td>
+      <td>2227</td>
+      <td>2749</td>
+      <td>2942</td>
+      <td>2833</td>
+      <td>2810</td>
+      <td>2181</td>
+      <td>1753</td>
+      <td>991</td>
+      <td>789</td>
+      <td>648</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ZCTA5 00603</td>
+      <td>50135</td>
+      <td>2469</td>
+      <td>2778</td>
+      <td>3260</td>
+      <td>3443</td>
+      <td>3194</td>
+      <td>3264</td>
+      <td>3021</td>
+      <td>3296</td>
+      <td>3099</td>
+      <td>3070</td>
+      <td>3336</td>
+      <td>2982</td>
+      <td>3323</td>
+      <td>3306</td>
+      <td>2489</td>
+      <td>1763</td>
+      <td>1315</td>
+      <td>727</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ZCTA5 00606</td>
+      <td>6304</td>
+      <td>312</td>
+      <td>304</td>
+      <td>420</td>
+      <td>479</td>
+      <td>443</td>
+      <td>302</td>
+      <td>329</td>
+      <td>279</td>
+      <td>557</td>
+      <td>457</td>
+      <td>483</td>
+      <td>317</td>
+      <td>555</td>
+      <td>345</td>
+      <td>303</td>
+      <td>171</td>
+      <td>74</td>
+      <td>174</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ZCTA5 00610</td>
+      <td>27590</td>
+      <td>1256</td>
+      <td>1346</td>
+      <td>1895</td>
+      <td>1939</td>
+      <td>1924</td>
+      <td>1624</td>
+      <td>1575</td>
+      <td>1638</td>
+      <td>1944</td>
+      <td>1937</td>
+      <td>1910</td>
+      <td>1748</td>
+      <td>1744</td>
+      <td>1629</td>
+      <td>1400</td>
+      <td>1140</td>
+      <td>576</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ZCTA5 00612</td>
+      <td>62566</td>
+      <td>3260</td>
+      <td>3077</td>
+      <td>4249</td>
+      <td>4397</td>
+      <td>4346</td>
+      <td>3621</td>
+      <td>3586</td>
+      <td>3550</td>
+      <td>4225</td>
+      <td>4312</td>
+      <td>4021</td>
+      <td>3607</td>
+      <td>3903</td>
+      <td>3812</td>
+      <td>3038</td>
+      <td>2551</td>
+      <td>1433</td>
+      <td>1578</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ZCTA5 00616</td>
+      <td>10687</td>
+      <td>469</td>
+      <td>417</td>
+      <td>405</td>
+      <td>678</td>
+      <td>901</td>
+      <td>784</td>
+      <td>574</td>
+      <td>661</td>
+      <td>687</td>
+      <td>877</td>
+      <td>787</td>
+      <td>558</td>
+      <td>533</td>
+      <td>753</td>
+      <td>712</td>
+      <td>245</td>
+      <td>326</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ZCTA5 00617</td>
+      <td>24508</td>
+      <td>1340</td>
+      <td>1401</td>
+      <td>1702</td>
+      <td>1686</td>
+      <td>1709</td>
+      <td>1607</td>
+      <td>1570</td>
+      <td>1719</td>
+      <td>1766</td>
+      <td>1584</td>
+      <td>1434</td>
+      <td>1195</td>
+      <td>1521</td>
+      <td>1390</td>
+      <td>1117</td>
+      <td>814</td>
+      <td>450</td>
+      <td>503</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ZCTA5 00622</td>
+      <td>7405</td>
+      <td>224</td>
+      <td>296</td>
+      <td>489</td>
+      <td>477</td>
+      <td>428</td>
+      <td>243</td>
+      <td>352</td>
+      <td>382</td>
+      <td>436</td>
+      <td>477</td>
+      <td>579</td>
+      <td>604</td>
+      <td>365</td>
+      <td>519</td>
+      <td>588</td>
+      <td>371</td>
+      <td>334</td>
+      <td>241</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ZCTA5 00623</td>
+      <td>42321</td>
+      <td>1945</td>
+      <td>2599</td>
+      <td>2457</td>
+      <td>2906</td>
+      <td>2795</td>
+      <td>2528</td>
+      <td>2279</td>
+      <td>2790</td>
+      <td>3075</td>
+      <td>3050</td>
+      <td>2580</td>
+      <td>2298</td>
+      <td>2596</td>
+      <td>2652</td>
+      <td>2073</td>
+      <td>1777</td>
+      <td>1184</td>
+      <td>737</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Replace the column values which has <b>‘ZCTA5 00001’</b> to 00001 using replace function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;ZCTA5 &#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Geographic Area Name</th>
+      <th>Estimate!!Total!!Total population</th>
+      <th>Estimate!!Total!!Total population!!AGE!!Under 5 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!5 to 9 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!10 to 14 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!15 to 19 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!20 to 24 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!25 to 29 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!30 to 34 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!35 to 39 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!40 to 44 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!45 to 49 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!50 to 54 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!55 to 59 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!60 to 64 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!65 to 69 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!70 to 74 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!75 to 79 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!80 to 84 years</th>
+      <th>Estimate!!Total!!Total population!!AGE!!85 years and over</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>17599</td>
+      <td>938</td>
+      <td>1046</td>
+      <td>1278</td>
+      <td>1250</td>
+      <td>1218</td>
+      <td>1148</td>
+      <td>1073</td>
+      <td>1121</td>
+      <td>918</td>
+      <td>1147</td>
+      <td>1257</td>
+      <td>1215</td>
+      <td>1093</td>
+      <td>1080</td>
+      <td>616</td>
+      <td>524</td>
+      <td>349</td>
+      <td>328</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>39209</td>
+      <td>1794</td>
+      <td>2320</td>
+      <td>2113</td>
+      <td>2706</td>
+      <td>2751</td>
+      <td>2537</td>
+      <td>2350</td>
+      <td>2715</td>
+      <td>2227</td>
+      <td>2749</td>
+      <td>2942</td>
+      <td>2833</td>
+      <td>2810</td>
+      <td>2181</td>
+      <td>1753</td>
+      <td>991</td>
+      <td>789</td>
+      <td>648</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>50135</td>
+      <td>2469</td>
+      <td>2778</td>
+      <td>3260</td>
+      <td>3443</td>
+      <td>3194</td>
+      <td>3264</td>
+      <td>3021</td>
+      <td>3296</td>
+      <td>3099</td>
+      <td>3070</td>
+      <td>3336</td>
+      <td>2982</td>
+      <td>3323</td>
+      <td>3306</td>
+      <td>2489</td>
+      <td>1763</td>
+      <td>1315</td>
+      <td>727</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>6304</td>
+      <td>312</td>
+      <td>304</td>
+      <td>420</td>
+      <td>479</td>
+      <td>443</td>
+      <td>302</td>
+      <td>329</td>
+      <td>279</td>
+      <td>557</td>
+      <td>457</td>
+      <td>483</td>
+      <td>317</td>
+      <td>555</td>
+      <td>345</td>
+      <td>303</td>
+      <td>171</td>
+      <td>74</td>
+      <td>174</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>27590</td>
+      <td>1256</td>
+      <td>1346</td>
+      <td>1895</td>
+      <td>1939</td>
+      <td>1924</td>
+      <td>1624</td>
+      <td>1575</td>
+      <td>1638</td>
+      <td>1944</td>
+      <td>1937</td>
+      <td>1910</td>
+      <td>1748</td>
+      <td>1744</td>
+      <td>1629</td>
+      <td>1400</td>
+      <td>1140</td>
+      <td>576</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>00612</td>
+      <td>62566</td>
+      <td>3260</td>
+      <td>3077</td>
+      <td>4249</td>
+      <td>4397</td>
+      <td>4346</td>
+      <td>3621</td>
+      <td>3586</td>
+      <td>3550</td>
+      <td>4225</td>
+      <td>4312</td>
+      <td>4021</td>
+      <td>3607</td>
+      <td>3903</td>
+      <td>3812</td>
+      <td>3038</td>
+      <td>2551</td>
+      <td>1433</td>
+      <td>1578</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>00616</td>
+      <td>10687</td>
+      <td>469</td>
+      <td>417</td>
+      <td>405</td>
+      <td>678</td>
+      <td>901</td>
+      <td>784</td>
+      <td>574</td>
+      <td>661</td>
+      <td>687</td>
+      <td>877</td>
+      <td>787</td>
+      <td>558</td>
+      <td>533</td>
+      <td>753</td>
+      <td>712</td>
+      <td>245</td>
+      <td>326</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>00617</td>
+      <td>24508</td>
+      <td>1340</td>
+      <td>1401</td>
+      <td>1702</td>
+      <td>1686</td>
+      <td>1709</td>
+      <td>1607</td>
+      <td>1570</td>
+      <td>1719</td>
+      <td>1766</td>
+      <td>1584</td>
+      <td>1434</td>
+      <td>1195</td>
+      <td>1521</td>
+      <td>1390</td>
+      <td>1117</td>
+      <td>814</td>
+      <td>450</td>
+      <td>503</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>00622</td>
+      <td>7405</td>
+      <td>224</td>
+      <td>296</td>
+      <td>489</td>
+      <td>477</td>
+      <td>428</td>
+      <td>243</td>
+      <td>352</td>
+      <td>382</td>
+      <td>436</td>
+      <td>477</td>
+      <td>579</td>
+      <td>604</td>
+      <td>365</td>
+      <td>519</td>
+      <td>588</td>
+      <td>371</td>
+      <td>334</td>
+      <td>241</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>00623</td>
+      <td>42321</td>
+      <td>1945</td>
+      <td>2599</td>
+      <td>2457</td>
+      <td>2906</td>
+      <td>2795</td>
+      <td>2528</td>
+      <td>2279</td>
+      <td>2790</td>
+      <td>3075</td>
+      <td>3050</td>
+      <td>2580</td>
+      <td>2298</td>
+      <td>2596</td>
+      <td>2652</td>
+      <td>2073</td>
+      <td>1777</td>
+      <td>1184</td>
+      <td>737</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>00624</td>
+      <td>23238</td>
+      <td>1396</td>
+      <td>1604</td>
+      <td>1562</td>
+      <td>1609</td>
+      <td>1684</td>
+      <td>1651</td>
+      <td>1399</td>
+      <td>1653</td>
+      <td>1108</td>
+      <td>1477</td>
+      <td>1504</td>
+      <td>1602</td>
+      <td>1413</td>
+      <td>1103</td>
+      <td>1079</td>
+      <td>806</td>
+      <td>363</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>00627</td>
+      <td>32936</td>
+      <td>1557</td>
+      <td>1770</td>
+      <td>2109</td>
+      <td>2333</td>
+      <td>2377</td>
+      <td>2024</td>
+      <td>1886</td>
+      <td>2366</td>
+      <td>1949</td>
+      <td>2320</td>
+      <td>2269</td>
+      <td>2051</td>
+      <td>2102</td>
+      <td>2022</td>
+      <td>1540</td>
+      <td>1109</td>
+      <td>410</td>
+      <td>742</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>00631</td>
+      <td>1555</td>
+      <td>34</td>
+      <td>54</td>
+      <td>54</td>
+      <td>75</td>
+      <td>133</td>
+      <td>116</td>
+      <td>103</td>
+      <td>56</td>
+      <td>105</td>
+      <td>78</td>
+      <td>105</td>
+      <td>110</td>
+      <td>138</td>
+      <td>114</td>
+      <td>87</td>
+      <td>68</td>
+      <td>68</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>00637</td>
+      <td>23610</td>
+      <td>1210</td>
+      <td>1199</td>
+      <td>1629</td>
+      <td>1665</td>
+      <td>1607</td>
+      <td>1368</td>
+      <td>1309</td>
+      <td>1384</td>
+      <td>1576</td>
+      <td>1461</td>
+      <td>1424</td>
+      <td>1501</td>
+      <td>1432</td>
+      <td>1329</td>
+      <td>1432</td>
+      <td>1056</td>
+      <td>527</td>
+      <td>501</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>00638</td>
+      <td>17202</td>
+      <td>1025</td>
+      <td>1170</td>
+      <td>993</td>
+      <td>1076</td>
+      <td>1232</td>
+      <td>1077</td>
+      <td>1041</td>
+      <td>930</td>
+      <td>1042</td>
+      <td>993</td>
+      <td>1178</td>
+      <td>1086</td>
+      <td>1305</td>
+      <td>991</td>
+      <td>772</td>
+      <td>552</td>
+      <td>497</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>00641</td>
+      <td>28332</td>
+      <td>1359</td>
+      <td>1546</td>
+      <td>1760</td>
+      <td>1975</td>
+      <td>2037</td>
+      <td>1832</td>
+      <td>1532</td>
+      <td>1579</td>
+      <td>1645</td>
+      <td>1766</td>
+      <td>1985</td>
+      <td>1937</td>
+      <td>2080</td>
+      <td>1717</td>
+      <td>1358</td>
+      <td>1092</td>
+      <td>494</td>
+      <td>638</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>00646</td>
+      <td>38008</td>
+      <td>2033</td>
+      <td>2570</td>
+      <td>2658</td>
+      <td>2730</td>
+      <td>2448</td>
+      <td>2078</td>
+      <td>2240</td>
+      <td>2610</td>
+      <td>3112</td>
+      <td>2767</td>
+      <td>2477</td>
+      <td>2020</td>
+      <td>2349</td>
+      <td>2258</td>
+      <td>1405</td>
+      <td>913</td>
+      <td>843</td>
+      <td>497</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>00647</td>
+      <td>5610</td>
+      <td>226</td>
+      <td>204</td>
+      <td>264</td>
+      <td>357</td>
+      <td>411</td>
+      <td>241</td>
+      <td>406</td>
+      <td>232</td>
+      <td>280</td>
+      <td>403</td>
+      <td>398</td>
+      <td>332</td>
+      <td>423</td>
+      <td>502</td>
+      <td>357</td>
+      <td>285</td>
+      <td>117</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>00650</td>
+      <td>14664</td>
+      <td>848</td>
+      <td>886</td>
+      <td>939</td>
+      <td>1175</td>
+      <td>1147</td>
+      <td>819</td>
+      <td>847</td>
+      <td>903</td>
+      <td>963</td>
+      <td>1058</td>
+      <td>915</td>
+      <td>715</td>
+      <td>876</td>
+      <td>851</td>
+      <td>692</td>
+      <td>460</td>
+      <td>330</td>
+      <td>240</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Rename the column names to the standard names using <b>rename</b> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Geographic Area Name&#39;</span><span class="p">:</span><span class="s1">&#39;ZCTA5&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population&#39;</span><span class="p">:</span><span class="s1">&#39;total_population&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!Under 5 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_5under&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!5 to 9 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_5to9y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!10 to 14 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_10to14y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!15 to 19 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_15to19y&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!20 to 24 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_20to24y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!25 to 29 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_25to29y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!30 to 34 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_30to34y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!35 to 39 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_35to39y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!40 to 44 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_40to44y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!45 to 49 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_45to49y&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!50 to 54 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_50to54y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!55 to 59 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_55to59y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!60 to 64 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_60to64y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!65 to 69 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_65to69y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!70 to 74 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_70to74y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!75 to 79 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_75to79y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!80 to 84 years&#39;</span><span class="p">:</span><span class="s1">&#39;age_80to84y&#39;</span><span class="p">,</span><span class="s1">&#39;Estimate!!Total!!Total population!!AGE!!85 years and over&#39;</span><span class="p">:</span><span class="s1">&#39;age_above85y&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Drop the duplicates from the dataframe using <b>drop_duplicates</b> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>total_population</th>
+      <th>age_5under</th>
+      <th>age_5to9y</th>
+      <th>age_10to14y</th>
+      <th>age_15to19y</th>
+      <th>age_20to24y</th>
+      <th>age_25to29y</th>
+      <th>age_30to34y</th>
+      <th>age_35to39y</th>
+      <th>age_40to44y</th>
+      <th>age_45to49y</th>
+      <th>age_50to54y</th>
+      <th>age_55to59y</th>
+      <th>age_60to64y</th>
+      <th>age_65to69y</th>
+      <th>age_70to74y</th>
+      <th>age_75to79y</th>
+      <th>age_80to84y</th>
+      <th>age_above85y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>17599</td>
+      <td>938</td>
+      <td>1046</td>
+      <td>1278</td>
+      <td>1250</td>
+      <td>1218</td>
+      <td>1148</td>
+      <td>1073</td>
+      <td>1121</td>
+      <td>918</td>
+      <td>1147</td>
+      <td>1257</td>
+      <td>1215</td>
+      <td>1093</td>
+      <td>1080</td>
+      <td>616</td>
+      <td>524</td>
+      <td>349</td>
+      <td>328</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>39209</td>
+      <td>1794</td>
+      <td>2320</td>
+      <td>2113</td>
+      <td>2706</td>
+      <td>2751</td>
+      <td>2537</td>
+      <td>2350</td>
+      <td>2715</td>
+      <td>2227</td>
+      <td>2749</td>
+      <td>2942</td>
+      <td>2833</td>
+      <td>2810</td>
+      <td>2181</td>
+      <td>1753</td>
+      <td>991</td>
+      <td>789</td>
+      <td>648</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>50135</td>
+      <td>2469</td>
+      <td>2778</td>
+      <td>3260</td>
+      <td>3443</td>
+      <td>3194</td>
+      <td>3264</td>
+      <td>3021</td>
+      <td>3296</td>
+      <td>3099</td>
+      <td>3070</td>
+      <td>3336</td>
+      <td>2982</td>
+      <td>3323</td>
+      <td>3306</td>
+      <td>2489</td>
+      <td>1763</td>
+      <td>1315</td>
+      <td>727</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>6304</td>
+      <td>312</td>
+      <td>304</td>
+      <td>420</td>
+      <td>479</td>
+      <td>443</td>
+      <td>302</td>
+      <td>329</td>
+      <td>279</td>
+      <td>557</td>
+      <td>457</td>
+      <td>483</td>
+      <td>317</td>
+      <td>555</td>
+      <td>345</td>
+      <td>303</td>
+      <td>171</td>
+      <td>74</td>
+      <td>174</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>27590</td>
+      <td>1256</td>
+      <td>1346</td>
+      <td>1895</td>
+      <td>1939</td>
+      <td>1924</td>
+      <td>1624</td>
+      <td>1575</td>
+      <td>1638</td>
+      <td>1944</td>
+      <td>1937</td>
+      <td>1910</td>
+      <td>1748</td>
+      <td>1744</td>
+      <td>1629</td>
+      <td>1400</td>
+      <td>1140</td>
+      <td>576</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>00612</td>
+      <td>62566</td>
+      <td>3260</td>
+      <td>3077</td>
+      <td>4249</td>
+      <td>4397</td>
+      <td>4346</td>
+      <td>3621</td>
+      <td>3586</td>
+      <td>3550</td>
+      <td>4225</td>
+      <td>4312</td>
+      <td>4021</td>
+      <td>3607</td>
+      <td>3903</td>
+      <td>3812</td>
+      <td>3038</td>
+      <td>2551</td>
+      <td>1433</td>
+      <td>1578</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>00616</td>
+      <td>10687</td>
+      <td>469</td>
+      <td>417</td>
+      <td>405</td>
+      <td>678</td>
+      <td>901</td>
+      <td>784</td>
+      <td>574</td>
+      <td>661</td>
+      <td>687</td>
+      <td>877</td>
+      <td>787</td>
+      <td>558</td>
+      <td>533</td>
+      <td>753</td>
+      <td>712</td>
+      <td>245</td>
+      <td>326</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>00617</td>
+      <td>24508</td>
+      <td>1340</td>
+      <td>1401</td>
+      <td>1702</td>
+      <td>1686</td>
+      <td>1709</td>
+      <td>1607</td>
+      <td>1570</td>
+      <td>1719</td>
+      <td>1766</td>
+      <td>1584</td>
+      <td>1434</td>
+      <td>1195</td>
+      <td>1521</td>
+      <td>1390</td>
+      <td>1117</td>
+      <td>814</td>
+      <td>450</td>
+      <td>503</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>00622</td>
+      <td>7405</td>
+      <td>224</td>
+      <td>296</td>
+      <td>489</td>
+      <td>477</td>
+      <td>428</td>
+      <td>243</td>
+      <td>352</td>
+      <td>382</td>
+      <td>436</td>
+      <td>477</td>
+      <td>579</td>
+      <td>604</td>
+      <td>365</td>
+      <td>519</td>
+      <td>588</td>
+      <td>371</td>
+      <td>334</td>
+      <td>241</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>00623</td>
+      <td>42321</td>
+      <td>1945</td>
+      <td>2599</td>
+      <td>2457</td>
+      <td>2906</td>
+      <td>2795</td>
+      <td>2528</td>
+      <td>2279</td>
+      <td>2790</td>
+      <td>3075</td>
+      <td>3050</td>
+      <td>2580</td>
+      <td>2298</td>
+      <td>2596</td>
+      <td>2652</td>
+      <td>2073</td>
+      <td>1777</td>
+      <td>1184</td>
+      <td>737</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>00624</td>
+      <td>23238</td>
+      <td>1396</td>
+      <td>1604</td>
+      <td>1562</td>
+      <td>1609</td>
+      <td>1684</td>
+      <td>1651</td>
+      <td>1399</td>
+      <td>1653</td>
+      <td>1108</td>
+      <td>1477</td>
+      <td>1504</td>
+      <td>1602</td>
+      <td>1413</td>
+      <td>1103</td>
+      <td>1079</td>
+      <td>806</td>
+      <td>363</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>00627</td>
+      <td>32936</td>
+      <td>1557</td>
+      <td>1770</td>
+      <td>2109</td>
+      <td>2333</td>
+      <td>2377</td>
+      <td>2024</td>
+      <td>1886</td>
+      <td>2366</td>
+      <td>1949</td>
+      <td>2320</td>
+      <td>2269</td>
+      <td>2051</td>
+      <td>2102</td>
+      <td>2022</td>
+      <td>1540</td>
+      <td>1109</td>
+      <td>410</td>
+      <td>742</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>00631</td>
+      <td>1555</td>
+      <td>34</td>
+      <td>54</td>
+      <td>54</td>
+      <td>75</td>
+      <td>133</td>
+      <td>116</td>
+      <td>103</td>
+      <td>56</td>
+      <td>105</td>
+      <td>78</td>
+      <td>105</td>
+      <td>110</td>
+      <td>138</td>
+      <td>114</td>
+      <td>87</td>
+      <td>68</td>
+      <td>68</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>00637</td>
+      <td>23610</td>
+      <td>1210</td>
+      <td>1199</td>
+      <td>1629</td>
+      <td>1665</td>
+      <td>1607</td>
+      <td>1368</td>
+      <td>1309</td>
+      <td>1384</td>
+      <td>1576</td>
+      <td>1461</td>
+      <td>1424</td>
+      <td>1501</td>
+      <td>1432</td>
+      <td>1329</td>
+      <td>1432</td>
+      <td>1056</td>
+      <td>527</td>
+      <td>501</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>00638</td>
+      <td>17202</td>
+      <td>1025</td>
+      <td>1170</td>
+      <td>993</td>
+      <td>1076</td>
+      <td>1232</td>
+      <td>1077</td>
+      <td>1041</td>
+      <td>930</td>
+      <td>1042</td>
+      <td>993</td>
+      <td>1178</td>
+      <td>1086</td>
+      <td>1305</td>
+      <td>991</td>
+      <td>772</td>
+      <td>552</td>
+      <td>497</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>00641</td>
+      <td>28332</td>
+      <td>1359</td>
+      <td>1546</td>
+      <td>1760</td>
+      <td>1975</td>
+      <td>2037</td>
+      <td>1832</td>
+      <td>1532</td>
+      <td>1579</td>
+      <td>1645</td>
+      <td>1766</td>
+      <td>1985</td>
+      <td>1937</td>
+      <td>2080</td>
+      <td>1717</td>
+      <td>1358</td>
+      <td>1092</td>
+      <td>494</td>
+      <td>638</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>00646</td>
+      <td>38008</td>
+      <td>2033</td>
+      <td>2570</td>
+      <td>2658</td>
+      <td>2730</td>
+      <td>2448</td>
+      <td>2078</td>
+      <td>2240</td>
+      <td>2610</td>
+      <td>3112</td>
+      <td>2767</td>
+      <td>2477</td>
+      <td>2020</td>
+      <td>2349</td>
+      <td>2258</td>
+      <td>1405</td>
+      <td>913</td>
+      <td>843</td>
+      <td>497</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>00647</td>
+      <td>5610</td>
+      <td>226</td>
+      <td>204</td>
+      <td>264</td>
+      <td>357</td>
+      <td>411</td>
+      <td>241</td>
+      <td>406</td>
+      <td>232</td>
+      <td>280</td>
+      <td>403</td>
+      <td>398</td>
+      <td>332</td>
+      <td>423</td>
+      <td>502</td>
+      <td>357</td>
+      <td>285</td>
+      <td>117</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>00650</td>
+      <td>14664</td>
+      <td>848</td>
+      <td>886</td>
+      <td>939</td>
+      <td>1175</td>
+      <td>1147</td>
+      <td>819</td>
+      <td>847</td>
+      <td>903</td>
+      <td>963</td>
+      <td>1058</td>
+      <td>915</td>
+      <td>715</td>
+      <td>876</td>
+      <td>851</td>
+      <td>692</td>
+      <td>460</td>
+      <td>330</td>
+      <td>240</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Add new column to the dataframe using <b>insert</b> function for the year which we are loading data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;2020&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ZCTA5</th>
+      <th>Year</th>
+      <th>total_population</th>
+      <th>age_5under</th>
+      <th>age_5to9y</th>
+      <th>age_10to14y</th>
+      <th>age_15to19y</th>
+      <th>age_20to24y</th>
+      <th>age_25to29y</th>
+      <th>age_30to34y</th>
+      <th>...</th>
+      <th>age_40to44y</th>
+      <th>age_45to49y</th>
+      <th>age_50to54y</th>
+      <th>age_55to59y</th>
+      <th>age_60to64y</th>
+      <th>age_65to69y</th>
+      <th>age_70to74y</th>
+      <th>age_75to79y</th>
+      <th>age_80to84y</th>
+      <th>age_above85y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00601</td>
+      <td>2020</td>
+      <td>17599</td>
+      <td>938</td>
+      <td>1046</td>
+      <td>1278</td>
+      <td>1250</td>
+      <td>1218</td>
+      <td>1148</td>
+      <td>1073</td>
+      <td>...</td>
+      <td>918</td>
+      <td>1147</td>
+      <td>1257</td>
+      <td>1215</td>
+      <td>1093</td>
+      <td>1080</td>
+      <td>616</td>
+      <td>524</td>
+      <td>349</td>
+      <td>328</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>00602</td>
+      <td>2020</td>
+      <td>39209</td>
+      <td>1794</td>
+      <td>2320</td>
+      <td>2113</td>
+      <td>2706</td>
+      <td>2751</td>
+      <td>2537</td>
+      <td>2350</td>
+      <td>...</td>
+      <td>2227</td>
+      <td>2749</td>
+      <td>2942</td>
+      <td>2833</td>
+      <td>2810</td>
+      <td>2181</td>
+      <td>1753</td>
+      <td>991</td>
+      <td>789</td>
+      <td>648</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>00603</td>
+      <td>2020</td>
+      <td>50135</td>
+      <td>2469</td>
+      <td>2778</td>
+      <td>3260</td>
+      <td>3443</td>
+      <td>3194</td>
+      <td>3264</td>
+      <td>3021</td>
+      <td>...</td>
+      <td>3099</td>
+      <td>3070</td>
+      <td>3336</td>
+      <td>2982</td>
+      <td>3323</td>
+      <td>3306</td>
+      <td>2489</td>
+      <td>1763</td>
+      <td>1315</td>
+      <td>727</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>00606</td>
+      <td>2020</td>
+      <td>6304</td>
+      <td>312</td>
+      <td>304</td>
+      <td>420</td>
+      <td>479</td>
+      <td>443</td>
+      <td>302</td>
+      <td>329</td>
+      <td>...</td>
+      <td>557</td>
+      <td>457</td>
+      <td>483</td>
+      <td>317</td>
+      <td>555</td>
+      <td>345</td>
+      <td>303</td>
+      <td>171</td>
+      <td>74</td>
+      <td>174</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00610</td>
+      <td>2020</td>
+      <td>27590</td>
+      <td>1256</td>
+      <td>1346</td>
+      <td>1895</td>
+      <td>1939</td>
+      <td>1924</td>
+      <td>1624</td>
+      <td>1575</td>
+      <td>...</td>
+      <td>1944</td>
+      <td>1937</td>
+      <td>1910</td>
+      <td>1748</td>
+      <td>1744</td>
+      <td>1629</td>
+      <td>1400</td>
+      <td>1140</td>
+      <td>576</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>00612</td>
+      <td>2020</td>
+      <td>62566</td>
+      <td>3260</td>
+      <td>3077</td>
+      <td>4249</td>
+      <td>4397</td>
+      <td>4346</td>
+      <td>3621</td>
+      <td>3586</td>
+      <td>...</td>
+      <td>4225</td>
+      <td>4312</td>
+      <td>4021</td>
+      <td>3607</td>
+      <td>3903</td>
+      <td>3812</td>
+      <td>3038</td>
+      <td>2551</td>
+      <td>1433</td>
+      <td>1578</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>00616</td>
+      <td>2020</td>
+      <td>10687</td>
+      <td>469</td>
+      <td>417</td>
+      <td>405</td>
+      <td>678</td>
+      <td>901</td>
+      <td>784</td>
+      <td>574</td>
+      <td>...</td>
+      <td>687</td>
+      <td>877</td>
+      <td>787</td>
+      <td>558</td>
+      <td>533</td>
+      <td>753</td>
+      <td>712</td>
+      <td>245</td>
+      <td>326</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>00617</td>
+      <td>2020</td>
+      <td>24508</td>
+      <td>1340</td>
+      <td>1401</td>
+      <td>1702</td>
+      <td>1686</td>
+      <td>1709</td>
+      <td>1607</td>
+      <td>1570</td>
+      <td>...</td>
+      <td>1766</td>
+      <td>1584</td>
+      <td>1434</td>
+      <td>1195</td>
+      <td>1521</td>
+      <td>1390</td>
+      <td>1117</td>
+      <td>814</td>
+      <td>450</td>
+      <td>503</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>00622</td>
+      <td>2020</td>
+      <td>7405</td>
+      <td>224</td>
+      <td>296</td>
+      <td>489</td>
+      <td>477</td>
+      <td>428</td>
+      <td>243</td>
+      <td>352</td>
+      <td>...</td>
+      <td>436</td>
+      <td>477</td>
+      <td>579</td>
+      <td>604</td>
+      <td>365</td>
+      <td>519</td>
+      <td>588</td>
+      <td>371</td>
+      <td>334</td>
+      <td>241</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>00623</td>
+      <td>2020</td>
+      <td>42321</td>
+      <td>1945</td>
+      <td>2599</td>
+      <td>2457</td>
+      <td>2906</td>
+      <td>2795</td>
+      <td>2528</td>
+      <td>2279</td>
+      <td>...</td>
+      <td>3075</td>
+      <td>3050</td>
+      <td>2580</td>
+      <td>2298</td>
+      <td>2596</td>
+      <td>2652</td>
+      <td>2073</td>
+      <td>1777</td>
+      <td>1184</td>
+      <td>737</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>00624</td>
+      <td>2020</td>
+      <td>23238</td>
+      <td>1396</td>
+      <td>1604</td>
+      <td>1562</td>
+      <td>1609</td>
+      <td>1684</td>
+      <td>1651</td>
+      <td>1399</td>
+      <td>...</td>
+      <td>1108</td>
+      <td>1477</td>
+      <td>1504</td>
+      <td>1602</td>
+      <td>1413</td>
+      <td>1103</td>
+      <td>1079</td>
+      <td>806</td>
+      <td>363</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>00627</td>
+      <td>2020</td>
+      <td>32936</td>
+      <td>1557</td>
+      <td>1770</td>
+      <td>2109</td>
+      <td>2333</td>
+      <td>2377</td>
+      <td>2024</td>
+      <td>1886</td>
+      <td>...</td>
+      <td>1949</td>
+      <td>2320</td>
+      <td>2269</td>
+      <td>2051</td>
+      <td>2102</td>
+      <td>2022</td>
+      <td>1540</td>
+      <td>1109</td>
+      <td>410</td>
+      <td>742</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>00631</td>
+      <td>2020</td>
+      <td>1555</td>
+      <td>34</td>
+      <td>54</td>
+      <td>54</td>
+      <td>75</td>
+      <td>133</td>
+      <td>116</td>
+      <td>103</td>
+      <td>...</td>
+      <td>105</td>
+      <td>78</td>
+      <td>105</td>
+      <td>110</td>
+      <td>138</td>
+      <td>114</td>
+      <td>87</td>
+      <td>68</td>
+      <td>68</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>00637</td>
+      <td>2020</td>
+      <td>23610</td>
+      <td>1210</td>
+      <td>1199</td>
+      <td>1629</td>
+      <td>1665</td>
+      <td>1607</td>
+      <td>1368</td>
+      <td>1309</td>
+      <td>...</td>
+      <td>1576</td>
+      <td>1461</td>
+      <td>1424</td>
+      <td>1501</td>
+      <td>1432</td>
+      <td>1329</td>
+      <td>1432</td>
+      <td>1056</td>
+      <td>527</td>
+      <td>501</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>00638</td>
+      <td>2020</td>
+      <td>17202</td>
+      <td>1025</td>
+      <td>1170</td>
+      <td>993</td>
+      <td>1076</td>
+      <td>1232</td>
+      <td>1077</td>
+      <td>1041</td>
+      <td>...</td>
+      <td>1042</td>
+      <td>993</td>
+      <td>1178</td>
+      <td>1086</td>
+      <td>1305</td>
+      <td>991</td>
+      <td>772</td>
+      <td>552</td>
+      <td>497</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>00641</td>
+      <td>2020</td>
+      <td>28332</td>
+      <td>1359</td>
+      <td>1546</td>
+      <td>1760</td>
+      <td>1975</td>
+      <td>2037</td>
+      <td>1832</td>
+      <td>1532</td>
+      <td>...</td>
+      <td>1645</td>
+      <td>1766</td>
+      <td>1985</td>
+      <td>1937</td>
+      <td>2080</td>
+      <td>1717</td>
+      <td>1358</td>
+      <td>1092</td>
+      <td>494</td>
+      <td>638</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>00646</td>
+      <td>2020</td>
+      <td>38008</td>
+      <td>2033</td>
+      <td>2570</td>
+      <td>2658</td>
+      <td>2730</td>
+      <td>2448</td>
+      <td>2078</td>
+      <td>2240</td>
+      <td>...</td>
+      <td>3112</td>
+      <td>2767</td>
+      <td>2477</td>
+      <td>2020</td>
+      <td>2349</td>
+      <td>2258</td>
+      <td>1405</td>
+      <td>913</td>
+      <td>843</td>
+      <td>497</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>00647</td>
+      <td>2020</td>
+      <td>5610</td>
+      <td>226</td>
+      <td>204</td>
+      <td>264</td>
+      <td>357</td>
+      <td>411</td>
+      <td>241</td>
+      <td>406</td>
+      <td>...</td>
+      <td>280</td>
+      <td>403</td>
+      <td>398</td>
+      <td>332</td>
+      <td>423</td>
+      <td>502</td>
+      <td>357</td>
+      <td>285</td>
+      <td>117</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>00650</td>
+      <td>2020</td>
+      <td>14664</td>
+      <td>848</td>
+      <td>886</td>
+      <td>939</td>
+      <td>1175</td>
+      <td>1147</td>
+      <td>819</td>
+      <td>847</td>
+      <td>...</td>
+      <td>963</td>
+      <td>1058</td>
+      <td>915</td>
+      <td>715</td>
+      <td>876</td>
+      <td>851</td>
+      <td>692</td>
+      <td>460</td>
+      <td>330</td>
+      <td>240</td>
+    </tr>
+  </tbody>
+</table>
+<p>19 rows × 21 columns</p>
+</div></div></div>
+</div>
+<p>If there are files for each year then oncatenate the data for all these years using <b>concat</b> function. Here I just used df3 as I showed only for one year, similarly we can create multiple dataframes for each year and concatenate using the below function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataframes</span> <span class="o">=</span> <span class="p">[</span><span class="n">df3</span><span class="p">]</span>
+  
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dataframes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-the-result-to-the-sql-server-database">
+<h3>Load the result to the sql server database<a class="headerlink" href="#load-the-result-to-the-sql-server-database" title="Permalink to this headline">#</a></h3>
+<p>Now, connect to the sql and load the dataframe as new table using <b>SQLAlchemy</b>. It is a sql toolkit to connect and perform all the necessary sql operations from python.</p>
+<p>svr is the sql server name<br>
+uid is the user id<br>
+pwd is the password<br>
+db is the database which is USZIPCODE<br>
+create_engine will establish python jdbc to the sql<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="s1">&#39;essql1.walton.uark.edu&#39;</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;XXXXXX&#39;</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="s1">&#39;XXXXXX&#39;</span>
+<span class="n">db</span> <span class="o">=</span> <span class="s1">&#39;USZIPCODE&#39;</span>
+<span class="c1"># Create a connection using SQL Alchemy engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mssql+pyodbc://</span><span class="si">{</span><span class="n">uid</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">svr</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db</span><span class="si">}</span><span class="s2">?driver=SQL+Server+Native+Client+11.0&amp;TrustServerCertificate=yes&quot;</span><span class="p">,</span> <span class="n">fast_executemany</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Using pandas, leverage the SQL Alchemy engine that we created above</span>
+<span class="n">result</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above peice of code will create a new table called ‘AGE’ in the ‘USZIPCODE’ database. The table will have all the columns which are present in the results dataframe.</p>
+<p>We can validate the data by logging into the sql server directly or we can read the table using read_sql as shown below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from AGE&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;***Age data for the ZCTA5***&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="use-cases">
+<h2>Use cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">#</a></h2>
+<p>There are many use cases which can be derived from the age group dataset. Below are few use cases.
+For all the use cases below, please update the following fields in the below python code before executing</p>
+<ol class="simple">
+<li><p>uid - user id</p></li>
+<li><p>pwd - password</p></li>
+<li><p>SQL Query - the sql query which needs to be executed</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">svr</span> <span class="o">=</span> <span class="s1">&#39;essql1.walton.uark.edu&#39;</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+<span class="n">db</span> <span class="o">=</span> <span class="s1">&#39;USZIPCODE&#39;</span>
+<span class="c1"># Create a connection using SQL Alchemy engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mssql+pyodbc://</span><span class="si">{</span><span class="n">uid</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">svr</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db</span><span class="si">}</span><span class="s2">?driver=SQL+Server+Native+Client+11.0&amp;TrustServerCertificate=yes&quot;</span><span class="p">,</span> <span class="n">fast_executemany</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Using pandas, leverage the SQL Alchemy engine that we created above</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SQL Query&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="use-case-1">
+<h3>Use case 1:<a class="headerlink" href="#use-case-1" title="Permalink to this headline">#</a></h3>
+<p>Find the total population of all age groups across all years and ZCTA5</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_population</span><span class="w"> </span>
+<span class="k">from</span><span class="w"> </span><span class="p">[</span><span class="n">USZIPCODE</span><span class="p">].[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">AGE</span><span class="p">]</span><span class="w"> </span>
+<span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">year</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="use-case-2">
+<h3>Use case 2:<a class="headerlink" href="#use-case-2" title="Permalink to this headline">#</a></h3>
+<p>Top five ZCTA5 codes where the population is highest</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="n">zcta5</span><span class="p">,</span><span class="n">total_population</span><span class="p">,</span><span class="k">year</span><span class="w"> </span>
+<span class="k">from</span><span class="w"> </span><span class="p">[</span><span class="n">USZIPCODE</span><span class="p">].[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">AGE</span><span class="p">]</span><span class="w"> </span>
+<span class="k">where</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2020</span><span class="w"> </span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">total_population</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="use-case-3">
+<h3>Use case 3:<a class="headerlink" href="#use-case-3" title="Permalink to this headline">#</a></h3>
+<p>ZCTA5 with the highest teenage population for a given year</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">ZCTA5</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="w"> </span>
+<span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="n">ZCTA5</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="n">age_10to14y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age_15to19y</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span><span class="w"> </span>
+<span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="p">[</span><span class="n">USZIPCODE</span><span class="p">].[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">AGE</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="k">where</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2020</span><span class="w"> </span>
+<span class="w">        </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ZCTA5</span><span class="p">)</span><span class="w"></span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="use-case-4">
+<h3>Use case 4:<a class="headerlink" href="#use-case-4" title="Permalink to this headline">#</a></h3>
+<p>Population growth across years</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="n">total_population</span><span class="p">,</span><span class="w"> </span><span class="n">total_population</span><span class="o">-</span><span class="n">LAG</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">year</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">population_diff</span><span class="w">  </span>
+<span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_population</span><span class="w"> </span>
+<span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="p">[</span><span class="n">USZIPCODE</span><span class="p">].[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">AGE</span><span class="p">]</span><span class="w"> </span>
+<span class="w">        </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">year</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/contrib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="US_Median_Housing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">US Census Bureau Median Housing Data</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

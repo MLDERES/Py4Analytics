@@ -1,0 +1,1390 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>My test data is Dated! &#8212; Python 4 Analytics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="www.py4analytics.info/book/contrib/hallux.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Working with IRS data" href="IRSMarkDown.html" />
+    <link rel="prev" title="Student Contributions" href="00-studentcontributions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NZH9210CF9"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-NZH9210CF9');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Python For Analytics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
+   Welcome to Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 1 - Python Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
+   Part 1 - Basic Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
+     Learning to program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
+     Making Decisions &amp; Looping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/130-Functions.html">
+     Reusing Code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
+     Try it: Getting Started with Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
+     Try it: Flow Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
+     Try it: Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 2 - Intermediate Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
+   Part 2 - Intermediate Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
+     Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/211-Methods.html">
+     Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/220-Web_Data_Formats.html">
+     Differing data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/230-Data_Manipulation.html">
+     Working with data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
+     Gather data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
+     Working with relational database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
+     Try it: Objects, Namespaces and Packages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
+     Try it: Working with common data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
+     Try it: Getting data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
+     Try-it: Connecting to a Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
+     Try it: Data Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Part 3 - Using Python for Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
+   Part 3 - Using Python for Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
+     Other tools for Data Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
+     Visualization Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
+     Data Preparation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/330-Classification.html">
+     Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
+     Automobile Accidents
+     <a id="auto-accidents">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
+     Prediction and Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
+     Advanced Techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
+     Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
+     Ensembling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
+     Predicting the price of used cars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
+     Unsupervised Data Mining
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
+     Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
+     Visualization Samples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
+   Exercises
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+     Try It: Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+   Coding Challenges
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extras/00-extras.html">
+   Extras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
+     Using an Object Relational Mapping Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
+     Connecting to MS SQL using ODBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/400-Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="persona.html">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="US_Median_Housing.html">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <div>
+  Revision: 1.0 <br/>
+  Last Update: Wed Nov 16 23:23:31 2022
+</div>
+
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/contrib/hallux.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/contrib/hallux.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/contrib/hallux.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/contrib/hallux.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/book/contrib/hallux.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-example-will-increment-all-the-datetime-fields-in-the-hallux-database-using">
+   This example will increment all the datetime fields in the Hallux database using
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-example-starts-by-importing-the-required-libraries-and-defining-dictionaries">
+     The example starts by importing the required libraries and defining dictionaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-is-holiday-function-will-determine-if-a-specified-date-is-a-holiday">
+     The is_holiday function will determine if a specified date is a holiday
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-increment-date-function-takes-a-table-and-column-name-and-increments-the-field-by-the-specified-number-of-years">
+     The increment_date function takes a table and column name and increments the field by the specified number of years.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-we-go">
+     Here we go…
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>My test data is Dated!</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-example-will-increment-all-the-datetime-fields-in-the-hallux-database-using">
+   This example will increment all the datetime fields in the Hallux database using
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-example-starts-by-importing-the-required-libraries-and-defining-dictionaries">
+     The example starts by importing the required libraries and defining dictionaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-is-holiday-function-will-determine-if-a-specified-date-is-a-holiday">
+     The is_holiday function will determine if a specified date is a holiday
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-increment-date-function-takes-a-table-and-column-name-and-increments-the-field-by-the-specified-number-of-years">
+     The increment_date function takes a table and column name and increments the field by the specified number of years.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-we-go">
+     Here we go…
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="my-test-data-is-dated">
+<h1>My test data is <strong>Dated</strong>!<a class="headerlink" href="#my-test-data-is-dated" title="Permalink to this headline">#</a></h1>
+<section id="this-example-will-increment-all-the-datetime-fields-in-the-hallux-database-using">
+<h2>This example will increment all the datetime fields in the Hallux database using<a class="headerlink" href="#this-example-will-increment-all-the-datetime-fields-in-the-hallux-database-using" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>sqlalchemy to retrieve the data into a dataframe</p></li>
+<li><p>a function that will increment a datetime value based on a specific number of years based on a specific calendar date, a day of the week, or holiday</p></li>
+<li><p>pymssql to update the database using dynamic sql</p></li>
+</ul>
+<section id="the-example-starts-by-importing-the-required-libraries-and-defining-dictionaries">
+<h3>The example starts by importing the required libraries and defining dictionaries<a class="headerlink" href="#the-example-starts-by-importing-the-required-libraries-and-defining-dictionaries" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="o">*</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+
+<span class="kn">import</span> <span class="nn">pymssql</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+
+
+<span class="c1"># Dictionary of date columns in Hallux with a list for the value (table, artificial key column, increment method) </span>
+
+<span class="n">Hallux_Dates</span> <span class="o">=</span> <span class="p">{</span>
+    
+    <span class="s2">&quot;Hire_Date&quot;</span>       <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Agent&quot;</span>         <span class="p">,</span> <span class="s2">&quot;Agent_Id&quot;</span>     <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Release_Date&quot;</span>    <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Album&quot;</span>         <span class="p">,</span> <span class="s2">&quot;Album_Id&quot;</span>     <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Formation_Date&quot;</span>  <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Band&quot;</span>          <span class="p">,</span> <span class="s2">&quot;Band_Id&quot;</span>      <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Join_Date&quot;</span>       <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Band_Member&quot;</span>   <span class="p">,</span> <span class="s2">&quot;Member_Id&quot;</span>    <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Begin_Date&quot;</span>      <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Contract&quot;</span>      <span class="p">,</span> <span class="s2">&quot;Contract_Id&quot;</span>  <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;End_Date&quot;</span>        <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Contract&quot;</span>      <span class="p">,</span> <span class="s2">&quot;Contract_Id&quot;</span>  <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Order_Date&quot;</span>      <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Order_Header&quot;</span>  <span class="p">,</span> <span class="s2">&quot;Order_Id&quot;</span>     <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Promise_Date&quot;</span>    <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Order_Header&quot;</span>  <span class="p">,</span> <span class="s2">&quot;Order_Id&quot;</span>     <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Birthdate&quot;</span>       <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Customer_Profile&quot;</span><span class="p">,</span><span class="s2">&quot;Profile_Id&quot;</span>  <span class="p">,</span> <span class="s2">&quot;INCREMENT&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Performance_Date&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Performance&quot;</span>   <span class="p">,</span><span class="s2">&quot;Performance_Id&quot;</span><span class="p">,</span> <span class="s2">&quot;DAYOFWEEK&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+
+<span class="c1"># holiday dictionary with a list for the value  (month, day of week, earliest day, latest day) </span>
+
+<span class="n">Holidays</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;New Year&#39;s Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> 
+    <span class="s2">&quot;Martin Luther King Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">21</span><span class="p">),</span>
+    <span class="s2">&quot;Washington&#39;s Birthday&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">21</span><span class="p">),</span>
+    <span class="s2">&quot;Memorial Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+    <span class="s2">&quot;Juneteenth National Independence Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">),</span>
+    <span class="s2">&quot;Independence Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;Labor Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
+    <span class="s2">&quot;Columbus Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span>
+    <span class="s2">&quot;Halloween&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">10</span> <span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span>
+    <span class="s2">&quot;Veteran&#39;s Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span>
+    <span class="s2">&quot;Thanksgiving&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span>
+    <span class="s2">&quot;Christmas Eve&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span>
+    <span class="s2">&quot;Christmas Day&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span>
+    <span class="s2">&quot;New Year’s Eve&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-is-holiday-function-will-determine-if-a-specified-date-is-a-holiday">
+<h3>The is_holiday function will determine if a specified date is a holiday<a class="headerlink" href="#the-is-holiday-function-will-determine-if-a-specified-date-is-a-holiday" title="Permalink to this headline">#</a></h3>
+<p>The trick is that some holidays, like the 4th of July, are always on the same calendar date.  But other holidays, like Thanksgiving, are on a specific weekday and week of the month.</p>
+<p><em>This function can be improved by using the Holidays dictionary.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># determine if a date is considered a holiday</span>
+
+<span class="k">def</span> <span class="nf">is_holiday</span> <span class="p">(</span> <span class="n">a_date</span> <span class="p">):</span>   
+
+    
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span>
+
+    <span class="n">s_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">a_date</span><span class="p">)</span>
+    <span class="n">s_date</span> <span class="o">=</span> <span class="n">s_date</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">x_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">s_date</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="n">my_month</span>     <span class="o">=</span> <span class="n">x_date</span><span class="o">.</span><span class="n">month</span>
+    <span class="n">my_day</span>       <span class="o">=</span> <span class="n">x_date</span><span class="o">.</span><span class="n">day</span>
+    <span class="n">my_weekday</span>   <span class="o">=</span> <span class="n">x_date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span>
+    
+    
+    <span class="c1"># Exercise: change this logic to loop thru the Holidays dictionary</span>
+    
+    
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;New Year&#39;s Day&quot;</span>
+        
+    <span class="c1"># (3rd Monday in January)</span>
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">my_weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&gt;=</span> <span class="mi">15</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&lt;=</span> <span class="mi">21</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Martin Luther King Day&quot;</span>
+    
+    <span class="c1"># (3rd Monday in February)</span>
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">my_weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&gt;=</span> <span class="mi">15</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&lt;=</span> <span class="mi">21</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Washington&#39;s Birthday&quot;</span>
+        
+    <span class="c1"># (Last Monday in May)</span>
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">my_weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&gt;=</span> <span class="mi">25</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&lt;=</span> <span class="mi">31</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Memorial Day&quot;</span>
+    
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">19</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Juneteenth National Independence Day&quot;</span>
+        
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Independence Day&quot;</span>
+   
+    <span class="c1"># (First Monday in September)</span>
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">and</span> <span class="n">my_weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Labor Day&quot;</span>
+        
+    <span class="c1"># (Second Monday in October)</span>
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">my_weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&lt;=</span> <span class="mi">14</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Columbus Day&quot;</span>
+        
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">31</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Halloween&quot;</span>
+        
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">11</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Veteran&#39;s Day&quot;</span>
+        
+    <span class="c1"># (Fourth Thursday in October)</span>
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">11</span> <span class="ow">and</span> <span class="n">my_weekday</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&gt;=</span> <span class="mi">22</span> <span class="ow">and</span> <span class="n">my_day</span> <span class="o">&lt;=</span> <span class="mi">28</span> <span class="p">:</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Thanksgiving&quot;</span>
+        
+    <span class="k">if</span> <span class="n">my_month</span> <span class="o">==</span> <span class="mi">12</span> <span class="p">:</span>
+        
+        <span class="k">if</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">24</span> <span class="p">:</span> 
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Christmas Eve&quot;</span>
+        <span class="k">if</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">25</span> <span class="p">:</span> 
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;Christmas Day&quot;</span>
+        <span class="k">if</span> <span class="n">my_day</span> <span class="o">==</span> <span class="mi">31</span> <span class="p">:</span> 
+            <span class="n">ret_val</span> <span class="o">=</span> <span class="s2">&quot;New Year’s Eve&quot;</span>
+    
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-increment-date-function-takes-a-table-and-column-name-and-increments-the-field-by-the-specified-number-of-years">
+<h3>The increment_date function takes a table and column name and increments the field by the specified number of years.<a class="headerlink" href="#the-increment-date-function-takes-a-table-and-column-name-and-increments-the-field-by-the-specified-number-of-years" title="Permalink to this headline">#</a></h3>
+<p>This function can update the field by calendar date (INCREMENT) or by the day of the week (DAYOFWEEK).</p>
+<p>There are three possible outputs:</p>
+<ul class="simple">
+<li><p>PREVIEW - Display the current date and the new incremented date</p></li>
+<li><p>SQL - Generate the sql that would update the database</p></li>
+<li><p>UPDATE - update the database directly using dynamic sql</p></li>
+</ul>
+<p>The idea behind the DAYOFWEEK option is that when incrementing performance dates, a concert that was held on a Saturday should still be performed on a Saturday when the date is incremented.  The exception is when a performance is on a fixed holiday like the 4th of July or New Year’s Eve.</p>
+<p><em>Note: To support sales data the time portion of a datetime column is kept the same as the original date.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve a datetime field from the specified table and column.</span>
+<span class="c1"># increment the date by the specified number of years</span>
+<span class="c1"># return the specified output: </span>
+<span class="c1">#  the old and new date (PREVIEW)</span>
+<span class="c1">#  the sql to update the dates (SQL)</span>
+<span class="c1">#  or actually update the dates (UPDATE)</span>
+
+<span class="k">def</span> <span class="nf">increment_date</span> <span class="p">(</span><span class="n">a_Table</span><span class="p">,</span> <span class="n">a_Id_Col</span><span class="p">,</span> <span class="n">a_Date_Col</span><span class="p">,</span> <span class="n">a_years</span><span class="p">,</span> <span class="n">a_method</span><span class="p">,</span> <span class="n">a_output</span><span class="p">):</span>
+    
+    <span class="n">ret_val</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Rows to be updated    </span>
+    <span class="n">col</span><span class="o">=</span><span class="p">[</span><span class="n">a_Id_Col</span><span class="p">,</span><span class="s1">&#39;Curr_Date&#39;</span><span class="p">,</span><span class="s1">&#39;New_Date&#39;</span><span class="p">]</span>
+          
+    <span class="n">sql_select</span> <span class="o">=</span> <span class="s1">&#39;SELECT &#39;</span> <span class="o">+</span> <span class="n">a_Id_Col</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="n">a_Date_Col</span> <span class="o">+</span> <span class="s1">&#39; as Curr_Date, convert(date,&#39;</span> <span class="o">+</span> <span class="n">a_Date_Col</span> <span class="o">+</span> <span class="s1">&#39;) as New_Date FROM &#39;</span> <span class="o">+</span> <span class="n">a_Table</span> <span class="o">+</span> <span class="s1">&#39; where &#39;</span> <span class="o">+</span> <span class="n">a_Date_Col</span> <span class="o">+</span> <span class="s1">&#39; is not null&#39;</span> <span class="o">+</span> <span class="s1">&#39; order by &#39;</span> <span class="o">+</span> <span class="n">a_Id_Col</span>      
+    
+    <span class="n">df_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_select</span><span class="p">,</span> <span class="n">eng</span><span class="p">)</span>
+    <span class="n">df_date</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">a_Id_Col</span><span class="p">)</span>
+
+    <span class="c1"># add specified number of years </span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">a_years</span><span class="p">):</span>
+        <span class="n">df_date</span><span class="p">[</span><span class="s1">&#39;New_Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="s1">&#39;New_Date&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">a_method</span> <span class="o">==</span> <span class="s1">&#39;DAYOFWEEK&#39;</span><span class="p">:</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_date</span><span class="p">)):</span>
+
+            <span class="c1">#move to the closest day with the same </span>
+
+            <span class="n">cdate</span> <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="s1">&#39;Curr_Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">ndate</span> <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="s1">&#39;New_Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            
+            <span class="c1"># .weekday() 0 = Monday, 6 is Sunday</span>
+            <span class="c1"># note that for payroll and other systems Sunday is considered the first day of the week not monday</span>
+            <span class="n">day_offset</span> <span class="o">=</span> <span class="n">cdate</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">-</span> <span class="n">ndate</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span>
+            
+            <span class="c1"># Handle holidays, a concert on a saturday is not the same as a concert on the 4th of July</span>
+            
+            <span class="n">special_day</span> <span class="o">=</span> <span class="n">is_holiday</span> <span class="p">(</span><span class="n">cdate</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">special_day</span> <span class="ow">in</span> <span class="n">Holidays</span><span class="p">:</span>
+            
+                <span class="n">Holiday_details</span> <span class="o">=</span> <span class="n">Holidays</span><span class="p">[</span><span class="n">special_day</span><span class="p">]</span>
+
+                <span class="c1"># only adjust a floating holiday</span>
+                <span class="k">if</span> <span class="n">Holiday_details</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">ndate</span> <span class="o">=</span> <span class="n">ndate</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">day_offset</span><span class="p">)</span>
+                    <span class="c1"># floating holidays can miss by 1 week    </span>
+                    <span class="k">if</span> <span class="n">ndate</span><span class="o">.</span><span class="n">day</span> <span class="o">&lt;</span> <span class="n">Holiday_details</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">:</span>
+                        <span class="n">ndate</span> <span class="o">=</span> <span class="n">ndate</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+                    
+            <span class="k">else</span><span class="p">:</span>    
+                
+                <span class="n">ndate</span> <span class="o">=</span> <span class="n">ndate</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">day_offset</span><span class="p">)</span>
+       
+            <span class="n">df_date</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;New_Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ndate</span>
+
+
+        
+        
+    <span class="c1"># This procedure will show the data frame, output the sql statements, or update the table</span>
+    
+    <span class="k">if</span> <span class="n">a_output</span> <span class="o">==</span> <span class="s1">&#39;PREVIEW&#39;</span> <span class="p">:</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="n">df_date</span><span class="p">)</span>
+        
+    <span class="k">else</span> <span class="p">:</span>    
+
+        <span class="c1"># generate the sql to update the table with the new date</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_date</span><span class="p">)):</span>
+        
+            <span class="n">did</span>   <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="n">a_Id_Col</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">cdate</span> <span class="o">=</span> <span class="n">df_date</span><span class="p">[</span><span class="s1">&#39;Curr_Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="c1"># keep same time as the original date</span>
+            <span class="n">ndate</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">df_date</span><span class="p">[</span><span class="s1">&#39;New_Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cdate</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+            <span class="n">sql_stm</span>  <span class="o">=</span> <span class="s2">&quot;Update &quot;</span> <span class="o">+</span> <span class="n">a_Table</span> <span class="o">+</span> <span class="s2">&quot; set &quot;</span> <span class="o">+</span> <span class="n">a_Date_Col</span> <span class="o">+</span> <span class="s2">&quot; = &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ndate</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; where &quot;</span> <span class="o">+</span> <span class="n">a_Id_Col</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">did</span><span class="p">)</span>
+        
+            <span class="k">if</span> <span class="n">a_output</span> <span class="o">==</span> <span class="s1">&#39;SQL&#39;</span> <span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">cdate</span><span class="p">,</span><span class="n">sql_stm</span><span class="p">)</span>           
+            
+            <span class="k">if</span> <span class="n">a_output</span> <span class="o">==</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_stm</span><span class="p">)</span>    
+
+        <span class="k">if</span> <span class="n">a_output</span> <span class="o">==</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="p">:</span>
+        
+            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">ret_val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">a_Table</span><span class="p">,</span><span class="s1">&#39;Failure&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>        
+            <span class="nb">print</span><span class="p">(</span><span class="n">a_Table</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_date</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; rows updated&#39;</span><span class="p">)</span>
+        
+    
+    <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="here-we-go">
+<h3>Here we go…<a class="headerlink" href="#here-we-go" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Create a database engine and a separate connection for dynamic sql</p></li>
+<li><p>Specify the number of years to increment the dates and the desired output</p></li>
+<li><p>Call the increment_date function for the desired table, column combinations</p></li>
+</ul>
+<p><strong>Fun Fact:</strong> If the dates are incremented in multiples of 4, leap year data will be maintained!</p>
+<p><em>This function can be improved by adding user prompts for year and output.</em></p>
+<p><em>Note: Dataframes perform updates by doing a separate delete and insert. Depending on the constraints defined in the database, the delete may fail.  For this reason, dynamic sql was used to update the database with dynamic update statements.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># main</span>
+
+<span class="n">hallux_svr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxsvr&quot;</span><span class="p">)</span>
+<span class="n">hallux_usr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxusr&quot;</span><span class="p">)</span>
+<span class="n">hallux_psd</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxpsd&quot;</span><span class="p">)</span>
+<span class="n">hallux_db</span>  <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;halluxdb&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># for use in creating a dataframe</span>
+<span class="n">conn_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;mssql+pyodbc://</span><span class="si">{</span><span class="n">hallux_usr</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">hallux_psd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">hallux_svr</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">hallux_db</span><span class="si">}</span><span class="s2">?driver=SQL+Server+Native+Client+11.0&amp;TrustServerCertificate=yes&quot;</span>
+<span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">conn_string</span><span class="p">,</span> <span class="n">fast_executemany</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># used for executing dynamic sql</span>
+<span class="n">conn</span>   <span class="o">=</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">hallux_svr</span><span class="p">,</span> <span class="n">hallux_usr</span><span class="p">,</span> <span class="n">hallux_psd</span><span class="p">,</span> <span class="n">hallux_db</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># number of years to add to the dates</span>
+<span class="c1"># Note that by adding a number years that is divisible by 4, leap years dates are maintained.</span>
+<span class="n">num_years</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="c1"># specify the output: PREVIEW, SQL, or UPDATE</span>
+<span class="c1">#Preview shows the new dates, sql generates the update statements, update actually updates the dates in the database</span>
+<span class="n">the_output</span> <span class="o">=</span> <span class="s1">&#39;PREVIEW&#39;</span>
+
+<span class="c1"># increment the dates</span>
+<span class="k">for</span> <span class="n">curr_hallux_date</span><span class="p">,</span> <span class="n">curr_value</span> <span class="ow">in</span> <span class="n">Hallux_Dates</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">increment_date</span> <span class="p">(</span><span class="n">curr_value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">curr_hallux_date</span><span class="p">,</span> <span class="n">num_years</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">the_output</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">curr_hallux_date</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">eng</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Agent_Id  Curr_Date    New_Date
+0     200001 2013-01-30  2021-01-30
+1     200002 2018-08-21  2026-08-21
+2     200003 2017-08-09  2025-08-09
+3     200004 2022-12-01  2030-12-01
+4     200005 2016-02-11  2024-02-11
+5     200006 2015-04-22  2023-04-22
+6     200007 2019-01-15  2027-01-15
+7     200008 2021-09-26  2029-09-26
+8     200009 2017-07-20  2025-07-20
+9     200010 2014-02-12  2022-02-12
+10    200011 2022-07-21  2030-07-21
+11    200012 2013-01-01  2021-01-01
+12    200013 2018-12-26  2026-12-26
+13    200014 2015-07-21  2023-07-21
+14    200015 2018-06-27  2026-06-27
+15    200016 2013-01-01  2021-01-01
+16    200017 2013-08-01  2021-08-01
+17    200018 2021-03-19  2029-03-19
+18    200019 2020-03-07  2028-03-07
+19    200020 2014-01-30  2022-01-30
+20    200021 2015-10-23  2023-10-23
+21    200022 2021-08-16  2029-08-16
+22    200023 2017-06-09  2025-06-09
+23    200024 2018-07-19  2026-07-19
+24    200025 2013-01-01  2021-01-01
+25    200026 2018-01-14  2026-01-14
+26    200027 2018-11-15  2026-11-15
+27    200028 2014-06-22  2022-06-22
+28    200029 2020-01-07  2028-01-07
+29    200030 2013-07-23  2021-07-23
+30    200031 2015-07-18  2023-07-18
+31    200032 2015-11-27  2023-11-27
+32    200033 2014-08-14  2022-08-14
+33    200034 2018-02-23  2026-02-23
+34    200035 2018-03-09  2026-03-09
+35    200036 2019-06-01  2027-06-01
+36    200037 2016-04-23  2024-04-23
+37    200038 2016-11-04  2024-11-04
+38    200039 2013-01-01  2021-01-01
+39    200040 2013-11-30  2021-11-30
+40    200041 2015-08-23  2023-08-23
+41    200042 2014-05-12  2022-05-12
+Hire_Date 0
+      Album_Id  Curr_Date    New_Date
+0        20000 2007-01-04  2015-01-04
+1        20001 2008-02-26  2016-02-26
+2        20002 2009-07-24  2017-07-24
+3        20003 2011-06-06  2019-06-06
+4        20004 2012-12-04  2020-12-04
+...        ...        ...         ...
+2636     27970 2020-12-13  2028-12-13
+2637     27971 2022-02-22  2030-02-22
+2638     27980 2019-01-18  2027-01-18
+2639     27981 2020-02-27  2028-02-27
+2640     27982 2021-08-17  2029-08-17
+
+[2641 rows x 3 columns]
+Release_Date 0
+     Band_Id  Curr_Date    New_Date
+0       1000 2007-01-04  2015-01-04
+1       1001 2019-04-24  2027-04-24
+2       1002 2007-08-19  2015-08-19
+3       1003 2021-10-06  2029-10-06
+4       1004 2019-08-17  2027-08-17
+..       ...        ...         ...
+395     1395 2006-01-01  2014-01-01
+396     1396 2016-12-08  2024-12-08
+397     1397 2006-04-23  2014-04-23
+398     1398 2006-01-01  2014-01-01
+399     1399 2019-01-18  2027-01-18
+
+[400 rows x 3 columns]
+Formation_Date 0
+      Member_Id  Curr_Date    New_Date
+0        110000 2007-01-04  2015-01-04
+1        110001 2007-01-04  2015-01-04
+2        110010 2019-04-24  2027-04-24
+3        110011 2022-06-13  2030-06-13
+4        110012 2022-04-20  2030-04-20
+...         ...        ...         ...
+1410     113991 2019-01-18  2027-01-18
+1411     113992 2019-01-18  2027-01-18
+1412     113993 2019-01-18  2027-01-18
+1413     113994 2019-01-18  2027-01-18
+1414     113995 2019-01-18  2027-01-18
+
+[1415 rows x 3 columns]
+Join_Date 0
+     Contract_Id  Curr_Date    New_Date
+0          10110 2010-09-23  2018-09-23
+1          10130 2018-05-13  2026-05-13
+2          10150 2014-05-10  2022-05-10
+3          10170 2010-06-26  2018-06-26
+4          10230 2022-04-15  2030-04-15
+..           ...        ...         ...
+134        13900 2021-09-16  2029-09-16
+135        13910 2023-02-13  2031-02-13
+136        13940 2022-05-17  2030-05-17
+137        13950 2006-12-31  2014-12-31
+138        13980 2006-06-14  2014-06-14
+
+[139 rows x 3 columns]
+Begin_Date 0
+     Contract_Id  Curr_Date    New_Date
+0          10110 2026-01-01  2034-01-01
+1          10130 2026-01-01  2034-01-01
+2          10150 2026-01-01  2034-01-01
+3          10170 2026-01-01  2034-01-01
+4          10230 2026-01-01  2034-01-01
+..           ...        ...         ...
+134        13900 2026-01-01  2034-01-01
+135        13910 2026-01-01  2034-01-01
+136        13940 2026-01-01  2034-01-01
+137        13950 2026-01-01  2034-01-01
+138        13980 2026-01-01  2034-01-01
+
+[139 rows x 3 columns]
+End_Date 0
+        Order_Id           Curr_Date    New_Date
+0        1000001 2006-01-01 13:52:28  2014-01-01
+1        1000002 2006-01-01 02:19:03  2014-01-01
+2        1000003 2006-01-01 11:30:38  2014-01-01
+3        1000004 2006-01-01 15:27:33  2014-01-01
+4        1000005 2006-01-01 04:47:53  2014-01-01
+...          ...                 ...         ...
+184121   1620849 2022-12-31 04:44:44  2030-12-31
+184122   1620850 2022-12-31 03:19:24  2030-12-31
+184123   1620851 2022-12-31 17:09:23  2030-12-31
+184124   1620852 2022-12-31 00:54:38  2030-12-31
+184125   1620853 2022-12-31 20:34:23  2030-12-31
+
+[184126 rows x 3 columns]
+Order_Date 0
+        Order_Id  Curr_Date    New_Date
+0        1000001 2006-01-10  2014-01-10
+1        1000002 2006-01-09  2014-01-09
+2        1000003 2006-01-07  2014-01-07
+3        1000004 2006-01-07  2014-01-07
+4        1000005 2006-01-08  2014-01-08
+...          ...        ...         ...
+184121   1620849 2023-01-06  2031-01-06
+184122   1620850 2023-01-08  2031-01-08
+184123   1620851 2023-01-05  2031-01-05
+184124   1620852 2023-01-06  2031-01-06
+184125   1620853 2023-01-06  2031-01-06
+
+[184126 rows x 3 columns]
+Promise_Date 0
+      Profile_Id  Curr_Date    New_Date
+0         100002 1989-11-17  1997-11-17
+1         100004 1989-11-06  1997-11-06
+2         100006 1992-04-28  2000-04-28
+3         100008 2013-11-13  2021-11-13
+4         100012 1997-05-19  2005-05-19
+...          ...        ...         ...
+4491      109992 1999-09-10  2007-09-10
+4492      109994 1993-09-28  2001-09-28
+4493      109996 1995-11-29  2003-11-29
+4494      109998 1995-12-11  2003-12-11
+4495      110000 1993-06-06  2001-06-06
+
+[4496 rows x 3 columns]
+Birthdate 0
+       Performance_Id  Curr_Date             New_Date
+0             2000000 1999-01-16  2007-01-20 00:00:00
+1             2000001 1999-01-17  2007-01-21 00:00:00
+2             2000002 1999-01-22  2007-01-26 00:00:00
+3             2000003 1999-01-26  2007-01-23 00:00:00
+4             2000004 1999-02-07  2007-02-11 00:00:00
+...               ...        ...                  ...
+65435         2798221 2014-01-15  2022-01-12 00:00:00
+65436         2798222 2014-01-23  2022-01-20 00:00:00
+65437         2798223 2014-01-26  2022-01-30 00:00:00
+65438         2798224 2014-02-05  2022-02-02 00:00:00
+65439         2798225 2014-02-11  2022-02-08 00:00:00
+
+[65440 rows x 3 columns]
+Performance_Date 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./book/contrib"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="00-studentcontributions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Student Contributions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="IRSMarkDown.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with IRS data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Michael Dereszynski<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
