@@ -74,7 +74,7 @@ parse:
     numpy_url: '[numpy](https://numpy.org/)'
     seaborn_url: '[seaborn](https://seaborn.pydata.org/)'
     UCI_url: '[UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/)'
-
+    
 only_build_toc_files: false
 
 sphinx: 
