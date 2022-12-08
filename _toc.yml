@@ -42,7 +42,7 @@ parts:
       - file: book/exercises/240-Getting_Web_Data-ex
       - file: book/exercises/250-Database_Connections-ex
       - file: book/exercises/260-Data_Visualization-ex
-  - caption: Part 3
+  - caption: Part 3 - Using Python for Machine Learning
     maxdepth: 2
     chapters:
     - file: book/lessons/300-PartThree
@@ -64,17 +64,6 @@ parts:
     - file: book/lessons/TryIt_Part3
       sections:
       - file: book/exercises/310-ExploratoryDataAnalysis-ex
-  - caption: Student Contributions
-    maxdepth: 2
-    chapters:
-    - file: book/contrib/01-contributing_a_notebook
-    - file: book/contrib/00-studentcontributions
-      sections:
-      ## Add a link to your file here, don't include the .ipynb ext
-      - file: book/contrib/US_Median_Housing
-      - file: book/contrib/hallux
-      - file: book/contrib/persona
-      - file: book/contrib/upload_file_to_table
   - caption: Appendix
     maxdepth: 2
     chapters:
@@ -84,6 +73,19 @@ parts:
       - file: book/extras/251-SQL_Alchemy
       - file: book/extras/252-SQL_ODBC
     - file: book/extras/400-Contributors
+  - caption: Student Contributions
+    maxdepth: 2
+    chapters:
+    - file: book/contrib/01-contributing_a_notebook
+    - file: book/contrib/00-studentcontributions
+      sections:
+      ## Add a link to your file here, don't include the .ipynb ext
+      - file: book/contrib/hallux
+      - file: book/contrib/persona
+      - file: book/contrib/upload_file_to_table
+      - file: book/contrib/US_Median_Housing
+      - file: book/contrib/working_with_age_data
+    
 
 # Introduction - (bootcamp content)
 # - Chapter 1

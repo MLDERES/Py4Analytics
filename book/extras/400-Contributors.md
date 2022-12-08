@@ -16,3 +16,4 @@ Full list of contributors
 * [Colton Hinrichs](https://github.com/ColtonHinrichs)
 * [John Stillman](https://github.com/johnstillman)
 * [Kanchan Keshav](https://github.com/kanchankeshav)
+* [Amulya_Pemmaraju](https://github.com/a0p0j0f)
