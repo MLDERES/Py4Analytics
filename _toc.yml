@@ -74,6 +74,7 @@ parts:
       - file: book/contrib/US_Median_Housing
       - file: book/contrib/hallux
       - file: book/contrib/persona
+      - file: book/contrib/upload_file_to_table
   - caption: Appendix
     maxdepth: 2
     chapters:
