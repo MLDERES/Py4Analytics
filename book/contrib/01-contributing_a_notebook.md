@@ -1,10 +1,10 @@
 ﻿# Implementing/Creating Jupyter Notebook for final deliverable:
 
-1) Ensure you have a [github.com](www.github.com) account. This is what the home screen looks like 
+1) Ensure you have a [github.com](https://www.github.com) account. This is what the home screen looks like 
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.001.png)
 
-2) If you have never installed [GitDesktop](desktop.github.com), here is what it will bring you to
+2) If you have never installed [GitDesktop](https://desktop.github.com), here is what it will bring you to
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.002.png)
 
@@ -106,7 +106,7 @@ Follow the instructions and add your file name. You can now proceed.
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.023.png)
 
-19) This is how to get it back to Prof Dereszynski’s book. I am demonstrating this in VS Code. If you do not have VS Code, you will want to install it. Here is the link:[ VS Code ](contrib_img/https://code.visualstudio.com/download)
+19) This is how to get it back to Prof Dereszynski’s book. I am demonstrating this in VS Code. If you do not have VS Code, you will want to install it. Here is the link:[ VS Code ](https://code.visualstudio.com/download)
 20) Click “Open File…”  ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.024.png)
 21) The folder you select will be the same folder (path) where you created the local copy of your forked Py4Analytics book. Here is what it will look like 
 

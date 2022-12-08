@@ -12,3 +12,5 @@ Special thanks for the following:
   
 Full list of contributors
 * [lumunna](https://github.com/lumunna)
+* [insightanalyst](https://github.com/insightanalyst)
+* [ColtonHinrichs](https://github.com/ColtonHinrichs)

@@ -67,10 +67,10 @@ parts:
   - caption: Student Contributions
     maxdepth: 2
     chapters:
+    - file: book/contrib/01-contributing_a_notebook
     - file: book/contrib/00-studentcontributions
       sections:
       ## Add a link to your file here, don't include the .ipynb ext
-      - file: book/contrib/100-samplecontrib
       - file: book/contrib/US_Median_Housing
   - caption: Appendix
     maxdepth: 2
