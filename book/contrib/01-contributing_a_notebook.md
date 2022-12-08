@@ -61,7 +61,7 @@ You will get this window after creating the clone: \*For the purpose of this boo
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.015.png)
 
 
-# To just upload a file using the web interface 
+## To just upload a file using the web interface 
 13) The easiest way to get a copy of your Jupyter Notebook (the .ipynb file that will be your final deliverable) is to click “View the files of your repository in Explorer” and paste a copy of the final Jupyter Notebook into the “extras” folder. Below is what it looks like with no changes.
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.016.png)
@@ -101,7 +101,7 @@ Follow the instructions and add your file name. You can now proceed.
 
 \***Note: if you make changes to your file (say you found a spelling mistake, or someone gave you a pointer on how to have more concise code), as long as the repository owner has not approved the pull request, you can make changes to the file. It is as simple as committing the file (from your local machine) and syncing the changes to the cloud (github.com website). Once the pull request has been approved, you will need to submit a new pull request.**
 
-# How to see this in VS Code instead of web interfaces 
+## How to see this in VS Code instead of web interfaces 
 18) How to see it in VS Code is to follow. It might be helpful to rename this file with a “5713 – Your notebook name” so it is clear where this file came from (or from whom). When you have finished this, it should look like below.
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.023.png)
@@ -166,7 +166,7 @@ Click “Ok”.
 \***Note: if you make changes to your file (say you found a spelling mistake, or someone gave you a pointer on how to have more concise code), as long as the repository owner has not approved the pull request, you can make changes to the file. It is as simple as committing the file (from your local machine) and syncing the changes to the cloud (github.com website). Once the pull request has been approved, you will need to submit a new pull request.**
 
 
-# How to ensure most accuracy
+## How to ensure most accuracy
 Sometimes the owner of the repository will make updates to their codes. It is important to ensure you have the most recent version of the repository. There are greater complications if you do not do this, therefore, just trust Prof. Dereszynski when he asks you to “Sync fork” before working on any project. 
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.039.png)
