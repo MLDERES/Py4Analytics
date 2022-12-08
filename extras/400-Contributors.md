@@ -11,6 +11,7 @@ Special thanks for the following:
   * for adding content instruction for future students and additional insights for someone who was not a Python writer when first reading this book.
   
 Full list of contributors
-* [lumunna](https://github.com/lumunna)
-* [insightanalyst](https://github.com/insightanalyst)
-* [ColtonHinrichs](https://github.com/ColtonHinrichs)
+* [Lotanna Precious Umunna](https://github.com/lumunna)
+* [Hannah R. Beck](https://github.com/insightanalyst)
+* [Colton Hinrichs](https://github.com/ColtonHinrichs)
+* [John Stillman](https://github.com/johnstillman)
