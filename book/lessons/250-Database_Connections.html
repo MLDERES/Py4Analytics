@@ -496,6 +496,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/How_Walton_API_Works.html">
+     Walton API Explained
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../contrib/working_with_age_data.html">
      Manipulating census data with pandas
     </a>
@@ -906,6 +911,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Just for this situation, we want to remove the database if it already exists so that we don&#39;t have an issue overwriting</span>
+<span class="c1">#  the file.</span>
+<span class="n">db_file</span> <span class="o">=</span> <span class="s1">&#39;../output/sample.db&#39;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">db_file</span><span class="p">)):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">db_file</span><span class="p">)</span>
 
 <span class="c1"># Make a connection to the database</span>
 <span class="n">cnn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../output/sample.db&#39;</span><span class="p">)</span>
@@ -948,7 +960,8 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s get the data back out</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM pet&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
 
 <span class="c1"># When we are finally done, we want to be sure to close the connection.</span>
 <span class="n">cnn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -956,12 +969,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Sparky&#39;, &#39;goldfish&#39;, &#39;Jim&#39;),
- (&#39;Buster&#39;, &#39;terrier&#39;, &#39;Louise&#39;),
- (&#39;T-Rex&#39;, &#39;iguana&#39;, &#39;Caleb&#39;),
- (&#39;Sparky&#39;, &#39;goldfish&#39;, &#39;Jim&#39;),
- (&#39;Buster&#39;, &#39;terrier&#39;, &#39;Louise&#39;),
- (&#39;T-Rex&#39;, &#39;iguana&#39;, &#39;Caleb&#39;)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Sparky&#39;, &#39;goldfish&#39;, &#39;Jim&#39;)
+(&#39;Buster&#39;, &#39;terrier&#39;, &#39;Louise&#39;)
+(&#39;T-Rex&#39;, &#39;iguana&#39;, &#39;Caleb&#39;)
 </pre></div>
 </div>
 </div>
@@ -1014,20 +1024,6 @@ Environment variables are variables that are stored in the operating system, rat
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;10, Mack&#39;)
-(2, &#39;101, Highway&#39;)
-(3, &#39;2, Kase&#39;)
-(4, &#39;2Pac&#39;)
-(5, &quot;4-Tay, Rappin&#39;&quot;)
-(6, &#39;7, Marc&#39;)
-(7, &#39;9mm, Orange&#39;)
-(8, &#39;Aaliyah&#39;)
-(9, &#39;Aames, Angela&#39;)
-(10, &#39;Aames, Willie&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="dynamic-queries">
@@ -1043,11 +1039,6 @@ Environment variables are variables that are stored in the operating system, rat
 
 <span class="c1"># Connect to the database and do something interesting</span>
 <span class="c1"># ...</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ellipsis
 </pre></div>
 </div>
 </div>
@@ -1086,11 +1077,6 @@ Environment variables are variables that are stored in the operating system, rat
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;index&#39;, &#39;name&#39;, &#39;mfr&#39;, &#39;type&#39;, &#39;calories&#39;, &#39;protein&#39;, &#39;fat&#39;, &#39;sodium&#39;, &#39;fiber&#39;, &#39;carbo&#39;, &#39;sugars&#39;, &#39;potass&#39;, &#39;vitamins&#39;, &#39;shelf&#39;, &#39;weight&#39;, &#39;cups&#39;, &#39;rating&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now that we know the kind of data we have in the table, we can go ahead with build a query where the number of calories are limited.</p>
 <div class="cell docutils container">
@@ -1119,23 +1105,6 @@ Environment variables are variables that are stored in the operating system, rat
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Low calorie cereals
-----------
-100%_Bran: 70
-All-Bran: 70
-All-Bran_with_Extra_Fiber: 50
-Puffed_Rice: 50
-Puffed_Wheat: 50
-
-High calorie cereals
-----------
-Muesli_Raisins,_Dates,_&amp;_Almonds: 150
-Muesli_Raisins,_Peaches,_&amp;_Pecans: 150
-Mueslix_Crispy_Blend: 160
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1152,276 +1121,6 @@ Mueslix_Crispy_Blend: 160
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Configuration</th>
-      <th>Customer Postcode</th>
-      <th>Store Postcode</th>
-      <th>Retail Price</th>
-      <th>Screen Size (Inches)</th>
-      <th>Battery Life (Hours)</th>
-      <th>RAM (GB)</th>
-      <th>Processor Speeds (GHz)</th>
-      <th>Integrated Wireless?</th>
-      <th>HD Size (GB)</th>
-      <th>Bundled Applications?</th>
-      <th>customer X</th>
-      <th>customer Y</th>
-      <th>store X</th>
-      <th>store Y</th>
-      <th>sale_date</th>
-    </tr>
-    <tr>
-      <th>sale_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>163</td>
-      <td>EC4V 5BH</td>
-      <td>SE1 2BN</td>
-      <td>455.0</td>
-      <td>15</td>
-      <td>5</td>
-      <td>1</td>
-      <td>2.0</td>
-      <td>Yes</td>
-      <td>80</td>
-      <td>Yes</td>
-      <td>532041</td>
-      <td>180995</td>
-      <td>534057.0</td>
-      <td>179682.0</td>
-      <td>2008-01-01 00:01:00</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>320</td>
-      <td>SW4 0JL</td>
-      <td>SW12 9HD</td>
-      <td>545.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>1</td>
-      <td>2.0</td>
-      <td>No</td>
-      <td>300</td>
-      <td>No</td>
-      <td>529240</td>
-      <td>175537</td>
-      <td>528739.0</td>
-      <td>173080.0</td>
-      <td>2008-01-01 00:02:00</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>23</td>
-      <td>EC3V 1LR</td>
-      <td>E2 0RY</td>
-      <td>515.0</td>
-      <td>15</td>
-      <td>4</td>
-      <td>1</td>
-      <td>2.0</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>Yes</td>
-      <td>533095</td>
-      <td>181047</td>
-      <td>535652.0</td>
-      <td>182961.0</td>
-      <td>2008-01-01 00:04:00</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>169</td>
-      <td>SW1P 3AU</td>
-      <td>SE1 2BN</td>
-      <td>395.0</td>
-      <td>15</td>
-      <td>5</td>
-      <td>1</td>
-      <td>2.0</td>
-      <td>No</td>
-      <td>40</td>
-      <td>Yes</td>
-      <td>529902</td>
-      <td>179641</td>
-      <td>534057.0</td>
-      <td>179682.0</td>
-      <td>2008-01-01 00:04:00</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>365</td>
-      <td>EC4V 4EG</td>
-      <td>SW1V 4QQ</td>
-      <td>585.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>2</td>
-      <td>2.0</td>
-      <td>No</td>
-      <td>120</td>
-      <td>Yes</td>
-      <td>531684</td>
-      <td>180948</td>
-      <td>528924.0</td>
-      <td>178440.0</td>
-      <td>2008-01-01 00:06:00</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>297567</th>
-      <td>703</td>
-      <td>SE1 2UP</td>
-      <td>SW1P 3AU</td>
-      <td>NaN</td>
-      <td>17</td>
-      <td>5</td>
-      <td>4</td>
-      <td>2.0</td>
-      <td>No</td>
-      <td>300</td>
-      <td>Yes</td>
-      <td>533595</td>
-      <td>180025</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-12-30 23:55:00</td>
-    </tr>
-    <tr>
-      <th>297568</th>
-      <td>731</td>
-      <td>N13 4JD</td>
-      <td>N3 1DH</td>
-      <td>392.0</td>
-      <td>17</td>
-      <td>6</td>
-      <td>1</td>
-      <td>1.5</td>
-      <td>No</td>
-      <td>80</td>
-      <td>Yes</td>
-      <td>531165</td>
-      <td>192973</td>
-      <td>525109.0</td>
-      <td>190628.0</td>
-      <td>2008-12-30 23:55:00</td>
-    </tr>
-    <tr>
-      <th>297569</th>
-      <td>375</td>
-      <td>SE25 6EF</td>
-      <td>CR7 8LE</td>
-      <td>441.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>2</td>
-      <td>2.4</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>Yes</td>
-      <td>534086</td>
-      <td>168521</td>
-      <td>532714.0</td>
-      <td>168302.0</td>
-      <td>2008-12-30 23:57:00</td>
-    </tr>
-    <tr>
-      <th>297570</th>
-      <td>101</td>
-      <td>SW8 1LA</td>
-      <td>SW1P 3AU</td>
-      <td>406.0</td>
-      <td>15</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>120</td>
-      <td>Yes</td>
-      <td>530716</td>
-      <td>177488</td>
-      <td>529902.0</td>
-      <td>179641.0</td>
-      <td>2008-12-30 23:58:00</td>
-    </tr>
-    <tr>
-      <th>297571</th>
-      <td>343</td>
-      <td>SE16 4QZ</td>
-      <td>SE8 3JD</td>
-      <td>530.0</td>
-      <td>15</td>
-      <td>6</td>
-      <td>2</td>
-      <td>1.5</td>
-      <td>Yes</td>
-      <td>300</td>
-      <td>Yes</td>
-      <td>534348</td>
-      <td>179162</td>
-      <td>537175.0</td>
-      <td>177885.0</td>
-      <td>2008-12-30 23:58:00</td>
-    </tr>
-  </tbody>
-</table>
-<p>297572 rows × 16 columns</p>
-</div></div></div>
 </div>
 <p>Likewise we can do some work with our dataframe and put it into a database with the <code class="docutils literal notranslate"><span class="pre">pd.to_sql()</span></code> function.</p>
 <div class="cell docutils container">
@@ -1435,48 +1134,6 @@ Mueslix_Crispy_Blend: 160
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Phone</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Alice</td>
-      <td>555-555-1234</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Bob</td>
-      <td>123-456-7890</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Charlie</td>
-      <td>555-867-5309</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1489,11 +1146,6 @@ Mueslix_Crispy_Blend: 160
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1501,48 +1153,6 @@ Mueslix_Crispy_Blend: 160
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Phone</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Alice</td>
-      <td>555-555-1234</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Bob</td>
-      <td>123-456-7890</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Charlie</td>
-      <td>555-867-5309</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Being able to connect to a SQL database and run queries from Python is super handy and really useful. Combining the simplicity of Python and the power of a relational database can make for some very compelling and useful automation of common tasks.  Using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is especially handy because once we create the connection to the database - the rest of the logic flows without concerning about specific SQL syntax.  So, we could just as easily execute the last few operations with a MS SQL server connection, a SQLite connection or on a CSV file.</p>
 <div class="admonition caution">

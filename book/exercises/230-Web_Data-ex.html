@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exploratory Data Analysis &#8212; Python 4 Analytics</title>
+    <title>Try it: Working with common data formats</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="www.py4analytics.info/book/lessons/260-Data_Visualization.html" />
+    <link rel="canonical" href="www.py4analytics.info/book/exercises/230-Web_Data-ex.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercises" href="TryIt_Part2.html" />
-    <link rel="prev" title="Working with relational database" href="250-Database_Connections.html" />
+    <link rel="next" title="Try it: Getting data from the web" href="240-Getting_Web_Data-ex.html" />
+    <link rel="prev" title="Try it: Manipulating Data With pandas" href="220-Data_Manipulation-ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -109,8 +109,6 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
-      
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
@@ -132,7 +130,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01-JupyterNotebooks.html">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
    Welcome to Jupyter Notebooks
   </a>
  </li>
@@ -144,7 +142,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="100-PartOne.html">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
    Part 1 - Basic Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -154,24 +152,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="110-Introduction.html">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
      Learning to program
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="120-Flow_Control.html">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
      Making Decisions &amp; Looping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="130-Functions.html">
+    <a class="reference internal" href="../lessons/130-Functions.html">
      Reusing Code
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part1.html">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -181,17 +179,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
+    <a class="reference internal" href="110-Introduction-ex.html">
      Try it: Getting Started with Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
+    <a class="reference internal" href="120-Flow_Control-ex.html">
      Try it: Flow Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/130-Functions-ex.html">
+    <a class="reference internal" href="130-Functions-ex.html">
      Try it: Functions
     </a>
    </li>
@@ -204,90 +202,85 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="200-PartTwo.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
    Part 2 - Intermediate Concepts
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="210-Object_Orientation.html">
-     Namespace, Objective Orientation and Packaging
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="211-Methods.html">
-     Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="220-Web_Data_Formats.html">
-     Differing data formats
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="230-Data_Manipulation.html">
-     Working with data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="240-Getting_Web_Data.html">
-     Gather data from the web
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="250-Database_Connections.html">
-     Working with relational database
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Exploratory Data Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part2.html">
-   Exercises
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
+     Namespace, Objective Orientation and Packaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/220-Data_Manipulation.html">
+     Working with data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/230-Web_Data.html">
+     Differing data formats
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
+     Gather data from the web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
+     Working with relational database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
+     Exploratory Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
+   Exercises
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="210-Object_Orientation-ex.html">
      Try it: Objects, Namespaces and Packages
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
+    <a class="reference internal" href="220-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Try it: Working with common data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
-     Try it: Manipulating Data With pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
+    <a class="reference internal" href="240-Getting_Web_Data-ex.html">
      Try it: Getting data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
+    <a class="reference internal" href="250-Database_Connections-ex.html">
      Try-it: Connecting to a Database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
+    <a class="reference internal" href="260-Data_Visualization-ex.html">
      Try it: Data Visualization
     </a>
    </li>
@@ -296,12 +289,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 3 - Using Python for Machine Learning
+  Part 3
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="300-PartThree.html">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
    Part 3 - Using Python for Machine Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -311,81 +304,81 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="310-ExploratoryDataAnalysis.html">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
      Exploratory Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="311-OtherToolsForEDA.html">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
      Other tools for Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="312-VisualizationSamples.html">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
      Visualization Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="320-DataPreparation.html">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
      Data Preparation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="330-Classification.html">
+    <a class="reference internal" href="../lessons/330-Classification.html">
      Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="335-ClassificationSolutions.html">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
      Automobile Accidents
      <a id="auto-accidents">
      </a>
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="340-EstimationPrediction.html">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
      Prediction and Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="341-AdvancedTechniques.html">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
      Advanced Techniques
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="342-Pipelines.html">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
      Pipelines
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="343-Ensembling.html">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
      Ensembling
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="345-EstimationPredictionExample.html">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
      Predicting the price of used cars
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="350-Unsupervised.html">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
      Unsupervised Data Mining
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="360-NeuralNetworks.html">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
      Neural Networks
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="VisualizationSamples.html">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
      Visualization Samples
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part3.html">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -395,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
+    <a class="reference internal" href="310-ExploratoryDataAnalysis-ex.html">
      Try It: Exploratory Data Analysis
     </a>
    </li>
@@ -409,103 +402,9 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../exercises/Coding_Challenges.html">
+  <a class="reference internal" href="Coding_Challenges.html">
    Coding Challenges
   </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../extras/00-extras.html">
-   Extras
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
-     Using an Object Relational Mapping Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
-     Connecting to MS SQL using ODBC
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../extras/400-Contributors.html">
-   Contributors
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Student Contributions
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../contrib/01-contributing_a_notebook.html">
-   Implementing/Creating Jupyter Notebook for final deliverable:
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../contrib/00-studentcontributions.html">
-   Student Contributions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/hallux.html">
-     My test data is
-     <strong>
-      Dated
-     </strong>
-     !
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/IRSMarkDown.html">
-     Working with IRS data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/persona.html">
-     Using
-     <strong>
-      Personas
-     </strong>
-     to Simulate Hallux Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/upload_file_to_table.html">
-     Uploading and downloading file to SQL Server using flask api
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/US_Median_Housing.html">
-     US Census Bureau Median Housing Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/How_Walton_API_Works.html">
-     Walton API Explained
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/working_with_age_data.html">
-     Manipulating census data with pandas
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -516,8 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Revision: 1.0 <br/>
-  Last Update: Wed Nov 16 23:23:31 2022
+  Last Update: Sat Sep 17 20:51:36 2022
 </div>
 
             </div>
@@ -570,7 +468,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/lessons/260-Data_Visualization.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/exercises/230-Web_Data-ex.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -588,7 +486,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/lessons/260-Data_Visualization.ipynb&branch=main"
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/exercises/230-Web_Data-ex.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -606,20 +504,20 @@ title="Launch on JupyterHub"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/lessons/260-Data_Visualization.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
 data-placement="left"
-title="Launch on Colab"
+title="Launch Thebe"
 >
   
 
 <span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_colab.png">
+  <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
 
       </li>
       
@@ -666,7 +564,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/260-Data_Visualization.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/exercises/230-Web_Data-ex.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -694,7 +592,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/lessons/260-Data_Visualization.ipynb"
+        <a href="../../_sources/book/exercises/230-Web_Data-ex.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -743,7 +641,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exploratory Data Analysis</h1>
+                <h1>Try it: Working with common data formats</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -755,16 +653,16 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
-<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="try-it-working-with-common-data-formats">
+<h1>Try it: Working with common data formats<a class="headerlink" href="#try-it-working-with-common-data-formats" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "mlderes/Py4Analytics",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -772,7 +670,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./book/lessons"
+            path: "./book/exercises"
         },
         predefinedOutput: true
     }
@@ -786,17 +684,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="250-Database_Connections.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="220-Data_Manipulation-ex.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Working with relational database</p>
+            <p class="prev-next-title">Try it: Manipulating Data With pandas</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="TryIt_Part2.html" title="next page">
+    <a class='right-next' id="next-link" href="240-Getting_Web_Data-ex.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Try it: Getting data from the web</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exploratory Data Analysis &#8212; Python 4 Analytics</title>
+    <title>Walton API Explained &#8212; Python 4 Analytics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="www.py4analytics.info/book/lessons/260-Data_Visualization.html" />
+    <link rel="canonical" href="www.py4analytics.info/book/contrib/How_Walton_API_Works.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercises" href="TryIt_Part2.html" />
-    <link rel="prev" title="Working with relational database" href="250-Database_Connections.html" />
+    <link rel="next" title="Manipulating census data with pandas" href="working_with_age_data.html" />
+    <link rel="prev" title="US Census Bureau Median Housing Data" href="US_Median_Housing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -132,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01-JupyterNotebooks.html">
+  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
    Welcome to Jupyter Notebooks
   </a>
  </li>
@@ -144,7 +144,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="100-PartOne.html">
+  <a class="reference internal" href="../lessons/100-PartOne.html">
    Part 1 - Basic Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -154,24 +154,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="110-Introduction.html">
+    <a class="reference internal" href="../lessons/110-Introduction.html">
      Learning to program
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="120-Flow_Control.html">
+    <a class="reference internal" href="../lessons/120-Flow_Control.html">
      Making Decisions &amp; Looping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="130-Functions.html">
+    <a class="reference internal" href="../lessons/130-Functions.html">
      Reusing Code
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part1.html">
+  <a class="reference internal" href="../lessons/TryIt_Part1.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -203,56 +203,56 @@ const thebe_selector_output = ".output, .cell_output"
   Part 2 - Intermediate Concepts
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="200-PartTwo.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/200-PartTwo.html">
    Part 2 - Intermediate Concepts
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="210-Object_Orientation.html">
+    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
      Namespace, Objective Orientation and Packaging
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="211-Methods.html">
+    <a class="reference internal" href="../lessons/211-Methods.html">
      Methods
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="220-Web_Data_Formats.html">
+    <a class="reference internal" href="../lessons/220-Web_Data_Formats.html">
      Differing data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="230-Data_Manipulation.html">
+    <a class="reference internal" href="../lessons/230-Data_Manipulation.html">
      Working with data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="240-Getting_Web_Data.html">
+    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
      Gather data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="250-Database_Connections.html">
+    <a class="reference internal" href="../lessons/250-Database_Connections.html">
      Working with relational database
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
      Exploratory Data Analysis
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part2.html">
+  <a class="reference internal" href="../lessons/TryIt_Part2.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -301,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="300-PartThree.html">
+  <a class="reference internal" href="../lessons/300-PartThree.html">
    Part 3 - Using Python for Machine Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -311,81 +311,81 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="310-ExploratoryDataAnalysis.html">
+    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
      Exploratory Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="311-OtherToolsForEDA.html">
+    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
      Other tools for Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="312-VisualizationSamples.html">
+    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
      Visualization Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="320-DataPreparation.html">
+    <a class="reference internal" href="../lessons/320-DataPreparation.html">
      Data Preparation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="330-Classification.html">
+    <a class="reference internal" href="../lessons/330-Classification.html">
      Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="335-ClassificationSolutions.html">
+    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
      Automobile Accidents
      <a id="auto-accidents">
      </a>
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="340-EstimationPrediction.html">
+    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
      Prediction and Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="341-AdvancedTechniques.html">
+    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
      Advanced Techniques
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="342-Pipelines.html">
+    <a class="reference internal" href="../lessons/342-Pipelines.html">
      Pipelines
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="343-Ensembling.html">
+    <a class="reference internal" href="../lessons/343-Ensembling.html">
      Ensembling
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="345-EstimationPredictionExample.html">
+    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
      Predicting the price of used cars
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="350-Unsupervised.html">
+    <a class="reference internal" href="../lessons/350-Unsupervised.html">
      Unsupervised Data Mining
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="360-NeuralNetworks.html">
+    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
      Neural Networks
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="VisualizationSamples.html">
+    <a class="reference internal" href="../lessons/VisualizationSamples.html">
      Visualization Samples
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="TryIt_Part3.html">
+  <a class="reference internal" href="../lessons/TryIt_Part3.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -446,24 +446,24 @@ const thebe_selector_output = ".output, .cell_output"
   Student Contributions
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../contrib/01-contributing_a_notebook.html">
+  <a class="reference internal" href="01-contributing_a_notebook.html">
    Implementing/Creating Jupyter Notebook for final deliverable:
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../contrib/00-studentcontributions.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-studentcontributions.html">
    Student Contributions
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/hallux.html">
+    <a class="reference internal" href="hallux.html">
      My test data is
      <strong>
       Dated
@@ -472,12 +472,12 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/IRSMarkDown.html">
+    <a class="reference internal" href="IRSMarkDown.html">
      Working with IRS data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/persona.html">
+    <a class="reference internal" href="persona.html">
      Using
      <strong>
       Personas
@@ -486,22 +486,22 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/upload_file_to_table.html">
+    <a class="reference internal" href="upload_file_to_table.html">
      Uploading and downloading file to SQL Server using flask api
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/US_Median_Housing.html">
+    <a class="reference internal" href="US_Median_Housing.html">
      US Census Bureau Median Housing Data
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/How_Walton_API_Works.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Walton API Explained
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/working_with_age_data.html">
+    <a class="reference internal" href="working_with_age_data.html">
      Manipulating census data with pandas
     </a>
    </li>
@@ -570,7 +570,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/lessons/260-Data_Visualization.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/contrib/How_Walton_API_Works.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -588,7 +588,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/lessons/260-Data_Visualization.ipynb&branch=main"
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/contrib/How_Walton_API_Works.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -606,7 +606,7 @@ title="Launch on JupyterHub"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/lessons/260-Data_Visualization.ipynb"
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/contrib/How_Walton_API_Works.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -666,7 +666,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/260-Data_Visualization.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/contrib/How_Walton_API_Works.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -694,7 +694,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/lessons/260-Data_Visualization.ipynb"
+        <a href="../../_sources/book/contrib/How_Walton_API_Works.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -743,7 +743,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exploratory Data Analysis</h1>
+                <h1>Walton API Explained</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -755,8 +755,59 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
-<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="walton-api-explained">
+<h1>Walton API Explained<a class="headerlink" href="#walton-api-explained" title="Permalink to this headline">#</a></h1>
+<p>Below I will break down the inner workings of the main class.</p>
+<p>First we import all our required libraries and declare our flask app.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">server</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">import</span> <span class="nn">pyodbc</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we establish a database connection using pyodbc and use environment variables to login. Environment variables are a common way to store sensitive information, such as passwords, in a secure manner. Environment variables are like variables in programming languages, which store a value that can be used by applications. The advantage of using environment variables to store sensitive information is that the information is not stored directly in the code or configuration files, so it is not easily accessible to anyone who might view the code or configuration files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">connect_db</span><span class="p">():</span>
+    <span class="c1">#con = sqlite3.connect(&#39;crosswalk.db&#39;)</span>
+    <span class="n">con</span> <span class="o">=</span> <span class="n">pyodbc</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">),</span> <span class="n">uid</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER_NAME&#39;</span><span class="p">),</span> <span class="n">pwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PWD&#39;</span><span class="p">),</span> <span class="n">server</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">),</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;ODBC Driver 18 for SQL Server&#39;</span><span class="p">,</span> <span class="n">TrustServerCertificate</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">con</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we define a function called sql_query that takes in a parameter called y. The function then establishes a connection to a database using the connect_db function. Next, the code creates a cursor, which is used to execute a SQL query provided as the y parameter. The code then prints the query, executes it using the cursor, and retrieves the query results as a list of rows. Each row is represented as a tuple, with the values in the tuple corresponding to the columns in the query results. The column names are also extracted from the query results and stored in a list called row_headers. Finally, the list of rows is stored in a variable called tables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sql_query</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">con</span> <span class="o">=</span> <span class="n">connect_db</span><span class="p">()</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">row_headers</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">description</span><span class="p">]</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we convert the rows from our SQL query into a JSON object. The code first creates an empty list called jsontable. It then iterates over the list of rows, which is stored in the tables variable. For each row, the code creates a dictionary that pairs the column names with the values in the row. This dictionary is then added to the jsontable list. Finally, the code uses the jsonify function to convert the list of dictionaries into a JSON object, which is then returned by the function. This allows the query results to be easily accessed and manipulated in a JSON format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jsontable</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+        <span class="n">jsontable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">row_headers</span><span class="p">,</span> <span class="n">result</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">jsontable</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -772,7 +823,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./book/lessons"
+            path: "./book/contrib"
         },
         predefinedOutput: true
     }
@@ -786,17 +837,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="250-Database_Connections.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="US_Median_Housing.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Working with relational database</p>
+            <p class="prev-next-title">US Census Bureau Median Housing Data</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="TryIt_Part2.html" title="next page">
+    <a class='right-next' id="next-link" href="working_with_age_data.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Manipulating census data with pandas</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
