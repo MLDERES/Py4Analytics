@@ -85,8 +85,8 @@ parts:
       - file: book/contrib/persona
       - file: book/contrib/upload_file_to_table
       - file: book/contrib/US_Median_Housing
+      - file: book/contrib/WaltonAPI_Queries
       - file: book/contrib/working_with_age_data
-      
 
 # Introduction - (bootcamp content)
 # - Chapter 1
