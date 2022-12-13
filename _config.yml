@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: ''
-# title: Python 4 Analytics
+title: 'Python 4 Analytics'
+# title: 
 author: Michael Dereszynski
 copyright: "2022"
 logo: logo.png
@@ -39,16 +39,18 @@ html:
   google_analytics_id: G-NZH9210CF9
   extra_navbar: |
     <div>
-      Last Update: Mon Oct 24 20:17:26 2022
+      Revision: 1.0 <br/>
+      Last Update: Wed Nov 16 23:23:31 2022
     </div>
 
 launch_buttons:
   thebe: false
-  # binderhub_url: https://mybinder.org
+  binderhub_url: https://mybinder.org
   notebook_interface: jupyterlab
   jupyterhub_url: https://isys5103-uark.msappproxy.net/
+  colab_url: "https://colab.research.google.com"
 
-exclude_patterns: [ book/src/*, book/extras/*, README.md]
+exclude_patterns: [ book/src/*, README.md]
 
 parse:
   myst_enable_extensions:
@@ -59,13 +61,21 @@ parse:
     - replacements
     - smartquotes
     - substitution
+    - dollarmath
+    - amsmath
   myst_ref_domains:
     - std
     - py
     - ipynb
     - csv
-
-only_build_toc_files: true
+  myst_substitutions:
+    matplotlib_url: "[matplotlib](https://matplotlib.org/)"
+    pandas_url: '[pandas](https://pandas.pydata.org/)'
+    numpy_url: '[numpy](https://numpy.org/)'
+    seaborn_url: '[seaborn](https://seaborn.pydata.org/)'
+    UCI_url: '[UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/machine-learning-databases/housing/)'
+    
+only_build_toc_files: false
 
 sphinx: 
   recursive_update: true
