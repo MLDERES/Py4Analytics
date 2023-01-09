@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Try it: Working with common data formats</title>
+    <title>Pandas Functions &#8212; Python 4 Analytics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="www.py4analytics.info/book/exercises/230-Web_Data-ex.html" />
+    <link rel="canonical" href="www.py4analytics.info/book/lessons/211-Pandas Funtions.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Try it: Getting data from the web" href="240-Getting_Web_Data-ex.html" />
-    <link rel="prev" title="Try it: Manipulating Data With pandas" href="220-Data_Manipulation-ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -109,6 +107,8 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
+      
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
@@ -130,7 +130,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../lessons/01-JupyterNotebooks.html">
+  <a class="reference internal" href="01-JupyterNotebooks.html">
    Welcome to Jupyter Notebooks
   </a>
  </li>
@@ -142,7 +142,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lessons/100-PartOne.html">
+  <a class="reference internal" href="100-PartOne.html">
    Part 1 - Basic Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -152,24 +152,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/110-Introduction.html">
+    <a class="reference internal" href="110-Introduction.html">
      Learning to program
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/120-Flow_Control.html">
+    <a class="reference internal" href="120-Flow_Control.html">
      Making Decisions &amp; Looping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/130-Functions.html">
+    <a class="reference internal" href="130-Functions.html">
      Reusing Code
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lessons/TryIt_Part1.html">
+  <a class="reference internal" href="TryIt_Part1.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -179,17 +179,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="110-Introduction-ex.html">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
      Try it: Getting Started with Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="120-Flow_Control-ex.html">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
      Try it: Flow Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="130-Functions-ex.html">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
      Try it: Functions
     </a>
    </li>
@@ -201,9 +201,9 @@ const thebe_selector_output = ".output, .cell_output"
   Part 2 - Intermediate Concepts
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lessons/200-PartTwo.html">
+  <a class="reference internal" href="200-PartTwo.html">
    Part 2 - Intermediate Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -213,74 +213,79 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/210-Object_Orientation.html">
+    <a class="reference internal" href="210-Object_Orientation.html">
      Namespace, Objective Orientation and Packaging
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/220-Data_Manipulation.html">
-     Working with data
+    <a class="reference internal" href="211-Methods.html">
+     Methods
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/230-Web_Data.html">
+    <a class="reference internal" href="220-Web_Data_Formats.html">
      Differing data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/240-Getting_Web_Data.html">
+    <a class="reference internal" href="230-Data_Manipulation.html">
+     Working with data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="240-Getting_Web_Data.html">
      Gather data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/250-Database_Connections.html">
+    <a class="reference internal" href="250-Database_Connections.html">
      Working with relational database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/260-Data_Visualization.html">
+    <a class="reference internal" href="260-Data_Visualization.html">
      Exploratory Data Analysis
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../lessons/TryIt_Part2.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="TryIt_Part2.html">
    Exercises
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="210-Object_Orientation-ex.html">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
      Try it: Objects, Namespaces and Packages
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="220-Data_Manipulation-ex.html">
-     Try it: Manipulating Data With pandas
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
      Try it: Working with common data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="240-Getting_Web_Data-ex.html">
+    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
      Try it: Getting data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="250-Database_Connections-ex.html">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
      Try-it: Connecting to a Database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="260-Data_Visualization-ex.html">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
      Try it: Data Visualization
     </a>
    </li>
@@ -289,12 +294,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 3
+  Part 3 - Using Python for Machine Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lessons/300-PartThree.html">
+  <a class="reference internal" href="300-PartThree.html">
    Part 3 - Using Python for Machine Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -304,81 +309,81 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/310-ExploratoryDataAnalysis.html">
+    <a class="reference internal" href="310-ExploratoryDataAnalysis.html">
      Exploratory Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/311-OtherToolsForEDA.html">
+    <a class="reference internal" href="311-OtherToolsForEDA.html">
      Other tools for Data Analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/312-VisualizationSamples.html">
+    <a class="reference internal" href="312-VisualizationSamples.html">
      Visualization Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/320-DataPreparation.html">
+    <a class="reference internal" href="320-DataPreparation.html">
      Data Preparation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/330-Classification.html">
+    <a class="reference internal" href="330-Classification.html">
      Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/335-ClassificationSolutions.html">
+    <a class="reference internal" href="335-ClassificationSolutions.html">
      Automobile Accidents
      <a id="auto-accidents">
      </a>
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/340-EstimationPrediction.html">
+    <a class="reference internal" href="340-EstimationPrediction.html">
      Prediction and Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/341-AdvancedTechniques.html">
+    <a class="reference internal" href="341-AdvancedTechniques.html">
      Advanced Techniques
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/342-Pipelines.html">
+    <a class="reference internal" href="342-Pipelines.html">
      Pipelines
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/343-Ensembling.html">
+    <a class="reference internal" href="343-Ensembling.html">
      Ensembling
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/345-EstimationPredictionExample.html">
+    <a class="reference internal" href="345-EstimationPredictionExample.html">
      Predicting the price of used cars
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/350-Unsupervised.html">
+    <a class="reference internal" href="350-Unsupervised.html">
      Unsupervised Data Mining
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/360-NeuralNetworks.html">
+    <a class="reference internal" href="360-NeuralNetworks.html">
      Neural Networks
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/VisualizationSamples.html">
+    <a class="reference internal" href="VisualizationSamples.html">
      Visualization Samples
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lessons/TryIt_Part3.html">
+  <a class="reference internal" href="TryIt_Part3.html">
    Exercises
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -388,7 +393,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="310-ExploratoryDataAnalysis-ex.html">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
      Try It: Exploratory Data Analysis
     </a>
    </li>
@@ -402,9 +407,103 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Coding_Challenges.html">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
    Coding Challenges
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../extras/00-extras.html">
+   Extras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
+     Using an Object Relational Mapping Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/252-SQL_ODBC.html">
+     Connecting to MS SQL using ODBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../extras/400-Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contrib/01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contrib/00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/hallux.html">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/persona.html">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/US_Median_Housing.html">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/WaltonAPI_Queries.html">
+     Using the Walton ZIP API.
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -415,7 +514,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Last Update: Sat Sep 17 20:51:36 2022
+  Revision: 1.0 <br/>
+  Last Update: Wed Nov 16 23:23:31 2022
 </div>
 
             </div>
@@ -468,7 +568,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/exercises/230-Web_Data-ex.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/lessons/211-Pandas Funtions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -486,7 +586,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/exercises/230-Web_Data-ex.ipynb&branch=main"
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/lessons/211-Pandas+Funtions.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -504,20 +604,20 @@ title="Launch on JupyterHub"
       </li>
       
       <li>
-        
-<button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/lessons/211-Pandas Funtions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
 data-placement="left"
-title="Launch Thebe"
+title="Launch on Colab"
 >
   
 
 <span class="headerbtn__icon-container">
-  <i class="fas fa-play"></i>
+  
+    <img src="../../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Live Code</span>
-</button>
+<span class="headerbtn__text-container">Colab</span>
+</a>
 
       </li>
       
@@ -564,7 +664,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/exercises/230-Web_Data-ex.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/lessons/211-Pandas Funtions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -592,7 +692,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/exercises/230-Web_Data-ex.ipynb"
+        <a href="../../_sources/book/lessons/211-Pandas Funtions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -641,7 +741,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Try it: Working with common data formats</h1>
+                <h1>Pandas Functions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -653,16 +753,77 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="try-it-working-with-common-data-formats">
-<h1>Try it: Working with common data formats<a class="headerlink" href="#try-it-working-with-common-data-formats" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-functions">
+<h1>Pandas Functions<a class="headerlink" href="#pandas-functions" title="Permalink to this headline">#</a></h1>
+<p>So far, we have looked at the basics of using the programming language, python. As we proceed to learning how python is used in data analysis, let’s study some common functions used in pandas library for data manipulation (or data cleaning). It is important to note that this list of methods are not exhastive. Let’s look at some commonly used pandas functions.</p>
+<ol class="simple">
+<li><p>.drop(): In a dataset there can be columns with missing values or columns that are not just useful for your analysis. For example, you might have a New York city taxi dataset containing information (trip id, datetime, trip distance, payment types, passenger count) but want to focus on analyzing trip trends in a day. In this case, the payment types and passenger count are not relevant for our analysis. Having them in our dataset will take up unnecessary space and processing time.</p></li>
+</ol>
+<p>When working with pandas we can solve this by using the drop() method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Here, we are dropping all the columns that are not needed for our analysis</span>
+<span class="c1">#axis=1 identifies the column</span>
+<span class="c1">#inplace=True does not return a new table but retains the existing table</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;...insert working directory here...&#39;</span><span class="p">)</span>
+<span class="n">zone</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;taxi+_zone_lookup.csv&#39;</span><span class="p">)</span>
+<span class="n">zone</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;service_zone&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>.fillna(): Sometimes, instead of dropping missing values, we might want to replace cells with N/A with some value. To achieve this we use the .fillna() method. replace() and interpolate() are also used in replacing missing values.</p></li>
+</ol>
+<ol class="simple">
+<li><p>.loc[]: This is an indexing method that is used to simply select particular rows or columns. It selects columns or rows using label names. loc() parameter accepts strings, integers, or list. Another indexing method is .iloc[] which selects columns or rows using purely integer-location based indexing for selection by positions. For example, let’s select the Borough columns with some rows from the New York City taxi zone data using loc().</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#displays the column &quot;Borough&quot;</span>
+<span class="n">zone</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>.rename(): Sometimes, column names are written in a way that it’s not easy to understand. In such case, we need to rename such column names. The method .rename() takes in couple parameters one of wihich is a dictionary-like object. This dictionary-like object contains a mapping of the old names and new names.</p></li>
+</ol>
+<ol class="simple">
+<li><p>.columns(): When working with a large dataset with so many columns, you want to see all the columns in that dataset. .  columns() displays all the columns in the dataset.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#this prints all the columns in the bankruptcy dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bankruptcy_df</span><span class="o">.</span><span class="n">columns</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>.len(): Provides the length (number of rows) of the dataframe. For example</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">bankruptcy_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>.dtypes(): Because it is useful to know the data type of our variables before analysis. I will get the data type of Age in the BostonHousing dataset. This returns al. the data types in the dataframe.</p></li>
+</ol>
+<p>Again the list of pandas functions that are useful in data manipulation is non-exhastive. You can find more pandas functions <a class="reference external" href="https://pandas.pydata.org/docs/reference/frame.html">here</a>.</p>
 </section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "mlderes/Py4Analytics",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -670,7 +831,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./book/exercises"
+            path: "./book/lessons"
         },
         predefinedOutput: true
     }
@@ -684,20 +845,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="220-Data_Manipulation-ex.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Try it: Manipulating Data With pandas</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="240-Getting_Web_Data-ex.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Try it: Getting data from the web</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

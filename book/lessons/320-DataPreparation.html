@@ -222,11 +222,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="211-Methods.html">
-     Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="220-Web_Data_Formats.html">
      Differing data formats
     </a>
@@ -426,6 +421,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../data/DataDictionary.html">
+     Selected Data Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/101-Functions.html">
+     Optional Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/211-Pandas_Functions.html">
+     Pandas Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
      Using an Object Relational Mapping Database
     </a>
@@ -498,13 +508,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/Expanding_WaltonAPI.html">
+     Creating new Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../contrib/How_Walton_API_Works.html">
      Walton API Explained
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/working_with_age_data.html">
-     Manipulating census data with pandas
+    <a class="reference internal" href="../contrib/WaltonAPI_Queries.html">
+     Using the Walton ZIP API.
     </a>
    </li>
   </ul>
@@ -518,8 +538,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Revision: 1.0 <br/>
-  Last Update: Wed Nov 16 23:23:31 2022
+  Revision: 1.0.123 <br/>
+  Last Update: Mon Jan  9 19:34:16 2023
 </div>
 
             </div>
@@ -924,6 +944,19 @@ title="Print to PDF"
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import relevant libraries</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
 </pre></div>
 </div>
 </div>
@@ -1521,7 +1554,7 @@ z=\frac{(X-\mu)}{\sigma}
 </section>
 <section id="feature-selection">
 <h2>Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h2>
-<p>We can also face what we call the “curse of dimensionality” where our data has way too much data.  For instance, if we are to create an image classifier, each pixel carries with it at least 3 pieces of information (red, green and blue values) or even more!  We can be overwhelmed with the number of dummy variables or simply the shear amount of data that is provided.  In these cases, we need to decide which are the most relevant pieces of data and which we can safely ignore.  Take for instance, the image classifier, the first row of pixels may be a black border on all the pictures - this doesn’t help us there is no variability if all the images have the same black border.  We should therefore leave them out of the equation.  Or in the case of our movie generes, what if there is only 1 movie that is a Sci-Fi/Romance/Horror film?  This doesn’t help us to find others like it.  In these cases, we need to reduce our set of features.</p>
+<p>We can also face what we call the “curse of dimensionality” where our data has way too much data.  For instance, if we are to create an image classifier, each pixel carries with it at least 3 pieces of information (red, green and blue values) or even more!  We can be overwhelmed with the number of dummy variables or simply the shear amount of data that is provided.  In these cases, we need to decide which are the most relevant pieces of data and which we can safely ignore.  Take for instance, the image classifier, the first row of pixels may be a black border on all the pictures - this doesn’t help us there is no variability if all the images have the same black border.  We should therefore leave them out of the equation.  Or in the case of our movie genres, what if there is only 1 movie that is a Sci-Fi/Romance/Horror film?  This doesn’t help us to find others like it.  In these cases, we need to reduce our set of features.</p>
 <p>A few algorithms handle this pretty well, Decision Trees in particular are good at ignoring variables have limited ‘split’ value and regression models <a class="reference external" href="https://towardsdatascience.com/feature-selection-techniques-in-regression-model-26878fe0e24e">use a more brute force approach</a> (forward selection, backward elimination, stepwise selection).  For the ones that don’t we can drop unary columns (those that don’t change at all in all of our records), or use something like PCA (<a class="reference external" href="./341-AdvancedTechniques.ipynb#principal-components">principal components analysis</a>) which is meant to capture as much of the variability as possible in just a few orthagonal vectors.</p>
 <p>Finally, knowing your data is one of the most important aspects of getting the right set of features.  Analysts that spend hours letting the computer chug away on too many features (or too far) are far less efficient than those that take time to understand the data and capture the essense prior to trying to tune any models on an inefficient dataset.</p>
 </section>
@@ -1577,7 +1610,7 @@ z=\frac{(X-\mu)}{\sigma}
   
     By Michael Dereszynski<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

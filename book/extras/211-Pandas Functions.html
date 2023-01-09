@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Try it: Manipulating Data With pandas</title>
+    <title>Pandas Functions &#8212; Python 4 Analytics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,12 +52,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="www.py4analytics.info/book/exercises/220-Data_Manipulation-ex.html" />
+    <link rel="canonical" href="www.py4analytics.info/book/extras/211-Pandas Functions.html" />
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Try it: Working with common data formats" href="230-Web_Data-ex.html" />
-    <link rel="prev" title="Try it: Objects, Namespaces and Packages" href="210-Object_Orientation-ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -108,6 +106,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
+      
+      <h1 class="site-logo" id="site-title">Python 4 Analytics</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -179,17 +179,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="110-Introduction-ex.html">
+    <a class="reference internal" href="../exercises/110-Introduction-ex.html">
      Try it: Getting Started with Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="120-Flow_Control-ex.html">
+    <a class="reference internal" href="../exercises/120-Flow_Control-ex.html">
      Try it: Flow Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="130-Functions-ex.html">
+    <a class="reference internal" href="../exercises/130-Functions-ex.html">
      Try it: Functions
     </a>
    </li>
@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
   Part 2 - Intermediate Concepts
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/200-PartTwo.html">
    Part 2 - Intermediate Concepts
@@ -218,13 +218,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/220-Data_Manipulation.html">
-     Working with data
+    <a class="reference internal" href="../lessons/220-Web_Data_Formats.html">
+     Differing data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/230-Web_Data.html">
-     Differing data formats
+    <a class="reference internal" href="../lessons/230-Data_Manipulation.html">
+     Working with data
     </a>
    </li>
    <li class="toctree-l2">
@@ -244,43 +244,43 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/TryIt_Part2.html">
    Exercises
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="210-Object_Orientation-ex.html">
+    <a class="reference internal" href="../exercises/210-Object_Orientation-ex.html">
      Try it: Objects, Namespaces and Packages
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Try it: Manipulating Data With pandas
-    </a>
-   </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="230-Web_Data-ex.html">
+    <a class="reference internal" href="../exercises/220-Web_Data_Formats-ex.html">
      Try it: Working with common data formats
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="240-Getting_Web_Data-ex.html">
+    <a class="reference internal" href="../exercises/230-Data_Manipulation-ex.html">
+     Try it: Manipulating Data With pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/240-Getting_Web_Data-ex.html">
      Try it: Getting data from the web
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="250-Database_Connections-ex.html">
+    <a class="reference internal" href="../exercises/250-Database_Connections-ex.html">
      Try-it: Connecting to a Database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="260-Data_Visualization-ex.html">
+    <a class="reference internal" href="../exercises/260-Data_Visualization-ex.html">
      Try it: Data Visualization
     </a>
    </li>
@@ -289,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Part 3
+  Part 3 - Using Python for Machine Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -388,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="310-ExploratoryDataAnalysis-ex.html">
+    <a class="reference internal" href="../exercises/310-ExploratoryDataAnalysis-ex.html">
      Try It: Exploratory Data Analysis
     </a>
    </li>
@@ -402,9 +402,103 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Coding_Challenges.html">
+  <a class="reference internal" href="../exercises/Coding_Challenges.html">
    Coding Challenges
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="00-extras.html">
+   Extras
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="251-SQL_Alchemy.html">
+     Using an Object Relational Mapping Database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="252-SQL_ODBC.html">
+     Connecting to MS SQL using ODBC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="400-Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Student Contributions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contrib/01-contributing_a_notebook.html">
+   Implementing/Creating Jupyter Notebook for final deliverable:
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../contrib/00-studentcontributions.html">
+   Student Contributions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/hallux.html">
+     My test data is
+     <strong>
+      Dated
+     </strong>
+     !
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/IRSMarkDown.html">
+     Working with IRS data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/persona.html">
+     Using
+     <strong>
+      Personas
+     </strong>
+     to Simulate Hallux Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/upload_file_to_table.html">
+     Uploading and downloading file to SQL Server using flask api
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/US_Median_Housing.html">
+     US Census Bureau Median Housing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/WaltonAPI_Queries.html">
+     Using the Walton ZIP API.
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -415,7 +509,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Last Update: Sat Sep 17 20:51:36 2022
+  Revision: 1.0 <br/>
+  Last Update: Wed Nov 16 23:23:31 2022
 </div>
 
             </div>
@@ -468,7 +563,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/exercises/220-Data_Manipulation-ex.ipynb"
+        <a href="https://mybinder.org/v2/gh/mlderes/Py4Analytics/main?urlpath=lab/tree/book/extras/211-Pandas Functions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -486,7 +581,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/exercises/220-Data_Manipulation-ex.ipynb&branch=main"
+        <a href="https://isys5103-uark.msappproxy.net/hub/user-redirect/git-pull?repo=https%3A//github.com/mlderes/Py4Analytics&urlpath=lab/tree/Py4Analytics/book/extras/211-Pandas+Functions.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -504,20 +599,20 @@ title="Launch on JupyterHub"
       </li>
       
       <li>
-        
-<button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
+        <a href="https://colab.research.google.com/github/mlderes/Py4Analytics/blob/main/book/extras/211-Pandas Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
 data-placement="left"
-title="Launch Thebe"
+title="Launch on Colab"
 >
   
 
 <span class="headerbtn__icon-container">
-  <i class="fas fa-play"></i>
+  
+    <img src="../../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Live Code</span>
-</button>
+<span class="headerbtn__text-container">Colab</span>
+</a>
 
       </li>
       
@@ -564,7 +659,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/exercises/220-Data_Manipulation-ex.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mlderes/Py4Analytics/issues/new?title=Issue%20on%20page%20%2Fbook/extras/211-Pandas Functions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -592,7 +687,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/book/exercises/220-Data_Manipulation-ex.ipynb"
+        <a href="../../_sources/book/extras/211-Pandas Functions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -629,98 +724,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Try it: Manipulating Data With pandas
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#business-context-boston-housing">
-     Business Context - Boston Housing
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cereal">
-   Cereal
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cereal-data">
-     Cereal Data
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Try it: Manipulating Data With pandas</h1>
+                <h1>Pandas Functions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Try it: Manipulating Data With pandas
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#business-context-boston-housing">
-     Business Context - Boston Housing
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cereal">
-   Cereal
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cereal-data">
-     Cereal Data
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -728,196 +748,77 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="try-it-manipulating-data-with-pandas">
-<h1>Try it: Manipulating Data With pandas<a class="headerlink" href="#try-it-manipulating-data-with-pandas" title="Permalink to this headline">#</a></h1>
-<p>The purpose of this activity is to expose students to libraries for preparing and manipulating “rectangular” data files (that is data which has both rows and columns, where each row has the same number of columns).</p>
-<p>The next cell is one that will appear in some configuration as the first in nearly every notebook.  It imports the key libraries we are going to use in our analysis and model building.  In the first case, we will depend on pandas and numpy for our data manipulation and we’ll leverage matplotlib as our graphical library.  We’ll also use the seaborn library to show off a few plots and visuals that are not quite as readily accessible with the matplotlib library.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup code</span>
-<span class="c1"># Import relevant libraries</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">src.data</span> <span class="kn">import</span> <span class="n">load_data</span><span class="p">,</span> <span class="n">convert_to_bool</span>
-
-<span class="c1"># Limit the precision to 4 significant digits</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="c1"># Load up the housing dataset</span>
-<span class="n">housing_df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;BostonHousing&#39;</span><span class="p">)</span>
-<span class="c1"># Change the column to be more convenient (notice the space between . MEDV)</span>
-<span class="n">housing_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;CAT. MEDV&#39;</span><span class="p">:</span><span class="s1">&#39;CAT_MEDV&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">convert_to_bool</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="s1">&#39;CAT_MEDV&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="business-context-boston-housing">
-<h2>Business Context - Boston Housing<a class="headerlink" href="#business-context-boston-housing" title="Permalink to this headline">#</a></h2>
-<p>Each record in the database describes a Boston suburb or town. The data was drawn from the Boston Standard Metropolitan Statistical Area (SMSA) in 1970. The attributes are deﬁned as follows (taken from the <a class="reference external" href="https://archive.ics.uci.edu/ml/machine-learning-databases/housing/">UCI Machine Learning Repository</a>):</p>
-<ul class="simple">
-<li><p><strong>CRIM</strong>: per capita crime rate by town</p></li>
-<li><p><strong>ZN</strong>: proportion of residential land zoned for lots over 25,000 sq.ft.</p></li>
-<li><p><strong>INDUS</strong>: proportion of non-retail business acres per town</p></li>
-<li><p><strong>CHAS</strong>: Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)</p></li>
-<li><p><strong>NOX</strong>: nitric oxides concentration (parts per 10 million)</p></li>
-<li><p><strong>RM</strong>: average number of rooms per dwelling</p></li>
-<li><p><strong>AGE</strong>: proportion of owner-occupied units built prior to 1940</p></li>
-<li><p><strong>DIS</strong>: weighted distances to ﬁve Boston employment centers</p></li>
-<li><p><strong>RAD</strong>: index of accessibility to radial highways</p></li>
-<li><p><strong>TAX</strong>: full-value property-tax rate per 10,000</p></li>
-<li><p><strong>PTRATIO</strong>: pupil-teacher ratio by town</p></li>
-<li><p><strong>B</strong>: 1000(Bk−0.63)2 where Bk is the proportion of blacks by town</p></li>
-<li><p><strong>LSTAT</strong>: % lower status of the population</p></li>
-<li><p><strong>MEDV</strong>: Median value of owner-occupied homes in 1000s</p></li>
-<li><p><strong>CAT. MEDV</strong>: Is median value of owner-occupied home in tract above $30k (CAT.MEDV = 1) or not (CAT.MEDV = 0)</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 1</span>
-<span class="c1"># Display the first 20 rows of the housing dataframe</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 2</span>
-<span class="c1"># Output the items that are at least 70 years old</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 3</span>
-<span class="c1"># Find the average age of houses in districts near the Charles river (CHAS=1) and those which don&#39;t</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 4</span>
-<span class="c1"># Which town has the highest pupil to teach ratio?</span>
-<span class="c1"># HINT: Find the highest value, then filter the list for items with this value (there are two of them)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="cereal">
-<h1>Cereal<a class="headerlink" href="#cereal" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p><strong>Source</strong>: DATA ANALYSIS FOR STUDENT LEARNING (DASL)</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-functions">
+<h1>Pandas Functions<a class="headerlink" href="#pandas-functions" title="Permalink to this headline">#</a></h1>
+<p>So far, we have looked at the basics of using the programming language, python. As we proceed to learning how python is used in data analysis, let’s study some common functions used in pandas library for data manipulation (or data cleaning). It is important to note that this list of methods are not exhastive. Let’s look at some commonly used pandas functions.</p>
 <ol class="simple">
-<li><p>Name: Name of cereal</p></li>
-<li><p>mfr: Manufacturer of cereal where A = American Home Food Products; G = General Mills; K =
-Kelloggs; N = Nabisco; P = Post; Q = Quaker Oats; R = Ralston Purina</p></li>
-<li><p>type: cold or hot</p></li>
-<li><p>calories: calories per serving</p></li>
-<li><p>protein: grams of protein</p></li>
-<li><p>fat: grams of fat</p></li>
-<li><p>sodium: milligrams of sodium</p></li>
-<li><p>fiber: grams of dietary fiber</p></li>
-<li><p>carbo: grams of complex carbohydrates</p></li>
-<li><p>sugars: grams of sugars</p></li>
-<li><p>potass: milligrams of potassium</p></li>
-<li><p>vitamins: vitamins and minerals - 0, 25, or 100, indicating the typical percentage of FDA
-recommended</p></li>
-<li><p>shelf: display shelf (1, 2, or 3, counting from the floor)</p></li>
-<li><p>weight: weight in ounces of one serving</p></li>
-<li><p>cups: number of cups in one serving</p></li>
-<li><p>rating: a rating of the cereals calculated by Consumer Reports</p></li>
+<li><p>.drop(): In a dataset there can be columns with missing values or columns that are not just useful for your analysis. For example, you might have a New York city taxi dataset containing information (trip id, datetime, trip distance, payment types, passenger count) but want to focus on analyzing trip trends in a day. In this case, the payment types and passenger count are not relevant for our analysis. Having them in our dataset will take up unnecessary space and processing time.</p></li>
 </ol>
-<section id="cereal-data">
-<h2>Cereal Data<a class="headerlink" href="#cereal-data" title="Permalink to this headline">#</a></h2>
-<p>Use the cereals dataset to answer the following questions</p>
+<p>When working with pandas we can solve this by using the drop() method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the cereals data</span>
-<span class="n">cereal_df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;Cereals&#39;</span><span class="p">)</span>
-<span class="n">cereal_df</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Here, we are dropping all the columns that are not needed for our analysis</span>
+<span class="c1">#axis=1 identifies the column</span>
+<span class="c1">#inplace=True does not return a new table but retains the existing table</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;...insert working directory here...&#39;</span><span class="p">)</span>
+<span class="n">zone</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;taxi+_zone_lookup.csv&#39;</span><span class="p">)</span>
+<span class="n">zone</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;service_zone&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<ol class="simple">
+<li><p>.fillna(): Sometimes, instead of dropping missing values, we might want to replace cells with N/A with some value. To achieve this we use the .fillna() method. replace() and interpolate() are also used in replacing missing values.</p></li>
+</ol>
+<ol class="simple">
+<li><p>.loc[]: This is an indexing method that is used to simply select particular rows or columns. It selects columns or rows using label names. loc() parameter accepts strings, integers, or list. Another indexing method is .iloc[] which selects columns or rows using purely integer-location based indexing for selection by positions. For example, let’s select the Borough columns with some rows from the New York City taxi zone data using loc().</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 5</span>
-<span class="c1"># Plot the calories on a histogram</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#displays the column &quot;Borough&quot;</span>
+<span class="n">zone</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<ol class="simple">
+<li><p>.rename(): Sometimes, column names are written in a way that it’s not easy to understand. In such case, we need to rename such column names. The method .rename() takes in couple parameters one of wihich is a dictionary-like object. This dictionary-like object contains a mapping of the old names and new names.</p></li>
+</ol>
+<ol class="simple">
+<li><p>.columns(): When working with a large dataset with so many columns, you want to see all the columns in that dataset. .  columns() displays all the columns in the dataset.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 6</span>
-<span class="c1"># Use a boxplot to compare cereal manufactures and the amount of sugar they put in their cereal</span>
-<span class="c1"># Put a title on your plot &#39;Sugars by manufacturer&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#this prints all the columns in the bankruptcy dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bankruptcy_df</span><span class="o">.</span><span class="n">columns</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Your plot should look like this</p>
-<p><img alt="sugars_by_mfr" src="../../_images/sugarsbymfg.jpg" /></p>
+<ol class="simple">
+<li><p>.len(): Provides the length (number of rows) of the dataframe. For example</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 7</span>
-<span class="c1"># Replace the single letters with the manufacturers full name, call the new column Manufacturer</span>
-<span class="c1"># Display the new dataframe</span>
-<span class="c1"># HINT: pandas offers a replace function that you can do this in one line</span>
-<span class="c1"># https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.replace.html?highlight=replace#pandas.Series.replace</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">bankruptcy_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 8</span>
-<span class="c1"># Calculate the average rating by Manufacturer (use the new Manufacturer column)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 9</span>
-<span class="c1"># Calculate the serving size (weight) in grams rather than ounces</span>
-<span class="c1"># Store the value in a new column weight_grams</span>
-<span class="c1"># Display the updated dataframe</span>
-<span class="c1"># HINT: There are 28.35 grams in an ounce</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Question 10</span>
-<span class="c1"># Using the new weight_grams column, calculate a new series sugars_pct which is the grams of sugar per gram of cereal</span>
-<span class="c1"># Sort the dataframe from highest to lowest sugar_pct and display the dataframe</span>
-<span class="c1"># HINT: Check out the pandas function `sort_values` </span>
-<span class="c1"># https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html?highlight=sort_values#pandas.DataFrame.sort_values</span>
-<span class="c1"># Look at the examples</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<ol class="simple">
+<li><p>.dtypes(): Because it is useful to know the data type of our variables before analysis. I will get the data type of Age in the BostonHousing dataset. This returns al. the data types in the dataframe.</p></li>
+</ol>
+<p>Again the list of pandas functions that are useful in data manipulation is non-exhastive. You can find more pandas functions <a class="reference external" href="https://pandas.pydata.org/docs/reference/frame.html">here</a>.</p>
 </section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "mlderes/Py4Analytics",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -925,7 +826,7 @@ recommended</p></li>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./book/exercises"
+            path: "./book/extras"
         },
         predefinedOutput: true
     }
@@ -939,20 +840,6 @@ recommended</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="210-Object_Orientation-ex.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Try it: Objects, Namespaces and Packages</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="230-Web_Data-ex.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Try it: Working with common data formats</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

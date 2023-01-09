@@ -220,11 +220,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="211-Methods.html">
-     Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="220-Web_Data_Formats.html">
      Differing data formats
     </a>
@@ -424,6 +419,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../data/DataDictionary.html">
+     Selected Data Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/101-Functions.html">
+     Optional Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/211-Pandas_Functions.html">
+     Pandas Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
      Using an Object Relational Mapping Database
     </a>
@@ -496,13 +506,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/Expanding_WaltonAPI.html">
+     Creating new Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../contrib/How_Walton_API_Works.html">
      Walton API Explained
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/working_with_age_data.html">
-     Manipulating census data with pandas
+    <a class="reference internal" href="../contrib/WaltonAPI_Queries.html">
+     Using the Walton ZIP API.
     </a>
    </li>
   </ul>
@@ -516,8 +536,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Revision: 1.0 <br/>
-  Last Update: Wed Nov 16 23:23:31 2022
+  Revision: 1.0.123 <br/>
+  Last Update: Mon Jan  9 19:34:16 2023
 </div>
 
             </div>
@@ -901,6 +921,19 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Start by importing a couple of libraries</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;ref_=bo_cso_ac&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">movies</span><span class="p">))</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -947,7 +980,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Now that is super helpful!  We just downloaded 1000 top grossing pg-13 rated movies in a few seconds.  But what exactly was that thing we did at the end, the whole <code class="docutils literal notranslate"><span class="pre">offset=200</span></code> thing.  This is called a query parameter and be a very transparent way for webpages to communicate to the server about the data they want.</p>
+<p>Now that is super helpful!  We just downloaded 1000 top grossing pg-13 rated movies in a few seconds.  But what exactly was that thing we did at the end, the whole <code class="docutils literal notranslate"><span class="pre">offset=200</span></code> thing.  This is called a query parameter and it is a very transparent way for webpages to communicate to the server about the data they want.</p>
 </section>
 <section id="query-parameters">
 <h2>Query parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline">#</a></h2>
@@ -957,7 +990,7 @@ title="Print to PDF"
 <div><p><a class="reference external" href="https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200">https://www.boxofficemojo.com/chart/mpaa_title_lifetime_gross/?by_mpaa=PG-13&amp;offset=200</a></p>
 </div></blockquote>
 <p>Here the query parameters are <code class="docutils literal notranslate"><span class="pre">by_mpaa</span></code> and <code class="docutils literal notranslate"><span class="pre">offset</span></code>.  So that’s interesting, now that we notice this, it’s possible that we could change the <code class="docutils literal notranslate"><span class="pre">by_mpaa</span></code> parameter as well and get R rated movies as well?  Let’s try it by hand first.  Paste the link into the website and change the PG-13 to R and see what happens.</p>
-<p>That’s great, so with a simple change we could also R rated movies in a dataframe as well.  (You can copy the code above and try it out for yourself below).</p>
+<p>That’s great, so with a simple change we could also use R rated movies in a dataframe as well.  (You can copy the code above and try it out for yourself below).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy the code from above and replace PG-13 with R to get the top 100 grossing R rated movies</span>
@@ -988,7 +1021,7 @@ title="Print to PDF"
 <section id="using-the-requests-library">
 <h2>Using the requests library<a class="headerlink" href="#using-the-requests-library" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference external" href="https://requests.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">requests</span></code></a> library is a very common library for automating the interaction with webpages.  There are lots and lots of features, we’ll focus on just a few.  For more information, you can see the excellent documentation <a class="reference external" href="https://requests.readthedocs.io/en/latest/">here</a>.</p>
-<p>There are several different request types that can sent to a webpage (GET, PUT, DELETE, HEAD, et al). GET is used to navigate a static website, sometimes using query parameters as we have seen already.  PUT and POST are used to submit data on a form.  We’ll leave the others for a more advanced treatise.  For our purposes, we’ll just take a look at GET.</p>
+<p>There are several different request types that can be sent to a webpage (GET, PUT, DELETE, HEAD, et al). GET is used to navigate a static website, sometimes using query parameters as we have seen already.  PUT and POST are used to submit data on a form.  We’ll leave the others for a more advanced treatise.  For our purposes, we’ll just take a look at GET.</p>
 <p>Let’s take a new example.  What if we want get the current price of bitcoin?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1103,7 +1136,7 @@ title="Print to PDF"
   
     By Michael Dereszynski<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

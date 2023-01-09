@@ -56,6 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Walton API Explained" href="How_Walton_API_Works.html" />
+    <link rel="prev" title="Manipulating census data with pandas" href="working_with_age_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -215,11 +217,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/210-Object_Orientation.html">
      Namespace, Objective Orientation and Packaging
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/211-Methods.html">
-     Methods
     </a>
    </li>
    <li class="toctree-l2">
@@ -422,6 +419,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../data/DataDictionary.html">
+     Selected Data Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/101-Functions.html">
+     Optional Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/211-Pandas_Functions.html">
+     Pandas Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
      Using an Object Relational Mapping Database
     </a>
@@ -444,22 +456,22 @@ const thebe_selector_output = ".output, .cell_output"
   Student Contributions
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01-contributing_a_notebook.html">
    Implementing/Creating Jupyter Notebook for final deliverable:
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="00-studentcontributions.html">
    Student Contributions
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="hallux.html">
      My test data is
@@ -494,13 +506,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Creating new Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="How_Walton_API_Works.html">
      Walton API Explained
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="working_with_age_data.html">
-     Manipulating census data with pandas
+    <a class="reference internal" href="WaltonAPI_Queries.html">
+     Using the Walton ZIP API.
     </a>
    </li>
   </ul>
@@ -514,8 +536,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Revision: 1.0 <br/>
-  Last Update: Wed Nov 16 23:23:31 2022
+  Revision: 1.0.123 <br/>
+  Last Update: Mon Jan  9 19:34:16 2023
 </div>
 
             </div>
@@ -753,7 +775,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="creating-new-queries">
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-new-queries">
 <h1>Creating new Queries<a class="headerlink" href="#creating-new-queries" title="Permalink to this headline">#</a></h1>
 <p>New queries should follow the below template with your desired path in the place of URL_PATH</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from .__init__ import app
@@ -765,7 +787,7 @@ from .__init__ import sqlQuery
 </pre></div>
 </div>
 <p>URL paths can be passed down by being placed within “&lt;&gt;” as described <a class="reference external" href="https://flask.palletsprojects.com/en/2.2.x/quickstart/#routing">here</a></p>
-<p>URL arguements can be accessed as described <a class="reference external" href="https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask">here</a></p>
+<p>URL arguments can be accessed as described <a class="reference external" href="https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask">here</a></p>
 <p>the sqlQuery method can then be used to send a query directly to the DB.</p>
 </section>
 
@@ -796,6 +818,20 @@ from .__init__ import sqlQuery
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="working_with_age_data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Manipulating census data with pandas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="How_Walton_API_Works.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Walton API Explained</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -805,7 +841,7 @@ from .__init__ import sqlQuery
   
     By Michael Dereszynski<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>

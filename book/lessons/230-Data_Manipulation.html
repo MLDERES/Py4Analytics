@@ -220,11 +220,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="211-Methods.html">
-     Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="220-Web_Data_Formats.html">
      Differing data formats
     </a>
@@ -424,6 +419,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../data/DataDictionary.html">
+     Selected Data Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/101-Functions.html">
+     Optional Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../extras/211-Pandas_Functions.html">
+     Pandas Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../extras/251-SQL_Alchemy.html">
      Using an Object Relational Mapping Database
     </a>
@@ -496,13 +506,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/working_with_age_data.html">
+     Manipulating census data with pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../contrib/Expanding_WaltonAPI.html">
+     Creating new Queries
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../contrib/How_Walton_API_Works.html">
      Walton API Explained
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../contrib/working_with_age_data.html">
-     Manipulating census data with pandas
+    <a class="reference internal" href="../contrib/WaltonAPI_Queries.html">
+     Using the Walton ZIP API.
     </a>
    </li>
   </ul>
@@ -516,8 +536,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <div class="navbar_extra_footer">
             <div>
-  Revision: 1.0 <br/>
-  Last Update: Wed Nov 16 23:23:31 2022
+  Revision: 1.0.123 <br/>
+  Last Update: Mon Jan  9 19:34:16 2023
 </div>
 
             </div>
@@ -919,6 +939,11 @@ title="Print to PDF"
 <p class="sidebar-title">Support Module</p>
 <p>In some code examples from this point forward, there is a reference to the <code class="docutils literal notranslate"><span class="pre">src.data</span></code> module which includes some functions that make the code examples a bit more readable.  For instance, the <code class="docutils literal notranslate"><span class="pre">load_data()</span></code> function is used to read CSV files from the data directory without bloating the examples with directory references and calls to the pandas <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function.</p>
 </aside>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A python library is a collection of related modules containing bundles of codes that can be used in different programs. Some smart folks wrote useful blocks of codes that solves specific problems, and  saved it in a python file (module). You will be introduced to some relevant libraries used in data analysis.</p>
+<p>This notebook covers a few functions that are available with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library.  There is an additional notebook which goes into several of the handiest <a class="reference external" href="https://pandas.pydata.org/">pandas</a> functions <a class="reference internal" href="../extras/211-Pandas_Functions.html"><span class="doc std std-doc">here</span></a></p>
+</div>
 <p>The next cell is one that will appear in some configuration as the first in nearly every notebook.  It imports the key libraries we are going to use in our analysis and model building.  In the first case, we will depend on <a class="reference external" href="https://pandas.pydata.org/">pandas</a> and <a class="reference external" href="https://numpy.org/">numpy</a> for our data manipulation and we’ll leverage <a class="reference external" href="https://matplotlib.org/">matplotlib</a> as our graphical library.  We’ll also use the <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> library to show off a few plots and visuals that are not quite as readily accessible with the <a class="reference external" href="https://matplotlib.org/">matplotlib</a> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1305,7 +1330,7 @@ Each record in the database describes a Boston suburb or town. The data was draw
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-manipulation">
 <h1>Data manipulation<a class="headerlink" href="#data-manipulation" title="Permalink to this headline">#</a></h1>
-<p>Visualization is helpful and can be really useful in Python in lots of situations, especially if you need something super specific that can’t be done using other tools - or if you just need a quick visual of what’s happening.  The real power unleashed by coding is to manipulate the data in a series of steps that can be repeated over and over again.  This is where <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and Python shine.</p>
+<p>Visualization is helpful and can be really useful in Python in lots of situations, especially if you need something super specific that can’t be done using other tools - or if you just need a quick visual of what’s happening.  The real power unleashed by coding is to manipulate the data in a series of steps that can be repeated over and over again.  This is where <a class="reference external" href="https://pandas.pydata.org/">pandas</a> and Python shine.</p>
 <section id="where-to-get-more-help">
 <h2>Where to get more help<a class="headerlink" href="#where-to-get-more-help" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -1557,7 +1582,7 @@ objective index of body weight (kg / m ^ 2) using the ratio of height to weight,
   
     By Michael Dereszynski<br/>
   
-      &copy; Copyright 2022.<br/>
+      &copy; Copyright 2023.<br/>
 </p>
         </footer>
     </div>
