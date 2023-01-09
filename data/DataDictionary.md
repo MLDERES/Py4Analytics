@@ -46,6 +46,7 @@ __Source__: http://lib.stat.cmu.edu/datasets/1993.expo/
 ## GermanCredit
 This dataset [GermanCredit.csv](./GermanCredit.csv) classifies people described by a set of attributes as good or bad credit risks.
 
+
 __Source__: https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29
 
 | Variable Name    | Description                                 | Variable Type | Code Description                                                 |
