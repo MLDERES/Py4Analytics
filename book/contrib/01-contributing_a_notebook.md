@@ -1,10 +1,10 @@
 ﻿# Implementing/Creating Jupyter Notebook for final deliverable:
 
-1) Ensure you have a [github.com](https://www.github.com) account. This is what the home screen looks like 
+1. Ensure you have a [github.com](https://www.github.com) account. This is what the home screen looks like 
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.001.png)
 
-2) If you have never installed [GitDesktop](https://desktop.github.com), here is what it will bring you to
+2. If you have never installed [GitDesktop](https://desktop.github.com), here is what it will bring you to
 
 ![](contrib_img/Aspose.Words.1d07e1e6-4ad9-419d-9954-eba7e0774d56.002.png)
 
