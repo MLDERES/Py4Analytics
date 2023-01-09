@@ -875,7 +875,7 @@ title="Print to PDF"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#displays the column &quot;Borough&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#displays the column &quot;Borough&quot;, but only with the rows 3,6,9,15</span>
 <span class="n">zone</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -926,6 +926,106 @@ title="Print to PDF"
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display all the data for the rows 3-10</span>
+<span class="n">zone</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Borough</th>
+      <th>Taxi Zone</th>
+    </tr>
+    <tr>
+      <th>LocationID</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>Manhattan</td>
+      <td>Alphabet City</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Staten Island</td>
+      <td>Arden Heights</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Staten Island</td>
+      <td>Arrochar/Fort Wadsworth</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Queens</td>
+      <td>Astoria</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Queens</td>
+      <td>Astoria Park</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Queens</td>
+      <td>Auburndale</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Queens</td>
+      <td>Baisley Park</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finally just display the Borough column</span>
+<span class="n">zone</span><span class="p">[</span><span class="s1">&#39;Borough&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LocationID
+1                EWR
+2             Queens
+3              Bronx
+4          Manhattan
+5      Staten Island
+           ...      
+261        Manhattan
+262        Manhattan
+263        Manhattan
+264          Unknown
+265          Unknown
+Name: Borough, Length: 265, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <ol class="simple">
 <li><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html?highlight=rename#pandas.DataFrame.rename">.rename()</a>: Sometimes, column names are written in a way that it’s not easy to understand. In such case, we need to rename such column names. The method <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html?highlight=rename#pandas.DataFrame.rename">.rename()</a> takes in couple parameters one of wihich is a dictionary-like object. This dictionary-like object contains a mapping of the old names and new names.</p></li>
