@@ -4,7 +4,7 @@
 title: 'Python 4 Analytics'
 # title: 
 author: Michael Dereszynski
-copyright: "2022"
+copyright: "2023"
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -39,8 +39,8 @@ html:
   google_analytics_id: G-NZH9210CF9
   extra_navbar: |
     <div>
-      Revision: 1.0 <br/>
-      Last Update: Wed Nov 16 23:23:31 2022
+      Revision: 1.0.123 <br/>
+      Last Update: Mon Jan  9 19:34:16 2023
     </div>
 
 launch_buttons:
