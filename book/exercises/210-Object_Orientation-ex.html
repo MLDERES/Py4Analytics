@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Try it: Objects, Namespaces and Packages &#8212; Python 4 Analytics</title>
+    <title>Try it– Developing Classes and Manipulating Objects &#8212; Python 4 Analytics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -258,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Try it: Objects, Namespaces and Packages
+     Try it– Developing Classes and Manipulating Objects
     </a>
    </li>
    <li class="toctree-l2">
@@ -751,23 +751,122 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-object-instantiation">
+   Step 1 - Object Instantiation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn-part-1">
+     Your Turn - Part 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-class-inheritance">
+   Step 2 - Class inheritance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn-2">
+     Your Turn #2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-creating-your-own-classes">
+   Step 3 - Creating your own classes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn-3">
+     Your Turn #3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Try it: Objects, Namespaces and Packages</h1>
+                <h1>Try it– Developing Classes and Manipulating Objects</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-object-instantiation">
+   Step 1 - Object Instantiation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn-part-1">
+     Your Turn - Part 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-class-inheritance">
+   Step 2 - Class inheritance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn-2">
+     Your Turn #2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-creating-your-own-classes">
+   Step 3 - Creating your own classes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-turn-3">
+     Your Turn #3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -775,8 +874,212 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="try-it-objects-namespaces-and-packages">
-<h1>Try it: Objects, Namespaces and Packages<a class="headerlink" href="#try-it-objects-namespaces-and-packages" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="try-it-developing-classes-and-manipulating-objects">
+<h1>Try it– Developing Classes and Manipulating Objects<a class="headerlink" href="#try-it-developing-classes-and-manipulating-objects" title="Permalink to this headline">#</a></h1>
+<p>The objective of this assignment is to provide you with hands-on experience in creating and manipulating objects in Python using object-oriented programming concepts. You will gain proficiency in defining classes, creating instances, setting attributes, and implementing methods.</p>
+<section id="step-1-object-instantiation">
+<h2>Step 1 - Object Instantiation<a class="headerlink" href="#step-1-object-instantiation" title="Permalink to this headline">#</a></h2>
+<p>Here we are going to play around with creating instances of the classes that have been defined for you above.  Creating new instances and manipulating them after the fact.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This module contains the People class, which is used to create a list of people and the different types of people in our system</span>
+<span class="c1"># Create a class called Person which is the base class from which other classes will inherit</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+
+    <span class="c1"># Creating the properties of the Person class</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    
+    <span class="c1"># A person has an ID, first name and last name </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_name</span> <span class="o">=</span> <span class="n">first_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_name</span> <span class="o">=</span> <span class="n">last_name</span>
+    
+    <span class="c1"># The id property is a unique identifier for each person</span>
+    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+    
+    <span class="k">def</span> <span class="nf">set_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="c1"># Check if the id is a positive integer, if not raise an exception</span>
+        <span class="k">if</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ID must be a positive integer&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+
+    <span class="c1"># The string representation of a person is their first name and last name</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">first_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="your-turn-part-1">
+<h3>Your Turn - Part 1<a class="headerlink" href="#your-turn-part-1" title="Permalink to this headline">#</a></h3>
+<p>The next cell shows how to use the class we created above.  Remember a class is a blueprint, a container of sorts, which has spots for all the data we want to store about a particular “thing” (in this case, the thing is a person.)  We can fill in the data about the “thing” when we create an instance of the the thing (using a special function called a constructor <code class="docutils literal notranslate"><span class="pre">__init__</span></code>) or we can set these values after we create the person.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a person called John Smith</span>
+<span class="n">new_person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Smith&quot;</span><span class="p">)</span>
+<span class="c1"># Print out the person&#39;s details:</span>
+<span class="c1">#  Print the person&#39;s ID</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Id: &quot;</span><span class="p">,</span> <span class="n">new_person</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="c1">#  Print the person&#39;s first name</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First Name: &quot;</span><span class="p">,</span> <span class="n">new_person</span><span class="o">.</span><span class="n">first_name</span><span class="p">)</span>
+<span class="c1">#  Print the person&#39;s last name</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last Name: &quot;</span><span class="p">,</span> <span class="n">new_person</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Id:  1
+First Name:  John
+Last Name:  Smith
+</pre></div>
+</div>
+</div>
+</div>
+<p>Following the comments below, create a new person object (an instance of the Person class), print their details, change their name and print their details again.</p>
+<p><strong><em>Note</em>: You can break this up into as many cells as you find helpful</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a person called Susan Jones with ID 2</span>
+<span class="c1"># Print out Susan&#39;s details:</span>
+<span class="c1">#  Print the Susan&#39;s ID</span>
+<span class="c1">#  Print the Susan&#39;s first name</span>
+<span class="c1">#  Print the Susan&#39;s last name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Susan and John decided to get married and so Susan changed her last name.  Update the object with Susan’s information to reflect her new name.  (Don’t create a new object, just update the current one)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the person&#39;s last name to Smith-Jones</span>
+<span class="c1"># Print out the person&#39;s details again</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-2-class-inheritance">
+<h2>Step 2 - Class inheritance<a class="headerlink" href="#step-2-class-inheritance" title="Permalink to this headline">#</a></h2>
+<p>Now we are going to get a little more specific and define Instructors, which are a special kind of “Person” that happens to teach courses at our university.  The following code snippet defines the instructor class and the course class</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a class called course</span>
+<span class="c1"># A course is a class that a student can take and an instructor can teach</span>
+<span class="k">class</span> <span class="nc">Course</span><span class="p">:</span>
+    <span class="n">course_number</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">couse_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">department</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">credits</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># A course has a course ID, course name, description, department and credits</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_number</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">department</span><span class="p">,</span> <span class="n">credits</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_number</span> <span class="o">=</span> <span class="n">course_number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">department</span> <span class="o">=</span> <span class="n">department</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">credits</span> <span class="o">=</span> <span class="n">credits</span>
+
+    <span class="c1"># The course number is a unique identifier for each course which must be greater than 0</span>
+    <span class="k">def</span> <span class="nf">set_course_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_number</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">course_number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Course number must be a positive integer&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_number</span> <span class="o">=</span> <span class="n">course_number</span>
+    
+    <span class="c1"># The course ID is a combination of the department and course number</span>
+    <span class="c1"># It can&#39;t be set directly, but can be retrieved</span>
+    <span class="k">def</span> <span class="nf">course_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">department</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">course_number</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+    <span class="c1"># The string representation of a course is the ID and the course name</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="p">()</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="c1"># Create a class called Instructor which inherits from the Person class</span>
+<span class="c1"># An instructor is a person who teaches one or more courses</span>
+<span class="k">class</span> <span class="nc">Instructor</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="n">courses_teaching</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># An instructor has an ID, first name, last name, and first year teaching</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">first_year_teaching</span><span class="p">):</span>
+        <span class="c1"># Initialize the Person class</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_year_teaching</span> <span class="o">=</span> <span class="n">first_year_teaching</span>
+
+    <span class="c1"># An instructor can teach a course</span>
+    <span class="k">def</span> <span class="nf">add_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">courses_teaching</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
+
+    <span class="c1"># An instructor can stop teaching a course</span>
+    <span class="k">def</span> <span class="nf">remove_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">courses_teaching</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
+
+    <span class="c1"># An instructor can get a list of courses they are teaching</span>
+    <span class="k">def</span> <span class="nf">get_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">courses_teaching</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice we have added a property (<code class="docutils literal notranslate"><span class="pre">courses</span></code>) and a few methods for dealing with the courses <code class="docutils literal notranslate"><span class="pre">add_course()</span></code>, <code class="docutils literal notranslate"><span class="pre">remove_course()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_courses()</span></code>.</p>
+<p>We’ll start by defining a few courses.  Also notice that we have updated the <code class="docutils literal notranslate"><span class="pre">__str__()</span></code> method, which defines how an object is represented when we <code class="docutils literal notranslate"><span class="pre">print()</span></code> the object.  So rather than the default, we actually get something a bit prettier which is super helpful to us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isys_1234</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s2">&quot;Introduction to Programming&quot;</span><span class="p">,</span> <span class="s2">&quot;This course introduces students to programming&quot;</span><span class="p">,</span> <span class="s2">&quot;ISYS&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">isys_5713</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="n">course_number</span><span class="o">=</span><span class="mi">5713</span><span class="p">,</span> 
+                   <span class="n">course_name</span><span class="o">=</span><span class="s2">&quot;Advanced Programming&quot;</span><span class="p">,</span> 
+                   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;This course introduces students to advanced programming&quot;</span><span class="p">,</span> 
+                   <span class="n">department</span><span class="o">=</span><span class="s2">&quot;ISYS&quot;</span><span class="p">,</span>
+                   <span class="n">credits</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isys_1234</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isys_5713</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ISYS1234 Introduction to Programming
+ISYS5713 Advanced Programming
+</pre></div>
+</div>
+</div>
+</div>
+<section id="your-turn-2">
+<h3>Your Turn #2<a class="headerlink" href="#your-turn-2" title="Permalink to this headline">#</a></h3>
+<p>Define a new instructor according to the code comments below and follow the steps as outlined.  You should use as many notebook cells as you like (for instance, you may prefer to create one cell for each modification, showing the before and after at each step).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an instructor called Alex Abbott , he started teaching in 2015 and teaches ISYS1234</span>
+<span class="c1"># Print out the instructor&#39;s details</span>
+<span class="c1"># Print out the courses the instructor is teaching</span>
+<span class="c1"># Add a new course for the instructor to teach (ISYS5713)</span>
+<span class="c1"># Print out the courses the instructor is teaching</span>
+<span class="c1"># Remove a course for the instructor to teach</span>
+<span class="c1"># Print out the courses the instructor is teaching</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-3-creating-your-own-classes">
+<h2>Step 3 - Creating your own classes<a class="headerlink" href="#step-3-creating-your-own-classes" title="Permalink to this headline">#</a></h2>
+<p>Now it’s time to venture out on your own.  Here you should create a student class.  Students are a special type of person.  They are similar to instructors in that they also have courses, but they also have some unique features like grade point averages.  They don’t have a year they began teaching, so we can’t inherit from the instructor class.</p>
+<section id="your-turn-3">
+<h3>Your Turn #3<a class="headerlink" href="#your-turn-3" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Create a student class.  It should be a subclass of <code class="docutils literal notranslate"><span class="pre">Person</span></code>, but also have a list of courses they are currently taking and a current grade point average (int)</p></li>
+<li><p>Create a student object for a student called <em>Susan Smartinez</em>, you can choose her GPA and which courses she is taking</p></li>
+<li><p>Add a course, remove a course, and update her GPA.  Show the results of each step along the way</p></li>
+</ol>
+<p><em><strong>For extra credit, modify the student class to keep track of the grade for each class and the semester it was taken
+HINT: You could consider replacing the course list with a dictionary instead.</strong></em></p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
